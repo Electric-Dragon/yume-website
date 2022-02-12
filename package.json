@@ -1,5 +1,20 @@
 {
+  "name": "yume-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js",
+    "start": "node app.js",
+    "buildCSS": "npx tailwindcss -i ./public/input.css -o ./public/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.0.22"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
   }
 }
