@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nodemon app.js",
     "start": "node app.js",
-    "buildCSS": "npx tailwindcss -i ./public/input.css -o ./public/css/output.css --watch"
+    "buildCSS": "npx tailwindcss -i input.css -o ./public/css/output.css --watch"
   },
   "keywords": [],
   "author": "",
