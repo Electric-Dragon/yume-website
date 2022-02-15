@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.1.7",
     "tailwindcss": "^3.0.22"
   },
   "dependencies": {

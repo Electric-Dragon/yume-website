@@ -11,6 +11,11 @@ app.get("/write", function(req, res) {
     res.sendFile(__dirname + "/html/write.html");
 });
 
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/html/form.html");
+});
+
+
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
