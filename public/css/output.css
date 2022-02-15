@@ -529,6 +529,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-height: 100vh;
 }
 
+.max-h-full {
+  max-height: 100%;
+}
+
 .max-w-4xl {
   max-width: 56rem;
 }
