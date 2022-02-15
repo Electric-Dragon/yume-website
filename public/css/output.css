@@ -521,8 +521,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: grid;
 }
 
-.h-screen {
-  height: 100vh;
+.max-h-fit {
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }
 
 .max-h-screen {
