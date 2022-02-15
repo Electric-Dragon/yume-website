@@ -1,6 +1,6 @@
 module.exports = {
   content: ["./public/**/*.{html,js}"],
-  // darkMode: 'class',
+  darkMode: 'class',
   theme: {
     fontFamily:{
       'sans': 'DM Sans',
