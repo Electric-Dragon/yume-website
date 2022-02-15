@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.urlencoded({extended:true}));
 
 app.get("/write", function(req, res) {
-    res.sendFile(__dirname + "/public/write.html");
+    res.sendFile(__dirname + "/html/write.html");
 });
 
 app.listen(process.env.PORT || port, function() {
