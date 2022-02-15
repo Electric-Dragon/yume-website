@@ -14,3 +14,5 @@ app.get("/write", function(req, res) {
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
+
+// npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch

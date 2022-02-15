@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+  <link href="/output.css" rel="stylesheet">
+  <title>Write the next masterpiece</title>
+</head>
+<body class="bg-gray-200 dark:bg-black">
+  
+  <button class="relative p-3 top-0 right-0 bg-gray-100 m-2 hover:bg-gray-600"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </svg></button>
+  
+  <button class="relative p-3 top-0 right-0 bg-gray-100 m-2 hover:bg-gray-600"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-moon-stars" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/>
+    <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+  </svg></button>
+
+  <div class="bg-white max-w-4xl min-w-screen h-screen m-auto md:drop-shadow-md dark:bg-slate-900 dark:text-white p-2 md:p-0">
+    <div class="grid place-content-center m-4 ">
+     <input maxlength = "20" class="mt-4 text-3xl max-w-screen placeholder:text-slate-400 text-center bg-transparent placeholder:italic" placeholder="Chapter Title..." type="text">
+    </div>
+
+    <div class="mx-auto pt-5 text-xl overflow-hidden max-w-screen-md  pl-1 pr-1" id="editorjs"></div>
+
+  </div>
+
+  <button id="btnSaveDraft">Save Draft</button>
+  <button>Next</button>
+
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+  <script defer src="js/write.js"></script>
+</body>
+</html>
+
+
+
+<!-- 
+<body class="grid grid-cols-12 justify-center font-sans max-w-full">
+
+  <input class="col-start-4 ml-5 col-end-10 pt-10 text-4xl mb-10 font-bold placeholder:text-slate-400 " placeholder="Untitled" type="text"></input> 
+  
+  <div class="col-start-4 col-end-10 max-w-4xl overflow-hidden">
+    <div class="pt-2 max-h-screen">
+      <div class=" text-xl max-h-screen placeholder:text-slate-400" placeholder="Type..." type="text" id="editorjs"></div>
+    </div>
+  </div>
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+  <script defer src="js/write.js"></script>
+</body>
+ -->
