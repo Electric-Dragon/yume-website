@@ -16,6 +16,7 @@
     "tailwindcss": "^3.0.22"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.30.2",
     "express": "^4.17.2"
   }
 }
