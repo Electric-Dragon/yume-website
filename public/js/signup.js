@@ -26,7 +26,25 @@ async function signUp() {
             premium: false
           }
         }).then(function() {
-          alert('Sign up successful. Check your email for a verification link.');
+          // alert('Sign up successful. Check your email for a verification link.');
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed up successfully. Check your email for a verification link'
+          }).then(function(){
+            window.location = "/";
+          })
         }).catch(function(error) {
           alert(error);
         });
