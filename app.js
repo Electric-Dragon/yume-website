@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const path = require('path');
 
@@ -23,14 +24,6 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/about.html");
 });
 
-
-
-
-
-
-
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
-
-// npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch
