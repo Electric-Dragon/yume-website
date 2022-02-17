@@ -11,13 +11,20 @@ app.get("/write", function(req, res) {
     res.sendFile(__dirname + "/html/write.html");
 });
 
-app.get("/", function(req, res) {
+app.get("/signin", function(req, res) {
     res.sendFile(__dirname + "/html/form.html");
 });
 
-app.get("/ss", function(req, res) {
+app.get("/create", function(req, res) {
     res.sendFile(__dirname + "/html/signup.html");
 });
+
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/html/about.html");
+});
+
+
+
 
 
 
