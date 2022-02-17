@@ -191,3 +191,6 @@ dist
 **/supabase/.branches
 **/supabase/.temp
 **/supabase/.env
+
+.env*
+!.env.project
