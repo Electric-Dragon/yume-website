@@ -8,8 +8,17 @@ const port = 7001;
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.urlencoded({extended:true}));
 
+let supabaseConfig = {
+    link: process.env.API_URL,
+    anon_key: process.env.ANON_KEY
+}
+
 app.get("/write", function(req, res) {
     res.sendFile(__dirname + "/html/write.html");
+});
+
+app.get("/keys", function(req, res) {
+    res.json(JSON.stringify(supabaseConfig));
 });
 
 app.get("/signin", function(req, res) {
