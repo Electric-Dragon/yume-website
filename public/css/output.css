@@ -2167,6 +2167,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 25%;
   }
 
+  .md\:w-1\/5 {
+    width: 20%;
+  }
+
   .md\:max-w-xl {
     max-width: 36rem;
   }

@@ -20,7 +20,7 @@
   <script src="./assets/js/charts-pie.js" defer></script>
 </head>
 
-<body>
+<body class="">
   <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
     <!-- Desktop sidebar -->
     <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
@@ -579,7 +579,7 @@
               </div>
             </div>
           </div>
-          <div class="px-6 my-6 w-1/5 left-0">
+          <div class="px-6 my-6 md:w-1/5 left-0 w-full">
             <button
               class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-cyan-600 border border-transparent rounded-lg active:bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:shadow-outline-cyan">
               New Story
@@ -613,9 +613,9 @@
                           <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
-                          <p class="font-semibold">Hans Burger</p>
+                          <p class="font-semibold">Solo Leveling</p>
                           <p class="text-xs text-gray-600 dark:text-gray-400">
-                            10x Developer
+                            20 Episodes
                           </p>
                         </div>
                       </div>
