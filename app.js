@@ -33,6 +33,11 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/about.html");
 });
 
+app.get("/admin", function(req, res) {
+    res.sendFile(__dirname + "/html/dashboard.html");
+});
+
+
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
