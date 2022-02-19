@@ -37,6 +37,9 @@ app.get("/admin", function(req, res) {
     res.sendFile(__dirname + "/html/dashboard.html");
 });
 
+app.get("/novelform", function(req, res) {
+    res.sendFile(__dirname + "/html/novelform.html");
+});
 
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
