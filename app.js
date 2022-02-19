@@ -25,19 +25,19 @@ app.get("/signin", function(req, res) {
     res.sendFile(__dirname + "/html/form.html");
 });
 
-app.get("/create", function(req, res) {
+app.get("/signup", function(req, res) {
     res.sendFile(__dirname + "/html/signup.html");
 });
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/html/about.html");
+    res.sendFile(__dirname + "/html/home.html");
 });
 
-app.get("/admin", function(req, res) {
+app.get("/dashboard/home", function(req, res) {
     res.sendFile(__dirname + "/html/dashboard.html");
 });
 
-app.get("/novelform", function(req, res) {
+app.get("/dashboard/create/novel", function(req, res) {
     res.sendFile(__dirname + "/html/novelform.html");
 });
 
