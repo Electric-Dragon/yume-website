@@ -13,8 +13,6 @@ $.ajax({
       $('#btnSignUp').on('click', signUp);
 }});
 
-// const supabase = createClient('https://zduoakccvlarenfacitl.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkdW9ha2NjdmxhcmVuZmFjaXRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDQ5NDU5MTIsImV4cCI6MTk2MDUyMTkxMn0.L0L9_rg1NCok9PJWLS17-xGyWgEyRFj83a0o-D127f4');
-
 async function signUp() {
     let email = $('#email').val();
     let password = $('#password').val();
@@ -33,10 +31,13 @@ async function signUp() {
         {
           data: { 
             username: username, 
-            premium: false
+            premium: false,
+            credits: 0,
+            revenue: 0,
+            creator: false
           }
         }).then(function() {
-          // alert('Sign up successful. Check your email for a verification link.');
+
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
