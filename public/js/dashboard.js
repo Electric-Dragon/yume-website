@@ -37,3 +37,28 @@ $('#btnCreateNewSeries').on('click', function(){
     //     Swal.fire(JSON.stringify(formValues))
     //   }
 });
+
+
+const inputOptions = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve({
+      '#ff0000': 'Web comic',
+      '#00ff00': 'Web Novel',
+    })
+  }, 0)
+})
+
+const { value: color } = await Swal.fire({
+  title: 'What do you plan to create?!',
+  input: 'radio',
+  inputOptions: inputOptions,
+  inputValidator: (value) => {
+    if (!value) {
+      return 'You need to choose something!'
+    }
+  }
+})
+
+if (color) {
+  Swal.fire({ html: `You selected: ${color}` })
+}
