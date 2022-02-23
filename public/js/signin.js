@@ -11,7 +11,6 @@ $.ajax({
       supabase = createClient(result.link, result.anon_key);
 
       const user = supabase.auth.user();
-      console.log(user);
 
       $('#btnSignIn').on('click', signIn);
 }});
@@ -26,12 +25,14 @@ async function signIn() {
         alert('Please fill in all fields');
     } else {
 
-        const { user, session, error } = await supabase.auth.signIn({
-            email: email,
-            password: password,
-            
-        }).then(function(){
-            const Toast = Swal.mixin({
+        supabase.auth.signIn({
+          email: email,
+          password: password
+        }).then(function(res) {
+
+            if (res.error) {
+
+              let Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
@@ -42,13 +43,35 @@ async function signIn() {
                   toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
               })
-              
+                      
+              Toast.fire({
+                icon: 'error',
+                title: res.error.message
+              });
+
+            } else {
+
+              let Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+                      
               Toast.fire({
                 icon: 'success',
                 title: 'Signed in successfully'
-              }).then(function(){
+              }).then(function() {
                 window.location = "/";
               })
+
+            }
+
         });
           
     }

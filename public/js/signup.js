@@ -38,6 +38,8 @@ async function signUp() {
           }
         }).then(function() {
 
+          // console.log(session);
+
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
