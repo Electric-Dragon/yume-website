@@ -10,8 +10,6 @@ $.ajax({
 
       supabase = createClient(result.link, result.anon_key);
 
-      const user = supabase.auth.user();
-
       $('#btnSignIn').on('click', signIn);
 }});
 
@@ -50,6 +48,12 @@ async function signIn() {
               });
 
             } else {
+
+              const user = supabase.auth.user();
+              let data = user.user_metadata
+              data.id = user.id
+
+              supabase.from('users').upsert(data,{ignoreDuplicates: true});
 
               let Toast = Swal.mixin({
                 toast: true,

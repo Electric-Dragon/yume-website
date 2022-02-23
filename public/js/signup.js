@@ -24,43 +24,103 @@ async function signUp() {
     } else {
 
     if (password===passwordConfirm) {
-        const { user, session, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
+
+        // const { user, session, error } = await supabase.auth.signUp({
+        //     email: email,
+        //     password: password,
+        // },
+        // {
+        //   data: { 
+        //     username: username, 
+        //     premium: false,
+        //     credits: 0,
+        //     revenue: 0,
+        //     creator: false
+        //   }
+        // }).then(function() {
+
+        //   // console.log(session);
+
+        //   const Toast = Swal.mixin({
+        //     toast: true,
+        //     position: 'top-end',
+        //     showConfirmButton: false,
+        //     timer: 3000,
+        //     timerProgressBar: true,
+        //     didOpen: (toast) => {
+        //       toast.addEventListener('mouseenter', Swal.stopTimer)
+        //       toast.addEventListener('mouseleave', Swal.resumeTimer)
+        //     }
+        //   })
+          
+        //   Toast.fire({
+        //     icon: 'success',
+        //     title: 'Signed up successfully. Check your email for a verification link'
+        //   }).then(function(){
+        //     window.location = "/";
+        //   })
+        // }).catch(function(error) {
+        //   alert(error);
+        // });
+
+        supabase.auth.signUp({
+          email: email,
+          password: password
         },
         {
-          data: { 
-            username: username, 
+          data: {
+            username: username,
             premium: false,
             credits: 0,
             revenue: 0,
             creator: false
           }
-        }).then(function() {
+        }).then(function(res) {
 
-          // console.log(session);
+          if (res.error) {
 
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
-          
-          Toast.fire({
-            icon: 'success',
-            title: 'Signed up successfully. Check your email for a verification link'
-          }).then(function(){
-            window.location = "/";
-          })
-        }).catch(function(error) {
-          alert(error);
-        });
+            let Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+                    
+            Toast.fire({
+              icon: 'error',
+              title: res.error.message
+            });
+
+          } else {
+            
+            let Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+                    
+            Toast.fire({
+              icon: 'success',
+              title: 'Signed up successfully. Check your email for a verification link'
+            }).then(function() {
+              window.location = "/signin";
+            })
+
+          }
+
+        })
+
     }
 
     }
