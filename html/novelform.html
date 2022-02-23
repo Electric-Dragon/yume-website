@@ -73,7 +73,7 @@
 			</script>
 		</nav>
 
-        <div class="px-5 mt-9 max-w-5xl mx-auto border-2 border-black">
+        <div class="px-5 mt-9 max-w-5xl mx-auto pt-6 border-2 border-transparent rounded-lg shadow-lg shadow-blue-500">
             <div class="grid md:grid-flow-col grid-flow-row gap-5 md:gap-0">
                 <div>
                     <label class="block text-sm font-medium text-gray-700"> Cover photo </label>
@@ -95,10 +95,37 @@
                   </div>
                   <div class="grid">
                     <div class="flex gap-3">
-                      <div class="grid grid-flow-col mx-auto gap-10">
-                        <div class="relative inline-block text-left">
+                      <div class="grid grid-flow-col px-5 gap-10">
+                        <label class="block text-sm">
+                          <span class="text-gray-700 dark:text-gray-400 ">
+                            Genre 1
+                          </span>
+                          <select
+                            class="block w-full mt-1 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-cyan-400  focus:shadow-outline-cyan dark:focus:shadow-outline-gray rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-cyan-500"
+                          >
+                            <option>Horror</option>
+                            <option>Romance</option>
+                            <option>Hentai</option>
+                            <option>help i dunno any other</option>
+                          </select>
+                        </label>
+                        <label class="block mb-4 text-sm">
+                          <span class="text-gray-700 dark:text-gray-400 ">
+                            Genre 2 <span class="text-sm text-gray-400">(not required)</span>
+                          </span>
+                          <select
+                            class="block w-full mt-1 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-cyan-400  focus:shadow-outline-cyan dark:focus:shadow-outline-gray rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-cyan-500"
+                          >
+                            <option>Horror</option>
+                            <option>Romance</option>
+                            <option>Hentai</option>
+                            <option>help i dunno any other</option>
+                          </select>
+                        </label>
+                        
+                        <!-- <div class="relative inline-block text-left">
                           <div>
-                            <button type="button" onclick="show_hide()" class="inline-flex justify-center w-56 rounded-md border-2 border-gray-500 border-dashed shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <button type="button" onclick="show_hide()" class="inline-flex justify-center w-56 rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
                               Genre 1
                               <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -118,7 +145,7 @@
                         </div>
                         <div class="relative inline-block text-left">
                           <div>
-                            <button type="button" onclick="hide_show()" class="inline-flex justify-center w-56 rounded-md border-2 border-gray-500 border-dashed shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <button type="button" onclick="hide_show()" class="inline-flex justify-center w-56 rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
                               Genre 2
                               <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -132,7 +159,7 @@
                               <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                             <!-- <div class="relative">
                               <div onclick="hide_show()" class="h-10 bg-white flex border border-gray-200 rounded items-center">
                                 <input value="Genre 2" name="select"  id="select" class="px-4 appearance-none outline-none text-gray-800 w-full" checked />
@@ -211,9 +238,8 @@
 
 
           </div>
-        </div>
-      </div>
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   
+          <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script defer src="js/novelform.js" type="module"></script>
     <script>  
