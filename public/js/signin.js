@@ -49,11 +49,11 @@ async function signIn() {
 
             } else {
 
-              const user = supabase.auth.user();
-              let data = user.user_metadata
-              data.id = user.id
+              // const user = supabase.auth.user();
+              // let data = user.user_metadata
+              // data.id = user.id
 
-              supabase.from('users').upsert(data,{ignoreDuplicates: true});
+              // supabase.from('users').upsert(data,{ignoreDuplicates: true});
 
               let Toast = Swal.mixin({
                 toast: true,
