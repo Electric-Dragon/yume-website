@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const path = require('path');
+const sAPI = require("./supabaseAPI");
 
 const app = express();
 const port = 7001;
@@ -22,11 +23,15 @@ app.get("/keys", function(req, res) {
 });
 
 app.get("/signin", function(req, res) {
-    res.sendFile(__dirname + "/html/form.html");
+    res.sendFile(__dirname + "/html/signin.html");
 });
 
 app.get("/signup", function(req, res) {
     res.sendFile(__dirname + "/html/signup.html");
+});
+
+app.post("/signup", async function(req, res) {
+    res.json(await sAPI.signUp(req.body));
 });
 
 app.get("/", function(req, res) {

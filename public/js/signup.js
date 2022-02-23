@@ -10,10 +10,13 @@ $.ajax({
 
       supabase = createClient(result.link, result.anon_key);
 
-      $('#btnSignUp').on('click', signUp);
+      document.getElementById('btnSignUp').addEventListener('click', function(e){
+        signUp(e);
+      });
 }});
 
-async function signUp() {
+async function signUp(e) {
+    e.preventDefault();
     let email = $('#email').val();
     let password = $('#password').val();
     let passwordConfirm = $('#passwordConfirm').val();
@@ -25,59 +28,56 @@ async function signUp() {
 
     if (password===passwordConfirm) {
 
-        // const { user, session, error } = await supabase.auth.signUp({
-        //     email: email,
-        //     password: password,
-        // },
-        // {
-        //   data: { 
-        //     username: username, 
-        //     premium: false,
-        //     credits: 0,
-        //     revenue: 0,
-        //     creator: false
-        //   }
-        // }).then(function() {
+      let { data, error } = await supabase
+      .from('usernames')
+      .select('id')
+      .eq('id', username)
 
-        //   // console.log(session);
-
-        //   const Toast = Swal.mixin({
-        //     toast: true,
-        //     position: 'top-end',
-        //     showConfirmButton: false,
-        //     timer: 3000,
-        //     timerProgressBar: true,
-        //     didOpen: (toast) => {
-        //       toast.addEventListener('mouseenter', Swal.stopTimer)
-        //       toast.addEventListener('mouseleave', Swal.resumeTimer)
-        //     }
-        //   })
-          
-        //   Toast.fire({
-        //     icon: 'success',
-        //     title: 'Signed up successfully. Check your email for a verification link'
-        //   }).then(function(){
-        //     window.location = "/";
-        //   })
-        // }).catch(function(error) {
-        //   alert(error);
-        // });
-
-        supabase.auth.signUp({
-          email: email,
-          password: password
-        },
-        {
-          data: {
-            username: username,
-            premium: false,
-            credits: 0,
-            revenue: 0,
-            creator: false
+      if (error) {
+        let Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
-        }).then(function(res) {
+        })
+                
+        Toast.fire({
+          icon: 'error',
+          title: error
+        });
+      } else if (data.length>0) {
+        let Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+                
+        Toast.fire({
+          icon: 'error',
+          title: 'Username already exists'
+        });
+      } else {
 
-          if (res.error) {
+
+      $.ajax({
+        type:"POST",
+        url:'/signup',
+        data:{email: email,
+          password: password,
+          username: username},        
+        success: function(data, status) {
+          if (data.error) {
 
             let Toast = Swal.mixin({
               toast: true,
@@ -93,11 +93,10 @@ async function signUp() {
                     
             Toast.fire({
               icon: 'error',
-              title: res.error.message
+              title: data.error
             });
 
           } else {
-            
             let Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -112,14 +111,14 @@ async function signUp() {
                     
             Toast.fire({
               icon: 'success',
-              title: 'Signed up successfully. Check your email for a verification link'
+              title: 'Signed up successfully'
             }).then(function() {
-              window.location = "/signin";
+              window.location = `${data.link}/signin`;
             })
-
           }
+      }});
 
-        })
+    }
 
     }
 
