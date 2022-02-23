@@ -10,12 +10,14 @@ $.ajax({
 
       supabase = createClient(result.link, result.anon_key);
 
-      $('#btnSignIn').on('click', signIn);
+      document.getElementById('btnSignIn').addEventListener('click', function(e){
+        signIn(e);
+      });
 }});
 
 
-async function signIn() {
-
+async function signIn(e) {
+    e.preventDefault();
     let email = $('#email').val();
     let password = $('#password').val();
 
