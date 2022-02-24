@@ -11,6 +11,7 @@ $.ajax({
       supabase = createClient(result.link, result.anon_key);
 
       const user = supabase.auth.user();
+      console.log(user);
 
       if (!user) {
         window.location = "/signin";
@@ -22,7 +23,7 @@ $('#btnCreateNewSeries').on('click', async function(){
   const inputOptions = new Promise((resolve) => {
     setTimeout(() => {
       resolve({
-        'comic': 'Web comic',
+        'comic': 'Web Comic',
         'novel': 'Web Novel',
       })
     }, 0)

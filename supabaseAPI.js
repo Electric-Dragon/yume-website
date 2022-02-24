@@ -1,5 +1,6 @@
 require('dotenv').config();
-const _supabase = require('@supabase/supabase-js')
+const _supabase = require('@supabase/supabase-js');
+const nAPI = require('./neo4jAPI');
 
 const supabase = _supabase.createClient(process.env.API_URL, process.env.SERVICE_ROLE)
 
@@ -27,10 +28,11 @@ module.exports.signUp = async function signUp({email, password, username}) {
                 } else {
                     return await supabase.from('usernames').insert([
                         { id: username}
-                    ]).then(({_data, error}) => {
+                    ]).then(async ({_data, error}) => {
                         if(error) {
                             return {error: error.message}
                         } else {
+                            await nAPI.createUserNode(user.id, username);
 							return {link: data.action_link}
 						}
                     });                    
@@ -46,8 +48,3 @@ module.exports.signUp = async function signUp({email, password, username}) {
 // (async () => {
 //     console.log(await signUp({email: 'atharvawasekar@icloud.com',password: 'password',username:'atharvawasekar'}))
 // })()
-
-
-// module.exports {
-//     signUp
-// }
