@@ -46,6 +46,11 @@ app.get("/dashboard/create/novel", function(req, res) {
     res.sendFile(__dirname + "/html/novelform.html");
 });
 
+app.get("/dashboard/series", function(req, res) {
+    res.sendFile(__dirname + "/html/series.html");
+});
+
+
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
