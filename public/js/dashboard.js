@@ -21,16 +21,8 @@ let statusText = {
           </span>
         </td>`
 }
-let statusTextColour = {
-  'd': 'Draft',
-  'o': 'Ongoing',
-  'p': 'Paused'
-}
-let statusTextBg = {
-  'd': 'Draft',
-  'o': 'Ongoing',
-  'p': 'Paused'
-}
+
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 $.ajax({
   url: "/keys",
@@ -101,7 +93,7 @@ $.ajax({
                           </td>
                           ${statusText[status]}
                           <td class="px-4 py-3 text-sm">
-                            ${date.toLocaleString()}
+                            ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
                           </td>
                           <td class="px-4 py-3 text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
