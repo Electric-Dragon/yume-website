@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <link href="/css/output.css" rel="stylesheet">
+    <title>Welcome to Yume</title>
+</head>
+<body class="h-screen w-full dark:bg-black">
+    <!-- Navbar goes here -->
+		<nav class="bg-white max-h-36">
+			<div class="max-w-6xl mx-auto px-4">
+				<div class="flex justify-between">
+					<div class="flex space-x-7">
+						<div>
+							<!-- Website Logo -->
+							<a href="#" class="flex items-center py-6 px-2">
+								<img src="images/logo.png" alt="Logo" class="h-8 w-8 mr-2">
+								<span class="font-semibold text-gray-500 text-lg">YUME</span>
+							</a>
+						</div>
+					</div>
+                    <!-- Primary Navbar items -->
+						<div class="hidden md:flex items-end space-x-1">
+							<a href="" class="pt-16 px-6 text-white border-b-4 border-cyan-500 font-semibold bg-cyan-500 ">Home</a>
+							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">Services</a>
+							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">About</a>
+							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">Contact Us</a>
+						</div>
+					<!-- Secondary Navbar items -->
+					<div class="hidden md:flex items-center space-x-3">
+						<a href="/signin" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-cyan-500 hover:text-white transition duration-300">Log In</a>
+						<a href="/signup" class="py-2 px-2 font-medium text-white bg-cyan-500 rounded hover:bg-cyan-400 transition duration-300">Sign Up</a>
+					</div>
+					<!-- Mobile menu button -->
+					<div class="md:hidden flex items-center">
+						<button class="outline-none mobile-menu-button">
+						<svg class=" w-6 h-6 text-gray-500 hover:text-cyan-500 "
+							x-show="!showMenu"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path d="M4 6h16M4 12h16M4 18h16"></path>
+						</svg>
+					</button>
+					</div>
+				</div>
+			</div>
+			<!-- mobile menu -->
+			<div class="hidden mobile-menu">
+				<ul class="">
+					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-cyan-500 font-semibold">Home</a></li>
+					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">Services</a></li>
+					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">About</a></li>
+					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">Contact Us</a></li>
+				</ul>
+			</div>
+			<script>
+				const btn = document.querySelector("button.mobile-menu-button");
+				const menu = document.querySelector(".mobile-menu");
+
+				btn.addEventListener("click", () => {
+					menu.classList.toggle("hidden");
+				});
+			</script>
+		</nav>
+
+        <div class="bg-gray-200 max-w-5xl mx-auto rounded-sm mt-7">
+            <div class="grid grid-flow-col grid-cols-7 p-4 gap-4">
+                <div class="col-span-2 col-start-1"><img src="https://cover.nep.li/cover/Tomb-Raider-King.jpg" alt=""></div>
+               
+                <div class="overflow-hidden sm:rounded-lg col-span-5 col-start-3">
+
+                    <div class="grid grid-flow-col">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Series Name</h3>
+                            <p class="mt-1 max-w-2xl text-sm text-gray-500">Created by: ZA name</p>
+                        </div>
+                        <div class="cursor-pointer mt-1 text-lg text-right mr-5 text-bold text-cyan-600 sm:mt-0 sm:col-span-2 md:col-span-1">Edit</div>
+                    </div>
+                    <div class="border-t border-gray-200">
+                      <dl>
+                        <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-black">Adaptation:</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Yes</dd>
+                        </div>
+                        <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-black">Original:</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Solo leveling</dd>
+                        </div>
+                        <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-black">Type:</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Web Novel</dd>
+                        </div>
+                        <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-black">Synopsis:</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+    
+            </div>
+    
+
+        </div>
+
+  
+</body>
+</html>
