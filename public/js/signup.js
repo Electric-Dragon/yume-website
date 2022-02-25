@@ -48,7 +48,7 @@ async function signUp(e) {
                 
         Toast.fire({
           icon: 'error',
-          title: error
+          title: error.message
         });
       } else if (data.length>0) {
         let Toast = Swal.mixin({
