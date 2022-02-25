@@ -54,6 +54,10 @@ app.get("/dashboard/series", function(req, res) {
     res.sendFile(__dirname + "/html/series.html");
 });
 
+app.get("/dashboard/info", function(req, res) {
+    res.sendFile(__dirname + "/html/novelinfo.html");
+});
+
 
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
