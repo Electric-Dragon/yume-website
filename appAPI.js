@@ -45,6 +45,28 @@ module.exports.signUp = async function signUp({email, password, username}) {
 
 }
 
+module.exports.createSeries = async function createSeries({id, genre1, genre2}) {
+
+    return await supabase.from('series')
+                         .select('title,cover,novel,adaptation,status,mature,creator')
+                         .eq('id', id)
+                         .then(async ({data, error}) => {
+                                if (error) {
+                                    return {error: error.message}
+                                } else {
+
+                                    // console.log(data.length);
+                                    // console.log(data[0]);
+
+                                    let result = await nAPI.createSeriesNode({id, genre1, genre2},data[0]);
+                                    // result = {success: true};
+                                    return result
+
+                                }
+                         })
+
+}
+
 // (async () => {
 //     console.log(await signUp({email: 'atharvawasekar@icloud.com',password: 'password',username:'atharvawasekar'}))
 // })()

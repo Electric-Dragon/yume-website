@@ -46,6 +46,10 @@ app.get("/dashboard/create/novel", function(req, res) {
     res.sendFile(__dirname + "/html/novelform.html");
 });
 
+app.post("/dashboard/create/novel", async function(req, res) {
+    res.json(await yumeAPI.createSeries(req.body));
+});
+
 app.get("/dashboard/series", function(req, res) {
     res.sendFile(__dirname + "/html/series.html");
 });

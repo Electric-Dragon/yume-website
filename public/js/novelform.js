@@ -178,24 +178,58 @@ async function create(e) {
                             title: error.message
                           });
                     } else {
-                        let Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 2000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                              toast.addEventListener('mouseenter', Swal.stopTimer)
-                              toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                          })
-                                  
-                          Toast.fire({
-                            icon: 'success',
-                            title: 'Successfully created a new series'
-                          }).then(function() {
-                            window.location = `/dashboard/series/${seriesId}`;
-                          })
+
+                      $.ajax({
+                        type:"POST",
+                        url:'/dashboard/create/novel',
+                        data:{id: seriesId,
+                          genre1: genre1,
+                          genre2: genre2},
+                        success: function(data,status) {
+
+                          if (data.error) {
+                            let Toast = Swal.mixin({
+                              toast: true,
+                              position: 'top-end',
+                              showConfirmButton: false,
+                              timer: 3000,
+                              timerProgressBar: true,
+                              didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                              }
+                            })
+                                    
+                            Toast.fire({
+                              icon: 'error',
+                              title: data.error
+                            });
+                          } else {
+
+                            let Toast = Swal.mixin({
+                              toast: true,
+                              position: 'top-end',
+                              showConfirmButton: false,
+                              timer: 2000,
+                              timerProgressBar: true,
+                              didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                              }
+                            })
+                                    
+                            Toast.fire({
+                              icon: 'success',
+                              title: 'Successfully created a new series'
+                            }).then(function() {
+                              window.location = `/dashboard/series/${seriesId}`;
+                            })
+
+                          }
+
+                        }})
+
+              
                     }
 
                 }
