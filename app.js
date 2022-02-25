@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const path = require('path');
-const sAPI = require("./supabaseAPI");
+const yumeAPI = require("./appAPI");
 
 const app = express();
 const port = 7001;
@@ -31,7 +31,7 @@ app.get("/signup", function(req, res) {
 });
 
 app.post("/signup", async function(req, res) {
-    res.json(await sAPI.signUp(req.body));
+    res.json(await yumeAPI.signUp(req.body));
 });
 
 app.get("/", function(req, res) {
