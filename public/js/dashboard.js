@@ -43,7 +43,7 @@ $.ajax({
         .select('id,title,chapcount,status,updatedat')
         .eq('creator', user.id)
         .order('updatedat', { ascending: false })
-        .limit(3)
+        .limit(5)
 
       if (error) {
         let Toast = Swal.mixin({
