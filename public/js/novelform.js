@@ -72,6 +72,8 @@ async function create(e) {
         alert('Please select two different genres');
     } else {
 
+        $('#btnCreate').prop('disabled', true);
+
         if (adaptation === "") {
             adaptation = null;
         }
@@ -106,6 +108,8 @@ async function create(e) {
                 icon: 'error',
                 title: error.message
               });
+            $('#btnCreate').prop('disabled', false);
+
         } else {
             let seriesId = data[0].id;
 
@@ -130,6 +134,8 @@ async function create(e) {
                     icon: 'error',
                     title: error.message
                   });
+
+                $('#btnCreate').prop('disabled', false);
             } else {
                 const {publicURL, error} = await supabase
                     .storage
@@ -153,6 +159,8 @@ async function create(e) {
                         icon: 'error',
                         title: error.message
                       });
+
+                      $('#btnCreate').prop('disabled', false);
                 } else {
 
                     const { data, error } = await supabase
@@ -177,6 +185,8 @@ async function create(e) {
                             icon: 'error',
                             title: error.message
                           });
+
+                          $('#btnCreate').prop('disabled', false);
                     } else {
 
                       $.ajax({
@@ -204,6 +214,8 @@ async function create(e) {
                               icon: 'error',
                               title: data.error
                             });
+                            
+                            $('#btnCreate').prop('disabled', false);
                           } else {
 
                             let Toast = Swal.mixin({

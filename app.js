@@ -54,7 +54,7 @@ app.get("/dashboard/series", function(req, res) {
     res.sendFile(__dirname + "/html/series.html");
 });
 
-app.get("/dashboard/info", function(req, res) {
+app.get("/dashboard/series/:seriesid", function(req, res) {
     res.sendFile(__dirname + "/html/novelinfo.html");
 });
 
