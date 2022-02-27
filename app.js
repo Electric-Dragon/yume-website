@@ -14,10 +14,6 @@ let supabaseConfig = {
     anon_key: process.env.ANON_KEY
 }
 
-app.get("/write", function(req, res) {
-    res.sendFile(__dirname + "/html/write.html");
-});
-
 app.get("/keys", function(req, res) {
     res.json(JSON.stringify(supabaseConfig));
 });
@@ -56,6 +52,10 @@ app.get("/dashboard/series", function(req, res) {
 
 app.get("/dashboard/series/:seriesid", function(req, res) {
     res.sendFile(__dirname + "/html/novelinfo.html");
+});
+
+app.get("/dashboard/series/:seriesid/:chapterid/write", function(req, res) {
+    res.sendFile(__dirname + "/html/write.html");
 });
 
 

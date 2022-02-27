@@ -20,7 +20,7 @@ $.ajax({
           .from('series')
           .select('id,title,chapcount,cover')
           .eq('creator', user.id)
-          .order('title', { ascending: true })
+          .order('updatedat', { ascending: false })
   
         if (error) {
           let Toast = Swal.mixin({

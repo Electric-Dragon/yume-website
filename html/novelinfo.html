@@ -76,13 +76,13 @@
         <div class="bg-gray-200 max-w-5xl mx-auto rounded-sm mt-7">
             <div class="grid grid-flow-row">
                 <div class="grid grid-flow-col grid-cols-7 p-4 gap-4">
-                    <div class="col-span-2 col-start-1"><img src="https://cover.nep.li/cover/Tomb-Raider-King.jpg" alt=""></div>
+                    <div class="col-span-2 col-start-1"><img id="cover" src="" alt=""></div>
                     <div class="overflow-hidden sm:rounded-lg col-span-5 col-start-3">
     
                         <div class="grid grid-flow-col">
                             <div class="px-4 py-5 sm:px-6">
-                                <h3 class="text-lg leading-6 font-medium text-gray-900">Series Name</h3>
-                                <p class="mt-1 max-w-2xl text-sm text-gray-500">Created by: ZA name</p>
+                                <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900"></h3>
+                                <p id="creatorname" class="mt-1 max-w-2xl text-sm text-gray-500"></p>
                             </div>
                             <div class="cursor-pointer mt-1 text-lg text-right mr-5 text-bold text-cyan-600 sm:mt-0 sm:col-span-2 md:col-span-1">Edit</div>
                         </div>
@@ -90,30 +90,31 @@
                           <dl>
                             <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                               <dt class="text-sm font-medium text-black">Adaptation:</dt>
-                              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Yes</dd>
+                              <dd id="adaptation" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Yes</dd>
                             </div>
-                            <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <!-- <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-black">Original:</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Solo leveling</dd>
-                            </div>
+                                <dd id="original" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Solo leveling</dd>
+                            </div> -->
                             <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-black">Type:</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Web Novel</dd>
+                                <dd id="type" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Web Novel</dd>
                             </div>
                             <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-black">Status:</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
-                                    <select 
+                                <dd id="status" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                                  Draft
+                                    <!-- <select 
                                       class="block w-full dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-cyan-400  focus:shadow-outline-cyan dark:focus:shadow-outline-gray rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-cyan-500">
                                     <option label="Draft"></option>
                                     <option label="Ongoing"></option>
                                     <option label="Paused"></option>
-                                    </select>
+                                    </select> -->
                                 </dd>
                             </div>
                             <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                               <dt class="text-sm font-medium text-black">Synopsis:</dt>
-                              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                              <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
                             </div>
                           </dl>
                         </div>
@@ -123,7 +124,7 @@
                 <div class="w-full overflow-x-auto">
                     <div class="px-6 mb-4 md:w-1/5 left-0 w-full">
                         <button
-                          id="btnCreateNewSeries"
+                          id="btnCreateNewChapter"
                           class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-cyan-600 border border-transparent rounded-lg active:bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:shadow-outline-cyan">
                           New Chapter
                           <span class="ml-2" aria-hidden="true">+</span>
@@ -288,6 +289,9 @@
             </div>
         </div>
 
-  
+        <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script defer src="/js/init.js" type="module"></script>
+        <script defer src="/js/dnovelinfo.js" type="module"></script>
 </body>
 </html>

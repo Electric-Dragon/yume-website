@@ -43,7 +43,7 @@ $.ajax({
         .select('id,title,chapcount,status,updatedat')
         .eq('creator', user.id)
         .order('updatedat', { ascending: false })
-        .limit(5)
+        .limit(6)
 
       if (error) {
         let Toast = Swal.mixin({
@@ -81,7 +81,7 @@ $.ajax({
                             </div>
                           </td>
                           <td class="px-4 py-3 flex flex-row gap-4 text-xl">
-                              <a href="dashboard/series/${id}">
+                              <a href="/dashboard/series/${id}">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 class="text-green-600 text-center w-7 h-7" viewBox="0 0 20 20">
                                 <path
