@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {erroralert, successalert} from '/js/salert.js';
 
 let supabase,user;
 let statusText = {
@@ -46,22 +47,7 @@ $.ajax({
         .limit(6)
 
       if (error) {
-        let Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-                
-        Toast.fire({
-          icon: 'error',
-          title: error.message
-        });
+        erroralert(error.message);
       } else {
 
         data.forEach(val=> {
