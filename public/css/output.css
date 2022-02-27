@@ -2626,6 +2626,10 @@ select {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 
+  .md\:grid-rows-1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
   .md\:gap-0 {
     gap: 0px;
   }
