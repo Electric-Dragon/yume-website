@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, user;
 
@@ -10,7 +11,7 @@ $.ajax({
 
       supabase = createClient(result.link, result.anon_key);
 
-    user = supabase.auth.user();
+      user = supabase.auth.user();
 
       if (!user) {
         window.location = "/signin";
@@ -21,22 +22,7 @@ $.ajax({
       .select()
 
       if (error) {
-        let Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
-                  
-          Toast.fire({
-            icon: 'error',
-            title: error.message
-          });
+        erroralert(error.message);
       } else {
           data.forEach(g => {
             g = g.id
@@ -92,22 +78,7 @@ async function create(e) {
         .insert([series])
 
         if (error) {
-            let Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-                      
-              Toast.fire({
-                icon: 'error',
-                title: error.message
-              });
+            erroralert(error.message);
             $('#btnCreate').prop('disabled', false);
 
         } else {
@@ -118,22 +89,7 @@ async function create(e) {
             .upload(`${user.id}/series/${seriesId}/cover.jpg`, cover)
 
             if (error) {
-                let Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                  })
-                          
-                  Toast.fire({
-                    icon: 'error',
-                    title: error.message
-                  });
+                erroralert(error.message);
 
                 $('#btnCreate').prop('disabled', false);
             } else {
@@ -143,22 +99,7 @@ async function create(e) {
                     .getPublicUrl(`${user.id}/series/${seriesId}/cover.jpg`)
 
                 if (error) {
-                    let Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                          toast.addEventListener('mouseenter', Swal.stopTimer)
-                          toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                      })
-                              
-                      Toast.fire({
-                        icon: 'error',
-                        title: error.message
-                      });
+                    erroralert(error.message);
 
                       $('#btnCreate').prop('disabled', false);
                 } else {
@@ -169,22 +110,7 @@ async function create(e) {
                         .match({ id: seriesId })
                     
                     if (error) {
-                        let Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                              toast.addEventListener('mouseenter', Swal.stopTimer)
-                              toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                          })
-                                  
-                          Toast.fire({
-                            icon: 'error',
-                            title: error.message
-                          });
+                        erroralert(error.message);
 
                           $('#btnCreate').prop('disabled', false);
                     } else {
@@ -198,44 +124,14 @@ async function create(e) {
                         success: function(data,status) {
 
                           if (data.error) {
-                            let Toast = Swal.mixin({
-                              toast: true,
-                              position: 'top-end',
-                              showConfirmButton: false,
-                              timer: 3000,
-                              timerProgressBar: true,
-                              didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                              }
-                            })
-                                    
-                            Toast.fire({
-                              icon: 'error',
-                              title: data.error
-                            });
+                            erroralert(data.error);
                             
                             $('#btnCreate').prop('disabled', false);
                           } else {
 
-                            let Toast = Swal.mixin({
-                              toast: true,
-                              position: 'top-end',
-                              showConfirmButton: false,
-                              timer: 2000,
-                              timerProgressBar: true,
-                              didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                              }
-                            })
-                                    
-                            Toast.fire({
-                              icon: 'success',
-                              title: 'Successfully created a new series'
-                            }).then(function() {
+                            successalert('Successfully created a new series', function() {
                               window.location = `/dashboard/series/${seriesId}`;
-                            })
+                            });
 
                           }
 

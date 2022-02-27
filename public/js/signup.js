@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {erroralert, successalert} from '/js/salert.js';
 
 let supabase;
 
@@ -34,39 +35,9 @@ async function signUp(e) {
       .eq('id', username)
 
       if (error) {
-        let Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-                
-        Toast.fire({
-          icon: 'error',
-          title: error.message
-        });
+        erroralert(error.message);
       } else if (data.length>0) {
-        let Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-                
-        Toast.fire({
-          icon: 'error',
-          title: 'Username already exists'
-        });
+        erroralert('Username already taken');
       } else {
 
 
@@ -78,43 +49,11 @@ async function signUp(e) {
           username: username},        
         success: function(data, status) {
           if (data.error) {
-
-            let Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-                    
-            Toast.fire({
-              icon: 'error',
-              title: data.error
-            });
-
+            erroralert(data.error);
           } else {
-            let Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 2000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-                    
-            Toast.fire({
-              icon: 'success',
-              title: 'Signed up successfully'
-            }).then(function() {
-              window.location = `${data.link}/signin`;
-            })
+            successalert('Sign up successful', function() {
+              window.location = '/';
+            });
           }
       }});
 

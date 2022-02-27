@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {erroralert, successalert} from '/js/salert.js';
 
 let supabase;
 
@@ -31,50 +32,12 @@ async function signIn(e) {
         }).then(function(res) {
 
             if (res.error) {
-
-              let Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-                      
-              Toast.fire({
-                icon: 'error',
-                title: res.error.message
-              });
-
+              erroralert(res.error.message);
             } else {
 
-              // const user = supabase.auth.user();
-              // let data = user.user_metadata
-              // data.id = user.id
-
-              // supabase.from('users').upsert(data,{ignoreDuplicates: true});
-
-              let Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-                      
-              Toast.fire({
-                icon: 'success',
-                title: 'Signed in successfully'
-              }).then(function() {
+              successalert('Signed in successfully', function() {
                 window.location = "/";
-              })
+                });
 
             }
 

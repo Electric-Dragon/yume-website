@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {erroralert, successalert} from '/js/salert.js';
 
 let supabase,user;
 var seriesid = window.location.pathname.split( '/' ).pop();
@@ -30,22 +31,7 @@ $.ajax({
           .single()
   
         if (error) {
-          let Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
-                  
-          Toast.fire({
-            icon: 'error',
-            title: error.message
-          });
+          erroralert(error.message);
         } else {
   
           let { title, chapcount, cover, adaptation, novel, status, summary} = data;
@@ -78,22 +64,7 @@ async function newChap(chapcount) {
   }])
 
   if (error) {
-    let Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-            
-    Toast.fire({
-      icon: 'error',
-      title: error.message
-    });
+    erroralert(error.message);
   } else {
     window.location = `/dashboard/series/${seriesid}/${data[0].id}/write`;
   }

@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {erroralert, successalert} from '/js/salert.js';
 let supabase, editor;
 
 let arr = window.location.pathname.split( '/' )
@@ -13,29 +14,13 @@ $.ajax({
   
         supabase = createClient(result.link, result.anon_key);
 
-        const {data, error} = await supabase.from('chapters')
-                                            .select('title,body,is_published')
-                                            .eq('id', chapterid)
-                                            .single();
+        const {data, error} = await supabase
+          .from('chapters')
+          .select('title,body,is_published')
+          .eq('id', chapterid)
+          .single();
         if (error) {
-
-            let Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-                      
-              Toast.fire({
-                icon: 'error',
-                title: error.message
-              });
-
+            erroralert(error.message);
         } else {
             $('#chapTitle').val(data.title);
             editor = new EditorJS({
@@ -64,43 +49,13 @@ async function save(is_published) {
     let chaptitle = $('#chapTitle').val();
 
     if (!chaptitle) {
-        let Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
-                  
-          Toast.fire({
-            icon: 'error',
-            title: 'Enter a chapter title!'
-          });
+        erroralert('Chapter title is required');
     } else {
         editor.save().then((outputData) => {
             console.log('Article data: ', outputData);     
 
             if (outputData.blocks.length == 0) {
-                let Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                  })
-                          
-                  Toast.fire({
-                    icon: 'error',
-                    title: 'Enter a novel body!'
-                  });
+                erroralert('Chapter is empty');
             } else {
 
                 supabase.from('chapters')
@@ -108,45 +63,14 @@ async function save(is_published) {
                 .match({ id: chapterid }).then(({data, error})=> {
 
                     if (error) {
-
-                        let Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                              toast.addEventListener('mouseenter', Swal.stopTimer)
-                              toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                          })
-                                  
-                          Toast.fire({
-                            icon: 'error',
-                            title: error.message
-                          });
-    
+                      erroralert(error.message);
                     } else {
-                        let Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 2000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                              toast.addEventListener('mouseenter', Swal.stopTimer)
-                              toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                          })
 
                           let text = is_published ? 'Chapter published successfully' : 'Chapter saved as draft';
-                                  
-                          Toast.fire({
-                            icon: 'success',
-                            title: text
-                          }).then(function() {
+
+                          successalert(text,function() {
                             window.location = `/dashboard/series/${seriesid}`;
-                          })
+                          });
                     }
 
                 });
