@@ -23,14 +23,14 @@
 
   <div class="bg-gray-50 max-w-4xl min-w-screen max-h-fit m-auto md:drop-shadow-md dark:bg-gray-800 dark:text-white p-2 md:p-0">
     <div class="grid place-content-center m-4 ">
-     <input maxlength = "25" class="mt-4 text-3xl max-w-fit max-h-fit placeholder:text-slate-400 text-center bg-transparent placeholder:italic" placeholder="Chapter Title..." type="text">
+     <input id="chapTitle" maxlength = "25" class="mt-4 text-3xl max-w-fit max-h-fit placeholder:text-slate-400 text-center bg-transparent placeholder:italic" placeholder="Chapter Title..." type="text">
     </div>
 
     <div class="mx-auto pt-5 text-xl overflow-hidden max-w-screen  pl-1 pr-1" id="editorjs"></div>
   </div>
   <div class="grid gap-4 items-center mt-4 justify-center">
-    <button id="btnSaveDraft" class="rounded-full bg-blue-500 px-2 py-1 mx-auto text-gray-200 text-xl hover:bg-blue-600 font-bold">Save Changes</button>
-    <button id="btnSaveDraft" class="rounded-full bg-red-500 px-3 py-1 mx-auto text-gray-200 text-xl hover:bg-red-600 font-bold">Next</button>
+    <button id="btnSaveDraft" class="rounded-full bg-blue-500 px-2 py-1 mx-auto text-gray-200 text-xl hover:bg-blue-600 font-bold">Save Draft</button>
+    <button id="btnPublish" class="rounded-full bg-red-500 px-3 py-1 mx-auto text-gray-200 text-xl hover:bg-red-600 font-bold">Publish</button>
  
    </div>
  
@@ -41,7 +41,9 @@
   <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-  <script defer src="/js/write.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script defer src="/js/init.js"></script>
+  <script defer src="/js/write.js" type="module"></script>
 </body>
 </html>
 

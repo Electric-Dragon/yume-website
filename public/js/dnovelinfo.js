@@ -51,6 +51,7 @@ $.ajax({
           let { title, chapcount, cover, adaptation, novel, status, summary} = data;
 
           $('#seriesTitle').text(title);
+          $('#title').text(title);
           // $('#creatorname').text(`Created by:`)
           $('#summary').text(summary);
           $('#status').text(statusText[status]);
