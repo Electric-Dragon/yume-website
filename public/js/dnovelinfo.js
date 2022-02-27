@@ -26,7 +26,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series')
-          .select('title,chapcount,cover,adaptation,novel,status,summary,chaps')
+          .select('title,chapcount,cover,adaptation,novel,status,summary')
           .eq('id', seriesid)
           .single()
   
