@@ -113,6 +113,12 @@ $.ajax({
                             ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
                             </td>
                             <td class="px-4 py-3 text-sm">
+                            <div class="flex items-center text-sm">
+                            <div>
+                              <p class="font-semibold text-center">Draft</p>
+                            </div>
+                             </td>
+                            <td class="px-4 py-3 text-sm">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="text-red-600 w-6 h-6" viewBox="0 0 16 16">
                                 <path
