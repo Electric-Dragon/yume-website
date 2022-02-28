@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tailwind Starter Template - Minimal Blog: Tailwind Toolbox</title>
+    <meta name="author" content="name" />
+    <meta name="description" content="description here" />
+    <meta name="keywords" content="keywords,here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="/css/output.css" rel="stylesheet">
+  </head>
+
+  
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+	<nav id="header" class="fixed w-full z-10 top-0">
+
+		<div id="progress" class="h-1 z-20 top-0" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
+
+		<div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+
+			<div class="pl-4">
+				<a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl" href="/">
+					YUME
+				</a>
+			</div>
+
+			<div class="block lg:hidden pr-4">
+				<button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-green-500 appearance-none focus:outline-none">
+					<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+						<title>Menu</title>
+						<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+					</svg>
+				</button>
+			</div>
+
+			<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20" id="nav-content">
+				<ul class="list-reset lg:flex justify-end flex-1 items-center">
+					<li class="mr-3">
+						<a class="inline-block py-2 px-4 text-gray-900 font-bold no-underline" href="#">Active</a>
+					</li>
+					<li class="mr-3">
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">link</a>
+					</li>
+					<li class="mr-3">
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">link</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!--Container-->
+	<div class="container w-full md:max-w-3xl mx-auto pt-20">
+
+		<div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+
+			<!--Title-->
+			<div class="font-sans">
+				<p class="text-base md:text-sm text-green-500 font-bold">&lt; <a href="#" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">BACK TO HOME</a></p>
+						<h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Where the MC</h1>
+						<p class="text-sm md:text-base font-normal text-gray-600">Published 19 February 2022</p>
+			</div>
+
+			<p class="py-6">Sed dignissim lectus ut tincidunt vulputate. Fusce tincidunt lacus purus, in mattis tortor sollicitudin pretium. Phasellus at diam posuere, scelerisque nisl sit amet, tincidunt urna. Cras nisi diam, pulvinar ut molestie eget, eleifend ac magna. Sed at lorem condimentum, dignissim lorem eu, blandit massa. Phasellus eleifend turpis vel erat bibendum scelerisque. Maecenas id risus dictum, rhoncus odio vitae, maximus purus. Etiam efficitur dolor in dolor molestie ornare. Aenean pulvinar diam nec neque tincidunt, vitae molestie quam fermentum. Donec ac pretium diam. Suspendisse sed odio risus. Nunc nec luctus nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec nulla eget sem dictum elementum.</p>
+
+			<ol>
+				<li class="py-3">Maecenas accumsan lacus sit amet elementum porta. Aliquam eu libero lectus. Fusce vehicula dictum mi. In non dolor at sem ullamcorper venenatis ut sed dui. Ut ut est quam. Suspendisse quam quam, commodo sit amet placerat in, interdum a ipsum. Morbi sit amet tellus scelerisque tortor semper posuere.</li>
+				<li class="py-3">Morbi varius posuere blandit. Praesent gravida bibendum neque eget commodo. Duis auctor ornare mauris, eu accumsan odio viverra in. Proin sagittis maximus pharetra. Nullam lorem mauris, faucibus ut odio tempus, ultrices aliquet ex. Nam id quam eget ipsum luctus hendrerit. Ut eros magna, eleifend ac ornare vulputate, pretium nec felis.</li>
+				<li class="py-3">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vitae pretium elit. Cras leo mauris, tristique in risus ac, tristique rutrum velit. Mauris accumsan tempor felis vitae gravida. Cras egestas convallis malesuada. Etiam ac ante id tortor vulputate pretium. Maecenas vel sapien suscipit, elementum odio et, consequat tellus.</li>
+			</ol>
+		</div>
+
+        <div class="flex flex-row  items-center gap-8">
+            <button class="mb-8 my-6 ml-4 bg-transparent hover:bg-pink-500 text-pink-700 font-semibold hover:text-white py-2 px-4 border border-pink-500 hover:border-transparent rounded">
+                <div class="flex flex-row text-center justify-center items-center gap-3">
+                    Like
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                    </svg>
+                </div>
+              </button>
+
+              <p>17,000 Likes</p>
+        </div>
+
+
+          		<!--Tags -->
+		<div class="text-base md:text-sm text-gray-500 px-4">
+			Genre: <a href="#" class="text-base md:text-sm text-cyan-500 no-underline hover:underline">Link</a> . <a href="#" class="text-base md:text-sm text-cyan-500 no-underline hover:underline">Link</a>
+		</div>
+
+
+		<!--Divider-->
+		<hr class="border-b-2 border-gray-400 mb-8 mx-4">
+
+		<!--Author-->
+		<div class="flex w-full items-center font-sans px-4 py-12">
+			<img class="w-10 h-10 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+			<div class="flex-1 px-2">
+				<p class="text-base font-bold text-base md:text-xl leading-none mb-2">BY KAIZEN JAIN</p>
+				<p class="text-gray-600 text-xs md:text-base">description of author <a class="text-green-500 no-underline hover:underline" href="">his profile</a></p>
+			</div>
+			<div class="justify-end">
+				<button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Learn More</button>
+			</div>
+		</div>
+		<!--/Author-->
+
+		<!--Divider-->
+		<hr class="border-b-2 border-gray-400 mb-8 mx-4">
+
+
+		<!--Next & Prev Links-->
+		<div class="font-sans flex justify-between content-center px-4 pb-12">
+			<div class="text-left">
+				<span class="text-xs md:text-sm font-normal text-gray-600">&lt; Previous Chapter</span><br>
+				<p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">kill the MC</a></p>
+			</div>
+			<div class="text-right">
+				<span class="text-xs md:text-sm font-normal text-gray-600">Next Chapter &gt;</span><br>
+				<p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Revive the MC</a></p>
+			</div>
+		</div>
+
+
+		<!--/Next & Prev Links-->
+
+        <div class="flex mx-auto items-center justify-center shadow-lg mb-4 max-w-full">
+            <form class="w-full max-w-full bg-white rounded-lg px-4 pt-2">
+               <div class="flex flex-wrap -mx-3 mb-6">
+                  <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+                  <div class="w-full md:w-full px-3 mb-2 mt-2">
+                     <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
+                  </div>
+                  <div class="w-full md:w-full flex items-start md:w-full px-3">
+                     <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                        <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-xs md:text-sm pt-px">No spoilers and maintain language.</p>
+                     </div>
+                     <div class="-mr-1">
+                        <input type='submit' class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value='Post Comment'>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <div class="antialiased mx-auto max-w-screen-full">
+            <h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
+          
+            <div class="space-y-4">
+          
+              <div class="flex">
+                <div class="flex-shrink-0 mr-3">
+                  <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
+                </div>
+                <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                  <strong>Sarah</strong> <span class="text-xs text-gray-400">3:34 PM</span>
+                  <p class="text-sm">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                    magna aliquyam erat, sed diam voluptua.
+                  </p>
+                  <!-- <div class="mt-4 flex items-center">
+                    <div class="flex -space-x-2 mr-2">
+                      <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
+                      <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
+                    </div>
+                    <div class="text-sm text-gray-500 font-semibold">
+                      5 Replies
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+          
+              <div class="flex">
+                <div class="flex-shrink-0 mr-3">
+                  <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" alt="">
+                </div>
+                <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                  <strong>Sarah</strong> <span class="text-xs text-gray-400">3:34 PM</span>
+                  <p class="text-sm">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                    magna aliquyam erat, sed diam voluptua.
+                  </p>
+                  
+                  <!-- <h4 class="my-5 uppercase tracking-wide text-gray-400 font-bold text-xs">Replies</h4> -->
+          
+                </div>
+              </div>
+            </div>
+          </div>
+
+	</div>
+	<!--/container-->
+
+	<footer class="bg-white border-t border-gray-400 shadow">
+		<div class="container max-w-4xl mx-auto flex py-8">
+
+			<div class="w-full mx-auto flex flex-wrap">
+				<div class="flex w-full md:w-1/2 ">
+					<div class="px-8">
+						<h3 class="font-bold text-gray-900">About</h3>
+						<p class="py-4 text-gray-600 text-sm">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
+						</p>
+					</div>
+				</div>
+
+				<div class="flex w-full md:w-1/2">
+					<div class="px-8">
+						<h3 class="font-bold text-gray-900">Social</h3>
+						<ul class="list-reset items-center text-sm pt-3">
+							<li>
+								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
+							</li>
+							<li>
+								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
+							</li>
+							<li>
+								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</footer>
+
+	<script>
+		/* Progress bar */
+		//Source: https://alligator.io/js/progress-bar-javascript-css-variables/
+		var h = document.documentElement,
+			b = document.body,
+			st = 'scrollTop',
+			sh = 'scrollHeight',
+			progress = document.querySelector('#progress'),
+			scroll;
+		var scrollpos = window.scrollY;
+		var header = document.getElementById("header");
+		var navcontent = document.getElementById("nav-content");
+
+		document.addEventListener('scroll', function() {
+
+			/*Refresh scroll % width*/
+			scroll = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+			progress.style.setProperty('--scroll', scroll + '%');
+
+			/*Apply classes for slide in bar*/
+			scrollpos = window.scrollY;
+
+			if (scrollpos > 10) {
+				header.classList.add("bg-white");
+				header.classList.add("shadow");
+				navcontent.classList.remove("bg-gray-100");
+				navcontent.classList.add("bg-white");
+			} else {
+				header.classList.remove("bg-white");
+				header.classList.remove("shadow");
+				navcontent.classList.remove("bg-white");
+				navcontent.classList.add("bg-gray-100");
+
+			}
+
+		});
+
+
+		//Javascript to toggle the menu
+		document.getElementById('nav-toggle').onclick = function() {
+			document.getElementById("nav-content").classList.toggle("hidden");
+		}
+	</script>
+
+</body>
+
+</html>
