@@ -3,6 +3,7 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase,user;
 var seriesid = window.location.pathname.split( '/' ).pop();
+let chapids = [];
 
 let statusText = {
   'd': 'Draft',
@@ -19,6 +20,7 @@ $.ajax({
         result = JSON.parse(result);
   
         supabase = createClient(result.link, result.anon_key);
+        // window.supabase = supabase;
   
         user = supabase.auth.user();
   
@@ -59,17 +61,20 @@ $.ajax({
             .from('chapters')
             .select('id,chapternum,title,createdat,is_published')
             .eq('seriesid', seriesid)
-            .order('chapternum', { ascending: true })
+            .order('chapternum', { ascending: false })
 
           if (error) {
             erroralert(error.message);
           } else {
+
+            let x = 0;
 
             chapters.forEach(val=> {
               let {id, chapternum, title, createdat, is_published} = val;
 
               let chapStatusText = is_published ? 'Published' : 'Draft';
               let date = new Date(createdat);
+              chapids.push(id);
 
               let element =  `
                             <tr class="text-gray-700 dark:text-gray-400">
@@ -113,15 +118,19 @@ $.ajax({
                             ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
                             </td>
                             <td class="px-4 py-3 text-sm">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="text-red-600 w-6 h-6" viewBox="0 0 16 16">
-                                <path
-                                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                              </svg>
+                              <button onclick="deleteChap(${x})">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                  class="text-red-600 w-6 h-6" viewBox="0 0 16 16">
+                                  <path
+                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                </svg>
+                              </button>
                             </td>
                           </tr>`;
 
               $('#chapterHolder').append(element);
+
+              x++;
 
             });
 
@@ -142,5 +151,40 @@ async function newChap(chapcount) {
   } else {
     window.location = `/dashboard/series/${seriesid}/${data[0].id}/write`;
   }
+
+}
+
+window.deleteChap = async function deleteChap(x) {
+
+  let chapid = chapids[x];
+
+  Swal.fire({
+    title: `Are you sure you want to delete the chapter? This action is irreversible.`,
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      const { data, error } = await supabase.from('chapters').eq('id', chapid).delete();
+      
+      if (error) {
+        erroralert(error.message);
+      } else {
+        successalert(`Chapter deleted successfully.`);
+        window.location = `/dashboard/series/${seriesid}`;
+      }
+
+      // supabase.from('chapters').eq('id', chapid).delete().then(({data, error}) => {
+
+      //   if (error) {
+      //     erroralert(error.message);
+      //   } else {
+      //     successalert(`Chapter ${chapternum} - ${title} deleted successfully.`);
+      //     window.location = `/dashboard/series/${seriesid}`;
+      //   }
+
+      // })
+    }
+  })
 
 }
