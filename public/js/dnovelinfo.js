@@ -55,7 +55,7 @@ $.ajax({
             newChap(chapcount);
           });
 
-          const {chapters, error} = await supabase
+          const {data:chapters, error} = await supabase
             .from('chapters')
             .select('id,chapternum,title,createdat,is_published')
             .eq('seriesid', seriesid)
@@ -64,10 +64,6 @@ $.ajax({
           if (error) {
             erroralert(error.message);
           } else {
-            
-            console.log(seriesid);
-
-            console.log(chapters);
 
             chapters.forEach(val=> {
               let {id, chapternum, title, createdat, is_published} = val;
@@ -101,8 +97,9 @@ $.ajax({
                                 </div>
                               </div>
                             </td>
-                            <a href="/dashboard/series/${seriesid}/${id}/write">
-                              <td class="px-4 py-3 flex flex-row gap-4 text-xl">
+                            
+                            <td class="px-4 py-3 flex flex-row gap-4 text-xl">
+                              <a href="/dashboard/series/${seriesid}/${id}/write">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                   class="text-green-600 text-center w-7 h-7" viewBox="0 0 20 20">
                                   <path
@@ -110,8 +107,8 @@ $.ajax({
                                   <path fill-rule="evenodd"
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                 </svg>
-                              </td>
-                            </a>
+                              </a>
+                            </td>
                             <td class="px-4 py-3 text-sm">
                             ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
                             </td>
@@ -124,7 +121,7 @@ $.ajax({
                             </td>
                           </tr>`;
 
-              $('chapterHolder').append(element);
+              $('#chapterHolder').append(element);
 
             });
 
