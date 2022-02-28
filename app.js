@@ -59,6 +59,11 @@ app.get("/dashboard/series/:seriesid/:chapterid/write", function(req, res) {
 });
 
 
+app.get("/read", function(req, res) {
+    res.sendFile(__dirname + "/html/reader.html");
+});
+
+
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
