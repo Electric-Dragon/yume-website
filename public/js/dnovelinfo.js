@@ -162,7 +162,7 @@ window.deleteChap = async function deleteChap(x) {
     title: `Are you sure you want to delete the chapter? This action is irreversible.`,
     showCancelButton: true,
     confirmButtonText: 'Yes, delete it!',
-  }).then((result) => {
+  }).then(async (result) => {
     if (result.isConfirmed) {
 
       const { data, error } = await supabase.from('chapters').eq('id', chapid).delete();
