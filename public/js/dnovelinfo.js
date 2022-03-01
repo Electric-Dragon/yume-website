@@ -3,6 +3,7 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase,user;
 var seriesid = window.location.pathname.split( '/' ).pop();
+let chapids = [];
 
 let statusText = {
   'd': 'Draft',
@@ -19,6 +20,7 @@ $.ajax({
         result = JSON.parse(result);
   
         supabase = createClient(result.link, result.anon_key);
+        // window.supabase = supabase;
   
         user = supabase.auth.user();
   
@@ -59,17 +61,20 @@ $.ajax({
             .from('chapters')
             .select('id,chapternum,title,createdat,is_published')
             .eq('seriesid', seriesid)
-            .order('chapternum', { ascending: true })
+            .order('chapternum', { ascending: false })
 
           if (error) {
             erroralert(error.message);
           } else {
+
+            let x = 0;
 
             chapters.forEach(val=> {
               let {id, chapternum, title, createdat, is_published} = val;
 
               let chapStatusText = is_published ? 'Published' : 'Draft';
               let date = new Date(createdat);
+              chapids.push(id);
 
               let element =  `
                             <tr class="text-gray-700 dark:text-gray-400">
@@ -130,6 +135,8 @@ $.ajax({
 
               $('#chapterHolder').append(element);
 
+              x++;
+
             });
 
           }
@@ -149,5 +156,40 @@ async function newChap(chapcount) {
   } else {
     window.location = `/dashboard/series/${seriesid}/${data[0].id}/write`;
   }
+
+}
+
+window.deleteChap = async function deleteChap(x) {
+
+  let chapid = chapids[x];
+
+  Swal.fire({
+    title: `Are you sure you want to delete the chapter? This action is irreversible.`,
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+
+      const { data, error } = await supabase.from('chapters').eq('id', chapid).delete();
+      
+      if (error) {
+        erroralert(error.message);
+      } else {
+        successalert(`Chapter deleted successfully.`);
+        window.location = `/dashboard/series/${seriesid}`;
+      }
+
+      // supabase.from('chapters').eq('id', chapid).delete().then(({data, error}) => {
+
+      //   if (error) {
+      //     erroralert(error.message);
+      //   } else {
+      //     successalert(`Chapter ${chapternum} - ${title} deleted successfully.`);
+      //     window.location = `/dashboard/series/${seriesid}`;
+      //   }
+
+      // })
+    }
+  })
 
 }
