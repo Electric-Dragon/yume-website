@@ -36,7 +36,7 @@ $.ajax({
                                 <img
                                 alt="Series Cover Illustration"
                                 src="${cover}"
-                                class="object-cover w-full -mt-3 h-96 transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl hover:shadow-green-500"
+                                class="object-cover aspect-square w-full  md:h-96 -mt-3 transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl hover:shadow-green-500"
                                 />
                         
                                 <p class="mt-1 text-lg text-black font-bold dark:text-white">
