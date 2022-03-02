@@ -77,3 +77,30 @@ $.ajax({
 
         }
 }});
+
+window.likeChapter = async function likeChapter() {
+
+    let session = await supabase.auth.session();
+
+    if (!session) {
+        erroralert('You must be logged in to like a chapter');
+    } else {
+
+        $.ajax({
+            type:"POST",
+            url:'/likeChapter',
+            data:{id: chapterid,
+                access_token: session.access_token},
+            success: function(data,status) {
+
+            if (data.error) {
+                erroralert(data.error);
+            } else {
+                successalert('Liked successfully');
+            }
+
+        }})
+
+    }
+
+}

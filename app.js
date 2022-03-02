@@ -62,6 +62,12 @@ app.get("/read/novel/:seriesid/:chapterid", function(req, res) {
     res.sendFile(__dirname + "/html/readNovel.html");
 });
 
+app.post("/likeChapter", async function(req, res) {
+    await yumeAPI.likeChapter(req.body);
+    res.json({success:true});
+    // res.json(await yumeAPI.createSeries(req.body));
+});
+
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
