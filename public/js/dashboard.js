@@ -77,6 +77,16 @@ $.ajax({
                                 </svg>
                               </a>
                           </td>
+                          <td class="px-4 py-3">
+                          <div class="flex items-center text-sm">
+                            <div>
+                              <p class="font-semibold">17000</p>
+                              <p class="text-xs text-gray-600 dark:text-gray-400">
+                               15 comments
+                              </p>
+                            </div>
+                          </div>
+                        </td>
                           ${statusText[status]}
                           <td class="px-4 py-3 text-sm">
                             ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
