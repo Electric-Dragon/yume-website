@@ -70,7 +70,9 @@ async function create(e) {
             adaptation: adaptation,
             creator: user.id,
             novel: true,
-            mature: mature
+            mature: mature,
+            genre1: genre1,
+            genre2: genre2
         }
 
         const { data, error } = await supabase
