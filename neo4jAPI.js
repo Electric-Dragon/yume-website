@@ -77,7 +77,7 @@ module.exports.createSeriesNode = async function createSeriesNode({id,genre1,gen
 
 }
 
-// module.exports.likeChapter = async function likeChapter({chapterid, userid}) {
+// module.exports.likeSeries = async function likeSeries({seriesid, userid}) {
 
 //     const session = driver.session();
 //     let response;

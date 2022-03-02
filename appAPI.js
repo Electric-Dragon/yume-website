@@ -67,7 +67,7 @@ module.exports.createSeries = async function createSeries({id, genre1, genre2}) 
 
 }
 
-module.exports.likeChapter = async function likeChapter({id, access_token}) {
+module.exports.likeSeries = async function likeSeries({id, access_token}) {
 
     const {user, data, error} = await supabase.auth.api.getUser(access_token);
     if (error) {
@@ -77,7 +77,3 @@ module.exports.likeChapter = async function likeChapter({id, access_token}) {
     }
 
 }
-
-// (async () => {
-//     console.log(await signUp({email: 'atharvawasekar@icloud.com',password: 'password',username:'atharvawasekar'}))
-// })()
