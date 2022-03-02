@@ -16,21 +16,26 @@ $.ajax({
 
         const {data, error} = await supabase
           .from('chapters')
-          .select('title,body,createdat,chapternum')
+          .select('title,body,createdat,chapternum,seriesid(id,genre1,genre2)')
           .eq('id', chapterid)
           .single();
         if (error) {
             erroralert(error.message);
         } else {
 
-            let {title, body, createdat, chapternum} = data;
+            let {title, body, createdat, chapternum, seriesid} = data;
 
             $('#chapTitle').text(title);
             $('#title').text(title);
 
             let date = new Date(createdat);
-            console.log(date.getMonth());
             $('#chapDate').text(`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`);
+
+            $('#genre1').attr('href',`/genres/${seriesid.genre1}`);
+            $('#genre1').text(seriesid.genre1);
+
+            $('#genre2').attr('href',`/genres/${seriesid.genre2}`);
+            $('#genre2').text(seriesid.genre2);
 
             editor = new EditorJS({
                 holder:'editorjs',
@@ -47,5 +52,28 @@ $.ajax({
                 readOnly: true,
                 data: body
             });
+
+            const {data:prevChap, error} = await supabase
+                .from('chapters')
+                .select('id,title')
+                .match({seriesid:seriesid.id,chapternum:chapternum-1})
+                .maybeSingle()
+
+            const {data:nextChap, _} = await supabase
+                .from('chapters')
+                .select('id,title')
+                .match({seriesid:seriesid.id,chapternum:chapternum+1})
+                .maybeSingle()
+
+            if (prevChap) {
+                $('#prevChap').attr('href',`/read/novel/${seriesid.id}/${prevChap.id}`);
+                $('#prevChap').text(`< ${prevChap.title}`);
+            }
+
+            if (nextChap) {
+                $('#nextChap').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
+                $('#nextChap').text(`${nextChap.title} >`);
+            }
+
         }
 }});
