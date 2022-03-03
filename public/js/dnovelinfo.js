@@ -59,7 +59,7 @@ $.ajax({
 
           const {data:chapters, error} = await supabase
             .from('chapters')
-            .select('id,chapternum,title,createdat,is_published')
+            .select('id,chapternum,title,createdat,is_published,likes')
             .eq('seriesid', seriesid)
             .order('chapternum', { ascending: false })
 
@@ -70,7 +70,7 @@ $.ajax({
             let x = 0;
 
             chapters.forEach(val=> {
-              let {id, chapternum, title, createdat, is_published} = val;
+              let {id, chapternum, title, createdat, is_published, likes} = val;
 
               let chapStatusText = is_published ? 'Published' : 'Draft';
               let date = new Date(createdat);
@@ -98,7 +98,7 @@ $.ajax({
                             <td class="px-4 py-3">
                               <div class="flex items-center text-sm">
                                 <div>
-                                  <p class="font-semibold text-center">50</p>
+                                  <p class="font-semibold text-center">${likes}</p>
                                 </div>
                               </div>
                             </td>
