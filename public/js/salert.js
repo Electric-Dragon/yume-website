@@ -39,7 +39,9 @@ export function successalert(message, callback = null) {
         icon: 'success',
         title: message
     }).then(function() {
-        callback();
+        if (callback) {
+          callback();
+        }
     });
 
 }
