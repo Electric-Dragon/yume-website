@@ -26,9 +26,9 @@ module.exports.signUp = async function signUp({email, password, username}) {
                 if (error) {
                     return {error: error.message}
                 } else {
-                    return await supabase.from('usernames').insert([
-                        { id: username}
-                    ]).then(async ({_data, error}) => {
+                    return await supabase.from('public_profile').update(
+                        { username: username})
+                        .match({id: user.id}).then(async ({_data, error}) => {
                         if(error) {
                             return {error: error.message}
                         } else {
