@@ -20,7 +20,7 @@
       text-fill-color: transparent;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: textclip 5s linear infinite;
+      animation: textclip 2s linear infinite;
       display: inline-block;
           font-size: 190px;
     }
@@ -40,4 +40,5 @@
     background-opacity: 60%;
     background-size: 60%;
     }
+    
   }

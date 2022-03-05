@@ -30,7 +30,7 @@ app.post("/signup", async function(req, res) {
     res.json(await yumeAPI.signUp(req.body));
 });
 
-app.get("/", function(req, res) {
+app.get("/home", function(req, res) {
     res.sendFile(__dirname + "/html/home.html");
 });
 
@@ -61,6 +61,10 @@ app.get("/dashboard/series/:seriesid/:chapterid/write", function(req, res) {
 app.get("/read/novel/:seriesid/:chapterid", function(req, res) {
     res.sendFile(__dirname + "/html/readNovel.html");
 });
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/html/about.html");
+});
+
 
 app.post("/likeSeries", async function(req, res) {
     await yumeAPI.likeChapter(req.body);

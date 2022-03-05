@@ -30,9 +30,9 @@ async function signUp(e) {
     if (password===passwordConfirm) {
 
       let { data, error } = await supabase
-      .from('usernames')
-      .select('id')
-      .eq('id', username)
+      .from('public_profile')
+      .select('username')
+      .eq('username', username)
 
       if (error) {
         erroralert(error.message);
@@ -52,7 +52,7 @@ async function signUp(e) {
             erroralert(data.error);
           } else {
             successalert('Sign up successful', function() {
-              window.location = '/';
+              window.location = data.link + '/signin';
             });
           }
       }});
