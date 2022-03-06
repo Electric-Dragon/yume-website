@@ -1,39 +1,39 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-import {erroralert, successalert} from '/js/salert.js';
+// import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+// import {erroralert, successalert} from '/js/salert.js';
 
-let supabase;
+// let supabase;
 
-$.ajax({
-  url: "/keys",
-  success: function( result ) {
+// $.ajax({
+//   url: "/keys",
+//   success: function( result ) {
 
-      result = JSON.parse(result);
+//       result = JSON.parse(result);
 
-      supabase = createClient(result.link, result.anon_key);
+//       supabase = createClient(result.link, result.anon_key);
 
-      let user = supabase.auth.user();
+//       let user = supabase.auth.user();
 
-      if (user) {
-        $('#authButtons').hide();
-      } else {
-        $('#signedInElements').hide();
-      }
+//       if (user) {
+//         $('#authButtons').hide();
+//       } else {
+//         $('#signedInElements').hide();
+//       }
 
-      document.getElementById('user-menu-item-2').addEventListener('click', async function(){
+//       document.getElementById('user-menu-item-2').addEventListener('click', async function(){
 
-        const { error } = await supabase.auth.signOut();
+//         const { error } = await supabase.auth.signOut();
 
-        if (error) {
-          erroralert(error.message);
-        } else {
-          successalert('Signed out successfully');
-          $('#authButtons').show();
-          $('#signedInElements').hide();
-        }
+//         if (error) {
+//           erroralert(error.message);
+//         } else {
+//           successalert('Signed out successfully');
+//           $('#authButtons').show();
+//           $('#signedInElements').hide();
+//         }
 
-      });
+//       });
 
-}});
+// }});
 
 function data() {
     function getThemeFromLocalStorage() {
