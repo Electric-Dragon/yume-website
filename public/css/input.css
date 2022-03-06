@@ -40,5 +40,21 @@
     background-opacity: 60%;
     background-size: 60%;
     }
+
+    .bgtext {
+      position: relative;
+  }
+/* 
+  .bgtext:before {
+      margin: 3rem;
+      content: "Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.Enjoy. Read. Write. Draw.";
+      position: absolute;
+      overflow: hidden;
+      font-size:"17rem"
+      color: rgb(187, 182, 182);
+      top: 0;
+      left: 0;
+      z-index: -1;
+  } */
     
   }
