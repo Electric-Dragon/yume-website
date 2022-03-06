@@ -183,47 +183,37 @@ let getComments = async () => {
         .select('content,created_at,user(pfp,username)')
         .eq('chapter', chapterid)
         .limit(7)
-        .select()
     
     data.forEach(comment => {
 
         let {user, content, created_at} = comment;
+            
+        let {pfp, username} = user;
 
-        supabase
-            .from('public_profile')
-            .select('pfp,username')
-            .eq('id', user)
-            .select()
-            .single().then(({data, error}) => {
+        let date = new Date(created_at);
 
-                let {pfp, username} = data;
-
-                let date = new Date(created_at);
-
-                let element = ` <div class="flex">
-                                    <div class="flex-shrink-0 mr-3">
-                                    <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="${pfp}" alt="">
-                                    </div>
-                                    <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-                                    <strong>${username}</strong> <span class="text-xs text-gray-400">${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}</span>
-                                    <p class="text-sm">
-                                    ${content}
-                                    </p>
-                                    <!-- <div class="mt-4 flex items-center">
-                                        <div class="flex -space-x-2 mr-2">
-                                        <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
-                                        <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
-                                        </div>
-                                        <div class="text-sm text-gray-500 font-semibold">
-                                        5 Replies
-                                        </div>
-                                    </div> -->
-                                    </div>
-                                </div>`
-                
-                $('#commentsContainer').append(element);
-
-            })        
+        let element = ` <div class="flex">
+                            <div class="flex-shrink-0 mr-3">
+                            <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="${pfp}" alt="">
+                            </div>
+                            <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                            <strong>${username}</strong> <span class="text-xs text-gray-400">${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}</span>
+                            <p class="text-sm">
+                            ${content}
+                            </p>
+                            <!-- <div class="mt-4 flex items-center">
+                                <div class="flex -space-x-2 mr-2">
+                                <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
+                                <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
+                                </div>
+                                <div class="text-sm text-gray-500 font-semibold">
+                                5 Replies
+                                </div>
+                            </div> -->
+                            </div>
+                        </div>`
+        
+        $('#commentsContainer').append(element);
         
     })
 
