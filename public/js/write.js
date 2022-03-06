@@ -6,6 +6,10 @@ let arr = window.location.pathname.split( '/' )
 let chapterid = arr[arr.length - 2];
 let seriesid = arr[arr.length - 3];
 
+Swal.fire({
+    template: '#my-template'
+  })
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
