@@ -41,7 +41,7 @@ $.ajax({
 
       const { data, error } = await supabase
         .from('series')
-        .select('id,title,chapcount,status,updatedat')
+        .select('id,title,chapcount,status,updatedat,comment_count,like_count')
         .eq('creator', user.id)
         .order('updatedat', { ascending: false })
         .limit(6)
@@ -52,7 +52,7 @@ $.ajax({
 
         data.forEach(val=> {
 
-          let {id, title, chapcount, status, updatedat} = val;
+          let {id, title, chapcount, status, updatedat, comment_count,like_count} = val;
           let date = new Date(updatedat);
 
           let element = `<tr class="text-gray-700 dark:text-gray-400">
@@ -80,9 +80,9 @@ $.ajax({
                           <td class="px-4 py-3">
                           <div class="flex items-center text-sm">
                             <div>
-                              <p class="font-semibold">17000</p>
+                              <p class="font-semibold">${like_count}</p>
                               <p class="text-xs text-gray-600 dark:text-gray-400">
-                               15 comments
+                               ${comment_count} comments
                               </p>
                             </div>
                           </div>
