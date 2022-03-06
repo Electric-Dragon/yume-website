@@ -514,7 +514,7 @@
                                     <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded-full z-0"></div>
                                     <div class="cursor-pointer flex flex-col justify-center items-center z-10 text-gray-100">
                                         <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
-                                        <p class="text-xs text-gray-100">Edit Picture</p>
+                                        <p type="file" class="text-xs text-gray-100">Edit Picture</p>
                                     </div>
                                 </div>
                             </div>
@@ -522,7 +522,7 @@
                             <h1 tabindex="0" role="heading" aria-label="profile information" class="focus:outline-none text-3xl font-bold text-gray-800 mt-12">Personal Details</h1>
             <p    tabindex="0" class=" focus:outline-none text-sm font-light leading-tight text-gray-600 mt-4">Fill in the data in order to recieve payments. <br />Necessary if you are a creator and this info would be kept private.</p>
             <h2  tabindex="0" class="focus:outline-none text-xl font-semibold leading-7 text-gray-800 mt-10">Personal data</h2>
-            <p tabindex="0" class="focus:outline-none text-sm font-light leading-none text-gray-600 mt-0.5">Your details and place of birth</p>
+            <p tabindex="0" class="focus:outline-none text-sm font-light leading-none text-gray-600 mt-0.5">Your details</p>
             <div class="mt-8 md:flex items-center">
                 <div class="flex flex-col">
                     <label class="mb-3 text-sm leading-none text-gray-800">First name</label>
@@ -604,7 +604,7 @@
                     <p id="agree" tabindex="0" class="focus:outline-none text-sm leading-none ml-2">I agree with the <span class="text-indigo-700">terms of service</span></p>
                 </div>
             </div>
-            <button role="button" class="flex items-center mb-5 justify-center py-4 px-7 focus:outline-none bg-white border rounded border-gray-400 md:mt-2 hover:bg-gray-100  focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+            <button onclick="saveDetails()" role="button" class="flex items-center mb-5 justify-center py-4 px-7 focus:outline-none bg-white border rounded border-gray-400 md:mt-2 hover:bg-gray-100  focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
                 <span class="text-sm font-medium text-center text-gray-800 capitalize">Save</span>
                <img class="mt-1 ml-3" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/form_layout-svg2.svg" alt="arrow">
             </button>
