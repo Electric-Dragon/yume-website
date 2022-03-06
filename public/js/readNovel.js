@@ -15,6 +15,8 @@ let lovedsvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" f
 </svg>`
 
 
+$('#commentSection').hide()
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -99,9 +101,7 @@ $.ajax({
                 likeid = likedChap[0].id;
                 liked = true;
             }
-            toggleLikeButton();
-            getComments();
- 
+            toggleLikeButton(); 
         }
 }});
 
@@ -218,6 +218,11 @@ let getComments = async () => {
         
     })
 
+}
+
+window.showCommentSection = function showCommentSection() {
+    $('#commentSection').show();
+    getComments();
 }
 
 let toggleLikeButton = function() {
