@@ -510,7 +510,7 @@
                                     </div>
                                 </div>
                                 <div class="w-20 h-20 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-12 shadow flex items-center justify-center">
-                                    <img src="https://cdn.tuk.dev/assets/webapp/forms/form_layouts/form2.jpg" alt="" class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
+                                    <img id="pfp" src="https://cdn.tuk.dev/assets/webapp/forms/form_layouts/form2.jpg" alt="" class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
                                     <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded-full z-0"></div>
                                     <div class="cursor-pointer flex flex-col justify-center items-center z-10 text-gray-100">
                                         <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
@@ -526,31 +526,31 @@
             <div class="mt-8 md:flex items-center">
                 <div class="flex flex-col">
                     <label class="mb-3 text-sm leading-none text-gray-800">First name</label>
-                    <input type="name" tabindex="0" aria-label="Enter first name" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="William" />
+                    <input id="fName" type="name" tabindex="0" aria-label="Enter first name" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="William" />
                 </div>
                 <div class="flex flex-col md:ml-12 md:mt-0 mt-8">
                     <label class="mb-3 text-sm leading-none text-gray-800">Last name</label>
-                    <input type="name" tabindex="0" aria-label="Enter last name" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="Smith" />
+                    <input id="lName" type="name" tabindex="0" aria-label="Enter last name" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="Smith" />
                 </div>
             </div>
             <div class="mt-12 md:flex items-center">
                 <div class="flex flex-col">
                     <label class="mb-3 text-sm leading-none text-gray-800">Email Address</label>
-                    <input type="email" tabindex="0" aria-label="Enter email Address" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="smith.william@gmail.com" />
+                    <input id="email" readonly type="email" tabindex="0" aria-label="Enter email Address" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="smith.william@gmail.com" />
                 </div>
                 <div class="flex flex-col md:ml-12 md:mt-0 mt-8">
                     <label class="mb-3 text-sm leading-none text-gray-800">Username</label>
-                    <input type="name" tabindex="0" aria-label="Enter last name" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="MaxTGM" />
+                    <input id="username" readonly type="name" tabindex="0" aria-label="Enter last name" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="MaxTGM" />
                 </div>
             </div>
             <div class="mt-12 md:flex items-center">
                 <div class="flex flex-col">
                     <label class="mb-3 text-sm leading-none text-gray-800">Date of birth</label>
-                    <input type="" tabindex="0" aria-label="Enter date of birth" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="28.03.1997" />
+                    <input id="dob" type="date" tabindex="0" aria-label="Enter date of birth" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="28.03.1997" />
                 </div>
                 <div class="flex flex-col md:ml-12 md:mt-0 mt-8">
                     <label class="mb-3 text-sm leading-none text-gray-800">Phone number</label>
-                    <input type="number" tabindex="0" aria-label="Enter phone number" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="+81 839274" />
+                    <input id="pNumber" type="number" tabindex="0" aria-label="Enter phone number" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" value="+81 839274" />
                 </div>
             </div>
 
@@ -735,6 +735,7 @@
   <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script defer src="/js/init.js" type="module"></script>
+  <script defer src="/js/account.js" type="module"></script>
   <script>let form = document.getElementById("login");
     form.addEventListener(
         "submit",
