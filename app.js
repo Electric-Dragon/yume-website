@@ -65,6 +65,9 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/about.html");
 });
 
+app.get("/account", function(req, res) {
+    res.sendFile(__dirname + "/html/account.html");
+});
 
 app.post("/likeSeries", async function(req, res) {
     await yumeAPI.likeChapter(req.body);
