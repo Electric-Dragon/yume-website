@@ -40,13 +40,18 @@ $.ajax({
 
        if (private_user) {
 
-            let { fName, lName, dob, pNumber } = private_user[0];
+            let { fName, lName, dob, pNumber, creator } = private_user[0];
             privData = private_user;
 
             $('#fName').val(fName);
             $('#lName').val(lName);
             $('#dob').val(dob);
             $('#pNumber').val(pNumber);
+            $('#toggle').prop('checked',creator);
+
+            if (creator) {
+              $('#toggle').attr('readonly',"true");
+            }
 
        }
 
