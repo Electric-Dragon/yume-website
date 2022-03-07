@@ -41,6 +41,7 @@ $.ajax({
             $('#chapTitle').text(title);
             $('#title').text(title);
             $('#likeCount').text(`${likes} Likes`)
+            $('#chapNum').text(chapternum);
 
             let date = new Date(createdat);
             $('#chapDate').text(`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`);
@@ -82,11 +83,13 @@ $.ajax({
 
             if (prevChap) {
                 $('#prevChap').attr('href',`/read/novel/${seriesid.id}/${prevChap.id}`);
+                $('#prev').attr('href',`/read/novel/${seriesid.id}/${prevChap.id}`);
                 $('#prevChap').text(`< ${prevChap.title}`);
             }
 
             if (nextChap) {
                 $('#nextChap').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
+                $('#next').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
                 $('#nextChap').text(`${nextChap.title} >`);
             }
 
