@@ -1,14 +1,13 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 let supabase, editor;
+let saved = false;
 
 let arr = window.location.pathname.split( '/' )
 let chapterid = arr[arr.length - 2];
 let seriesid = arr[arr.length - 3];
 
-Swal.fire({
-    template: '#my-template'
-  })
+window.addEventListener("beforeunload", beforeunload);
 
 $.ajax({
     url: "/keys",
@@ -70,11 +69,13 @@ async function save(is_published) {
                       erroralert(error.message);
                     } else {
 
-                          let text = is_published ? 'Chapter published successfully' : 'Chapter saved as draft';
+                        saved = true;
 
-                          successalert(text,function() {
-                            window.location = `/dashboard/series/${seriesid}`;
-                          });
+                        let text = is_published ? 'Chapter published successfully' : 'Chapter saved as draft';
+
+                        successalert(text,function() {
+                        window.location = `/dashboard/series/${seriesid}`;
+                        });
                     }
 
                 });
@@ -82,5 +83,18 @@ async function save(is_published) {
             }
 
         });   
+    }
+}
+
+function beforeunload (e) {
+
+    if (!saved) {
+
+        var confirmationMessage = 'It looks like you have been editing something. '
+                            + 'If you leave before saving, your changes will be lost.';
+
+    (e || window.event).returnValue = confirmationMessage;
+    return confirmationMessage;
+
     }
 }
