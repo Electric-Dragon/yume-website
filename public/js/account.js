@@ -17,6 +17,8 @@ $.ajax({
         window.location = "/signin";
       }
 
+      console.log(user);
+
       $('#email').val(user.email);
 
       const { data:private_user, error } = await supabase
@@ -98,6 +100,24 @@ window.saveDetails = async function saveDetails () {
       }
     }
 
+  }
+
+}
+
+window.connectTwitch = async function connectTwitch () {
+
+  const { user, session, error } = await supabase.auth.signIn({
+    provider: 'twitch',
+  },{
+    scopes: 'user:read:email'
+  })
+
+  if (error) {
+    erroralert(error.message);
+  } else {
+
+    console.log(user);
+    console.log(session);
   }
 
 }
