@@ -29,7 +29,7 @@ $.ajax({
 
         const {data, error} = await supabase
           .from('chapters')
-          .select('title,body,createdat,chapternum,seriesid(id,genre1,genre2),likes')
+          .select('title,body,createdat,chapternum,seriesid(id,genre1,genre2,creator),likes')
           .eq('id', chapterid)
           .single();
         if (error) {
@@ -92,6 +92,17 @@ $.ajax({
                 $('#next').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
                 $('#nextChap').text(`${nextChap.title} >`);
             }
+
+            const {data:creatorDetails, error__} = await supabase
+                .from('public_profile')
+                .select()
+                .eq('id', seriesid.creator)
+                .single()
+
+            let {pfp, username, description} = creatorDetails;
+            $('#creatorPfp').attr('src',pfp);
+            $('#creatorUsername').text(username);
+            $('#creatorDescription').text(description);
 
             const {data:likedChap, error:error_} = await supabase
                 .from('chapter_likes')

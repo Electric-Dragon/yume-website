@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, privData, user;
+let supabase, publicData, user;
 
 $.ajax({
   url: "/keys",
@@ -17,8 +17,6 @@ $.ajax({
         window.location = "/signin";
       }
 
-      console.log(user);
-
       $('#email').val(user.email);
 
       const { data:private_user, error } = await supabase
@@ -28,7 +26,7 @@ $.ajax({
 
       const { data:public_user, error_ } = await supabase
         .from('public_profile')
-        .select('pfp,username')
+        .select('pfp,username,description')
         .eq('id',user.id)
         .single();
 
@@ -36,12 +34,12 @@ $.ajax({
          erroralert("Something went wrong");
      } else {
 
-       let { pfp, username } = public_user;
+       let { pfp, username, description } = public_user;
+       publicData = public_user;
 
        if (private_user) {
 
             let { fName, lName, dob, pNumber, creator } = private_user[0];
-            privData = private_user;
 
             $('#fName').val(fName);
             $('#lName').val(lName);
@@ -56,6 +54,7 @@ $.ajax({
        }
 
         $('#username').val(username);
+        $('#description').val(description);
         $('#pfp').attr('src',pfp);
      }
 
@@ -67,8 +66,9 @@ window.saveDetails = async function saveDetails () {
   let lNameNew = $('#lName').val();
   let dobNew = $('#dob').val();
   let pNumberNew = $('#pNumber').val();
+  let descriptionNew = $('#description').val();
 
-  if (!(fNameNew && lNameNew && dobNew && pNumberNew)) {
+  if (!(fNameNew && lNameNew && dobNew && pNumberNew && descriptionNew)) {
     erroralert("Please fill in all fields");
   } else {
 
@@ -81,7 +81,21 @@ window.saveDetails = async function saveDetails () {
     if (error) {
       erroralert(error.message);
     } else {
-      successalert("Details updated");
+
+      if (publicData.description != descriptionNew) {
+
+        const { data, error } = await supabase
+          .from('public_profile')
+          .update({ description: descriptionNew })
+          .match({ id: user.id })
+
+        if (error) {
+          erroralert(error.message);
+        } else {
+          successalert("Profile updated");
+        }
+
+      }
     }
 
   }
