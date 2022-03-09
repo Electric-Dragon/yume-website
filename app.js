@@ -22,11 +22,16 @@ app.get("/signin", function(req, res) {
     res.sendFile(__dirname + "/html/signin.html");
 });
 
-app.get("/signup", function(req, res) {
-    res.sendFile(__dirname + "/html/signup.html");
+app.get("/see", function(req, res) {
+    res.sendFile(__dirname + "/html/novelinfoR.html");
 });
 
 app.post("/signup", async function(req, res) {
+    res.json(await yumeAPI.signUp(req.body));
+});
+
+
+app.post("/novel", async function(req, res) {
     res.json(await yumeAPI.signUp(req.body));
 });
 
