@@ -10,7 +10,7 @@ if (window.location.href.split('?')[1]) {
 
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
-    confirmButton: 'bg-blue-600 p-2 text-white font-sans rounded-md',
+    confirmButton: 'bg-green-500 p-2 px-4 text-white font-sans rounded-md',
     cancelButton: 'btn btn-danger'
   },
   buttonsStyling: false
@@ -19,14 +19,25 @@ const { value: url } = await swalWithBootstrapButtons.fire({
   input: 'url',
   inputLabel: 'URL address',
   inputPlaceholder: 'Enter the URL'
-})
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire(
+      'Connected!',
+      'Your instagram account has been connected.',
+      'success'
+    )
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }}
 
-if (url) {
-  Swal.fire(`Entered URL: ${url}`)
-}
-
-
-$.ajax({
+,$.ajax({
   url: "/keys",
   success: async function( result ) {
 
@@ -83,7 +94,7 @@ $.ajax({
         $('#pfp').attr('src',pfp);
      }
 
-}});
+}}));
 
 window.saveDetails = async function saveDetails () {
 
