@@ -77,19 +77,14 @@
         <div class="bg-white max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
             <div class="grid grid-flow-row mb-4">
                 <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-4">
-                    <div class="col-span-2 col-start-1"><img class="h-96 w-full object-cover" id="cover" src="" alt=""></div>
+                    <div class="col-span-2 col-start-1 aspect-square"><img class="h-96 w-96 object-cover aspect-square" id="cover" src="" alt=""></div>
                     <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
-    
-                        <div class="grid grid-flow-col">
-                            <div class="px-4 py-5 sm:px-6">
-                                <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900"></h3>
-                                <p id="creatorname" class="mt-1 max-w-2xl text-sm text-gray-500"></p>
-                            </div>
-                            <div class="cursor-pointer mt-1 text-lg text-right mr-5 text-bold text-cyan-600 sm:mt-0 sm:col-span-2 md:col-span-1">Edit</div>
-                           <a href="/read"> <div class="cursor-pointer mt-1 text-lg text-right mr-5 text-bold text-cyan-600 sm:mt-0 sm:col-span-2 md:col-span-1">Preview</div></a>
-                        </div>
-                        <div class="border-t border-gray-200">
+                        <div class=" border-gray-200">
                           <dl>
+                            <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                              <dt class="text-sm font-medium text-black">Author:</dt>
+                              <dd id="adaptation" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">LMFAO</dd>
+                            </div>
                             <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                               <dt class="text-sm font-medium text-black">Adaptation:</dt>
                               <dd id="adaptation" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Yes</dd>
@@ -124,38 +119,17 @@
                 </div> 
 
                 <div class="w-full overflow-x-auto bottom-4">
-                    <div class="px-6 mb-4 md:w-1/5 left-0 w-full">
-                        <button
-                          id="btnCreateNewChapter"
-                          class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-cyan-600 border border-transparent rounded-lg active:bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:shadow-outline-cyan">
-                          New Chapter
-                          <span class="ml-2" aria-hidden="true">+</span>
-                        </button>
-                      </div>
                     <table class="w-full whitespace-no-wrap pb-4">
                       <thead>
                         <tr
                           class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                           <th class="px-4 py-3">Chapter Number</th>
                           <th class="px-4 py-3">Chapter Name</th>
-                          <th class="px-4 py-3">Likes</th>
-                          <th class="px-4 py-3">Edit</th>
                           <th class="px-4 py-3">Date</th>
-                          <th class="px-4 py-3">View</th>
-                          <th class="px-4 py-3">Delete</th>
       
                         </tr>
-                      </thead>
-                      <tbody id="chapterHolder" class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                      </tbody>
-
-                      <td class="px-4 py-3 text-sm hover:text-blue-600 hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
-                          class="bi bi-eye-fill" class="text-blue-600 w-6 h-6" viewBox="0 0 20 20" >
-                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                        </svg>
-                       </td>
+                      </thead>                     
+                     </tbody>
                     </table>
                   </div>
             </div>
