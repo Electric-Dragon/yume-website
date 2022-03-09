@@ -3,6 +3,11 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, publicData, user;
 
+
+if (window.location.href.split('?')[1]) {
+  window.location = "/account"
+}
+
 $.ajax({
   url: "/keys",
   success: async function( result ) {
@@ -109,7 +114,8 @@ window.connectTwitch = async function connectTwitch () {
   const { user, session, error } = await supabase.auth.signIn({
     provider: 'twitch',
   },{
-    scopes: 'user:read:email'
+    scopes: 'user:read:email',
+    redirectTo: `${window.location.origin}/account?reload=true`
   })
 
   if (error) {
