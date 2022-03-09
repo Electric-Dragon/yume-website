@@ -2,97 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
     <link href="/css/output.css" rel="stylesheet">
-    <title>Welcome to Yume</title>
+    <title>Write the next masterpiece</title>
+    <title>Document</title>
 </head>
-<body class="h-screen w-full dark:bg-black">
-    <!-- Navbar goes here -->
-		<nav class="bg-white max-h-36">
-			<div class="max-w-6xl mx-auto px-4">
-				<div class="flex justify-between">
-					<div class="flex space-x-7">
-						<div>
-							<!-- Website Logo -->
-							<a href="#" class="flex items-center py-6 px-2">
-								<img src="images/logo.png" alt="Logo" class="h-8 w-8 mr-2">
-								<span class="font-semibold text-gray-500 text-lg">YUME</span>
-							</a>
-						</div>
-					</div>
-                    <!-- Primary Navbar items -->
-						<div class="hidden md:flex items-end space-x-1">
-							<a href="" class="pt-16 px-6 text-white border-b-4 border-cyan-500 font-semibold bg-cyan-500 ">Home</a>
-							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">Services</a>
-							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">About</a>
-							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">Contact Us</a>
-						</div>
-					<!-- Secondary Navbar items -->
-					<div class="hidden md:flex items-center space-x-3 ">
-						<a href="/signin" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-cyan-500 hover:text-white transition duration-300">Log In</a>
-						<a href="/signup" class="py-2 px-2 font-medium text-white bg-cyan-500 rounded hover:bg-cyan-400 transition duration-300">Sign Up</a>
-					</div>
-					<!-- Mobile menu button -->
-					<div class="md:hidden flex items-center">
-						<button class="outline-none mobile-menu-button">
-						<svg class=" w-6 h-6 text-gray-500 hover:text-cyan-500 "
-							x-show="!showMenu"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path d="M4 6h16M4 12h16M4 18h16"></path>
-						</svg>
-					</button>
-					</div>
-				</div>
-			</div>
-			<!-- mobile menu -->
-			<div class="hidden mobile-menu">
-				<ul class="">
-					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-cyan-500 font-semibold">Home</a></li>
-					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">Services</a></li>
-					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">About</a></li>
-					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">Contact Us</a></li>
-				</ul>
-			</div>
-			<script>
-				const btn = document.querySelector("button.mobile-menu-button");
-				const menu = document.querySelector(".mobile-menu");
-
-				btn.addEventListener("click", () => {
-					menu.classList.toggle("hidden");
-				});
-			</script>
-		</nav>
-
-        <div class="text-center p-1 md:m-10 grid md:grid-flow-col grid-flow-row">
-            <div class="grid text-center md:text-left mt-6">
-                <div class="text-4xl text-gray-700 "> Reinvent the <span class="bg-clip-text bg-gradient-to-l from-cyan-600 to-blue-600 text-transparent">Invented</span></div> 
-                <div class="bgx"> <div style="font-size: 15rem;" class="animate-charcter font-bold opacity-100 ">YUME</div> </div>
-                <div class="text-gray-500 text-xl font-bold capitalize">There are no Limits to tell a Story...<br>
-					<span class="text-sm text-gray-500 font-light">A place where you can write your thoughts and then see it drawn...</span>
-				</div>
-				<button type="button" class="md:w-1/3 mt-5 text-white bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-md shadow-cyan-500/50 dark:shadow-md dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Join Now</button>
-				<div class="mt-10"> <p class="text-2xl font-bold">Recent Hits</p>
-					<div class="flex flex-row gap-5">
-						<div class="bg-black aspect-square w-6"></div>
-						<div class="bg-black aspect-square w-6"></div>
-						<div class="bg-black aspect-square w-6"></div>
-					</div>
-				</div>
+<body>
+    <div class="bg-white">
+        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+          <h2 class="text-2xl font-extrabold tracking-tight text-gray-900"> Recently published</h2>
+      
+          <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div class="group relative">
+              <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
+              </div>
+              <div class="mt-4 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-gray-700">
+                    <a href="#">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      Solo leveling
+                    </a>
+                  </h3>
+              </div>
             </div>
-			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F694%2F092%2Foriginal%2Fwrite-your-own-story-hand-lettering-typography-modern-poster-design-vector.jpg&f=1&nofb=1" class="md:max-w-xl row-start-1 max-w-sm mx-auto pr-4 my-auto mt-8" alt="">
+      
+            <!-- More products... -->
+          </div>
         </div>
+      </div>
 </body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </html>
-
-<!-- bg-clip-text bg-gradient-to-l from-blue-600 to-cyan-600 text-transparent font-bold -->
