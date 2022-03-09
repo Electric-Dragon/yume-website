@@ -33,7 +33,7 @@ $.ajax({
 
       const { data:public_user, error_ } = await supabase
         .from('public_profile')
-        .select('pfp,username,description')
+        .select()
         .eq('id',user.id)
         .single();
 
@@ -41,7 +41,7 @@ $.ajax({
          erroralert("Something went wrong");
      } else {
 
-       let { pfp, username, description } = public_user;
+       let { pfp, username, description, instagram, reddit, youtube } = public_user;
        publicData = public_user;
 
        if (private_user) {
@@ -109,21 +109,8 @@ window.saveDetails = async function saveDetails () {
 
 }
 
-window.connectTwitch = async function connectTwitch () {
+window.connectInstagram = async function connectInstagram () {
 
-  const { user, session, error } = await supabase.auth.signIn({
-    provider: 'twitch',
-  },{
-    scopes: 'user:read:email',
-    redirectTo: `${window.location.origin}/account?reload=true`
-  })
-
-  if (error) {
-    erroralert(error.message);
-  } else {
-
-    console.log(user);
-    console.log(session);
-  }
+  
 
 }
