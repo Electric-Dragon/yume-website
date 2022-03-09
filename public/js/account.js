@@ -8,6 +8,24 @@ if (window.location.href.split('?')[1]) {
   window.location = "/account"
 }
 
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'bg-blue-600 p-2 text-white font-sans rounded-md',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+const { value: url } = await swalWithBootstrapButtons.fire({
+  input: 'url',
+  inputLabel: 'URL address',
+  inputPlaceholder: 'Enter the URL'
+})
+
+if (url) {
+  Swal.fire(`Entered URL: ${url}`)
+}
+
+
 $.ajax({
   url: "/keys",
   success: async function( result ) {
