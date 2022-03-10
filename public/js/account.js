@@ -58,15 +58,15 @@ $.ajax({
 
        if (instagram) {
          $('#instaConnected').show();
-         $('#instaConnected').text(`@${instagram}`);
+         $('#instaConnected').text(`connected`);
        }
        if (reddit) {
           $('#redditConnected').show();
-         $('#redditConnected').text(`u/${reddit}`);
+         $('#redditConnected').text(`connected`);
        }
        if (youtube) {
           $('#youtubeConnected').show();
-         $('#youtubeConnected').text(`${youtube}`);
+         $('#youtubeConnected').text(`connected`);
        }
 
        if (private_user) {
