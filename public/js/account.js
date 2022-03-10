@@ -60,15 +60,12 @@ $.ajax({
 
        if (instagram) {
          $('#instaConnected').show();
-         $('#instaConnected').text(`connected`);
        }
        if (reddit) {
           $('#redditConnected').show();
-         $('#redditConnected').text(`connected`);
        }
        if (youtube) {
           $('#youtubeConnected').show();
-         $('#youtubeConnected').text(`connected`);
        }
 
        if (private_user) {
