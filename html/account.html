@@ -497,17 +497,26 @@
                                 <img src="" alt="" class="w-full h-full object-cover rounded absolute shadow" />
                                 <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded"></div>
                                 <div class="flex items-center px-3 py-2 rounded absolute right-0 mr-4 mt-4 cursor-pointer">
-                                    <p class="text-xs text-gray-100">Change Cover Photo</p>
+                                  <label for="files" class="relative cursor-pointer flex">
+                                    <p class="text-xs text-gray-100">Change Cover Photo</p> 
                                     <div class="ml-2 text-gray-100">
-                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
-                                    </div>
+                                      <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
+                                  </div>
+                                    <input required id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
+                                  </label>
                                 </div>
+
                                 <div class="w-20 h-20 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-12 shadow flex items-center justify-center">
                                     <img id="pfp" src="" alt="" class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
                                     <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded-full z-0"></div>
                                     <div class="cursor-pointer flex flex-col justify-center items-center z-10 text-gray-100">
-                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
+                                      <label for="files" class="relative cursor-pointer">
                                         <p type="file" class="text-xs text-gray-100">Edit Picture</p>
+                                        <div class="ml-2 text-gray-100">
+                                          <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
+                                        </div>
+                                        <input required id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
+                                      </label>
                                     </div>
                                 </div>
                             </div>
