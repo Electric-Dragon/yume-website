@@ -1206,6 +1206,10 @@ select {
   width: 20%;
 }
 
+.w-60 {
+  width: 15rem;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
