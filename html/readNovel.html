@@ -18,7 +18,7 @@
   </head>
 
   
-<body class="bg-gray-300 font-sans leading-normal tracking-normal">
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
 	<nav id="header" class="fixed w-full z-10 top-0">
 
@@ -247,7 +247,6 @@
 	</footer>
 
 	<script>
-		
 		/* Progress bar */
 		//Source: https://alligator.io/js/progress-bar-javascript-css-variables/
 		var h = document.documentElement,
@@ -270,14 +269,14 @@
 			scrollpos = window.scrollY;
 
 			if (scrollpos > 10) {
-				header.classList.add("bg-gray-200");
+				header.classList.add("bg-white");
 				header.classList.add("shadow");
 				navcontent.classList.remove("bg-gray-100");
-				navcontent.classList.add("bg-gray-200");
+				navcontent.classList.add("bg-white");
 			} else {
 				header.classList.remove("bg-white");
 				header.classList.remove("shadow");
-				navcontent.classList.remove("bg-gray-200");
+				navcontent.classList.remove("bg-white");
 				navcontent.classList.add("bg-gray-100");
 
 			}
