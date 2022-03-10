@@ -1,11 +1,13 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, publicData, user, instagramAcc, redditAcc, youtubeAcc;
+let supabase, publicData, isCreator, user, instagramAcc, redditAcc, youtubeAcc;
 
 $('#instaConnected').hide();
 $('#redditConnected').hide();
 $('#youtubeConnected').hide();
+$('#sideBarDashboard').hide();
+$('#sideBarSeries').hide();
 
 
 const swalWithBootstrapButtons = Swal.mixin({
@@ -78,9 +80,11 @@ $.ajax({
             $('#dob').val(dob);
             $('#pNumber').val(pNumber);
             $('#toggle').prop('checked',creator);
+            isCreator = creator;
 
             if (creator) {
-              $('#toggle').attr('readonly',"true");
+              $('#sideBarDashboard').show();
+              $('#sideBarSeries').show();
             }
 
        }
@@ -129,6 +133,50 @@ window.saveDetails = async function saveDetails () {
 
       }
     }
+
+  }
+
+}
+
+window.enableCreator = async function enableCreator() {
+
+  if (isCreator) {
+    erroralert('You are already a creator!');
+    $('#toggle').prop('checked',true);
+  } else {
+
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'info',
+      html:
+        'You cannot <b>undo</b> this action. <br> Make sure to read our ' +
+        '<a href="/tos" target="_blank" rel="noopener" style="color:blue">Terms of Service</a> ' +
+        'as this is a legal agreement between us.',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText:'Cancel',
+    }).then( async (result) => {
+
+      if (!result.isConfirmed) {
+        $('#toggle').prop('checked',false);
+      } else {
+          
+          const { data, error } = await supabase
+          .from('private_user')
+          .update({ creator: true })
+          .match({ id: user.id })
+  
+          if (error) {
+            erroralert(error.message);
+          } else {
+            successalert("You are now a creator!",function(){
+              window.location.reload()
+            });
+          }
+  
+      }
+
+    })
 
   }
 
