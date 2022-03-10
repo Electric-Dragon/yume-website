@@ -135,6 +135,27 @@ window.saveDetails = async function saveDetails () {
 
 }
 
+$('#pfpImage').on('change', function() {
+
+  console.log('yes');
+
+  let file = this.files[0];
+  let reader = new FileReader();
+  reader.onloadend = function() {
+    $('#pfp').attr('src',reader.result);
+  }
+  reader.readAsDataURL(file);
+
+})
+
+// window.showPfpPreview = function showPfpPreview(e) {
+
+//   if(e.target.files.length > 0){
+//     var src = URL.createObjectURL(e.target.files[0]);
+//     $('#yes').attr('src',src);
+//   }
+// }
+
 window.enableCreator = async function enableCreator() {
 
   if (isCreator) {

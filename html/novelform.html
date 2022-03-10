@@ -86,13 +86,14 @@
                         <div class="flex text-sm text-gray-600">
                           <label for="files" class="relative cursor-pointer bg-white rounded-md font-medium text-cyan-600 hover:text-cyan-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-cyan-500">
                             <span>Upload a file</span>
-                            <input required id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
+                            <input required onchange="previewCover(event)" id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
                           </label>
                           <p class="pl-1">or drag and drop</p>
                         </div>
                         <p class="text-xs text-gray-500">JPG only up to 500kb. File name should not have any special characters. File dimensions should be 160px*151px</p>
                       </div>
                     </div>
+                    <img id="coverPreview" alt="Series' Cover Preview">
                   </div>
                   <div class="grid">
                     <div class="flex gap-3">
