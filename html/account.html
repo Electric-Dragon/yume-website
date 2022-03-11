@@ -503,7 +503,8 @@
                                     <div class="ml-2 text-gray-100">
                                       <img id="banner" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
                                   </div>
-                                    <input required id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
+                                    <!-- <input required id="bannerImage" name="files[]" type="file" accept=".jpg" class="sr-only"> -->
+                                    <input id="bannerImage" name="files[]" type="file" accept=".jpg">
                                   </label>
                                 </div>
 
@@ -516,11 +517,13 @@
                                         <div class="ml-2 text-gray-100">
                                           <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
                                         </div>
-                                        <input required id="pfpImage" name="files[]" type="file" accept=".jpg" class="sr-only">
+                                        <!-- <input required id="pfpImage" name="files[]" type="file" accept=".jpg" class="sr-only"> -->
                                       </label>
                                     </div>
                                 </div>
                             </div>
+
+                            <input id="pfpImage" name="files[]" type="file" accept=".jpg">
 
                             <div class="m-5">
                               <h1 tabindex="0" role="heading" aria-label="profile information" class="focus:outline-none text-3xl font-bold text-gray-800 mt-12">Personal Details</h1>
@@ -779,7 +782,6 @@
   <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script defer src="/js/init.js" type="module"></script>
   <script defer src="/js/account.js" type="module"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>let form = document.getElementById("login");
     form.addEventListener(
@@ -801,7 +803,6 @@
                         break;
                 }
             }
-            // Place your API call here to submit your payload.
             console.log("payload", payload);
         },
         true

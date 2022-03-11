@@ -51,7 +51,7 @@ $.ajax({
          erroralert("Something went wrong");
      } else {
 
-       let { pfp, username, description, instagram, reddit, youtube } = public_user;
+       let { pfp, username, description, instagram, reddit, youtube, banner } = public_user;
        publicData = public_user;
 
        instagramAcc = instagram;
@@ -89,6 +89,7 @@ $.ajax({
         $('#username').val(username);
         $('#description').val(description);
         $('#pfp').attr('src',pfp);
+        $('#banner').attr('src',banner);
      }
 
 }});
@@ -100,6 +101,8 @@ window.saveDetails = async function saveDetails () {
   let dobNew = $('#dob').val();
   let pNumberNew = $('#pNumber').val();
   let descriptionNew = $('#description').val();
+  let pfpNew = $('#pfpImage').prop('files')[0];
+  let bannerNew = $('#bannerImage').prop('files')[0];
 
   if (!(fNameNew && lNameNew && dobNew && pNumberNew && descriptionNew)) {
     erroralert("Please fill in all fields");
@@ -125,10 +128,90 @@ window.saveDetails = async function saveDetails () {
         if (error) {
           erroralert(error.message);
         } else {
-          successalert("Profile updated");
+          successalert("Details updated!");
         }
 
       }
+
+        if (pfpNew) {
+
+            const { data_, error } = await supabase.storage
+            .from('users')
+            .upload(`${user.id}/profile/pfp.jpg`, pfpNew, {cacheControl: 10,upsert: true})
+
+            if (error) {
+              erroralert(error.message);
+            } else {
+
+              const {publicURL, error} = await supabase
+                    .storage
+                    .from('users')
+                    .getPublicUrl(`${user.id}/profile/pfp.jpg`)
+
+                if (error) {
+                    erroralert(error.message);
+                } else {
+
+                  console.log(publicURL);
+
+                  const { data, error } = await supabase
+                  .from('public_profile')
+                  .update({ pfp: publicURL })
+                  .match({ id: user.id })
+  
+                  if (error) {
+                    erroralert(error.message);
+                  } else {
+                    successalert("Profile picture updated!");
+                  }
+
+                }
+              
+            }
+
+          }
+
+          console.log(bannerNew);
+
+          if (bannerNew) {
+
+            const { data_, error } = await supabase.storage
+            .from('users')
+            .upload(`${user.id}/profile/banner.jpg`, bannerNew, {cacheControl: 10,upsert: true})
+
+            if (error) {
+              erroralert(error.message);
+            } else {
+
+              const {publicURL, error} = await supabase
+                    .storage
+                    .from('users')
+                    .getPublicUrl(`${user.id}/profile/banner.jpg`)
+
+                if (error) {
+                    erroralert(error.message);
+                } else {
+
+                  console.log(publicURL);
+
+                  const { data, error } = await supabase
+                  .from('public_profile')
+                  .update({ banner: publicURL })
+                  .match({ id: user.id })
+  
+                  if (error) {
+                    erroralert(error.message);
+                  } else {
+                    successalert("Banner updated!");
+                  }
+
+                }
+              
+            }
+
+          }
+        
+        successalert("Profile updated");
     }
 
   }
@@ -136,8 +219,6 @@ window.saveDetails = async function saveDetails () {
 }
 
 $('#pfpImage').on('change', function() {
-
-  console.log('yes');
 
   let file = this.files[0];
   let reader = new FileReader();
@@ -148,14 +229,16 @@ $('#pfpImage').on('change', function() {
 
 })
 
-// window.showPfpPreview = function showPfpPreview(e) {
+$('#bannerImage').on('change', function() {
 
-//   if(e.target.files.length > 0){
-//     var src = URL.createObjectURL(e.target.files[0]);
-//     $('#yes').attr('src',src);
-//   }
-// }
+  let file = this.files[0];
+  let reader = new FileReader();
+  reader.onloadend = function() {
+    $('#banner').attr('src',reader.result);
+  }
+  reader.readAsDataURL(file);
 
+})
 window.enableCreator = async function enableCreator() {
 
   if (isCreator) {
