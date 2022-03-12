@@ -42,9 +42,23 @@ $.ajax({
 
           $('#seriesTitle').text(title);
           $('#title').text(title);
-          // $('#creatorname').text(`Created by:`)
           $('#summary').text(summary);
-          $('#status').text(statusText[status]);
+          // $('#status').text(statusText[status]);
+
+            $.each(statusText, function(val, text) {
+
+              let defaultSelected = false;
+              let nowSeleted = (status === val) ? true : false;
+
+              let check = (status !== 'd' && val === 'd') ? true : false;
+
+              if (!check) {
+                $('#statusSelect').append(new Option(text,val,defaultSelected,nowSeleted));
+              }
+
+          });
+
+
           $('#cover').attr('src', cover);
 
           let adaptationText = adaptation ? 'Yes' : 'No';
@@ -147,7 +161,23 @@ $.ajax({
   
         }
   
-  }});
+}});
+
+$('#statusSelect').on('change',async function() {
+  console.log($(this).val());
+
+  const { data, error } = await supabase
+  .from('series')
+  .update({ status: $(this).val() })
+  .match({ id: seriesid})
+
+  if (error) {
+    erroralert(error.message);
+  } else {
+    successalert('Series status updated');
+  }
+
+})
 
 async function newChap(chapcount) {
   let { data, error } = await supabase.from('chapters').insert([{
@@ -193,7 +223,6 @@ swalWithBootstrapButtons.fire({
       'success'
     )
   } else if (
-    /* Read more about handling dismissals below */
     result.dismiss === Swal.DismissReason.cancel
   ) {
     swalWithBootstrapButtons.fire(
