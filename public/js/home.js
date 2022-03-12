@@ -30,7 +30,7 @@ $.ajax({
   
             let element = `<div class="group relative">
                                 <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                                    <img class="aspect-square object-cover" src="${cover}" class=" object-center object-cover">
+                                    <img class="aspect-square object-cover h-full" src="${cover}" class=" object-center object-cover">
                                 </div>
                                 <div class="mt-4 flex justify-between">
                                     <div>
