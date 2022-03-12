@@ -22,7 +22,7 @@ app.get("/signin", function(req, res) {
     res.sendFile(__dirname + "/html/signin.html");
 });
 
-app.get("/see", function(req, res) {
+app.get("/series/:seriesid", function(req, res) {
     res.sendFile(__dirname + "/html/novelinfoR.html");
 });
 

@@ -7,33 +7,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
     <link href="/css/output.css" rel="stylesheet">
-    <title>Write the next masterpiece</title>
-    <title>Document</title>
+    <title>Welcome to Yume</title>
 </head>
 <body>
     <div class="bg-white">
         <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 class="text-2xl font-extrabold tracking-tight text-gray-900"> Recently published</h2>
       
-          <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            <div class="group relative">
+          <div id="recentlyPub" class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <!-- <div class="group relative">
               <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
                 <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
               </div>
               <div class="mt-4 flex justify-between">
                 <div>
                   <h3 class="text-sm text-gray-700">
-                    <a href="#">
+                    <a>
                       <span aria-hidden="true" class="absolute inset-0"></span>
                       Solo leveling
                     </a>
                   </h3>
               </div>
             </div>
-      
-            <!-- More products... -->
-          </div>
+          </div> -->
         </div>
       </div>
+
+      <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+      <script src="/js/init.js" type="module"></script>
+      <script defer src="/js/home.js" type="module"></script>
 </body>
 </html>
