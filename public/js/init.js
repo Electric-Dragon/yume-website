@@ -1,11 +1,11 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase;
+let supabase, userPfp;
 
 $.ajax({
   url: "/keys",
-  success: function( result ) {
+  success: async function( result ) {
 
       result = JSON.parse(result);
 
@@ -16,6 +16,17 @@ $.ajax({
       try {
         if (user) {
           $('#authButtons').hide();
+
+          const { data, error } = await supabase
+            .from('public_profile')
+            .select('pfp')
+            .eq('id',user.id)
+            .single();
+
+          userPfp = data.pfp;
+
+          $('#pfp').attr('src', userPfp);
+
         } else {
           $('#signedInElements').hide();
         }

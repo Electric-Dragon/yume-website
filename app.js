@@ -38,7 +38,7 @@ app.post("/novel", async function(req, res) {
     res.json(await yumeAPI.signUp(req.body));
 });
 
-app.get("/home", function(req, res) {
+app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/home.html");
 });
 
@@ -69,7 +69,7 @@ app.get("/dashboard/series/:seriesid/:chapterid/write", function(req, res) {
 app.get("/read/novel/:seriesid/:chapterid", function(req, res) {
     res.sendFile(__dirname + "/html/readNovel.html");
 });
-app.get("/", function(req, res) {
+app.get("/about", function(req, res) {
     res.sendFile(__dirname + "/html/about.html");
 });
 
