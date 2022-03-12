@@ -12,66 +12,124 @@
 </head>
 <body class="h-screen w-full dark:bg-black bg-gray-300">
     <!-- Navbar goes here -->
-		<nav class="bg-transparent max-h-36">
-			<div class="max-w-6xl mx-auto px-4">
-				<div class="flex justify-between">
-					<div class="flex space-x-7">
-						<div>
-							<!-- Website Logo -->
-							<a href="#" class="flex items-center py-6 px-2">
-								<img src="/images/logo.png" alt="Logo" class="h-8 w-8 mr-2">
-								<span class="font-semibold text-gray-500 text-lg">YUME</span>
-							</a>
-						</div>
-					</div>
-                    <!-- Primary Navbar items -->
-						<div class="hidden md:flex items-end space-x-1">
-							<a href="" class="pt-16 px-6 text-white border-b-4 border-cyan-500 font-semibold bg-cyan-500 ">Home</a>
-							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">Services</a>
-							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">About</a>
-							<a href="" class="pt-16 px-6 text-gray-500 font-semibold hover:bg-cyan-500 hover:border-cyan-500 hover:border-b-4 hover:text-white transition-all duration-300">Contact Us</a>
-						</div>
-					<!-- Secondary Navbar items -->
-					<div class="hidden md:flex items-center space-x-3">
-						<a href="/signin" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-cyan-500 hover:text-white transition duration-300">Log In</a>
-						<a href="/signup" class="py-2 px-2 font-medium text-white bg-cyan-500 rounded hover:bg-cyan-400 transition duration-300">Sign Up</a>
-					</div>
-					<!-- Mobile menu button -->
-					<div class="md:hidden flex items-center">
-						<button class="outline-none mobile-menu-button">
-						<svg class=" w-6 h-6 text-gray-500 hover:text-cyan-500 "
-							x-show="!showMenu"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path d="M4 6h16M4 12h16M4 18h16"></path>
-						</svg>
-					</button>
-					</div>
-				</div>
-			</div>
-			<!-- mobile menu -->
-			<div class="hidden mobile-menu">
-				<ul class="">
-					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-cyan-500 font-semibold">Home</a></li>
-					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">Services</a></li>
-					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">About</a></li>
-					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-cyan-500 transition duration-300">Contact Us</a></li>
-				</ul>
-			</div>
-			<script>
-				const btn = document.querySelector("button.mobile-menu-button");
-				const menu = document.querySelector(".mobile-menu");
-
-				btn.addEventListener("click", () => {
-					menu.classList.toggle("hidden");
-				});
-			</script>
-		</nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
+    <nav class="bg-white shadow-lg mb-5">
+      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <!-- Mobile menu button-->
+            <button id="togglemebutton" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu"
+              aria-expanded="false">
+              <!-- Icon when menu is closed. -->
+              <!-- Menu open: "hidden", Menu closed: "block" -->
+              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <!-- Icon when menu is open. -->
+              <!-- Menu open: "block", Menu closed: "hidden" -->
+              <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex-shrink-0">
+              <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl">YUME.</p></a>
+          
+            </div>
+            <div class="hidden sm:block sm:ml-6">
+              <div class="flex">
+                <a href="#" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
+                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
+                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+              </div>
+            </div>
+          </div>
+          <div class="relative mx-auto text-gray-600 md:block hidden ">
+               
+            <input
+              class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none"
+              type="search" name="search" placeholder="Search">
+            <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
+              <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                 version="1.1" id="Capa_1" x="0px" y="0px"
+                 viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                 xml:space="preserve"
+                 width="512px" height="512px">
+            <path
+              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
+            </svg>
+            </button>
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+    
+    
+            <!-- Profile dropdown -->
+            <div class="ml-3 relative">
+              <div>
+                <button id="toggleprofile" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                  <img class="h-8 w-8 rounded-full" id="pfp" src="" alt="">
+                </button>
+              </div>
+              <!--
+                Profile dropdown panel, show/hide based on dropdown state.
+    
+                Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+                Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              -->
+              <div id="resultprofile" class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                  <a href="/account" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
+                  <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Settings</a>
+                  <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!--
+        Mobile menu, toggle classes based on menu state.
+    
+        Menu open: "block", Menu closed: "hidden"
+      -->
+      <div id="resultnav" class="hidden sm:hidden">
+        <div class="px-2 pt-2 pb-3">
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
+          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
+          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+        </div>
+      </div>
+      <script>document.getElementById('togglemebutton').onclick = function() {
+        document.getElementById("resultnav").classList.toggle("hidden");
+      }
+      
+      //document.getElementById('togglemebutton').onclick = function () {
+      //  document.getElementById("toggleme").classList.toggle("hidden");
+      //}
+      
+      
+      const toggleprofile = document.getElementById("toggleprofile");
+      const resultprofile = document.getElementById("resultprofile");
+      [...document.querySelectorAll('body')].forEach(el => {
+        el.addEventListener('click', event => {
+          if (event.target.parentElement.id !== "toggleprofile") {
+            console.clear();
+            console.log(event.target.parentElement.id)
+            resultprofile.classList.add("hidden")
+          }else{
+          resultprofile.classList.toggle("hidden")}
+        })
+      })</script>
+    </nav>
 
         <div class="bg-white max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
           <div class="grid grid-flow-row mb-4">

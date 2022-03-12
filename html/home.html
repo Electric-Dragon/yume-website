@@ -11,9 +11,8 @@
 </head>
 <body>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
 <nav class="bg-white  mt-3">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -35,7 +34,8 @@
       </div>
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex-shrink-0">
-          <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl">YUME.</p>
+          <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl">YUME.</p></a>
+      
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
@@ -107,6 +107,27 @@
       <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
     </div>
   </div>
+  <script>document.getElementById('togglemebutton').onclick = function() {
+    document.getElementById("resultnav").classList.toggle("hidden");
+  }
+  
+  //document.getElementById('togglemebutton').onclick = function () {
+  //  document.getElementById("toggleme").classList.toggle("hidden");
+  //}
+  
+  
+  const toggleprofile = document.getElementById("toggleprofile");
+  const resultprofile = document.getElementById("resultprofile");
+  [...document.querySelectorAll('body')].forEach(el => {
+    el.addEventListener('click', event => {
+      if (event.target.parentElement.id !== "toggleprofile") {
+        console.clear();
+        console.log(event.target.parentElement.id)
+        resultprofile.classList.add("hidden")
+      }else{
+      resultprofile.classList.toggle("hidden")}
+    })
+  })</script>
 </nav>
     <div class="bg-white w-screen">
         <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -136,26 +157,5 @@
       <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
       <script src="/js/init.js" type="module"></script>
       <script defer src="/js/home.js" type="module"></script>
-      <script>document.getElementById('togglemebutton').onclick = function() {
-        document.getElementById("resultnav").classList.toggle("hidden");
-      }
-      
-      //document.getElementById('togglemebutton').onclick = function () {
-      //  document.getElementById("toggleme").classList.toggle("hidden");
-      //}
-      
-      
-      const toggleprofile = document.getElementById("toggleprofile");
-      const resultprofile = document.getElementById("resultprofile");
-      [...document.querySelectorAll('body')].forEach(el => {
-        el.addEventListener('click', event => {
-          if (event.target.parentElement.id !== "toggleprofile") {
-            console.clear();
-            console.log(event.target.parentElement.id)
-            resultprofile.classList.add("hidden")
-          }else{
-          resultprofile.classList.toggle("hidden")}
-        })
-      })</script>
 </body>
 </html>
