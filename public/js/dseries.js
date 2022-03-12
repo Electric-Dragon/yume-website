@@ -3,6 +3,57 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase,user;
 
+$('#searchBar').on('input', async function() {
+
+  let search = $('#searchBar').val();
+  let query = '';
+
+  if (search.length > 0) {
+    let splitSearch = search.split(' ');
+
+    splitSearch.forEach(word => {
+
+      if (word!=='') {
+        if(query === '') {
+          query = `'${word}'`;
+        } else {
+          query = `${query} | '${word}'`;
+        }
+      }
+
+    });
+
+    const { data, error } = await supabase
+    .from('series')
+    .select('id,title,chapcount,cover')
+    .eq('creator', user.id)
+    .textSearch('fts', query)
+
+    if (error) {
+      erroralert(error.message);
+    } else {
+      console.log(data);
+
+      if (data.length === 0) {
+        $('#seriesHolder').empty();
+        $('#seriesHolder').append(`<p class="text-center text-gray-500 text-xl">No results found</p>`);
+        return;
+      }
+
+      $('#seriesHolder').empty();
+
+      data.forEach(series => {
+        appendElement(series);
+      })
+
+    }
+
+  } else {
+    getAllSeries();
+  }
+
+})
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -17,7 +68,15 @@ $.ajax({
           window.location = "/signin";
         }
   
-        const { data, error } = await supabase
+        getAllSeries();      
+  
+  }});
+
+async function getAllSeries() {
+
+    $('#seriesHolder').empty();
+
+    const { data, error } = await supabase
           .from('series')
           .select('id,title,chapcount,cover')
           .eq('creator', user.id)
@@ -28,8 +87,16 @@ $.ajax({
         } else {
   
           data.forEach(val=> {
-              
-            let {id, title, chapcount, cover} = val;
+
+            appendElement(val);
+  
+          })
+  
+        }
+}
+
+function appendElement(val) {
+  let {id, title, chapcount, cover} = val;
 
             let element = `<a href="/dashboard/series/${id}" class="block ">
                   
@@ -50,10 +117,5 @@ $.ajax({
                                 </div>
                             </a>`
 
-            $('#seriesHolder').append(element);
-  
-          })
-  
-        }
-  
-  }});
+  $('#seriesHolder').append(element);
+}

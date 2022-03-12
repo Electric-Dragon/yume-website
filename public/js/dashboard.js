@@ -25,6 +25,10 @@ let statusText = {
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+$('#searchBar').on('focus', function() {
+  window.location = '/dashboard/series';
+})
+
 $.ajax({
   url: "/keys",
   success: async function( result ) {
