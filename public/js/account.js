@@ -135,6 +135,11 @@ window.saveDetails = async function saveDetails () {
 
         if (pfpNew) {
 
+            if (pfpNew.size > 500000) {
+              erroralert("Profile picture must be under 500kb");
+              return;
+            }
+
             const { data_, error } = await supabase.storage
             .from('users')
             .upload(`${user.id}/profile/pfp.jpg`, pfpNew, {cacheControl: 10,upsert: true})
@@ -151,9 +156,6 @@ window.saveDetails = async function saveDetails () {
                 if (error) {
                     erroralert(error.message);
                 } else {
-
-                  console.log(publicURL);
-
                   const { data, error } = await supabase
                   .from('public_profile')
                   .update({ pfp: publicURL })
@@ -171,9 +173,12 @@ window.saveDetails = async function saveDetails () {
 
           }
 
-          console.log(bannerNew);
-
           if (bannerNew) {
+
+            if (bannerNew.size > 500000) {
+              erroralert("Banner must be under 500kb");
+              return;
+            }
 
             const { data_, error } = await supabase.storage
             .from('users')
@@ -191,8 +196,6 @@ window.saveDetails = async function saveDetails () {
                 if (error) {
                     erroralert(error.message);
                 } else {
-
-                  console.log(publicURL);
 
                   const { data, error } = await supabase
                   .from('public_profile')
@@ -218,27 +221,6 @@ window.saveDetails = async function saveDetails () {
 
 }
 
-$('#pfpImage').on('change', function() {
-
-  let file = this.files[0];
-  let reader = new FileReader();
-  reader.onloadend = function() {
-    $('#pfp').attr('src',reader.result);
-  }
-  reader.readAsDataURL(file);
-
-})
-
-$('#bannerImage').on('change', function() {
-
-  let file = this.files[0];
-  let reader = new FileReader();
-  reader.onloadend = function() {
-    $('#banner').attr('src',reader.result);
-  }
-  reader.readAsDataURL(file);
-
-})
 window.enableCreator = async function enableCreator() {
 
   if (isCreator) {
