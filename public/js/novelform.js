@@ -62,11 +62,11 @@ async function create(e) {
     let genre2 = $('#s2').val();
 
     if (!(title && summary && genre1 && genre2 && cover)) {
-        alert('Please fill in all fields');
+        erroralert('Please fill in all fields');
     } else if (cover.size > 500000) {
-        alert('Cover image is too large');
+        erroralert('Cover image is too large');
     } else if (genre1 === genre2) {
-        alert('Please select two different genres');
+        erroralert('Please select two different genres');
     } else {
 
         $('#btnCreate').prop('disabled', true);

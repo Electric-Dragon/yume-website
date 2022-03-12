@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creator Dashboard</title>
+  <title>Your Account</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
@@ -495,28 +495,28 @@
                       <div class="w-full m-3 mx-auto xl:mx-0">
                           <div class="rounded relative mt-8 h-48">
                             <!-- cover image -->
-                              <img src="" alt="" id="banner" class="w-full h-full object-cover rounded absolute shadow" />   
+                              <img id="banner" src="" alt="" class="w-full h-full object-cover rounded absolute shadow" />   
                               <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded"></div>
                               <div class="flex items-center px-3 py-2 rounded absolute right-0 mr-4 mt-4 cursor-pointer">
-                                <label for="files" class="relative cursor-pointer flex">
+                                <label for="bannerImage" class="relative cursor-pointer flex">
                                   <p class="text-xs text-gray-100">Change Cover Photo</p> 
                                   <div class="ml-2 text-gray-100">
                                     <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
-                                </div>
-                                  <input  id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
+                                  </div>
+                                  <input onchange="previewBanner(event)" id="bannerImage" name="files[]" type="file" accept=".jpg" class="sr-only">
                                 </label>
                               </div>
 
                               <div class="w-20 h-20 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-12 shadow flex items-center justify-center">
-                                  <img id="pfp" src="" alt="" class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
+                                  <img id="pfp" alt="" class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
                                   <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded-full z-0"></div>
                                   <div class="cursor-pointer flex flex-col justify-center items-center z-10 text-gray-100">
-                                    <label for="files" class="relative cursor-pointer">
+                                    <label for="pfpImage" class="relative cursor-pointer">
                                       <p type="file" class="text-xs text-gray-100">Edit Picture</p>
                                       <div class="ml-2 text-gray-100">
                                         <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
                                       </div>
-                                      <input required id="pfpImage" name="files[]" type="file" accept=".jpg" class="sr-only">
+                                      <input onchange="previewPfp(event)" id="pfpImage" name="files[]" type="file" accept=".jpg" class="sr-only">
                                     </label>
                                   </div>
                               </div>
@@ -806,6 +806,23 @@
     );
     </script>
   <script>
+    function previewPfp (e) {
+      if(e.target.files.length > 0){
+        var src = URL.createObjectURL(e.target.files[0]);
+        var preview = document.getElementById("pfp");
+        preview.src = src;
+        preview.style.display = "block";
+      }
+    }
+
+    function previewBanner (e) {
+      if(e.target.files.length > 0){
+        var src = URL.createObjectURL(e.target.files[0]);
+        var preview = document.getElementById("banner");
+        preview.src = src;
+        preview.style.display = "block";
+      }
+    }
     
   </script>
 </body>
