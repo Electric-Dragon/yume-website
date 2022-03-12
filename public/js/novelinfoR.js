@@ -88,10 +88,6 @@ $.ajax({
                                 </div>
                               </div>
                             </td>
-                            <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                              </div>
-                            </td>
                             <td class="px-4 py-3 text-sm">
                             ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
                             </td>

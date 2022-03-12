@@ -495,15 +495,15 @@
                       <div class="w-full m-3 mx-auto xl:mx-0">
                           <div class="rounded relative mt-8 h-48">
                             <!-- cover image -->
-                              <img src="" alt="" class="w-full h-full object-cover rounded absolute shadow" />   
+                              <img src="" alt="" id="banner" class="w-full h-full object-cover rounded absolute shadow" />   
                               <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded"></div>
                               <div class="flex items-center px-3 py-2 rounded absolute right-0 mr-4 mt-4 cursor-pointer">
                                 <label for="files" class="relative cursor-pointer flex">
                                   <p class="text-xs text-gray-100">Change Cover Photo</p> 
                                   <div class="ml-2 text-gray-100">
-                                    <img id="banner" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
+                                    <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
                                 </div>
-                                  <input required id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
+                                  <input  id="files" name="files[]" type="file" accept=".jpg" class="sr-only">
                                 </label>
                               </div>
 
@@ -521,9 +521,6 @@
                                   </div>
                               </div>
                           </div>
-
-
-                            <!-- <input id="pfpImage" name="files[]" type="file" accept=".jpg"> -->
 
                             <div class="m-5">
                               <h1 tabindex="0" role="heading" aria-label="profile information" class="focus:outline-none text-3xl font-bold text-gray-800 mt-12">Personal Details</h1>
