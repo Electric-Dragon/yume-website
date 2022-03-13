@@ -22,6 +22,8 @@ $.ajax({
         supabase = createClient(result.link, result.anon_key);
   
         user = supabase.auth.user();
+
+        console.log(supabase.auth.session().access_token);
   
         if (!user) {
           window.location = "/signin";
