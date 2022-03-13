@@ -73,13 +73,13 @@ $.ajax({
             const {data:prevChap, error} = await supabase
                 .from('chapters')
                 .select('id,title')
-                .match({seriesid:seriesid.id,chapternum:chapternum-1})
+                .match({seriesid:seriesid.id,chapternum:chapternum-1,is_published:true})
                 .maybeSingle()
 
             const {data:nextChap, _} = await supabase
                 .from('chapters')
                 .select('id,title')
-                .match({seriesid:seriesid.id,chapternum:chapternum+1})
+                .match({seriesid:seriesid.id,chapternum:chapternum+1,is_published:true})
                 .maybeSingle()
 
             if (prevChap) {
