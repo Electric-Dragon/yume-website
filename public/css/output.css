@@ -984,6 +984,10 @@ select {
   margin-top: 1.75rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -1002,10 +1006,6 @@ select {
 
 .mb-10 {
   margin-bottom: 2.5rem;
-}
-
-.mt-20 {
-  margin-top: 5rem;
 }
 
 .block {
@@ -2474,6 +2474,11 @@ select {
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
+.text-cyan-500 {
+  --tw-text-opacity: 1;
+  color: rgb(6 182 212 / var(--tw-text-opacity));
+}
+
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity));
@@ -2487,11 +2492,6 @@ select {
 .text-pink-700 {
   --tw-text-opacity: 1;
   color: rgb(190 24 93 / var(--tw-text-opacity));
-}
-
-.text-cyan-500 {
-  --tw-text-opacity: 1;
-  color: rgb(6 182 212 / var(--tw-text-opacity));
 }
 
 .underline {
