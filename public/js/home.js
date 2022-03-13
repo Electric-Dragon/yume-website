@@ -16,7 +16,7 @@ $.ajax({
         const { data, error } = await supabase
           .from('series')
           .select('id,title,cover')
-        //   .eq('creator', user.id)
+          .neq('status', 'd')
           .order('updatedat', { ascending: false })
           .limit(8)
   

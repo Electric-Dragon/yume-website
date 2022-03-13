@@ -58,6 +58,7 @@ $.ajax({
             .from('chapters')
             .select('id,chapternum,title,createdat,is_published,likes')
             .eq('seriesid', seriesid)
+            .eq('is_published', true)
             .order('chapternum', { ascending: false })
 
           if (error) {
