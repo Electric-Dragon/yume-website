@@ -81,12 +81,63 @@
 						<h1 id="chapTitle" class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl"></h1>
 						<p id="chapDate" class="text-sm md:text-base font-normal text-gray-600"></p>
 			</div>
+			<div class="flex flex-row items-center justify-start gap-1 font-sans text-sm ">
+
+				<div>
+					<input type="checkbox" id="checkbox" />
+					<label for="checkbox">
+					  <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+						<g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
+						  <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2"/>
+						  <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5"/>
+				
+						  <g id="grp7" opacity="0" transform="translate(7 6)">
+							<circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2"/>
+							<circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2"/>
+						  </g>
+				
+						  <g id="grp6" opacity="0" transform="translate(0 28)">
+							<circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2"/>
+							<circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2"/>
+						  </g>
+				
+						  <g id="grp3" opacity="0" transform="translate(52 28)">
+							<circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2"/>
+							<circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2"/>
+						  </g>
+				
+						  <g id="grp2" opacity="0" transform="translate(44 6)">
+							<circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2"/>
+							<circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2"/>
+						  </g>
+				
+						  <g id="grp5" opacity="0" transform="translate(14 50)">
+							<circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2"/>
+							<circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2"/>
+						  </g>
+				
+						  <g id="grp4" opacity="0" transform="translate(35 50)">
+							<circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2"/>
+							<circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2"/>
+						  </g>
+				
+						  <g id="grp1" opacity="0" transform="translate(24)">
+							<circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2"/>
+							<circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2"/>
+						  </g>
+						</g>
+					  </svg>
+					</label>
+				  </div>
+				  <h1 id="likeCount"></h1>
+
+			</div>
 
 			<div id="editorjs" class="pt-6 text-lg m-0 p-0 font-sans overflow-hidden"></div>
 			
 		</div>
 
-        <div class="flex flex-row items-center justify-center gap-8 mt-20 ">
+        <!-- <div class="flex flex-row items-center justify-center gap-8 mt-20 ">
             <button id="likeButton" onclick="toggleLike()" class="my-6 ml-4 bg-transparent text-pink-700 font-semibold hover:bg-pink-500 hover:text-white py-2 px-4 border border-pink-500 hover:border-transparent rounded">
                 <div id="likeButtonText" class="flex flex-row text-center justify-center items-center gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
@@ -96,11 +147,11 @@
               </button>
 
               <p id="likeCount"></p>
-        </div>
+        </div> -->
 
 
           		<!--Tags -->
-		<div class="text-base md:text-sm text-gray-500 px-4">
+		<div class="text-base md:text-sm text-gray-500 px-4 mt-5">
 			Genre: <a id="genre1" class="text-base md:text-sm text-cyan-500 no-underline hover:underline"></a> . <a id="genre2" class="text-base md:text-sm text-cyan-500 no-underline hover:underline"></a>
 		</div>
 
@@ -140,13 +191,13 @@
 
 		<!--/Next & Prev Links-->
 		<div class="grid grid-cols-3">
-			<button onclick="showCommentSection()" class=" col-start-2 mb-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+			<button onclick="toggleCommentSection()" class=" col-start-2 mb-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
 				Comments
 			  </button>
 		</div>
 
 
-        <div id="commentSection">
+        <!-- <div id="commentSection">
 			<div class="flex mx-auto items-center justify-center shadow-lg mb-4 max-w-full">
 				<form class="w-full max-w-full bg-white rounded-lg px-4 pt-2">
 				   <div class="flex flex-wrap -mx-3 mb-6">
@@ -167,11 +218,28 @@
 					  </div>
 				   </form>
 				</div>
-			 </div>
-			 <div class="antialiased mx-auto max-w-screen-full">
+			 </div> -->
+			 <div id="commentSection" class="antialiased mx-auto max-w-screen-full">
 				<h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
+
+				<div id="disqus_thread"></div>
+				<script>
+					let arr = window.location.pathname.split( '/' )
+					let chapterid = arr[arr.length - 1];
+					var disqus_config = function () {
+					this.page.url = `${window.location}`; 
+					this.page.identifier = `${chapterid}`;
+					};
+					(function() {
+					var d = document, s = d.createElement('script');
+					s.src = 'https://yume69.disqus.com/embed.js';
+					s.setAttribute('data-timestamp', +new Date());
+					(d.head || d.body).appendChild(s);
+					})();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 			  
-				<div id="commentsContainer" class="space-y-4 mb-5">
+				<!-- <div id="commentsContainer" class="space-y-4 mb-5">
 			  
 				  <div class="flex">
 					<div class="flex-shrink-0 mr-3">
@@ -201,9 +269,9 @@
 					  
 					  <!-- <h4 class="my-5 uppercase tracking-wide text-gray-400 font-bold text-xs">Replies</h4> -->
 			  
-					</div>
-				  </div>
-				</div>
+					<!-- </div> -->
+				  <!-- </div> -->
+				<!-- </div> -->
 			  </div>
 		</div>
 
