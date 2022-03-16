@@ -82,6 +82,10 @@ app.post("/likeSeries", async function(req, res) {
     res.json({success:true});
 });
 
+app.get("/ads.txt", function(req, res) {
+    res.sendFile(__dirname + "/public/text/ads.txt");
+});
+
 app.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
 });
