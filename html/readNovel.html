@@ -146,7 +146,7 @@
 		</div>
 
 
-        <div id="commentSection">
+        <!-- <div id="commentSection">
 			<div class="flex mx-auto items-center justify-center shadow-lg mb-4 max-w-full">
 				<form class="w-full max-w-full bg-white rounded-lg px-4 pt-2">
 				   <div class="flex flex-wrap -mx-3 mb-6">
@@ -167,11 +167,32 @@
 					  </div>
 				   </form>
 				</div>
-			 </div>
-			 <div class="antialiased mx-auto max-w-screen-full">
+			 </div> -->
+			 <div id="commentSection" class="antialiased mx-auto max-w-screen-full">
 				<h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
+
+				<div id="disqus_thread"></div>
+				<script>
+					let arr = window.location.pathname.split( '/' )
+					let chapterid = arr[arr.length - 1];
+					let seriesid = arr[arr.length - 2];
+					/**
+					*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+					*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+					var disqus_config = function () {
+					this.page.url = `${window.location.origin}/read/novel`;  // Replace PAGE_URL with your page's canonical URL variable
+					this.page.identifier = `${chapterid}`; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+					};
+					(function() { // DON'T EDIT BELOW THIS LINE
+					var d = document, s = d.createElement('script');
+					s.src = 'https://yume69.disqus.com/embed.js';
+					s.setAttribute('data-timestamp', +new Date());
+					(d.head || d.body).appendChild(s);
+					})();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 			  
-				<div id="commentsContainer" class="space-y-4 mb-5">
+				<!-- <div id="commentsContainer" class="space-y-4 mb-5">
 			  
 				  <div class="flex">
 					<div class="flex-shrink-0 mr-3">
@@ -201,9 +222,9 @@
 					  
 					  <!-- <h4 class="my-5 uppercase tracking-wide text-gray-400 font-bold text-xs">Replies</h4> -->
 			  
-					</div>
-				  </div>
-				</div>
+					<!-- </div> -->
+				  <!-- </div> -->
+				<!-- </div> -->
 			  </div>
 		</div>
 
