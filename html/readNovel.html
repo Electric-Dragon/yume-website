@@ -140,7 +140,7 @@
 
 		<!--/Next & Prev Links-->
 		<div class="grid grid-cols-3">
-			<button onclick="showCommentSection()" class=" col-start-2 mb-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+			<button onclick="toggleCommentSection()" class=" col-start-2 mb-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
 				Comments
 			  </button>
 		</div>
@@ -175,15 +175,11 @@
 				<script>
 					let arr = window.location.pathname.split( '/' )
 					let chapterid = arr[arr.length - 1];
-					let seriesid = arr[arr.length - 2];
-					/**
-					*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-					*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 					var disqus_config = function () {
-					this.page.url = `${window.location.origin}/read/novel`;  // Replace PAGE_URL with your page's canonical URL variable
-					this.page.identifier = `${chapterid}`; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+					this.page.url = `${window.location}`; 
+					this.page.identifier = `${chapterid}`;
 					};
-					(function() { // DON'T EDIT BELOW THIS LINE
+					(function() {
 					var d = document, s = d.createElement('script');
 					s.src = 'https://yume69.disqus.com/embed.js';
 					s.setAttribute('data-timestamp', +new Date());
