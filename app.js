@@ -77,6 +77,10 @@ app.get("/account", function(req, res) {
     res.sendFile(__dirname + "/html/account.html");
 });
 
+app.get("/library", function(req, res) {
+    res.sendFile(__dirname + "/html/library.html");
+});
+
 app.post("/followSeries", async function(req, res) {
     res.json(await yumeAPI.followSeries(req.body));
 });
