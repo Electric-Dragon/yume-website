@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase,user;
+let supabase,user,follows;
 var seriesid = window.location.pathname.split( '/' ).pop();
 let chapids = [];
 
@@ -22,12 +22,6 @@ $.ajax({
         supabase = createClient(result.link, result.anon_key);
   
         user = supabase.auth.user();
-
-        console.log(supabase.auth.session().access_token);
-  
-        if (!user) {
-          window.location = "/signin";
-        }
   
         const { data, error } = await supabase
           .from('series')
@@ -103,87 +97,45 @@ $.ajax({
             });
 
           }
+
+          const { data:series_follows, error_ } = await supabase
+            .from('series_follows')
+            .select('id')
+            .match({series: seriesid, user: user.id})
+          
+          if (error_) {
+            erroralert(error_.message);
+          } else {
+            follows = (series_follows.length > 0) ? true : false;
+            let text = follows ? 'Unfollow Series' : 'Follow Series';
+            $('#followButton').text(text);
+          }
   
         }
   
   }});
 
-async function newChap(chapcount) {
-  let { data, error } = await supabase.from('chapters').insert([{
-    seriesid:seriesid,
-    chapternum:chapcount+1,
-  }])
+window.followSeries = async function followSeries() {
 
-  if (error) {
-    erroralert(error.message);
+  if (!user) {
+    erroralert('You must be logged in to follow a series.');
   } else {
-    window.location = `/dashboard/series/${seriesid}/${data[0].id}/write`;
+    $.ajax({
+      type:"POST",
+      url:'/followSeries',
+      data:{id: seriesid,
+      access_token: supabase.auth.session().access_token,
+      follows: follows},        
+      success: function(data, status) {
+        if (data.error) {
+          erroralert(data.error);
+        } else {
+          let text = follows ? 'Unfollowed Successfully' : 'Followed Successfully';
+          successalert(text, function() {
+            window.location.reload();
+          });
+        }
+    }});
   }
-
-}
-
-window.deleteChap = async function deleteChap(x) {
-
-  console.debug(typeof supabase == 'undefined')
-
-  let chapid = chapids[x];
-
- const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: 'btn btn-success',
-    cancelButton: 'btn btn-danger'
-  },
-  buttonsStyling: true
-})
-
-swalWithBootstrapButtons.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonText: 'Yes, delete it!',
-  cancelButtonText: 'No, cancel!',
-  reverseButtons: true
-}).then((result) => {
-  if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-  } else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    swalWithBootstrapButtons.fire(
-      'Cancelled',
-      'Your imaginary file is safe :)',
-      'error'
-    )
-  }
-}).then(async (result) => {
-    if (result.isConfirmed) {
-
-      const { data, error } = await supabase.from('chapters').eq('id', chapid).delete();
-      
-      if (error) {
-        erroralert(error.message);
-      } else {
-        successalert(`Chapter deleted successfully.`);
-        window.location = `/dashboard/series/${seriesid}`;
-      }
-
-      // supabase.from('chapters').eq('id', chapid).delete().then(({data, error}) => {
-
-      //   if (error) {
-      //     erroralert(error.message);
-      //   } else {
-      //     successalert(`Chapter ${chapternum} - ${title} deleted successfully.`);
-      //     window.location = `/dashboard/series/${seriesid}`;
-      //   }
-
-      // })
-    }
-  })
 
 }

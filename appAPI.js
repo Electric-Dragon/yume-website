@@ -67,13 +67,45 @@ module.exports.createSeries = async function createSeries({id, genre1, genre2}) 
 
 }
 
-module.exports.likeSeries = async function likeSeries({id, access_token}) {
+module.exports.followSeries = async function followSeries({id, access_token, follows}) {
 
     const {user, data, error} = await supabase.auth.api.getUser(access_token);
     if (error) {
         return {error: error.message}
     } else {
-        console.log(user.id);
+        follows = (follows === 'true');
+        if (!follows) {
+            let nRes = await nAPI.followSeries({seriesid: id, userid: user.id});
+            if (nRes.error) {
+                return {error: 'An error occured'}
+            } else {
+                const { data, error } = await supabase
+                    .from('series_follows')
+                    .insert([
+                        { series: id, user: user.id }
+                    ])
+                if (error) {
+                    return {error: error.message}
+                } else {
+                    return {success: true}
+                }
+            }
+        } else {
+            let nRes = await nAPI.unfollowSeries({seriesid: id, userid: user.id});
+            if (nRes.error) {
+                return {error: 'An error occured'}
+            } else {
+                const { data, error } = await supabase
+                    .from('series_follows')
+                    .delete()
+                    .match({ series: id, user: user.id })
+                if (error) {
+                    return {error: error.message}
+                } else {
+                    return {success: true}
+                }
+            }
+        }
     }
 
 }

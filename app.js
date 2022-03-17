@@ -77,9 +77,8 @@ app.get("/account", function(req, res) {
     res.sendFile(__dirname + "/html/account.html");
 });
 
-app.post("/likeSeries", async function(req, res) {
-    await yumeAPI.likeChapter(req.body);
-    res.json({success:true});
+app.post("/followSeries", async function(req, res) {
+    res.json(await yumeAPI.followSeries(req.body));
 });
 
 app.get("/ads.txt", function(req, res) {
