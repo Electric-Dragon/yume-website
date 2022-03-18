@@ -13,6 +13,8 @@ let statusText = {
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+$('#btnMakeAdaptation').hide();
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -22,6 +24,19 @@ $.ajax({
         supabase = createClient(result.link, result.anon_key);
   
         user = supabase.auth.user();
+
+        if (user) {
+          const { data, error } = await supabase
+            .from('private_user')
+            .select('creator')
+            .eq('id', user.id)
+            .single()
+          
+          if (data.creator) {
+            $('#btnMakeAdaptation').show();
+            $('#btnMakeAdaptation').click(createAdaptation);
+          }
+        }
   
         const { data, error } = await supabase
           .from('series')
@@ -137,5 +152,29 @@ window.followSeries = async function followSeries() {
         }
     }});
   }
+
+}
+
+async function createAdaptation() {
+
+  Swal.fire({
+    title: 'Are you sure?',
+    icon: 'info',
+    html:
+      'A request will be sent to the original creator. <br>' +
+      'They can accept or decline the request. <br>' +
+      'Check your dashboard regularly for updates',
+    showCancelButton: true,
+    confirmButtonText: 'Yes',
+    cancelButtonText:'Cancel',
+  }).then( async (result) => {
+
+    if (result.isConfirmed) {
+        
+      alert('lol i still hv to do it')
+
+    }
+
+  })
 
 }

@@ -311,8 +311,8 @@ window.connectReddit = async function connectReddit () {
 
   const { value: handle } = await swalWithBootstrapButtons.fire({
     input: 'text',
-    inputLabel: 'Reddit username',
-    inputPlaceholder: 'u/username',
+    inputLabel: 'Discord username',
+    inputPlaceholder: 'username#1234',
     inputValue:redditAcc
   }).then(async (result) => {
     if (result.isConfirmed) {
@@ -321,8 +321,6 @@ window.connectReddit = async function connectReddit () {
 
       if (result.value === '') {
         result.value = null        
-      } else if (result.value.startsWith('u/')) {
-        result.value = result.value.slice(2);
       }
 
       const { data, error } = await supabase
@@ -334,7 +332,7 @@ window.connectReddit = async function connectReddit () {
         erroralert(error.message);
       } else {
 
-        let text = result.value ? `Your Reddit account has been connected.` : `Your Reddit account has been disconnected.`;
+        let text = result.value ? `Your Discord account has been connected.` : `Your Discord account has been disconnected.`;
 
         swalWithBootstrapButtons.fire(
           'Success!',
