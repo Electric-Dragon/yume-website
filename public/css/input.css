@@ -112,16 +112,6 @@ $arrow-color: #fff;
     100% {opacity: 0}
   }
 
-
-a {
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 10px;
-  display: inline-block;
-  text-decoration: none;
-  color: #008a68;
-}
-
 svg {
   cursor: pointer;
   overflow: visible;
