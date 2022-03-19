@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase,user,follows;
+let supabase,user,follows,creatorInfo;
 var seriesid = window.location.pathname.split( '/' ).pop();
 let chapids = [];
 
@@ -34,13 +34,12 @@ $.ajax({
           
           if (data.creator) {
             $('#btnMakeAdaptation').show();
-            $('#btnMakeAdaptation').click(createAdaptation);
           }
         }
   
         const { data, error } = await supabase
           .from('series')
-          .select('title,cover,adaptation,novel,status,summary,creator(username)')
+          .select('title,cover,adaptation,novel,status,summary,creator(id,username)')
           .eq('id', seriesid)
           .single()
   
@@ -64,6 +63,27 @@ $.ajax({
 
           let typeText = novel ? 'Web Novel' : 'Web Comic';
           $('#type').text(typeText);
+
+          creatorInfo = creator;
+
+          const { data:hasRequest, error__ } = await supabase
+              .from('adaptation_notifications')
+              .select('status')
+              .eq('from', user.id)
+              .eq('to', creatorInfo.id)
+              .eq('series', seriesid)
+
+            if (hasRequest.length > 0) {
+              if (hasRequest[0].status === 'p') {
+                $('#btnMakeAdaptation').text('Request Pending');
+              } else if (hasRequest[0].status === 'a') {
+                $('#btnMakeAdaptation').text('Request Accepted');
+              } else if (hasRequest[0].status === 'd') {
+                $('#btnMakeAdaptation').text('Request Declined');
+              }
+            } else {
+              $('#btnMakeAdaptation').click(createAdaptation);
+            }
 
           const {data:chapters, error} = await supabase
             .from('chapters')
@@ -171,7 +191,19 @@ async function createAdaptation() {
 
     if (result.isConfirmed) {
         
-      alert('lol i still hv to do it')
+      const { data, error } = await supabase
+        .from('adaptation_notifications')
+        .insert([
+          { from: user.id, to: creatorInfo.id, series: seriesid, status: 'p'}
+        ])
+
+      if (error) {
+        erroralert(error.message);
+      } else {
+        successalert('Request Sent', function() {
+          window.location.reload();
+        });
+      }
 
     }
 
