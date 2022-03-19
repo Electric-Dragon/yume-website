@@ -120,22 +120,21 @@ $.ajax({
 
       const {data: notifications, error: error_} = await supabase
         .from('adaptation_notifications')
-        .select('from(id,username),to(id,username),series(id,title,novel),status,when')
+        .select('id,from(id,username),to(id,username),series(id,title,novel),status,when')
         .or(`from.eq.${user.id},to.eq.${user.id}`)
+        .order('when', { ascending: false })
 
       if (error_) {
         erroralert(error_.message);
       } else {
 
         notifications.forEach(val => {
-          let {from, to, series, status, when} = val;
-
-          console.log(val);
+          let {id, from, to, series, status, when} = val;
 
           let type = series.novel ? 'Web Comic' : 'Web Novel';
 
           let date = new Date(when);
-          if (to.id === user.id) {
+          if (to.id === user.id && status === 'p') {
 
             let element = `
               <div class="w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0">
@@ -153,8 +152,8 @@ $.ajax({
                         </div>
                         <div class="flex mr-6 pr-4 items-center justify-center mt-5 mb-3 gap-2 flex-row ">
                           <div>
-                            <button type="button" class=" px-2 py-1 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">accept</button>
-                            <button type="button" class="md:ml-4 px-2 py-1 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase     rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">reject</button>
+                            <button type="button" onclick="acceptRequest(${id})" class=" px-2 py-1 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">accept</button>
+                            <button type="button" onclick="rejectRequest(${id})" class="md:ml-4 px-2 py-1 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase     rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">reject</button>
                           </div>
                         </div>
                         <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">${dayjs(date).fromNow()}</p>
@@ -227,3 +226,69 @@ $('#btnCreateNewSeries').on('click', async function(){
   }
   
 });
+
+window.acceptRequest = async function acceptRequest(id) {
+
+  Swal.fire({
+    title: 'Are you sure?',
+    icon: 'info',
+    html:
+      'This cannot be undone',
+    showCancelButton: true,
+    confirmButtonText: 'Yes',
+    cancelButtonText:'Cancel',
+  }).then( async (result) => {
+
+    if (result.isConfirmed) {
+        
+      const { data, error } = await supabase
+        .from('adaptation_notifications')
+        .update({ status: 'a'})
+        .match({ id: id })
+
+      if (error) {
+        erroralert(error.message);
+      } else {
+        successalert('Adaptation request accepted', function() {
+          window.location.reload();
+        });
+      }
+
+    }
+
+  })
+
+}
+
+window.rejectRequest = async function rejectRequest(id) {
+
+  Swal.fire({
+    title: 'Are you sure?',
+    icon: 'info',
+    html:
+      'This cannot be undone',
+    showCancelButton: true,
+    confirmButtonText: 'Yes',
+    cancelButtonText:'Cancel',
+  }).then( async (result) => {
+
+    if (result.isConfirmed) {
+        
+      const { data, error } = await supabase
+        .from('adaptation_notifications')
+        .update({ status: 'r'})
+        .match({ id: id })
+
+      if (error) {
+        erroralert(error.message);
+      } else {
+        successalert('Adaptation request rejected', function() {
+          window.location.reload();
+        });
+      }
+
+    }
+
+  })
+
+}
