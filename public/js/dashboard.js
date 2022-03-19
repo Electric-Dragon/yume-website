@@ -164,6 +164,10 @@ $.ajax({
             
           } else {
 
+            let route = series.novel ? 'comic' : 'novel';
+
+            let clickHere = (status === 'a') ? `<a href="/dashboard/create/${route}?adaptating=` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
+
             let element = `
               <div class="w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0">
                     <div tabindex="0" aria-label="group icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex flex-shrink-0 items-center justify-center">
@@ -177,6 +181,9 @@ $.ajax({
                     <div class="pl-3 w-full">
                         <div class="flex items-center justify-between w-full">
                         <p tabindex="0" class="focus:outline-none text-sm leading-none">Your request to create a ${type} adaptation of <a href="/series/${series.id}"><span class="text-indigo-700">${series.title}</span></a> ${adaptationText[status]}</p>
+                        </div>
+                        <div class="flex items-center justify-between w-full">
+                        ${clickHere}
                         </div>
                         <div class="flex mr-6 pr-4 items-center justify-center mt-5 mb-3 gap-2 flex-row ">
                         <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">${dayjs(date).fromNow()}</p>
