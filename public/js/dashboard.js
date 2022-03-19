@@ -166,7 +166,7 @@ $.ajax({
 
             let route = series.novel ? 'comic' : 'novel';
 
-            let clickHere = (status === 'a') ? `<a href="/dashboard/create/${route}?adaptating=` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
+            let clickHere = (status === 'a') ? `<a onclick="createAdaptation('${series.id}')"` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
 
             let element = `
               <div class="w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0">
@@ -298,4 +298,26 @@ window.rejectRequest = async function rejectRequest(id) {
 
   })
 
+}
+
+window.createAdaptation = async function createAdaptation(id) {
+
+  Swal.fire({
+    title: 'Are you sure?',
+    icon: 'info',
+    html:
+      'Are you sure you want to create an adaptation of this series?',
+    showCancelButton: true,
+    confirmButtonText: 'Yes',
+    cancelButtonText:'Cancel',
+  }).then( async (result) => {
+
+    if (result.isConfirmed) {
+        
+      alert('lol i have to do this')
+
+    }
+
+  })
+  
 }
