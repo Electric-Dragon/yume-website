@@ -1,7 +1,10 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
+$('#btnCloseNotifications').trigger('click');
+
 let supabase,user;
+
 let statusText = {
   'd': `<td class="px-4 py-3 text-xs">
           <span
