@@ -151,12 +151,12 @@ $.ajax({
                     </div>
                     <div class="pl-3 w-full">
                         <div class="flex items-center justify-between w-full h-sm">
-                        <p tabindex="0" class="focus:outline-none text-sm leading-none"><a href="/creator/${from.username}"><span class="text-indigo-700">${from.username}</span></a> requested to create a ${type} adaptation of <br> <a href="/series/${series.id}"><span class="text-indigo-700">${series.title}</span></a></p>
+                        <p tabindex="0" class="focus:outline-none text-sm "><a href="/creator/${from.username}"><span class="text-indigo-700">${from.username}</span></a> requested to create a ${type} adaptation of <br> <a href="/series/${series.id}"><span class="text-cyan-500 font-bold hover:underline">${series.title}</span></a></p>
                         </div>
-                        <div class="flex mr-6 pr-4 items-center justify-center mt-5 mb-3 gap-2 flex-row ">
+                        <div class="flex mr-6 pr-4 items-center justify-center mb-3 gap-2 flex-row ">
                           <div>
-                            <button type="button" onclick="acceptRequest(${id})" class=" px-2 py-1 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">accept</button>
-                            <button type="button" onclick="rejectRequest(${id})" class="md:ml-4 px-2 py-1 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase     rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">reject</button>
+                            <button type="button" onclick="acceptRequest(${id})" class=" px-3 py-1 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">accept</button>
+                            <button type="button" onclick="rejectRequest(${id})" class="md:ml-4 px-3 py-1 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase     rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">reject</button>
                           </div>
                         </div>
                         <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">${dayjs(date).fromNow()}</p>
