@@ -183,7 +183,7 @@ $.ajax({
                     </div>
                     <div class="pl-3 w-full">
                         <div class="flex items-center justify-between w-full">
-                        <p tabindex="0" class="focus:outline-none text-sm leading-none">Your request to create a ${type} adaptation of <br>   
+                        <p tabindex="0" class="focus:outline-none text-sm ">Your request to create a ${type} adaptation of <br>   
                         <a href="/series/${series.id}"><span class="text-indigo-700">${series.title}</span></a> ${adaptationText[status]}</p>
                         </div>
                         <div class="flex items-center justify-between w-full">
