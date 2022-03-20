@@ -314,7 +314,20 @@ window.createAdaptation = async function createAdaptation(id) {
 
     if (result.isConfirmed) {
         
-      alert('lol i have to do this')
+      $.ajax({
+        type:"POST",
+        url:'/createAdaptation',
+        data:{id: id,
+        access_token: supabase.auth.session().access_token},        
+        success: function(data, status) {
+          if (data.error) {
+            erroralert(data.error);
+          } else {
+            successalert('Adaptation created successfully', function() {
+              window.location = `/dashboard/series/${data.success}`;
+            });
+          }
+      }});
 
     }
 
