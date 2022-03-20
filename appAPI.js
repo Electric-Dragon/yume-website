@@ -55,11 +55,7 @@ module.exports.createSeries = async function createSeries({id, genre1, genre2}) 
                                     return {error: error.message}
                                 } else {
 
-                                    // console.log(data.length);
-                                    // console.log(data[0]);
-
                                     let result = await nAPI.createSeriesNode({id, genre1, genre2},data[0]);
-                                    // result = {success: true};
                                     return result
 
                                 }
@@ -106,6 +102,70 @@ module.exports.followSeries = async function followSeries({id, access_token, fol
                 }
             }
         }
+    }
+
+}
+
+module.exports.createAdaptation = async function createAdaptation({id, access_token}) {
+
+    const {user, data, error} = await supabase.auth.api.getUser(access_token);
+    if (error) {
+        return {error: error.message}
+    } else {
+
+        const { data, error } = await supabase
+            .from('adaptation_notifications')
+            .select('id,series(id,title,summary,cover,novel,mature,genre1,genre2)')
+            .eq('series', id)
+            .eq('from', user.id)
+            .eq('status','a')
+
+        if (error) {
+            return {error: error.message}
+        } else {
+
+            if (data.length === 0) {
+                return {error: 'An error occured'}
+            } else {
+
+                let {id, series} = data[0];
+                let {id:ogId, title, summary, cover, novel, mature, genre1, genre2} = series;
+
+                let isNovel = novel ? false : true;
+
+                const { data:seriesInfo, error } = await supabase
+                .from('series')
+                .insert([
+                    { title: title, summary: summary, cover: cover, novel: isNovel, mature: mature, genre1: genre1, genre2: genre2, creator: user.id, adaptation: ogId }
+                ])
+
+                if (error) {
+                    return {error: error.message}
+                } else {
+
+                    let response = await nAPI.createSeriesNode({id:seriesInfo[0].id, genre1: genre1, genre2: genre2},{title: title, summary: summary, cover: cover, novel: isNovel,adaptation: ogId, mature: mature, creator: user.id});
+
+                    if (response.error) {
+                        return response;
+                    } else {
+                        const { data, error } = await supabase
+                            .from('adaptation_notifications')
+                            .delete()
+                            .match({ id: id })
+
+                        if (error) {
+                            return {error: error.message}
+                        } else {
+                            return {success: seriesInfo[0].id}
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
     }
 
 }

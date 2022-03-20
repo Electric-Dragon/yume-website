@@ -85,6 +85,10 @@ app.post("/followSeries", async function(req, res) {
     res.json(await yumeAPI.followSeries(req.body));
 });
 
+app.post("/createAdaptation", async function(req, res) {
+    res.json(await yumeAPI.createAdaptation(req.body));
+});
+
 app.get("/ads.txt", function(req, res) {
     res.sendFile(__dirname + "/public/text/ads.txt");
 });

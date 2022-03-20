@@ -47,17 +47,22 @@ module.exports.createSeriesNode = async function createSeriesNode({id,genre1,gen
     const session = driver.session();
     let response;
 
+    let adaptationQuery = (adaptation) ? `WITH s
+                                          MATCH (og:Series {id: '${adaptation}'})
+                                          MERGE (s)-[:ADAPTS]->(og)` : '';
+
     try {
 
         const query = `
             MATCH (u:User {uid: '${creator}'})
             MERGE (s:Series {id: '${id}'})
-            ON CREATE SET s.title='${title}',s.cover='${cover}',s.novel=${novel},s.status='${status}',s.mature=${mature}
+            ON CREATE SET s.title='${title}'
             MERGE (g1:Genre {name: '${genre1}'})
             MERGE (g2:Genre {name: '${genre2}'})
             MERGE (s)-[:GENRE]->(g1)
             MERGE (s)-[:GENRE]->(g2)
-            MERGE (u)-[r:CREATED]->(s)`;
+            MERGE (u)-[:CREATED]->(s)
+            ${adaptationQuery}`;
 
         await session.writeTransaction(tx => tx.run(query));
 
@@ -66,7 +71,7 @@ module.exports.createSeriesNode = async function createSeriesNode({id,genre1,gen
     } catch (error) {
 
         console.log(error);
-        response = {error: error};  
+        response = {error: 'An error occurred'};  
            
     } finally {
     
