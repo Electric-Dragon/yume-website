@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase,user;
+let supabase,user, isNovel;
 var seriesid = window.location.pathname.split( '/' ).pop();
 let chapids = [];
 
@@ -20,7 +20,6 @@ $.ajax({
         result = JSON.parse(result);
   
         supabase = createClient(result.link, result.anon_key);
-        // window.supabase = supabase;
   
         user = supabase.auth.user();
   
@@ -66,6 +65,7 @@ $.ajax({
 
           let typeText = novel ? 'Web Novel' : 'Web Comic';
           $('#type').text(typeText);
+          isNovel = novel;
 
           $('#btnCreateNewChapter').on('click', function() {
             newChap(chapcount);
@@ -188,7 +188,12 @@ async function newChap(chapcount) {
   if (error) {
     erroralert(error.message);
   } else {
-    window.location = `/dashboard/series/${seriesid}/${data[0].id}/write`;
+
+    if (isNovel) {
+      window.location = `/dashboard/series/${seriesid}/${data[0].id}/write`;
+    } else {
+      window.location = `/dashboard/series/${seriesid}/${data[0].id}/upload`;
+    }
   }
 
 }
