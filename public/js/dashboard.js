@@ -167,9 +167,13 @@ $.ajax({
             
           } else {
 
-            let route = series.novel ? 'comic' : 'novel';
-
-            let clickHere = (status === 'a') ? `<a onclick="createAdaptation('${series.id}')"` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
+            // let clickHere = (status === 'a') ? `<a onclick="createAdaptation('${series.id}')"` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
+            let clickHere = (status === 'a') ? `
+                                            <div class="flex items-center justify-center mt-5 mb-3 gap-2 flex-row ">
+                                              <div>
+                                                <button type="button" onclick="createAdaptation('${series.id}')" class=" px-2 py-1 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded-md  hover:text-white hover:bg-green-500  focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Start working</button>
+                                              </div>
+                                            </div>` : '';
 
             let element = `
               <div class="max-w-lg p-3 mt-4 bg-white rounded shadow flex flex-shrink-0 font-sans ">
