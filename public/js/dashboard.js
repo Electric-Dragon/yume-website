@@ -24,8 +24,8 @@ let statusText = {
 }
 
 let adaptationText = {
-  'a': 'has been accepted',
-  'r': 'has been rejected',
+  'a': 'has been <span class="text-green-700 uppercase">accepted</span>',
+  'r': 'has been <span class="text-red-500 uppercase">rejected</span>',
   'p': 'is pending'
 }
 
@@ -147,8 +147,8 @@ $.ajax({
                         </svg>
                     </div>
                     <div class="pl-3 w-full">
-                        <div class="flex items-center justify-between w-full">
-                        <p tabindex="0" class="focus:outline-none text-sm leading-none"><a href="/creator/${from.username}"><span class="text-indigo-700">${from.username}</span></a> requested to create a ${type} adaptation of <a href="/series/${series.id}"><span class="text-indigo-700">${series.title}</span></a></p>
+                        <div class="flex items-center justify-between w-full h-sm">
+                        <p tabindex="0" class="focus:outline-none text-sm leading-none"><a href="/creator/${from.username}"><span class="text-indigo-700">${from.username}</span></a> requested to create a ${type} adaptation of <br> <a href="/series/${series.id}"><span class="text-indigo-700">${series.title}</span></a></p>
                         </div>
                         <div class="flex mr-6 pr-4 items-center justify-center mt-5 mb-3 gap-2 flex-row ">
                           <div>
@@ -169,7 +169,7 @@ $.ajax({
             let clickHere = (status === 'a') ? `<a onclick="createAdaptation('${series.id}')"` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
 
             let element = `
-              <div class="w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0">
+              <div class="max-w-lg p-3 mt-4 bg-white rounded shadow flex flex-shrink-0 font-sans ">
                     <div tabindex="0" aria-label="group icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex flex-shrink-0 items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -180,12 +180,13 @@ $.ajax({
                     </div>
                     <div class="pl-3 w-full">
                         <div class="flex items-center justify-between w-full">
-                        <p tabindex="0" class="focus:outline-none text-sm leading-none">Your request to create a ${type} adaptation of <a href="/series/${series.id}"><span class="text-indigo-700">${series.title}</span></a> ${adaptationText[status]}</p>
+                        <p tabindex="0" class="focus:outline-none text-sm leading-none">Your request to create a ${type} adaptation of <br>   
+                        <a href="/series/${series.id}"><span class="text-indigo-700">${series.title}</span></a> ${adaptationText[status]}</p>
                         </div>
                         <div class="flex items-center justify-between w-full">
                         ${clickHere}
                         </div>
-                        <div class="flex mr-6 pr-4 items-center justify-center mt-5 mb-3 gap-2 flex-row ">
+                        <div class="flex mr-6 pr-4 items-center justify-center mt-2 mb-3 gap-2 flex-row ">
                         <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">${dayjs(date).fromNow()}</p>
                     </div>
                 </div>`
