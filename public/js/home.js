@@ -28,13 +28,13 @@ $.ajax({
   
             let {id, title, cover} = val;
   
-            let element = `<div class="group relative">
+            let element = `<div class="group relative dark:text-white">
                                 <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
                                     <img class="aspect-square object-cover h-full" src="${cover}" class=" object-center object-cover">
                                 </div>
                                 <div class="mt-4 flex justify-between">
                                     <div>
-                                        <h3 class="text-sm text-gray-700 font-bold">
+                                        <h3 class="text-sm text-gray-700 font-bold dark:text-gray-100">
                                         <a href="/series/${id}">
                                             <span aria-hidden="true" class="absolute inset-0"></span>
                                             ${title}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,11 @@
     <link href="/css/output.css" rel="stylesheet">
     <title>Welcome to Yume</title>
 </head>
-<body>
+<body class=" dark:bg-gray-600">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
-<nav class="bg-white  mt-3">
+<nav class="bg-white dark:bg-transparent dark:shadow-lg  mt-3">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -34,15 +34,15 @@
       </div>
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex-shrink-0">
-          <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl">YUME.</p></a>
+          <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl text-cyan-400">YUME.</p></a>
       
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <a href="#" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
-            <a href="/dashboard/home" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-            <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Library</a>
-            <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+            <a href="#" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+            <a href="/dashboard/home" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+            <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Library</a>
+            <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
           </div>
         </div>
       </div>
@@ -129,11 +129,11 @@
     })
   })</script>
 </nav>
-    <div class="bg-white w-screen">
-        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 class="text-2xl font-extrabold tracking-tight text-gray-900"> Recently published</h2>
+    <div class="bg-white dark:bg-transparent w-screen">
+        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 dark:text-white">
+          <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recently published:</h2>
       
-          <div id="recentlyPub" class="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
+          <div id="recentlyPub" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
             <!-- <div class="group relative">
               <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
                 <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
