@@ -3,6 +3,9 @@ const express = require("express");
 const path = require('path');
 const yumeAPI = require("./appAPI");
 
+const _supabase = require("@supabase/supabase-js");
+const supabase = _supabase.createClient(process.env.API_URL, process.env.SERVICE_ROLE)
+
 const app = express();
 const port = 7001;
 
@@ -66,7 +69,9 @@ app.get("/dashboard/series/:seriesid/:chapterid/write", function(req, res) {
     res.sendFile(__dirname + "/html/write.html");
 });
 
-app.get("/read/novel/:seriesid/:chapterid", function(req, res) {
+app.get("/read/novel/:seriesid/:chapterid", async function(req, res) {
+    const {data, error} = await supabase.rpc('incrementChapterReads', { row_id: req.params.chapterid })
+    console.log(error);
     res.sendFile(__dirname + "/html/readNovel.html");
 });
 app.get("/about", function(req, res) {
