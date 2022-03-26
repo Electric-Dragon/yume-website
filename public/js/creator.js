@@ -41,12 +41,19 @@ $.ajax({
             $('#banner').attr('src', banner)
             $('#description').text(description)
 
-            // Vibrant.from(pfp).getPallete().then(function(pallete) {
+            $('#userPfp').on('load', async function() {
+                let hexcode = await getProminentColour(pfp);
+                $('#userPfp').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
+                // $('#bigBox').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
+                console.log(hexcode);
+            });
 
-            //     console.log(pallete);
-
-            // });
-
+            $('#banner').on('load', async function() {
+                let hexcode = await getProminentColour(banner);
+                // $('#userPfp').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
+                $('#bigBox').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
+                console.log(hexcode);
+            });
 
             if (instagram) {
                 $('#instagram').show();
@@ -71,6 +78,7 @@ $.ajax({
                 .order('updatedat', { ascending: false })
                 .eq('creator', id)
                 .neq('status', 'd')
+                .limit(3)
 
             if (error_) {
                 erroralert(error_.message);
