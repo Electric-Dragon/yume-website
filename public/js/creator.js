@@ -1,6 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
-// import * as Vibrant from "/js/vibrant.min.js";
 
 let username = window.location.pathname.split( '/' ).pop()
 $('#title').text(`${username}'s Profile`)
@@ -13,6 +12,7 @@ var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 $('#instagram').hide();
 $('#discord').hide();
 $('#youtube').hide();
+$('#workedWith').hide();
 
 $.ajax({
     url: "/keys",
@@ -45,14 +45,12 @@ $.ajax({
                 let hexcode = await getProminentColour(pfp);
                 $('#userPfp').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
                 // $('#bigBox').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
-                console.log(hexcode);
             });
 
             $('#banner').on('load', async function() {
                 let hexcode = await getProminentColour(banner);
                 // $('#userPfp').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
                 $('#bigBox').css('box-shadow', ` 0 20px 40px -20px ${hexcode}`);
-                console.log(hexcode);
             });
 
             if (instagram) {
@@ -133,7 +131,50 @@ $.ajax({
 
                 })
 
+            }
 
+            const {data:workedWith, error:error_2} = await supabase
+                .from('series')
+                .select('adaptation(creator(username,pfp))')
+                .eq('creator', id)
+                .neq('status', 'd')
+
+            
+            if (error_2) {
+                erroralert(error_2.message);
+            } else {
+                workedWith.forEach(val=> {
+
+                    let {adaptation} = val
+
+                    if (adaptation) {
+
+                        $('#workedWith').show();
+
+                        let {username, pfp} = adaptation.creator;
+
+                        let element = `
+                        <div class="group relative">
+                            <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                                <img class="aspect-square object-cover" src="${pfp}" class=" object-center object-cover">
+                            </div>
+                            <div class="mt-4 flex justify-between">
+                                <div>
+                                    <h3 class="text-sm text-gray-700">
+                                    <a href="/user/${username}">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        ${username}
+                                    </a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        `
+
+                        $('#workedWithContainer').append(element);
+
+                    }
+                })
             }
 
         }

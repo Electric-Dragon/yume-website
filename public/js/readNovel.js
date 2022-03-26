@@ -104,6 +104,7 @@ $.ajax({
             $('#creatorPfp').attr('src',pfp);
             $('#creatorUsername').text(username);
             $('#creatorDescription').text(description);
+            $('#viewProfile').attr('href',`/user/${username}`)
 
             const {data:likedChap, error:error_} = await supabase
                 .from('chapter_likes')
