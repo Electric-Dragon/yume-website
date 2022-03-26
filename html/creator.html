@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" class="">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
-    <link href="/css/output.css" rel="stylesheet">
-    <title id="title"></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link href="/css/output.css" rel="stylesheet">
+  <title id="title"></title>
 </head>
-<body class="bg-gray-100">
-    <!-- component -->
-<nav class="bg-transparent shadow-lg  mt-3">
+
+<body class="">
+  <!-- component -->
+  <nav class="bg-transparent shadow-lg  mt-3">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <button id="togglemebutton" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu"
-            aria-expanded="false">
+          <button id="togglemebutton"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out"
+            aria-label="Main menu" aria-expanded="false">
             <!-- Icon when menu is closed. -->
             <!-- Menu open: "hidden", Menu closed: "block" -->
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,37 +37,40 @@
         </div>
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex-shrink-0">
-            <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl dark:text-cyan-400">YUME.</p></a>
-        
+            <a href="/">
+              <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl dark:text-cyan-400">YUME.</p>
+            </a>
+
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex">
-              <a href="/" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
-              <a href="/dashboard/home" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-              <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Library</a>
-              <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+              <a href="/"
+                class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+              <a href="/dashboard/home"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+              <a href="/library"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Library</a>
+              <a href="#"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
             </div>
           </div>
         </div>
         <div class="relative mx-auto text-gray-600 md:block hidden ">
-                     
-                  <input
-                      class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none"
-                      type="search" name="search" placeholder="Search">
-                  <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
-                      <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                           version="1.1" id="Capa_1" x="0px" y="0px"
-                           viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                           xml:space="preserve"
-                           width="512px" height="512px">
-                  <path
-                      d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
-                </svg>
-                  </button>
-              </div>
+
+          <input class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none" type="search"
+            name="search" placeholder="Search">
+          <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
+            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1"
+              x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+              xml:space="preserve" width="512px" height="512px">
+              <path
+                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+            </svg>
+          </button>
+        </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-  
-  
+
+
           <!-- Profile dropdown -->
           <div class="ml-3 relative">
             <!-- <div>
@@ -80,18 +88,25 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-            <div id="resultprofile" class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-              <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                <a href="/account" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
-                <a href="/dashboard/home" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Dashboard</a>
-                <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
+            <div id="resultprofile"
+              class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+              <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical"
+                aria-labelledby="user-menu">
+                <a href="/account"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Your Profile</a>
+                <a href="/dashboard/home"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Dashboard</a>
+                <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Sign out</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
+
     <!--
       Mobile menu, toggle classes based on menu state.
   
@@ -99,209 +114,340 @@
     -->
     <div id="resultnav" class="hidden sm:hidden">
       <div class="px-2 pt-2 pb-3">
-        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+        <a href="#"
+          class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+        <a href="#"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
+        <a href="#"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
+        <a href="#"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
       </div>
     </div>
-    <script>document.getElementById('togglemebutton').onclick = function() {
-      document.getElementById("resultnav").classList.toggle("hidden");
-    }
-    
-    //document.getElementById('togglemebutton').onclick = function () {
-    //  document.getElementById("toggleme").classList.toggle("hidden");
-    //}
-    
-    
-    const toggleprofile = document.getElementById("toggleprofile");
-    const resultprofile = document.getElementById("resultprofile");
-    [...document.querySelectorAll('body')].forEach(el => {
-      el.addEventListener('click', event => {
-        if (event.target.parentElement.id !== "toggleprofile") {
-          console.clear();
-          console.log(event.target.parentElement.id)
-          resultprofile.classList.add("hidden")
-        }else{
-        resultprofile.classList.toggle("hidden")}
-      })
-    })</script>
+    <script>document.getElementById('togglemebutton').onclick = function () {
+        document.getElementById("resultnav").classList.toggle("hidden");
+      }
+
+      //document.getElementById('togglemebutton').onclick = function () {
+      //  document.getElementById("toggleme").classList.toggle("hidden");
+      //}
+
+
+      const toggleprofile = document.getElementById("toggleprofile");
+      const resultprofile = document.getElementById("resultprofile");
+      [...document.querySelectorAll('body')].forEach(el => {
+        el.addEventListener('click', event => {
+          if (event.target.parentElement.id !== "toggleprofile") {
+            console.clear();
+            console.log(event.target.parentElement.id)
+            resultprofile.classList.add("hidden")
+          } else {
+            resultprofile.classList.toggle("hidden")
+          }
+        })
+      })</script>
   </nav>
 
-<section>
-  <main class="h-full w-full overflow-y-auto">
-      
-        <div class=" dark:bg-gray-800">
-            <div class="container mx-auto  dark:bg-gray-800 rounded">
-                <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 dark:bg-gray-800">
-                    <!-- <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center ">
-                        <h1 tabindex="0" role="heading" aria-label="profile information" class="focus:outline-none text-3xl font-bold text-gray-800" id="username"></h1> 
-                    </div> -->
-                </div>
-                <div class="mx-auto">
-                  <div class="w-full m-3 mx-auto xl:mx-0">
+  <section>
+    <main class="h-full w-full overflow-y-auto">
+
+      <div class=" dark:bg-gray-800">
+        <div class="container mx-auto  dark:bg-gray-800 rounded">
+          <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 dark:bg-gray-800">
+            <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center ">
+              <h1 tabindex="0" role="heading" aria-label="profile information"
+                class="focus:outline-none text-3xl font-bold text-gray-800" id="">Creator's Profile</h1>
+            </div>
+          </div>
+          <div class="mx-auto">
+            <div class="w-full m-3 mx-auto xl:mx-0">
+              <div class="card w-full  bg-white text-gray-50   transition-shadow shadow-md shadow-blue-400 ">
+                <div class="w-full card__media"><img id="banner" class="h-48 w-full object-cover"></div>
+                <div class="flex items-center p-4">
+                  <div class="relative flex flex-col items-center w-full">
                     <div
-                    class="card w-full  bg-gray-100 text-gray-50   transition-shadow shadow-xl shadow-blue-500 ">
-                    <div class="w-full card__media"><img id="banner" class="h-48 w-full object-cover"></div>
-                      <div class="flex items-center p-4">
-                        <div class="relative flex flex-col items-center w-full">
-                          <div
-                            class="h-24 w-24 md rounded-full relative avatar  items-end justify-end text-purple-400 min-w-max  -top-16 flex bg-purple-200  row-start-1 row-end-3 text-purple-650 ring-1 ring-white">
-                            <img class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" id="userPfp" alt="">
-                            <div class="absolute"></div>
-                          </div>
-                          <div class="flex flex-col space-y-1 justify-center items-center -mt-12 w-full">
-                            <span class="text-md whitespace-nowrap text-black font-semibold" id="username"></span>
-                            <!-- <span class="text-md whitespace-nowrap text-cyan-500">Elite(this is a rank system will explain  later)</span> -->
-                            <p class="text-sm text-gray-700" id="description">
-                            </p>
-                            <div class="py-2 flex space-x-2">
-                              <button id="" class="bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded">
-                                Request
-                              </button>
-                              <button id="" class="bg-transparent w-full hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-600 hover:border-transparent rounded">
-                                Donate
-                              </button>
-                            </div>
-                          
-                            <div class="flex items-center justify-center space-x-3 pt-6">
-                              <a target="_blank" rel="noopener" id="instagram" class="bg-blue-500 px-2 text-sm py-1 font-semibold text-white inline-flex items-center space-x-2 rounded">
-                                  <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                  <span>Instagram</span>
-                              </a>
-                              <a target="_blank" rel="noopener" id="discord" class="bg-blue-500 px-2 text-sm py-1 font-semibold text-white inline-flex items-center space-x-2 rounded">
-                                <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                <span>Discord</span>
-                            </a>
-                            <a target="_blank" rel="noopener" id="youtube" class="bg-blue-500 px-2 text-sm py-1 font-semibold text-white inline-flex items-center space-x-2 rounded">
-                              <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                              <span>Youtube</span>
-                          </a>
-                          </div>
-                            <!-- <div
-                              class="py-4 flex justify-center items-center w-full divide-x divide-gray-400 divide-solid">
-                              <span class="text-center px-2"><span class="font-bold text-gray-900">56</span><span class="text-gray-800"> followers</span></span><span class="text-center px-2"><span class="font-bold text-gray-900">30</span><span class="text-gray-800"> Adaptations</span></span><span class="text-center px-2"><span class="font-bold text-gray-900">2000</span><span class="text-gray-800"> Likes</span></span>
-                            </div> -->
-                          </div>
-                        </div>
+                      class="h-24 w-24 md rounded-full relative avatar  items-end justify-end text-purple-400 min-w-max  -top-16 flex bg-purple-200  row-start-1 row-end-3 text-purple-650 ring-1 ring-white">
+                      <img
+                        class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0"
+                        id="pfp" alt="">
+                      <div class="absolute"></div>
+                    </div>
+                    <div class="flex flex-col space-y-5 justify-center items-center -mt-12 w-full">
+                      <span class="text-md whitespace-nowrap text-black font-semibold" id="username"></span>
+                      <!-- <span class="text-md whitespace-nowrap text-cyan-500">Elite(this is a rank system will explain  later)</span> -->
+                      <p class="text-sm text-gray-700" id="description">
+                      </p>
+                      <div class="py-2 flex space-x-2 top-5">
+                        <button id=""
+                          class="bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded">
+                          Request
+                        </button>
+                        <button id=""
+                          class="bg-transparent w-full hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-600 hover:border-transparent rounded">
+                          Donate
+                        </button>
                       </div>
-                      <!---->
+
+                      <div class="flex items-center justify-center space-x-3 ">
+                        <a target="_blank" rel="noopener" id="instagram"
+                          class="bg-gray-700 px-2 text-sm py-1 font-semibold text-white inline-flex items-center space-x-2 rounded">
+                          <svg role="img" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current "
+                            viewBox="0 0 18 18">
+                            <path
+                              d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                          </svg>
+                          <span>Instagram</span>
+                        </a>
+                        <a target="_blank" rel="noopener" id="discord"
+                          class="bg-blue-500 px-2 text-sm py-1 cursor-pointer font-semibold text-white inline-flex items-center space-x-2 rounded">
+                          <svg role="img" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current "
+                            viewBox="0 0 18 18">
+                            <path
+                              d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z" />
+                          </svg>
+                          <span>Discord</span>
+                        </a>
+                        <a target="_blank" rel="noopener" id="youtube"
+                          class="bg-blue-500 px-2 text-sm py-1 font-semibold text-white inline-flex items-center space-x-2 rounded">
+                          <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                          </svg>
+                          <span>Youtube</span>
+                        </a>
+                      </div>
+                      <div class="flex justify-center items-center w-full divide-x divide-gray-400 divide-solid">
+                        <span class="text-center px-2"><span class="font-bold text-gray-900">56</span><span
+                            class="text-gray-800"> followers</span></span><span class="text-center px-2"><span
+                            class="font-bold text-gray-900">30</span><span class="text-gray-800">
+                            Adaptations</span></span><span class="text-center px-2"><span
+                            class="font-bold text-gray-900">2000</span><span class="text-gray-800"> Likes</span></span>
+                      </div>
                     </div>
                   </div>
-                      <div class="">   
-                        <div class="max-w-2xl mx-auto py-16 px-4 sm:px-6 lg:max-w-7xl lg:px-8 dark:text-white">
-                        <h4
-                        class="mb-4 text-lg font-semibold text-black dark:text-gray-300"
-                      >
-                        Recently Made:
+                </div>
+                <!---->
+              </div>
+            </div>
+            <div>
+              <div class="max-w-2xl mx-auto py-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8 dark:text-white">
+                <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300">
+                  Recently Made:
+                </h4>
+                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+                  <div class="w-full overflow-x-auto">
+                    <table class="w-full whitespace-no-wrap">
+                      <thead>
+                        <tr
+                          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                          <th class="px-4 py-3">Series</th>
+                          <th class="px-4 py-3">No. of Chapters</th>
+                          <th class="px-4 py-3">Follows</th>
+                          <th class="px-4 py-3">Last updated</th>
+                        </tr>
+                      </thead>
+                      <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
+                        <!-- <tr class="text-gray-700 dark:text-gray-400">
+                            <td class="px-4 py-3">
+                              <div class="flex items-center text-sm">
+                                <div
+                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                                >
+                                  <img
+                                    class="object-cover w-full h-full rounded-sm"
+                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
+                                    alt=""
+                                    loading="lazy"
+                                  />
+                                  <div
+                                    class="absolute inset-0 rounded-full shadow-inner"
+                                    aria-hidden="true"
+                                  ></div>
+                                </div>
+                                <div>
+                                  <p class="font-semibold">Solo leveling</p>
+                                  <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    Comedy, Fantasy
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              30
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              3000
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
+                                Follow Series
+                              </button>
+                            </td>
+                          </tr> -->
+                        <!-- <tr class="text-gray-700 dark:text-gray-400">
+                            <td class="px-4 py-3">
+                              <div class="flex items-center text-sm">
+                                <div
+                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                                >
+                                  <img
+                                    class="object-cover w-full h-full rounded-sm"
+                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
+                                    alt=""
+                                    loading="lazy"
+                                  />
+                                  <div
+                                    class="absolute inset-0 rounded-full shadow-inner"
+                                    aria-hidden="true"
+                                  ></div>
+                                </div>
+                                <div>
+                                  <p class="font-semibold">Solo leveling</p>
+                                  <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    Comedy, Fantasy
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              30
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              3000
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
+                                Follow Series
+                              </button>
+                            </td>
+                          </tr> -->
+                      </tbody>
+                      </table>
+                      <button class="bg-white mx-auto flex mt-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                        View All
+                      </button>
+                      <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300">
+                        Popular:
                       </h4>
                       <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
                           <table class="w-full whitespace-no-wrap">
                             <thead>
                               <tr
-                                class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
-                              >
+                                class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                 <th class="px-4 py-3">Series</th>
                                 <th class="px-4 py-3">No. of Chapters</th>
                                 <th class="px-4 py-3">Follows</th>
-                                <th class="px-4 py-3">Last updated</th>
+                                <th class="px-4 py-3">Actions</th>
                               </tr>
                             </thead>
-                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
-                          <!-- <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                                <div
-                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                >
-                                  <img
-                                    class="object-cover w-full h-full rounded-sm"
-                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                    alt=""
-                                    loading="lazy"
-                                  />
-                                  <div
-                                    class="absolute inset-0 rounded-full shadow-inner"
-                                    aria-hidden="true"
-                                  ></div>
-                                </div>
-                                <div>
-                                  <p class="font-semibold">Solo leveling</p>
-                                  <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    Comedy, Fantasy
-                                  </p>
+                            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
+                              <tr class="text-gray-700 dark:text-gray-400">
+                                  <td class="px-4 py-3">
+                                    <div class="flex items-center text-sm">
+                                      <div
+                                        class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                                      >
+                                        <img
+                                          class="object-cover w-full h-full rounded-sm"
+                                          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
+                                          alt=""
+                                          loading="lazy"
+                                        />
+                                        <div
+                                          class="absolute inset-0 rounded-full shadow-inner"
+                                          aria-hidden="true"
+                                        ></div>
+                                      </div>
+                                      <div>
+                                        <p class="font-semibold">Solo leveling</p>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                          Comedy, Fantasy
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="px-4 py-3 text-sm">
+                                    30
+                                  </td>
+                                  <td class="px-4 py-3 text-sm">
+                                    3000
+                                  </td>
+                                  <td class="px-4 py-3 text-sm">
+                                    <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
+                                      Follow Series
+                                    </button>
+                                  </td>
+                                </tr>
+                              <!-- <tr class="text-gray-700 dark:text-gray-400">
+                                  <td class="px-4 py-3">
+                                    <div class="flex items-center text-sm">
+                                      <div
+                                        class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                                      >
+                                        <img
+                                          class="object-cover w-full h-full rounded-sm"
+                                          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
+                                          alt=""
+                                          loading="lazy"
+                                        />
+                                        <div
+                                          class="absolute inset-0 rounded-full shadow-inner"
+                                          aria-hidden="true"
+                                        ></div>
+                                      </div>
+                                      <div>
+                                        <p class="font-semibold">Solo leveling</p>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                          Comedy, Fantasy
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="px-4 py-3 text-sm">
+                                    30
+                                  </td>
+                                  <td class="px-4 py-3 text-sm">
+                                    3000
+                                  </td>
+                                  <td class="px-4 py-3 text-sm">
+                                    <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
+                                      Follow Series
+                                    </button>
+                                  </td>
+                                </tr> -->
+                            </tbody>
+                            </table>
+                            <h4 class="mt-7 text-lg font-semibold text-black dark:text-gray-300">
+                             Worked With:
+                            </h4>
+                            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+                              <div class="w-full overflow-x-auto">
+                                <div id="recentlyPub" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
+                                  <div class="group relative">
+                                    <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                                      <img class="aspect-square object-cover" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg00.deviantart.net%2F1614%2Fi%2F2011%2F273%2F8%2F5%2Felectric_dragon_by_insanable-d4bczwp.jpg&f=1&nofb=1" class=" object-center object-cover">
+                                    </div>
+                                    <div class="mt-4 flex justify-between">
+                                      <div>
+                                        <h3 class="text-sm text-gray-700">
+                                          <a>
+                                            <span aria-hidden="true" class="absolute inset-0"></span>
+                                            Electric Dragon
+                                          </a>
+                                        </h3>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              30
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              3000
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
-                                Follow Series
-                              </button>
-                            </td>
-                          </tr> -->
-                          <!-- <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                                <div
-                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                >
-                                  <img
-                                    class="object-cover w-full h-full rounded-sm"
-                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                    alt=""
-                                    loading="lazy"
-                                  />
-                                  <div
-                                    class="absolute inset-0 rounded-full shadow-inner"
-                                    aria-hidden="true"
-                                  ></div>
-                                </div>
-                                <div>
-                                  <p class="font-semibold">Solo leveling</p>
-                                  <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    Comedy, Fantasy
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              30
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              3000
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
-                                Follow Series
-                              </button>
-                            </td>
-                          </tr> -->
-
-                          </div>
-
-                        </div>
-                      </div>
-                    </div></div>
-                  
-
-                        </div>
-
-
-
-
-                    </div>
                 </div>
-                
+              </div>
             </div>
-
+          </div>
         </div>
+      </div>
+      </div>
 
   </main>
 </section>
