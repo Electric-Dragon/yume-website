@@ -9,6 +9,10 @@ let supabase,user;
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+$('#instagram').hide();
+$('#discord').hide();
+$('#youtube').hide();
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -34,6 +38,24 @@ $.ajax({
 
             $('#pfp').attr('src', pfp)
             $('#banner').attr('src', banner)
+            $('#description').text(description)
+
+            if (instagram) {
+                $('#instagram').show();
+                $('#instagram').attr('href', `https://www.instagram.com/${instagram}`);
+            }
+            
+            if (reddit) {
+                $('#discord').show();
+                $('#discord').click(() => {
+                    successalert(reddit);
+                })
+            }
+
+            if (youtube) {
+                $('#youtube').show();
+                $('#youtube').attr('href', `https://www.youtube.com/c/${youtube}`);
+            }
 
             const { data:series, error:error_ } = await supabase
                 .from('series')
