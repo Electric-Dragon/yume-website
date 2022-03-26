@@ -1,5 +1,6 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
+// import * as Vibrant from "/js/vibrant.min.js";
 
 let username = window.location.pathname.split( '/' ).pop()
 $('#title').text(`${username}'s Profile`)
@@ -36,9 +37,16 @@ $.ajax({
 
             let {id, pfp, username, description, instagram, reddit, youtube, banner} = data[0];
 
-            $('#pfp').attr('src', pfp)
+            $('#userPfp').attr('src', pfp)
             $('#banner').attr('src', banner)
             $('#description').text(description)
+
+            // Vibrant.from(pfp).getPallete().then(function(pallete) {
+
+            //     console.log(pallete);
+
+            // });
+
 
             if (instagram) {
                 $('#instagram').show();
