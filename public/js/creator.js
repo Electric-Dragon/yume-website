@@ -74,7 +74,7 @@ $.ajax({
 
             const { data:series, error:error_ } = await supabase
                 .from('series')
-                .select('cover,title,id, genre1, genre2, publicchapcount, like_count, updatedat')
+                .select('cover,title,id, genre1, genre2, novel, like_count, updatedat')
                 .order('updatedat', { ascending: false })
                 .eq('creator', id)
                 .neq('status', 'd')
@@ -86,9 +86,11 @@ $.ajax({
 
                 series.forEach(val=> {
 
-                    let {id, title, cover, genre1, genre2, publicchapcount, like_count, updatedat} = val;
+                    let {id, title, cover, genre1, genre2, novel, like_count, updatedat} = val;
 
                     let date = new Date(updatedat);
+
+                    let type = novel ? 'Web Novel' : 'Web Comic';
 
                     let element =  `
                                     <tr class="text-gray-700 dark:text-gray-400">
@@ -116,7 +118,7 @@ $.ajax({
                                             </div>
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                            ${publicchapcount}
+                                            ${type}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
                                             ${like_count}
