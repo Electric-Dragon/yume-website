@@ -30,6 +30,11 @@ app.get("/signup", function(req, res) {
     res.sendFile(__dirname + "/html/signup.html");
 });
 
+app.get("/creator", function(req, res) {
+    res.sendFile(__dirname + "/html/creator.html");
+});
+
+
 app.post("/signup", async function(req, res) {
     res.json(await yumeAPI.signUp(req.body));
 });
