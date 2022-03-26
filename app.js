@@ -58,6 +58,15 @@ app.get("/dashboard/create/novel", function(req, res) {
     res.sendFile(__dirname + "/html/novelform.html");
 });
 
+app.get("/dashboard/create/comic", function(req, res) {
+    res.sendFile(__dirname + "/html/comicform.html");
+});
+
+app.get("/comic", function(req, res) {
+    res.sendFile(__dirname + "/html/comic.html");
+});
+
+
 app.post("/dashboard/create/novel", async function(req, res) {
     res.json(await yumeAPI.createSeries(req.body));
 });
