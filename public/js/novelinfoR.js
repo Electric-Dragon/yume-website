@@ -66,6 +66,8 @@ $.ajax({
 
           creatorInfo = creator;
 
+          let readRoute = novel ? 'novel' : 'comic';
+
           const { data:hasRequest, error__ } = await supabase
               .from('adaptation_notifications')
               .select('status')
@@ -116,7 +118,7 @@ $.ajax({
                             <td class="px-4 py-3">
                               <div class="flex items-center text-sm">
                                 <div>
-                                  <a href="/read/novel/${seriesid}/${id}" class="font-semibold">${title}</a>
+                                  <a href="/read/${readRoute}/${seriesid}/${id}" class="font-semibold">${title}</a>
                                 </div>
                               </div>
                             </td>

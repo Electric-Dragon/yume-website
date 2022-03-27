@@ -100,7 +100,9 @@ app.get("/library", function(req, res) {
     res.sendFile(__dirname + "/html/library.html");
 });
 
-app.get("/readcomic", function(req, res) {
+app.get("/read/comic/:seriesid/:chapterid", async function(req, res) {
+    const {data, error} = await supabase.rpc('incrementChapterReads', { row_id: req.params.chapterid })
+    console.log(error);
     res.sendFile(__dirname + "/html/readComic.html");
 });
 
