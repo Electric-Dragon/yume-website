@@ -11,10 +11,10 @@ module.exports = {
     },
     extend: {
       height: {
-        'comic': '800px',
+        'comic': '1280px',
       },
       width: {
-        'comic': '1280px',
+        'comic': '800px',
       }
     }
   },

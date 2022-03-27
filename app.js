@@ -100,6 +100,11 @@ app.get("/library", function(req, res) {
     res.sendFile(__dirname + "/html/library.html");
 });
 
+app.get("/readcomic", function(req, res) {
+    res.sendFile(__dirname + "/html/readComic.html");
+});
+
+
 app.post("/followSeries", async function(req, res) {
     res.json(await yumeAPI.followSeries(req.body));
 });
