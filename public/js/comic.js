@@ -25,7 +25,7 @@ $.ajax({
   
         const { data, error } = await supabase
         .from('chapters')
-        .select('title,seriesid(title)')
+        .select('title,images,seriesid(title)')
         .eq('id', chapterid)
         .single()
   
@@ -33,10 +33,23 @@ $.ajax({
           erroralert(error.message);
         } else {
             
-            let {title, seriesid} = data;
+            let {title,images, seriesid} = data;
 
             $('#seriesTitle').text(seriesid.title);
             $('#title').val(title);
+
+            images.forEach(image => {
+                let element = `
+                            <div class="w-full p-4 lg:w-50 lg:h-full">
+                                <div class=" bg-white border rounded shadow-sm ">
+                                    <div class="relative">
+                                        <img class="h-60 object-cover " src="${image}">
+                                    </div>                          
+                                </div>
+                            </div>`
+
+                $('#panelPreviewContainer').append(element);
+            })
   
         }
   
@@ -54,7 +67,7 @@ window.previewPanels = function (e) {
             return a - b
         });
 
-        panels.forEach(file => {
+        panels.forEach((file,index) => {
 
             let link = URL.createObjectURL(file);
 
@@ -63,6 +76,13 @@ window.previewPanels = function (e) {
             let element = `
                             <div class="w-full p-4 lg:w-50 lg:h-full">
                                 <div class=" bg-white border rounded shadow-sm ">
+                                    <div class="relative">
+                                        <div onclick="deleteOne(${index})" class=" top-0 right-0 p-0 m-0 absolute">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor" class="text-red-500  " viewBox="0 0 0.1 9">
+                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
                                     <div class="relative">
                                         <img class="h-60 object-cover " src="${link}" alt="${file.name}">
                                         <p class="text-gray-600">${file.name}</p>
@@ -157,4 +177,9 @@ window.deleteAll = function() {
     size = 0;
     panels = [];
     $('#panels').prop('files', []);
+}
+
+window.deleteOne = function(index) {
+    console.log(index);
+    $('#panelPreviewContainer').children().eq(index).remove();
 }

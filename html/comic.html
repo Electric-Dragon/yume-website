@@ -11,9 +11,6 @@
     <title>Upload the next masterpiece</title>
 </head>
 <body>
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
   <nav class="bg-transparent shadow-lg pt-3 dark:bg-black">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
@@ -157,9 +154,9 @@
                             <label class="block text-xl font-medium text-gray-700 "> Upload files </label>
                             <div class="grid my-3 grid-flow-row grid-cols-2">
                                 <div class="flex gap-3 text-sm">
-                                  <label for="files" class="relative cursor-pointer bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
-                                    <span>Upload a file </span>
-                                    <input required onchange="previewPanels(event)" id="files" name="files[]" type="file" multiple accept=".jpg" class="sr-only">
+                                  <label for="panels" class="relative cursor-pointer bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
+                                    <span>Upload files </span>
+                                    <input required onchange="previewPanels(event)" id="panels" name="files[]" type="file" multiple accept=".jpg" class="sr-only">
                                   </label>
 
                                       <button onclick="deleteAll()" type="button" class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
@@ -219,9 +216,8 @@
 
                                 </div>
                             </div>
-                            <p class="text-xs mt-4 text-gray-500">The image must be less than 800px wide and 1280px long
-                                You can upload up to 20MB in total. Each file can be up to 2MB.
-                                Only .JPG format is allowed.</p>
+                            <p class="text-xs mt-4 text-gray-500">The image must be less than <strong>800 px</strong> wide and <strong>1280 px</strong> long
+                                You can upload up to <strong>20 MB</strong> in total. Only <strong>.JPG</strong> format is allowed.</p>
         
                           
                             </div>
