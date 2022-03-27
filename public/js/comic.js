@@ -3,6 +3,7 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, user;
 let size = 0;
+let panels, publicURLS = [];
 
 let arr = window.location.pathname.split( '/' )
 let chapterid = arr[arr.length - 2];
@@ -45,7 +46,7 @@ window.previewPanels = function (e) {
 
     if (e.target.files.length > 0) {
 
-        let panels = [...e.target.files];
+        panels = [...e.target.files];
 
         panels.sort(function(a, b) {
             a = Number(a.name.split('.')[0]);
@@ -77,4 +78,83 @@ window.previewPanels = function (e) {
 
     }
 
+}
+
+window.saveChanges = async function saveChanges(publish) {
+
+    let title = $('#title').val();
+
+    if (size > 20) {
+        erroralert('Total size of uploaded files is greater than 20 MB');
+        return;
+    }
+    if (panels.length === 0) {
+        erroralert('Please upload at least one panel');
+        return;
+    }
+
+    if (!title) {
+        erroralert('Please fill in the title');
+        return;
+    }
+
+    $('#btnSaveDraft').prop('disabled', true);
+    $('#btnPublish').prop('disabled', true);
+
+    for (const file of panels) {
+
+        let route = `${user.id}/series/${seriesid}/chapters/${chapterid}/${file.name}`;
+
+        const { data, error } = await supabase
+        .storage
+        .from('users')
+        .upload(route, file, {
+            cacheControl: '3600',
+            upsert: true
+        });
+
+        if (error) {
+            erroralert(error.message);
+            $('#btnSaveDraft').prop('disabled', false);
+            $('#btnPublish').prop('disabled', false);
+        } else {
+            const { publicURL, error:error_ } = supabase
+                .storage
+                .from('users')
+                .getPublicUrl(route);
+            
+            if (error_) {
+                erroralert(error_.message);
+                $('#btnSaveDraft').prop('disabled', false);
+                $('#btnPublish').prop('disabled', false);
+            } else {
+                publicURLS.push(publicURL);
+            }
+            
+        }   
+    }
+
+    const {data:data_, error:error_} = await supabase.from('chapters')
+            .update({ title: title, images: publicURLS, is_published: publish })
+            .match({ id: chapterid });
+
+    if (error_) {
+        erroralert(error.message);
+        $('#btnSaveDraft').prop('disabled', false);
+        $('#btnPublish').prop('disabled', false);
+    } else {
+        let text = publish ? 'published' : 'saved as draft';
+        successalert(`Chapter ${text} successfully`, function() {
+            window.location = `/dashboard/series/${seriesid}`;
+        });
+    }
+
+}
+
+window.deleteAll = function() {
+    $('#panelPreviewContainer').empty();
+    $('#totalSize').text('0 MB / 20 MB');
+    size = 0;
+    panels = [];
+    $('#panels').prop('files', []);
 }
