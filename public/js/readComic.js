@@ -55,7 +55,7 @@ $.ajax({
 
             images.forEach(panelLink => {
 
-                let element = `<img src="${panelLink}" class="h-comic mx-auto">`
+                let element = `<img src="${panelLink}" class="w-comic mx-auto">`
                 $('#panelContainer').append(element);
 
             })

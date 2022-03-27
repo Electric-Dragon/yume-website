@@ -16,7 +16,8 @@ module.exports = {
       width: {
         'comic': '800px',
       }
-    }
+    },
+
   },
   plugins: [require('@tailwindcss/forms'),],
 }
