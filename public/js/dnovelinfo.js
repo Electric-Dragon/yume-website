@@ -67,6 +67,9 @@ $.ajax({
           $('#type').text(typeText);
           isNovel = novel;
 
+          let readRoute = novel ? 'novel' : 'comic';
+          let writeRoute = novel ? 'write' : 'upload';
+
           $('#btnCreateNewChapter').on('click', function() {
             newChap(chapcount);
           });
@@ -118,7 +121,7 @@ $.ajax({
                             </td>
                             
                             <td class="px-4 py-3 flex flex-row gap-4 text-xl">
-                              <a href="/dashboard/series/${seriesid}/${id}/write">
+                              <a href="/dashboard/series/${seriesid}/${id}/${writeRoute}">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                   class="text-green-600 text-center w-7 h-7" viewBox="0 0 20 20">
                                   <path
@@ -132,7 +135,7 @@ $.ajax({
                             ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
                             </td>
                             <td class="px-4 py-3 text-sm hover:text-blue-600">
-                              <a href="/read/novel/${seriesid}/${id}">
+                              <a href="/read/${readRoute}/${seriesid}/${id}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
                                   class="bi bi-eye-fill" viewBox="0 0 16 16 class="text-blue-600 w-6 h-6" viewBox="0 0 20 20" >
                                     <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>

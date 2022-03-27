@@ -80,7 +80,7 @@ async function create(e) {
             summary: summary,
             adaptation: adaptation,
             creator: user.id,
-            novel: true,
+            novel: false,
             mature: mature,
             genre1: genre1,
             genre2: genre2

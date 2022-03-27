@@ -62,12 +62,12 @@ app.get("/dashboard/create/comic", function(req, res) {
     res.sendFile(__dirname + "/html/comicform.html");
 });
 
-app.get("/comic", function(req, res) {
+app.get("/dashboard/series/:seriesid/:chapterid/upload", function(req, res) {
     res.sendFile(__dirname + "/html/comic.html");
 });
 
 
-app.post("/dashboard/create/novel", async function(req, res) {
+app.post("/dashboard/create/series", async function(req, res) {
     res.json(await yumeAPI.createSeries(req.body));
 });
 
