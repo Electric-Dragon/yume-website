@@ -56,7 +56,7 @@ $.ajax({
           $('#cover').attr('src', cover);
 
           $('#creatorname').text(creator.username)
-          $('#creatorname').attr('href',`/creator/${creator.username}`)
+          $('#creatorname').attr('href',`/user/${creator.username}`)
 
           let adaptationText = adaptation ? 'Yes' : 'No';
           $('#adaptation').text(adaptationText);
