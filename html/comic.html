@@ -132,7 +132,7 @@
   </nav>
     <form>
 
-        <div class="px-5 mt-9 max-w-5xl mx-auto pt-6 border-2 border-transparent rounded-lg shadow-lg shadow-blue-500">
+        <div class="px-5 mt-9 max-w-5xl mx-auto pt-6 border-2 border-transparent rounded-lg shadow-lg shadow-blue-500 mb-6">
             <div class="grid md:grid-flow-col grid-flow-row gap-5 md:gap-0">
                   <div class="grid">
                     <div class="flex gap-3">
@@ -149,17 +149,19 @@
                                 <div class="mt-1 flex rounded shadow-sm">
                                   <input required type="text" maxlength="50" name="title" id="title" class="focus:ring-cyan-500 focus:border-cyan-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Chapter Title">
                                 </div>
-                                <p>Name the panels for your chapter as 1.jpg, 2.jpg, etc.</p>
+                                <p class="text-xs mt-2 ml-1 text-gray-500">Name the panels for your chapter as 1.jpg, 2.jpg, etc.</p>
                               </div>
                             </div>
                 
                           <div>
-                            <label class="block text-sm font-medium text-gray-700"> Upload files </label>
+                            <label class="block text-xl font-medium text-gray-700 "> Upload files </label>
                             <div class="grid my-3 grid-flow-row grid-cols-2">
                                 <div class="flex gap-3 text-sm">
-                                    <input onchange="previewPanels(event)" id="panels" name="files[]" type="file" accept=".jpg" multiple class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
-                                        Upload Files
-                                      </input>
+                                  <label for="files" class="relative cursor-pointer bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
+                                    <span>Upload a file </span>
+                                    <input required onchange="previewPanels(event)" id="panels" name="files[]" type="file" accept=".jpg" multiple class="sr-only ">                              
+                                    </label>
+
                                       <button onclick="deleteAll()" type="button" class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
                                         Delete All
                                       </button>
@@ -168,7 +170,7 @@
                             </div>
                             <div class="flex flex-col w-full overflow-y-auto text-center">
                               <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md w-full max-h-96">
-                                <div id="panelPreviewContainer" class="grid lg:grid-cols-4 w-full overflow-y-auto h-60">
+                                <div id="panelPreviewContainer" class="grid lg:grid-cols-4 w-full overflow-y-auto h-80">
                                     <!-- <div class="w-full p-4 lg:w-50 lg:h-full">
                                         <div class=" bg-white border rounded shadow-sm ">
                                             <div class="relative">

@@ -1029,6 +1029,10 @@ select {
   margin-bottom: 2.5rem;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1143,6 +1147,10 @@ select {
 
 .h-1 {
   height: 0.25rem;
+}
+
+.h-80 {
+  height: 20rem;
 }
 
 .max-h-36 {
@@ -2608,6 +2616,11 @@ select {
 .text-pink-700 {
   --tw-text-opacity: 1;
   color: rgb(190 24 93 / var(--tw-text-opacity));
+}
+
+.text-emerald-50 {
+  --tw-text-opacity: 1;
+  color: rgb(236 253 245 / var(--tw-text-opacity));
 }
 
 .underline {
