@@ -84,8 +84,7 @@ app.get("/dashboard/series/:seriesid/:chapterid/write", function(req, res) {
 });
 
 app.get("/read/novel/:seriesid/:chapterid", async function(req, res) {
-    const {data, error} = await supabase.rpc('incrementChapterReads', { row_id: req.params.chapterid })
-    console.log(error);
+    await supabase.rpc('incrementchapterreads', { row_id: req.params.chapterid })
     res.sendFile(__dirname + "/html/readNovel.html");
 });
 app.get("/about", function(req, res) {
@@ -101,8 +100,7 @@ app.get("/library", function(req, res) {
 });
 
 app.get("/read/comic/:seriesid/:chapterid", async function(req, res) {
-    const {data, error} = await supabase.rpc('incrementChapterReads', { row_id: req.params.chapterid })
-    console.log(error);
+    await supabase.rpc('incrementchapterreads', { row_id: req.params.chapterid })
     res.sendFile(__dirname + "/html/readComic.html");
 });
 
