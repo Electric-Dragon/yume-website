@@ -15,7 +15,13 @@ module.exports = {
       },
       width: {
         'comic': '800px',
-      }
+      },
+
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        background: '#121212'
+      },
     },
 
   },
