@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +10,11 @@
     <link href="/css/output.css" rel="stylesheet">
     <title id="title">Your novel</title>
 </head>
-<body class="h-screen w-full dark:bg-black bg-gray-600">
+<body class="h-screen w-full dark:bg-black bg-gray-600 dark:text-white">
     <!-- Navbar goes here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
-    <nav class="bg-transparent shadow-lg mb-5">
+    <nav class="bg-transparent dark:bg-black shadow-lg mb-5">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -131,7 +131,7 @@
       })</script>
     </nav>
 
-        <div class="bg-white max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
+        <div class="bg-white dark:bg-background max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
           <div class="grid grid-flow-row mb-4">
               <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0 md:gap-4">
                 <div class="grid grid-flow-row w-72">
@@ -163,7 +163,7 @@
   
                       <div class="grid grid-flow-col">
                           <div class="px-4 py-5 sm:px-6">
-                              <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900"></h3>
+                              <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white"></h3>
                               <a id="creatorname" class="mt-1 max-w-2xl text-sm text-gray-500"></a>
                           </div>
                           <div class="flex justify-center items-center">
@@ -175,21 +175,21 @@
                       <div class="border-t border-gray-200">
                         <dl>
                           <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-black">Adaptation:</dt>
-                            <dd id="adaptation" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Yes</dd>
+                            <dt class="text-sm font-medium text-black dark:text-gray-200">Adaptation:</dt>
+                            <dd id="adaptation" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Yes</dd>
                           </div>
                           <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                              <dt class="text-sm font-medium text-black">Type:</dt>
-                              <dd id="type" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Web Novel</dd>
+                              <dt class="text-sm font-medium text-black dark:text-gray-200">Type:</dt>
+                              <dd id="type" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Web Novel</dd>
                           </div>
                           <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                              <dt class="text-sm font-medium text-black">Status:</dt>
-                              <dd id="status" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                              <dt class="text-sm font-medium text-black dark:text-gray-200">Status:</dt>
+                              <dd id="status" class="mt-1 dark:text-gray-200 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
                               </dd>
                           </div>
                           <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-black">Synopsis:</dt>
-                            <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                            <dt class="text-sm font-medium text-black dark:text-gray-200">Synopsis:</dt>
+                            <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-200">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
                           </div>
                         </dl>
                       </div>
