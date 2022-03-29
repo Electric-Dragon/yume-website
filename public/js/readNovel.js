@@ -30,18 +30,21 @@ $.ajax({
 
         const {data, error} = await supabase
           .from('chapters')
-          .select('title,body,createdat,chapternum,seriesid(id,genre1,genre2,creator),likes')
+          .select('title,body,createdat,chapternum,seriesid(id,genre1,genre2,creator)')
           .eq('id', chapterid)
           .single();
         if (error) {
             erroralert(error.message);
         } else {
 
-            let {title, body, createdat, chapternum, seriesid, likes} = data;
+            let {title, body, createdat, chapternum, seriesid} = data;
+
+            const { data:chapterLikes, error___ } = await supabase
+            .rpc('getChapterLikes', { chapterid: chapterid });
 
             $('#chapTitle').text(title);
             $('#title').text(title);
-            $('#likeCount').text(`${likes} Likes`)
+            $('#likeCount').text(`${chapterLikes} Likes`)
             $('#chapNum').text(chapternum);
 
             let date = new Date(createdat);
@@ -129,8 +132,6 @@ window.toggleLike = async function toggleLike() {
 
         if (liked) {
 
-            console.log(likeid);
-
             const { data, error } = await supabase
                 .from('chapter_likes')
                 .delete()
@@ -198,10 +199,10 @@ window.toggleCommentSection = function toggleCommentSection() {
 let toggleLikeButton = function() {
     if (liked) {
         $('#likeButtonText').text('Unlike');
-        $('#likeButtonText').append(lovedsvg);
+        $('#heart-svg').append(lovedsvg);
 
     } else {
         $('#likeButtonText').text('Like');
-        $('#likeButtonText').append(heartsvg);
+        $('#heart-svg').append(heartsvg);
     }
 }
