@@ -76,7 +76,7 @@ $.ajax({
 
           const {data:chapters, error} = await supabase
             .from('chapters')
-            .select('id,chapternum,title,createdat,is_published,likes')
+            .select('id,chapternum,title,createdat,is_published')
             .eq('seriesid', seriesid)
             .order('chapternum', { ascending: false })
 
@@ -86,8 +86,13 @@ $.ajax({
 
             let x = 0;
 
-            chapters.forEach(val=> {
-              let {id, chapternum, title, createdat, is_published, likes} = val;
+            chapters.forEach(async val=> {
+              let {id, chapternum, title, createdat, is_published} = val;
+
+              const { data:chapterLikes, error___ } = await supabase
+              .rpc('getChapterLikes', { chapterid: id });
+
+              let likes = chapterLikes;
 
               let chapStatusText = is_published ? 'Published' : 'Draft';
               let date = new Date(createdat);
