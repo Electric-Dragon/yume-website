@@ -31,14 +31,14 @@ $.ajax({
 
         const {data, error} = await supabase
           .from('chapters')
-          .select('title,images,createdat,chapternum,seriesid(id,genre1,genre2,creator)')
+          .select('title,images,createdat,chapternum,seriesid(id,genre1,genre2,creator),totalreads')
           .eq('id', chapterid)
           .single();
         if (error) {
             erroralert(error.message);
         } else {
 
-            let {title, images, createdat, chapternum, seriesid} = data;
+            let {title, images, createdat, chapternum, seriesid, totalreads} = data;
 
             const { data:chapterLikes, error___ } = await supabase
             .rpc('getChapterLikes', { chapterid: chapterid });
@@ -49,6 +49,7 @@ $.ajax({
             $('#title').text(title);
             $('#likeCount').text(`${likes} Likes`)
             $('#chapNum').text(chapternum);
+            $('#chapReads').text(`${totalreads} Reads`);
 
             let date = new Date(createdat);
             $('#chapDate').text(`${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`);

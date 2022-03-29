@@ -89,7 +89,7 @@ $.ajax({
 
           const {data:chapters, error} = await supabase
             .from('chapters')
-            .select('id,chapternum,title,createdat,is_published,likes')
+            .select('id,chapternum,title,createdat')
             .eq('seriesid', seriesid)
             .eq('is_published', true)
             .order('chapternum', { ascending: false })
@@ -101,7 +101,7 @@ $.ajax({
             let x = 0;
 
             chapters.forEach(val=> {
-              let {id, chapternum, title, createdat, is_published, likes} = val;
+              let {id, chapternum, title, createdat} = val;
 
               let date = new Date(createdat);
               chapids.push(id);
