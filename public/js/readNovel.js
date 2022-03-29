@@ -2,6 +2,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 import {erroralert, successalert} from '/js/salert.js';
 let supabase, editor, likeid, user;
 let liked = false;
+let likes = 0;
 
 let arr = window.location.pathname.split( '/' )
 let chapterid = arr[arr.length - 1];
@@ -42,9 +43,11 @@ $.ajax({
             const { data:chapterLikes, error___ } = await supabase
             .rpc('getChapterLikes', { chapterid: chapterid });
 
+            likes = chapterLikes;
+
             $('#chapTitle').text(title);
             $('#title').text(title);
-            $('#likeCount').text(`${chapterLikes} Likes`)
+            $('#likeCount').text(`${likes} Likes`)
             $('#chapNum').text(chapternum);
 
             let date = new Date(createdat);
@@ -132,6 +135,8 @@ window.toggleLike = async function toggleLike() {
 
         if (liked) {
 
+            likes-=1;
+
             const { data, error } = await supabase
                 .from('chapter_likes')
                 .delete()
@@ -144,6 +149,9 @@ window.toggleLike = async function toggleLike() {
                 toggleLikeButton();
             }
         } else {
+
+            likes+=1;
+
             const { data, error } = await supabase
                 .from('chapter_likes')
                 .insert([
@@ -197,12 +205,13 @@ window.toggleCommentSection = function toggleCommentSection() {
 }
 
 let toggleLikeButton = function() {
+
+    $('#likeCount').text(`${likes} Likes`);
+
     if (liked) {
-        $('#likeButtonText').text('Unlike');
-        $('#heart-svg').append(lovedsvg);
+        $("#checkbox").prop("checked", true)
 
     } else {
-        $('#likeButtonText').text('Like');
-        $('#heart-svg').append(heartsvg);
+        $("#checkbox").prop("checked", false)
     }
 }

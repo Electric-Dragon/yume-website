@@ -2,6 +2,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 import {erroralert, successalert} from '/js/salert.js';
 let supabase, likeid, user;
 let liked = false;
+let likes = 0;
 
 let arr = window.location.pathname.split( '/' )
 let chapterid = arr[arr.length - 1];
@@ -30,14 +31,19 @@ $.ajax({
 
         const {data, error} = await supabase
           .from('chapters')
-          .select('title,images,createdat,chapternum,seriesid(id,genre1,genre2,creator),likes')
+          .select('title,images,createdat,chapternum,seriesid(id,genre1,genre2,creator)')
           .eq('id', chapterid)
           .single();
         if (error) {
             erroralert(error.message);
         } else {
 
-            let {title, images, createdat, chapternum, seriesid, likes} = data;
+            let {title, images, createdat, chapternum, seriesid} = data;
+
+            const { data:chapterLikes, error___ } = await supabase
+            .rpc('getChapterLikes', { chapterid: chapterid });
+
+            likes = chapterLikes;
 
             $('#chapTitle').text(title);
             $('#title').text(title);
@@ -119,7 +125,7 @@ window.toggleLike = async function toggleLike() {
 
         if (liked) {
 
-            console.log(likeid);
+            likes-=1;
 
             const { data, error } = await supabase
                 .from('chapter_likes')
@@ -133,6 +139,9 @@ window.toggleLike = async function toggleLike() {
                 toggleLikeButton();
             }
         } else {
+
+            likes+=1;
+
             const { data, error } = await supabase
                 .from('chapter_likes')
                 .insert([
@@ -186,12 +195,13 @@ window.toggleCommentSection = function toggleCommentSection() {
 }
 
 let toggleLikeButton = function() {
+
+    $('#likeCount').text(`${likes} Likes`);
+
     if (liked) {
-        $('#likeButtonText').text('Unlike');
-        $('#likeButtonText').append(lovedsvg);
+        $("#checkbox").prop("checked", true)
 
     } else {
-        $('#likeButtonText').text('Like');
-        $('#likeButtonText').append(heartsvg);
+        $("#checkbox").prop("checked", false)
     }
 }
