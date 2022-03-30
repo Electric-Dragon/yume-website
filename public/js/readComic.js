@@ -49,7 +49,7 @@ $.ajax({
             $('#title').text(title);
             $('#likeCount').text(`${likes} Likes`)
             $('#chapNum').text(chapternum);
-            $('#chapReads').text(`${totalreads} Reads`);
+            $('#chapReads').text(`${totalreads} `);
 
             let date = new Date(createdat);
             $('#chapDate').text(`${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`);
