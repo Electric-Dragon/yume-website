@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
     <link href="/css/output.css" rel="stylesheet">
-    <title>Welcome to Yume</title>
+    <title>Your search results</title>
 </head>
 <body class="dark:bg-black" >
 
@@ -39,7 +39,7 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <a href="#" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-white bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+            <a href="/" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-white bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
             <a href="/dashboard/home" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
             <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Library</a>
             <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
@@ -125,8 +125,6 @@
   [...document.querySelectorAll('body')].forEach(el => {
     el.addEventListener('click', event => {
       if (event.target.parentElement.id !== "toggleprofile") {
-        console.clear();
-        console.log(event.target.parentElement.id)
         resultprofile.classList.add("hidden")
       }else{
       resultprofile.classList.toggle("hidden")}
@@ -165,14 +163,14 @@ module.exports = {};
                 </svg>
             </span>
 
-                <input class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Search">
+                <input id="searchBar" class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Search">
             </div>
         </div>
     </header>
 
     <main class="my-8">
         <div class="container mx-auto px-6">
-            <div class="grid gap-2 grid-flow-col">
+            <div id="searchResults" class="grid gap-2 grid-flow-col">
                 <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
                     <div id="header" class="grid grid-flow-col"> 
                         <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
@@ -246,6 +244,6 @@ module.exports = {};
       <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
       <script src="/js/init.js" type="module"></script>
-      <script defer src="/js/home.js" type="module"></script>
+      <script defer src="/js/search.js" type="module"></script>
 </body>
 </html>
