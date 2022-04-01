@@ -51,6 +51,7 @@ $('#searchBar').on('input', async function() {
           $('#searchResults').append(`<p class="text-center text-gray-500 text-xl">No results found</p>`);
           return;
         } else {
+          $('#searchResults').empty();
           data.forEach(series => {
             showElement(series)
           });
@@ -65,5 +66,36 @@ $('#searchBar').on('input', async function() {
 });
 
 function showElement(series) {
+
+  let { id, title, summary, cover, creator, novel, genre1, genre2 } = series;
+
+  let typeText = novel ? 'Web Novel' : 'Web Comic';
+
+  let element = `<div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+                  <div id="header" class="grid grid-flow-col"> 
+                      <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                          <img class="aspect-square object-cover" src="${cover}" class=" object-center object-cover">
+                        </div>                       
+                        <div id="body" class="flex flex-col ml-5">
+                        <h4 id="name" class="text-xl font-semibold mb-2">${title}</h4>
+                        <p id="description" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="flex mt-5">
+                          <p>Author:</p>
+                          <a href="/user/${creator.username}" class="ml-3 hover:underline text-blue-600">${creator.username}</a>
+                        </div>
+                        <div class="flex mt-1">
+                          <p>Type:</p>
+                          <p class="ml-3 text-green-800">${typeText}</p>
+                      </div>
+                        <div class="flex mt-1">
+                          <p>Genre:</p>
+                          <a href="/genres/${genre1}" class="ml-3 hover:underline text-blue-600">${genre1}</a> <span class="ml-1">,</span>
+                          <a href="/genres/${genre2}" class="ml-2 hover:underline text-blue-600">${genre2}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>`
+
+  $('#searchResults').append(element);
 
 }
