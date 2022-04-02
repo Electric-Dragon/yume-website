@@ -100,10 +100,6 @@ app.get("/library", function(req, res) {
 });
 
 app.get("/search", function(req, res) {
-    res.sendFile(__dirname + "/html/searchC.html");
-});
-
-app.get("/results", function(req, res) {
     res.sendFile(__dirname + "/html/search.html");
 });
 
