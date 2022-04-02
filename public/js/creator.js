@@ -72,7 +72,7 @@ $.ajax({
 
             const { data:series, error:error_ } = await supabase
                 .from('series')
-                .select('cover,title,id, genre1, genre2, novel, like_count, updatedat')
+                .select('cover,title,id, genre1, genre2, novel, updatedat')
                 .order('updatedat', { ascending: false })
                 .eq('creator', id)
                 .neq('status', 'd')
@@ -82,13 +82,20 @@ $.ajax({
                 erroralert(error_.message);
             } else {
 
-                series.forEach(val=> {
+                series.forEach(async val=> {
 
-                    let {id, title, cover, genre1, genre2, novel, like_count, updatedat} = val;
+                    let {id, title, cover, genre1, genre2, novel, updatedat} = val;
 
                     let date = new Date(updatedat);
 
                     let type = novel ? 'Web Novel' : 'Web Comic';
+
+                    const { data:seriesFollows, error:seriesFollowsError } = await supabase
+                        .rpc('get_series_follows', { seriesid: id });
+
+                    if (seriesFollowsError) {
+                        erroralert(seriesFollowsError.message);
+                    }
 
                     let element =  `
                                     <tr class="text-gray-700 dark:text-gray-400">
@@ -119,7 +126,7 @@ $.ajax({
                                             ${type}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                            ${like_count}
+                                            ${seriesFollows}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
                                                 ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}

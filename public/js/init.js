@@ -3,6 +3,10 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, userPfp;
 
+$('#seriesSearchBar').on('focus', function() {
+  window.location = '/search';
+})
+
 $.ajax({
   url: "/keys",
   success: async function( result ) {
