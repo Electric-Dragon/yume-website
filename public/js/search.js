@@ -69,6 +69,16 @@ function showElement(series) {
 
   let { id, title, summary, cover, creator, novel, genre1, genre2 } = series;
 
+  var words = summary.split(" ");
+
+  if (words.length > 30) {
+    summary = "";
+    for (let i = 0; i < 30; i++) {
+      summary += words[i] + " ";
+    }
+    summary += "...";
+  }
+
   let typeText = novel ? 'Web Novel' : 'Web Comic';
 
   let element = `<div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
@@ -77,8 +87,8 @@ function showElement(series) {
                           <img class="aspect-square object-cover" src="${cover}" class=" object-center object-cover">
                         </div>                       
                         <div id="body" class="flex flex-col ml-5">
-                        <h4 id="name" class="text-xl font-semibold mb-2">${title}</h4>
-                        <p id="description" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a href="/series/${id}" id="name" class="text-xl font-semibold mb-2">${title}</a>
+                        <p id="description" class="text-gray-800 mt-2">${summary}</p>
                         <div class="flex mt-5">
                           <p>Author:</p>
                           <a href="/user/${creator.username}" class="ml-3 hover:underline text-blue-600">${creator.username}</a>

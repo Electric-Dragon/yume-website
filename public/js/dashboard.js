@@ -59,7 +59,7 @@ $.ajax({
 
       const { data, error } = await supabase
         .from('series')
-        .select('id,title,chapcount,status,updatedat,comment_count,like_count')
+        .select('id,title,chapcount,status,updatedat,comment_count')
         .eq('creator', user.id)
         .order('updatedat', { ascending: false })
         .limit(6)
@@ -68,10 +68,18 @@ $.ajax({
         erroralert(error.message);
       } else {
 
-        data.forEach(val=> {
+        data.forEach(async val=> {
 
-          let {id, title, chapcount, status, updatedat, comment_count,like_count} = val;
+          let {id, title, chapcount, status, updatedat, comment_count} = val;
           let date = new Date(updatedat);
+
+          const { data:seriesFollows, error:seriesFollowsError } = await supabase
+            .rpc('get_series_follows', { seriesid: id });
+
+          if (seriesFollowsError) {
+            erroralert(seriesFollowsError.message);
+          }
+
 
           let element = `<tr class="text-gray-700 dark:text-gray-400">
                           <td class="px-4 py-3">
@@ -98,7 +106,7 @@ $.ajax({
                           <td class="px-4 py-3">
                           <div class="flex items-center text-sm">
                             <div>
-                              <p class="font-semibold">${like_count}</p>
+                              <p class="font-semibold">${seriesFollows}</p>
                               <p class="text-xs text-gray-600 dark:text-gray-400">
                                ${comment_count} comments
                               </p>

@@ -15,6 +15,7 @@ $.ajax({
 
       try {
         if (user) {
+
           $('#authButtons').hide();
 
           const { data, error } = await supabase
@@ -28,19 +29,21 @@ $.ajax({
           $('#pfp').attr('src', userPfp);
 
         } else {
+          $('#pfp').hide();
           $('#signedInElements').hide();
         }
   
-        document.getElementById('user-menu-item-2').addEventListener('click', async function(){
+        document.getElementById('signOut').addEventListener('click', async function(){
   
           const { error } = await supabase.auth.signOut();
   
           if (error) {
             erroralert(error.message);
           } else {
-            successalert('Signed out successfully');
+            successalert('Signed out successfully',() => {window.location.reload()});
             $('#authButtons').show();
             $('#signedInElements').hide();
+            $('#pfp').hide();
           }
   
         });
