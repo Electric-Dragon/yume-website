@@ -83,8 +83,8 @@ function showElement(series) {
 
   let element = `<div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
                   <div id="header" class="grid grid-flow-col"> 
-                      <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                          <img class="aspect-square object-cover" src="${cover}" class=" object-center object-cover">
+                      <div class=" aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                          <img class="aspect-square object-cover w-full object-center" src="${cover}" >
                         </div>                       
                         <div id="body" class="flex flex-col ml-5">
                         <a href="/series/${id}" id="name" class="text-xl font-semibold mb-2">${title}</a>
