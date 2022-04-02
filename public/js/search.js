@@ -81,30 +81,32 @@ function showElement(series) {
 
   let typeText = novel ? 'Web Novel' : 'Web Comic';
 
-  let element = `<div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
-                  <div id="header" class="grid grid-flow-col"> 
-                      <div class=" aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                          <img class="aspect-square object-cover w-full object-center" src="${cover}" >
-                        </div>                       
-                        <div id="body" class="flex flex-col ml-5">
-                        <a href="/series/${id}" id="name" class="text-xl font-semibold mb-2">${title}</a>
-                        <p id="description" class="text-gray-800 mt-2">${summary}</p>
-                        <div class="flex mt-5">
-                          <p>Author:</p>
-                          <a href="/user/${creator.username}" class="ml-3 hover:underline text-blue-600">${creator.username}</a>
-                        </div>
-                        <div class="flex mt-1">
-                          <p>Type:</p>
-                          <p class="ml-3 text-green-800">${typeText}</p>
-                      </div>
-                        <div class="flex mt-1">
-                          <p>Genre:</p>
-                          <a href="/genres/${genre1}" class="ml-3 hover:underline text-blue-600">${genre1}</a> <span class="ml-1">,</span>
-                          <a href="/genres/${genre2}" class="ml-2 hover:underline text-blue-600">${genre2}</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>`
+  let element = `<a href="/series/${id}">
+  <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+    <div id="header" class="grid grid-flow-col"> 
+        <div class=" aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+            <img class="aspect-square object-cover w-full object-center" src="${cover}" >
+          </div>                       
+          <div id="body" class="flex flex-col ml-5">
+          <h4 id="name" class="text-xl font-semibold mb-2">${title}</h4>
+          <p id="description" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="flex mt-5">
+            <p>Author:</p>
+            <a href="/user/${creator.username}" class="ml-3 hover:underline text-blue-600">${creator.username}</a>
+          </div>
+          <div class="flex mt-1">
+            <p>Type:</p>
+            <p class="ml-3 text-green-800">${typeText}</p>
+        </div>
+          <div class="flex mt-1">
+            <p>Genre:</p>
+            <a href="/genres/${genre1}" class="ml-3 hover:underline text-blue-600">${genre1}</a> <span class="ml-1">,</span>
+            <a href="/genres/${genre2}" class="ml-2 hover:underline text-blue-600">${genre2}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </a>`
 
   $('#searchResults').append(element);
 
