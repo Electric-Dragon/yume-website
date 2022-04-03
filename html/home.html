@@ -39,10 +39,10 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <a href="#" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-white bg-black focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
-            <a href="/dashboard/home" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-            <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Library</a>
-            <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+            <a href="/" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-white bg-black focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+            <a href="/search" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Search</a>
+            <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your library</a>
+            <a href="/popular" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
           </div>
         </div>
       </div>
@@ -105,10 +105,10 @@
   -->
   <div id="resultnav" class="hidden sm:hidden">
     <div class="px-2 pt-2 pb-3">
-      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-      <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-      <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-      <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+      <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+      <a href="/search" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Search</a>
+      <a href="/library" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your library</a>
+      <a href="/popular" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
     </div>
   </div>
   <script>document.getElementById('togglemebutton').onclick = function() {
@@ -132,8 +132,8 @@
     })
   })</script>
 </nav>
-<header class="flex mt-2 border-t-0 w-screen items-center text-center justify-center gap-7 border h-16">
-  <p class="rounded-md px-3 font-bold  bg-black text-white uppercase hover:underline cursor-pointer dark:text-gray-100">ALL</p>
+<header class="flex dark:bg-background mt-2 border-t-0 border-x-0 dark:border-none w-screen items-center text-center justify-center gap-7 border h-16 z-40">
+  <p class="rounded-md px-3 font-bold  bg-black dark:bg-white text-white uppercase hover:underline cursor-pointer dark:text-black">ALL</p>
   <p class="text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Novels</p>
   <p class="text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Novels</p>
 </header>
