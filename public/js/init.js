@@ -7,6 +7,8 @@ $('#seriesSearchBar').on('focus', function() {
   window.location = '/search';
 })
 
+localStorage.getItem('dark') === 'true' ? $('html').addClass('dark') : $('html').removeClass('dark');
+
 $.ajax({
   url: "/keys",
   success: async function( result ) {

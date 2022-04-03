@@ -9,6 +9,7 @@ $('#youtubeConnected').hide();
 $('#sideBarDashboard').hide();
 $('#sideBarSeries').hide();
 
+$('#toggleDarkMode').prop('checked',localStorage.getItem('dark') === 'true');
 
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
@@ -31,8 +32,6 @@ $.ajax({
       if (!user) {
         window.location = "/signin";
       }
-
-      console.log(user);
 
       $('#email').val(user.email);
 
