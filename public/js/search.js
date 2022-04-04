@@ -3,6 +3,8 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase,user;
 
+let filter = '';
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -14,6 +16,27 @@ $.ajax({
         user = supabase.auth.user();
   
 }});
+
+$('#filterAll').click(function() {
+  filter = '';
+  $('#filterNovels').removeClass('filterActive');
+  $('#filterComics').removeClass('filterActive');
+  $('#filterAll').addClass('filterActive');
+});
+
+$('#filterNovels').click(function() {
+  filter = 'novel';
+  $('#filterNovels').addClass('filterActive');
+  $('#filterComics').removeClass('filterActive');
+  $('#filterAll').removeClass('filterActive');
+});
+
+$('#filterComics').click(function() {
+  filter = 'comic';
+  $('#filterNovels').removeClass('filterActive');
+  $('#filterComics').addClass('filterActive');
+  $('#filterAll').removeClass('filterActive');
+});
 
 $('#searchBar').on('input', async function() {
 
@@ -34,17 +57,34 @@ $('#searchBar').on('input', async function() {
         }
   
       });
-  
-      const { data, error } = await supabase
-      .from('series')
-      .select('id,title,summary,cover,creator(username),novel,genre1,genre2')
-      .neq('status', 'd')
-      .textSearch('fts', query)
+
+      let data, error;
+
+      if (filter === '') {
+        ({ data, error } = await supabase
+        .from('series')
+        .select('id,title,summary,cover,creator(username),novel,genre1,genre2')
+        .neq('status', 'd')
+        .textSearch('fts', query));
+      } else if (filter === 'novel') {
+        ({ data, error } = await supabase
+        .from('series')
+        .select('id,title,summary,cover,creator(username),novel,genre1,genre2')
+        .neq('status', 'd')
+        .eq('novel', true)
+        .textSearch('fts', query));
+      } else {
+        ({ data, error } = await supabase
+        .from('series')
+        .select('id,title,summary,cover,creator(username),novel,genre1,genre2')
+        .neq('status', 'd')
+        .eq('novel', false)
+        .textSearch('fts', query));
+      }
   
       if (error) {
         erroralert(error.message);
       } else {
-        console.log(data);
   
         if (data.length === 0) {
           $('#searchResults').empty();
