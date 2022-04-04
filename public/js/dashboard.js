@@ -134,16 +134,20 @@ $.ajax({
 
       const {data: notifications, error: error_} = await supabase
         .from('adaptation_notifications')
-        .select('id,from(id,username),to(id,username),series(id,title,novel),status,when')
+        .select('id,from(id,username),to(id,username),series!adaptation_notifications_series_fkey[series](id,title,novel),status,when')
         .or(`from.eq.${user.id},to.eq.${user.id}`)
         .order('when', { ascending: false })
 
       if (error_) {
         erroralert(error_.message);
+        console.error(error_.hint);
+        console.error(error_.details);
       } else {
 
         notifications.forEach(val => {
           let {id, from, to, series, status, when} = val;
+
+          console.log(val);
 
           let type = series.novel ? 'Web Comic' : 'Web Novel';
 
