@@ -73,7 +73,7 @@ $.ajax({
               .select('status')
               .eq('from', user.id)
               .eq('to', creatorInfo.id)
-              .eq('series', seriesid)
+              .eq('target_series', seriesid)
 
             if (hasRequest.length > 0) {
               if (hasRequest[0].status === 'p') {
@@ -196,7 +196,7 @@ async function createAdaptation() {
       const { data, error } = await supabase
         .from('adaptation_notifications')
         .insert([
-          { from: user.id, to: creatorInfo.id, series: seriesid, status: 'p'}
+          { from: user.id, to: creatorInfo.id, target_series: seriesid, status: 'p'}
         ])
 
       if (error) {

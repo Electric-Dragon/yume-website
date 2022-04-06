@@ -31,14 +31,16 @@ $.ajax({
 
         const {data, error} = await supabase
           .from('chapters')
-          .select('title,images,createdat,chapternum,seriesid(id,genre1,genre2,creator),totalreads')
+          .select('title,images,createdat,chapternum,series(id,genre1,genre2,creator),totalreads')
           .eq('id', chapterid)
           .single();
         if (error) {
             erroralert(error.message);
         } else {
 
-            let {title, images, createdat, chapternum, seriesid, totalreads} = data;
+            let {title, images, createdat, chapternum, series, totalreads} = data;
+
+            let seriesid = series;
 
             const { data:chapterLikes, error___ } = await supabase
             .rpc('getChapterLikes', { chapterid: chapterid });
