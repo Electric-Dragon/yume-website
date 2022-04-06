@@ -2,7 +2,10 @@ require('dotenv').config();
 const _supabase = require('@supabase/supabase-js');
 const nAPI = require('./neo4jAPI');
 
-const supabase = _supabase.createClient(process.env.API_URL, process.env.SERVICE_ROLE)
+const supabase = _supabase.createClient(process.env.API_URL, process.env.SERVICE_ROLE);
+
+var SibApiV3Sdk = require('sib-api-v3-sdk');
+SibApiV3Sdk.ApiClient.instance.authentications['api-key'].apiKey = process.env.SENDINBLUE_API_KEY;
 
 module.exports.signUp = async function signUp({email, password, username}) {
 
@@ -33,7 +36,25 @@ module.exports.signUp = async function signUp({email, password, username}) {
                             return {error: error.message}
                         } else {
                             await nAPI.createUserNode(user.id, username);
-							return {link: data.action_link}
+
+                            return new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail(
+                                  {
+                                    'subject':'Verify your account for Yume!',
+                                    'sender' : {'email':'site.yume@gmail.com', 'name':'Yume No reply'},
+                                    'replyTo' : {'email':'site.yume@gmail.com', 'name':'Yume No reply'},
+                                    'to' : [{'name': username, 'email': email}],
+                                    'htmlContent' : '<html><body><h1>To verify your account for Yume, click this <a href="{{params.link}}">link</a>. </h1></body></html>',
+                                    'params' : {'link':data.action_link}
+                                  }
+                                ).then(function(data) {
+                                    console.log(data);
+                                    return {success: true}
+                                }, function(error) {
+                                  console.error(error);
+                                    return {error: error}
+                                });
+
+							// return {link: data.action_link}
 						}
                     });                    
                 }

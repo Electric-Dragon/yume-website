@@ -51,8 +51,8 @@ async function signUp(e) {
           if (data.error) {
             erroralert(data.error);
           } else {
-            successalert('Sign up successful', function() {
-              window.location = data.link + '/signin';
+            successalert('Sign up successful, check your email to verify your account', function() {
+              window.location = '/signin';
             });
           }
       }});
