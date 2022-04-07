@@ -7,12 +7,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
     <link href="/css/output.css" rel="stylesheet">
-    <title>Your search results</title>
+    <title>Popular Works</title>
 </head>
 <body class="dark:bg-black" >
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
 <nav class="bg-transparent shadow-lg pt-3 dark:bg-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -111,26 +108,6 @@
       <a href="/popular" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
     </div>
   </div>
-  <script>document.getElementById('togglemebutton').onclick = function() {
-    document.getElementById("resultnav").classList.toggle("hidden");
-  }
-  
-  //document.getElementById('togglemebutton').onclick = function () {
-  //  document.getElementById("toggleme").classList.toggle("hidden");
-  //}
-  
-  
-  const toggleprofile = document.getElementById("toggleprofile");
-  const resultprofile = document.getElementById("resultprofile");
-  [...document.querySelectorAll('body')].forEach(el => {
-    el.addEventListener('click', event => {
-      if (event.target.parentElement.id !== "toggleprofile") {
-        console.log(event.target.parentElement.id)
-        resultprofile.classList.add("hidden")
-      }else{
-      resultprofile.classList.toggle("hidden")}
-    })
-  })</script>
 </nav>
 
 
@@ -154,19 +131,20 @@
     
     <main class="max-w-5xl mx-auto">
 
-        <p class="font-bold text-3xl mt-8">Latest Hits:</p>
+        <p class="font-bold text-3xl mt-8 dark:text-white">Latest Hits:</p>
 
             <div class="grid grid-flow-row w-full mx-auto mt-5">
                 <div class="grid mx-auto md:mx-0">
                   <div class="grid grid-flow-row w-72">
                       <div class="relative my-4">
-                        <div class="relative"><img class="h-72 object-cover aspect-square" id="cover" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpicfiles.alphacoders.com%2F383%2F383768.png&f=1&nofb=1" alt=""></div>
+                        <div class="relative"><img class="h-72 object-cover aspect-square" id="mostPopularCover" src="" alt="Most popular work"></div>
                         <p class="absolute top-0 left-0 text-5xl m-4 text-black ">1</p>
                       </div>
                     <div class="grid grid-flow-row">
-                        <div class="text-gray-400 text-sm mt-1">Comedy<span class="mx-1">,</span>Horror</div>
-                        <div class="font-bold text-2xl mt-2">MaxTGM</div>
-                        <div class="text-gray-600 text-left mt-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis modi, expedita iure, voluptatibus unde eveniet mollitia voluptatum, repudiandae ratione perferendis explicabo commodi tempora soluta molestias nesciunt. Exercitationem vitae unde laborum.</div>
+                        <div class="text-gray-400 text-sm mt-1"><a id="mostPopularGenre1"></a><span class="mx-1">,</span><a id="mostPopularGenre2"></a></div>
+                        <div class="font-bold text-2xl mt-2 dark:text-white" id="mostPopularTitle"></div>
+                        <div class="font-bold text-xl mt-2 dark:text-white" id="mostPopularCreatorUsername"></div>
+                        <div class="text-gray-600 text-left mt-1" id="mostPopularSummary"></div>
 
                   </div>
   
@@ -179,7 +157,7 @@
                             <table class="w-full whitespace-no-wrap">
 
                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
-                                  <tr class="text-gray-700 dark:text-gray-400">
+                                  <!-- <tr class="text-gray-700 dark:text-gray-400">
                                       <td class="px-4 py-3">
                                         <div class="flex items-center text-sm">
                                           <div
@@ -439,7 +417,7 @@
                                         <td class="px-4 py-3 text-sm">
                                           MaxTGM
                                         </td>
-                                      </tr>
+                                      </tr> -->
                                 </tbody>
                              </table>
 
@@ -463,6 +441,6 @@
       <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
       <script src="/js/init.js" type="module"></script>
-      <script defer src="/js/search.js" type="module"></script>
+      <script defer src="/js/popular.js" type="module"></script>
 </body>
 </html>

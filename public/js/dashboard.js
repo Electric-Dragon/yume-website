@@ -59,7 +59,7 @@ $.ajax({
 
       const { data, error } = await supabase
         .from('series')
-        .select('id,title,chapcount,status,updatedat,comment_count')
+        .select('id,title,chapcount,status,updatedat')
         .eq('creator', user.id)
         .order('updatedat', { ascending: false })
         .limit(6)
