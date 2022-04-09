@@ -68,24 +68,29 @@ $.ajax({
 
           let readRoute = novel ? 'novel' : 'comic';
 
-          const { data:hasRequest, error__ } = await supabase
+          try {
+            const { data:hasRequest, error__ } = await supabase
               .from('adaptation_notifications')
               .select('status')
               .eq('from', user.id)
               .eq('to', creatorInfo.id)
               .eq('target_series', seriesid)
 
-            if (hasRequest.length > 0) {
-              if (hasRequest[0].status === 'p') {
-                $('#btnMakeAdaptation').text('Request Pending');
-              } else if (hasRequest[0].status === 'a') {
-                $('#btnMakeAdaptation').text('Request Accepted');
-              } else if (hasRequest[0].status === 'd') {
-                $('#btnMakeAdaptation').text('Request Declined');
+              if (hasRequest.length > 0) {
+                if (hasRequest[0].status === 'p') {
+                  $('#btnMakeAdaptation').text('Request Pending');
+                } else if (hasRequest[0].status === 'a') {
+                  $('#btnMakeAdaptation').text('Request Accepted');
+                } else if (hasRequest[0].status === 'd') {
+                  $('#btnMakeAdaptation').text('Request Declined');
+                }
+              } else {
+                $('#btnMakeAdaptation').click(createAdaptation);
               }
-            } else {
-              $('#btnMakeAdaptation').click(createAdaptation);
-            }
+
+          } catch (error) {
+            console.log(error);
+          }
 
           const {data:chapters, error} = await supabase
             .from('chapters')
