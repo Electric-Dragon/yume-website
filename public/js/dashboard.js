@@ -59,7 +59,7 @@ $.ajax({
 
       const { data, error } = await supabase
         .from('series')
-        .select('id,title,chapcount,status,updatedat,comment_count')
+        .select('id,title,chapcount,status,updatedat')
         .eq('creator', user.id)
         .order('updatedat', { ascending: false })
         .limit(6)
@@ -134,7 +134,7 @@ $.ajax({
 
       const {data: notifications, error: error_} = await supabase
         .from('adaptation_notifications')
-        .select('id,from(id,username),to(id,username),series!adaptation_notifications_series_fkey[series](id,title,novel),status,when')
+        .select('id,from(id,username),to(id,username),series(id,title,novel),status,when')
         .or(`from.eq.${user.id},to.eq.${user.id}`)
         .order('when', { ascending: false })
 
