@@ -107,6 +107,11 @@ app.get("/popular", function(req, res) {
     res.sendFile(__dirname + "/html/popular.html");
 });
 
+app.get("/Csearch", function(req, res) {
+    res.sendFile(__dirname + "/html/Csearch.html");
+});
+
+
 
 app.get("/read/comic/:seriesid/:chapterid", async function(req, res) {
     await supabase.rpc('incrementchapterreads', { row_id: req.params.chapterid })
