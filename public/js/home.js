@@ -1,10 +1,12 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
+let saveInfo = JSON.parse(localStorage.getItem('saveInfo'));
+
 const Toast = Swal.mixin({
   toast: true,
   position: 'bottom-end',
-  showConfirmButton: false,
+  showConfirmButton: true,
   timer: 3000,
   timerProgressBar: true,
   didOpen: (toast) => {
@@ -13,11 +15,19 @@ const Toast = Swal.mixin({
   }
 })
 
-Toast.fire({
-  icon: 'info',
-  title: 'Solo Leveling',
-  html:'click to continue reading </br> <b>ch. 123</b>'
-})
+if (saveInfo) {
+
+  Toast.fire({
+    icon: 'info',
+    title: saveInfo.title,
+    html:`click to continue reading </br> <b>ch. ${saveInfo.chapternum}</b>`,
+    confirmButtonText: 'Continue Reading'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location=`/read/${saveInfo.path}/${saveInfo.seriesid}/${saveInfo.chapterid}`;
+    }
+  });
+}
 
 let supabase,user;
 
@@ -36,7 +46,7 @@ $.ajax({
           .select('id,title,cover')
           .neq('status', 'd')
           .order('updatedat', { ascending: false })
-          .limit(8)
+          .limit(10)
   
         if (error) {
           erroralert(error.message);
