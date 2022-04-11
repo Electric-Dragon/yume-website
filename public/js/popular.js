@@ -67,7 +67,9 @@ $.ajax({
                                   </div>
                                 </td>
                                 <td class="px-4 py-3 text-sm">
-                                  ${creator.username}
+                                  <a href="/user/${creator.username}">
+                                    ${creator.username}
+                                  </a>
                                 </td>
                               </tr>
               `;
