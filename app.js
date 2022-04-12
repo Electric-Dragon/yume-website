@@ -50,6 +50,10 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/home.html");
 });
 
+app.get("/genre/:genre", function(req, res) {
+    res.sendFile(__dirname + "/html/genre.html");
+});
+
 app.get("/dashboard/home", function(req, res) {
     res.sendFile(__dirname + "/html/dashboard.html");
 });
