@@ -23,7 +23,7 @@ $.ajax({
 
         const {data, error} = await supabase
           .from('chapters')
-          .select('title,body,createdat,chapternum,series(id,genre1,genre2,creator),totalreads')
+          .select('title,body,createdat,chapternum,series(id,genre1,genre2,creator,title),totalreads')
           .eq('id', chapterid)
           .single();
         if (error) {
@@ -72,7 +72,7 @@ $.ajax({
             });
 
             let saveInfo = {
-                title: title,
+                title: seriesid.title,
                 chapternum: chapternum,
                 seriesid: seriesid.id,
                 chapterid: chapterid,
