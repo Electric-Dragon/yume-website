@@ -50,6 +50,10 @@ app.post("/readChapter", async function(req, res) {
     res.json(await yumeAPI.readChapter(req.body));
 });
 
+app.post("/getRecommendations", async function(req, res) {
+    res.json(await yumeAPI.getRecommendations(req.body));
+});
+
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/home.html");
 });

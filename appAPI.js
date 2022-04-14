@@ -143,6 +143,22 @@ module.exports.readChapter = async function readChapter({id, access_token}) {
 
 }
 
+module.exports.getRecommendations = async function getRecommendations({access_token}) {
+
+    const {user, data, error} = await supabase.auth.api.getUser(access_token);
+    if (error) {
+        return {error: error.message}
+    } else {
+        let nRes = await nAPI.getRecommendations({userid: user.id});
+        if (nRes.error) {
+            return {error: 'An error occured'}
+        } else {
+            return nRes
+        }
+    }
+
+}
+
 module.exports.createAdaptation = async function createAdaptation({id, access_token}) {
 
     const {user, data, error} = await supabase.auth.api.getUser(access_token);
