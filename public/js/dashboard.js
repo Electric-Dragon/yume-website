@@ -147,8 +147,6 @@ $.ajax({
         notifications.forEach(val => {
           let {id, from, to, series, status, when} = val;
 
-          console.log(val);
-
           let type = series.novel ? 'Web Comic' : 'Web Novel';
 
           let date = new Date(when);
