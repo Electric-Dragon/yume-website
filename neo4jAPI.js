@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const neo4j = require('neo4j-driver');
+// import { isInt, isDate, isDateTime, isTime, isLocalDateTime, isLocalTime, isDuration } from 'neo4j-driver'
     
 const uri = process.env.DB_URI;
 const user = process.env.DB_USERNAME;
@@ -169,4 +170,72 @@ module.exports.readChapter = async function readChapter({seriesid, userid}) {
 
     }
 
+}
+
+module.exports.getRecommendations = async function getRecommendations({userid}) {
+
+    const session = driver.session();
+    let response;
+
+    try {
+        
+        const query = `
+            MATCH (u:User)-[:READS]->(s:Series)
+            <-[:READS]-(u2:User)-[:READS]->(s2:Series)-[:GENRE]->(:Genre)<-[:GENRE]-(s)
+            WHERE u.uid = "${userid}" and NOT ( (u)-[:READS]->(s2) )
+            return DISTINCT s2.id
+            limit 4
+        `
+
+        let result = await session.readTransaction(tx => tx.run(query));
+
+        let seriesIds = result.records.map(record => valueToNativeType(record.get('s2.id')));
+
+        response = {seriesIds: seriesIds};
+
+    } catch (error) {
+
+        console.log(error);
+        response = {error: error};  
+           
+    } finally {
+        
+        await session.close();
+        return response;
+    
+    }
+
+}
+
+function toNativeTypes(properties) {
+    return Object.fromEntries(Object.keys(properties).map((key) => {
+      let value = valueToNativeType(properties[key])
+  
+      return [ key, value ]
+    }))
+  }
+  
+  
+function valueToNativeType(value) {
+    if ( Array.isArray(value) ) {
+        value = value.map(innerValue => valueToNativeType(innerValue))
+    }
+    else if ( neo4j.isInt(value) ) {
+        value = value.toNumber()
+    }
+    else if (
+        neo4j.isDate(value) ||
+        neo4j.isDateTime(value) ||
+        neo4j.isTime(value) ||
+        neo4j.isLocalDateTime(value) ||
+        neo4j.isLocalTime(value) ||
+        neo4j.isDuration(value)
+    ) {
+        value = value.toString()
+    }
+    else if (typeof value === 'object' && value !== undefined  && value !== null) {
+        value = toNativeTypes(value)
+    }
+
+    return value
 }
