@@ -46,6 +46,10 @@ app.post("/novel", async function(req, res) {
     res.json(await yumeAPI.signUp(req.body));
 });
 
+app.post("/readChapter", async function(req, res) {
+    res.json(await yumeAPI.readChapter(req.body));
+});
+
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/home.html");
 });
@@ -69,7 +73,6 @@ app.get("/dashboard/create/comic", function(req, res) {
 app.get("/dashboard/series/:seriesid/:chapterid/upload", function(req, res) {
     res.sendFile(__dirname + "/html/comic.html");
 });
-
 
 app.post("/dashboard/create/series", async function(req, res) {
     res.json(await yumeAPI.createSeries(req.body));
@@ -115,13 +118,10 @@ app.get("/Csearch", function(req, res) {
     res.sendFile(__dirname + "/html/Csearch.html");
 });
 
-
-
 app.get("/read/comic/:seriesid/:chapterid", async function(req, res) {
     await supabase.rpc('incrementchapterreads', { row_id: req.params.chapterid })
     res.sendFile(__dirname + "/html/readComic.html");
 });
-
 
 app.post("/followSeries", async function(req, res) {
     res.json(await yumeAPI.followSeries(req.body));

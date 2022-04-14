@@ -140,3 +140,33 @@ module.exports.unfollowSeries = async function unfollowSeries({seriesid, userid}
     }
 
 }
+
+module.exports.readChapter = async function readChapter({seriesid, userid}) {
+
+    const session = driver.session();
+    let response;
+
+    try {
+
+        const query = `
+            MATCH (u:User {uid:"${userid}"})
+            MATCH (s:Series {id:"${seriesid}"})
+            MERGE (u)-[r:READS]->(s)`;
+
+        await session.writeTransaction(tx => tx.run(query));
+
+        response = {success: true};
+        
+    } catch (error) {
+
+        console.log(error);
+        response = {error: error};  
+           
+    } finally {
+    
+        await session.close();
+        return response;
+
+    }
+
+}

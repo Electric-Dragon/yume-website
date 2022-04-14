@@ -129,6 +129,15 @@ $.ajax({
                 liked = true;
             }
             toggleLikeButton(); 
+
+            if (user) {
+                $.ajax({
+                    type:"POST",
+                    url:'/readChapter',
+                    data:{id: seriesid.id,
+                    access_token: supabase.auth.session().access_token},        
+                });
+            }
         }
 }});
 

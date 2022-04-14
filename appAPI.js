@@ -127,6 +127,22 @@ module.exports.followSeries = async function followSeries({id, access_token, fol
 
 }
 
+module.exports.readChapter = async function readChapter({id, access_token}) {
+
+    const {user, data, error} = await supabase.auth.api.getUser(access_token);
+    if (error) {
+        return {error: error.message}
+    } else {
+        let nRes = await nAPI.readChapter({seriesid: id, userid: user.id});
+        if (nRes.error) {
+            return {error: 'An error occured'}
+        } else {
+            return {success: true}
+        }
+    }
+
+}
+
 module.exports.createAdaptation = async function createAdaptation({id, access_token}) {
 
     const {user, data, error} = await supabase.auth.api.getUser(access_token);
