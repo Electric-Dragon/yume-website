@@ -169,7 +169,7 @@ module.exports.createAdaptation = async function createAdaptation({id, access_to
         const { data, error } = await supabase
             .from('adaptation_notifications')
             .select('id,series(id,title,summary,cover,novel,mature,genre1,genre2)')
-            .eq('series', id)
+            .eq('target_series', id)
             .eq('from', user.id)
             .eq('status','a')
 
