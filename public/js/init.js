@@ -57,7 +57,7 @@ $.ajax({
                   .neq('status', 'd')
                   .in('id', seriesIds)
                   .order('updatedat', { ascending: false })
-                  .limit(4)
+                  .limit(5)
                   
                   recommendedSeries.forEach((series) => {
 

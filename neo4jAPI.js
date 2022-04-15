@@ -184,7 +184,7 @@ module.exports.getRecommendations = async function getRecommendations({userid}) 
             <-[:READS]-(u2:User)-[:READS]->(s2:Series)-[:GENRE]->(:Genre)<-[:GENRE]-(s)
             WHERE u.uid = "${userid}" and NOT ( (u)-[:READS]->(s2) )
             return DISTINCT s2.id
-            limit 4
+            limit 5
         `
 
         let result = await session.readTransaction(tx => tx.run(query));
