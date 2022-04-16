@@ -62,10 +62,15 @@ $.ajax({
                                 </div>
                                 <div class="mt-4 flex justify-between">
                                     <div>
-                                        <h3 class="text-sm text-gray-700 font-bold dark:text-gray-100">
-                                        <a href="/series/${id}">
+                                        <h3 class="text-sm">
+                                        <a href="/series/${id}" class="text-gray-700 font-bold dark:text-gray-100">
                                             <span aria-hidden="true" class="absolute inset-0"></span>
                                             ${title}
+                                        </a>
+                                        <br>
+                                        <a href="/creator/">
+                                        <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
+                                        <p class="text-xs text-gray-500 dark:text-gray-500">by MaxTGM</p>
                                         </a>
                                         </h3>
                                     </div>
