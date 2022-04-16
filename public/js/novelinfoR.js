@@ -39,7 +39,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series')
-          .select('title,cover,adaptation,novel,status,summary,creator(id,username)')
+          .select('title,cover,adaptation,novel,status,summary,creator(id,username),genre1,genre2')
           .eq('id', seriesid)
           .single()
   
@@ -47,13 +47,18 @@ $.ajax({
           erroralert(error.message);
         } else {
   
-          let { title, cover, adaptation, novel, status, summary, creator} = data;
+          let { title, cover, adaptation, novel, status, summary, creator, genre1, genre2} = data;
 
           $('#seriesTitle').text(title);
           $('#title').text(title);
           $('#summary').text(summary);
           $('#status').text(statusText[status]);
           $('#cover').attr('src', cover);
+
+          $('#genre1').text(genre1);
+          $('#genre2').text(genre2);
+          $('#genre1').attr('href', '/genre/' + genre1);
+          $('#genre2').attr('href', '/genre/' + genre2);
 
           $('#creatorname').text(creator.username)
           $('#creatorname').attr('href',`/user/${creator.username}`)
