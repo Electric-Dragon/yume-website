@@ -76,10 +76,16 @@ $.ajax({
           const { data:seriesFollows, error:seriesFollowsError } = await supabase
             .rpc('get_series_follows', { seriesid: id });
 
+          const { data:seriesLikes, error:seriesLikesError } = await supabase
+          .rpc('get_series_total_likes', { series_id: id });
+
           if (seriesFollowsError) {
             erroralert(seriesFollowsError.message);
           }
 
+          if (seriesLikesError) {
+            erroralert(seriesLikesError.message);
+          }
 
           let element = `<tr class="text-gray-700 dark:text-gray-400">
                           <td class="px-4 py-3">
@@ -106,9 +112,9 @@ $.ajax({
                           <td class="px-4 py-3">
                           <div class="flex items-center text-sm">
                             <div>
-                              <p class="font-semibold">${seriesFollows}</p>
+                              <p class="font-semibold">${seriesLikes}</p>
                               <p class="text-xs text-gray-600 dark:text-gray-400">
-                               ${comment_count} comments
+                               ${seriesFollows} followers
                               </p>
                             </div>
                           </div>
@@ -178,7 +184,7 @@ $.ajax({
 
               $('#notificationHolder').append(element);
             
-          } else {
+          } else if (from.id === user.id) {
 
             // let clickHere = (status === 'a') ? `<a onclick="createAdaptation('${series.id}')"` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
             let clickHere = (status === 'a') ? `

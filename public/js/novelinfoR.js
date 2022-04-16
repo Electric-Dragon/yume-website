@@ -32,7 +32,7 @@ $.ajax({
             .eq('id', user.id)
             .single()
           
-          if (data.creator) {
+          if (data && data.creator) {
             $('#btnMakeAdaptation').show();
           }
         }
