@@ -68,7 +68,7 @@ $.ajax({
                                             ${title}
                                         </a>
                                         <br>
-                                        <a href="/creator/">
+                                        <a href="/series/${id}">
                                         <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
                                         <p class="text-xs text-gray-500 dark:text-gray-500">by MaxTGM</p>
                                         </a>
