@@ -178,7 +178,7 @@ $.ajax({
 
               $('#notificationHolder').append(element);
             
-          } else {
+          } else if (from.id === user.id) {
 
             // let clickHere = (status === 'a') ? `<a onclick="createAdaptation('${series.id}')"` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
             let clickHere = (status === 'a') ? `
