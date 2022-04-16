@@ -43,7 +43,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series')
-          .select('id,title,cover')
+          .select('id,title,cover,creator(username)')
           .neq('status', 'd')
           .order('updatedat', { ascending: false })
           .limit(10)
@@ -54,7 +54,7 @@ $.ajax({
   
           data.forEach(val=> {
   
-            let {id, title, cover} = val;
+            let {id, title, cover, creator:{username}} = val;
   
             let element = `<div class="group relative dark:text-white">
                                 <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
@@ -70,7 +70,7 @@ $.ajax({
                                         <br>
                                         <a href="/series/${id}">
                                         <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
-                                        <p class="text-xs text-gray-500 dark:text-gray-500">by MaxTGM</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-500">by ${username}</p>
                                         </a>
                                         </h3>
                                     </div>
