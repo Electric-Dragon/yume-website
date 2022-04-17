@@ -33,6 +33,10 @@ app.get("/signup", function(req, res) {
     res.sendFile(__dirname + "/html/signup.html");
 });
 
+app.get("/ad", function(req, res) {
+    res.sendFile(__dirname + "/html/advertisement.html");
+});
+
 app.get("/user/:username", function(req, res) {
     res.sendFile(__dirname + "/html/creator.html");
 });
