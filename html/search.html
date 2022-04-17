@@ -110,9 +110,9 @@
   </div>
 </nav>
 <header class="flex  dark:bg-background mt-2 border-t-0 border-x-0 dark:border-none w-screen items-center text-center justify-center gap-3 border h-16 z-40">
-  <p id="filterAll" class="rounded-md px-3 text-base font-bold uppercase hover:underline cursor-pointer dark:text-gray-100 bg-black dark:bg-white text-white ">ALL</p>
-  <p id="filterNovels" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Novels</p>
-  <p id="filterComics" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Comics</p>
+  <p id="filterAll" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">ALL</p>
+  <p id="filterNovels" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Novels</p>
+  <p id="filterComics" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Comics</p>
   <a href="/Csearch" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Creators</a>
 </header>
 
@@ -251,7 +251,10 @@
         var filterNovels = document.getElementById("filterNovels");
         var filterComics = document.getElementById("filterComics");
 
-        let activeClasses = ['bg-black', 'dark:bg-white', 'text-white', 'dark:text-base'];
+        
+        let activeClasses = ['bg-black', 'dark:bg-white', 'text-white', 'dark:text-black'];
+        
+        filterAll.classList.add(...activeClasses);
 
         filterAll.addEventListener('click', function() {
           filterAll.classList.add(...activeClasses);

@@ -17,7 +17,9 @@ $.ajax({
 
         const { data, error } = await supabase
             .from('series_popularity')
-            .select('series:seriesid(id,title,cover,summary,genre1,genre2,creator(username))')
+            // .select('series:seriesid(id,title,cover,summary,genre1,genre2,creator(username)),series!inner(*)')
+            .select('series!inner(id,title,cover,summary,genre1,genre2,creator(username))')
+            .eq('series.novel',false)
             .order('popularity_score', { ascending: false })
             .limit(10)
 

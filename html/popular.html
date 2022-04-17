@@ -117,8 +117,9 @@
 
 <div  class="bg-white dark:bg-background"> 
     <header class="flex mt-5 border-t-0 w-screen items-center text-center justify-center gap-7 border h-16">
-        <p class="rounded-md px-3 font-bold  bg-black text-white uppercase hover:underline cursor-pointer" dark:text-gray-100">Web Comics</p>
-        <p class="text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Novels</p>
+        <p id="filterAll" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">ALL</p>
+        <p id="filterComics" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Comics</p>
+        <p id="filterNovels" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Novels</p>
     </header>
     <header class="flex  w-screen items-center text-center justify-center gap-7 border-t-0 border h-8 overflow-y-hidden">
       <p class="text-sm underline text-cyan-900 uppercase font-bold cursor-pointer">Latest</p>
@@ -437,6 +438,37 @@
         </div>
     </footer> -->
 </div>
+
+  <script>
+
+    var filterAll = document.getElementById("filterAll");
+    var filterNovels = document.getElementById("filterNovels");
+    var filterComics = document.getElementById("filterComics");
+
+    
+    let activeClasses = ['bg-black', 'dark:bg-white', 'text-white', 'dark:text-black'];
+    
+    filterAll.classList.add(...activeClasses);
+
+    filterAll.addEventListener('click', function() {
+      filterAll.classList.add(...activeClasses);
+      filterNovels.classList.remove(...activeClasses);
+      filterComics.classList.remove(...activeClasses);
+    });
+
+    filterNovels.addEventListener('click', function() {
+      filterAll.classList.remove(...activeClasses);
+      filterNovels.classList.add(...activeClasses);
+      filterComics.classList.remove(...activeClasses);
+    });
+
+    filterComics.addEventListener('click', function() {
+      filterAll.classList.remove(...activeClasses);
+      filterNovels.classList.remove(...activeClasses);
+      filterComics.classList.add(...activeClasses);
+    });
+
+  </script>
 
       <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
