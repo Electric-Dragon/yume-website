@@ -536,62 +536,90 @@
 				<!-- Step Content -->
 				<div class="py-10">	
 					<div x-show.transition.in="step === 1">
-                        <div 
-                        x-data="{
-                                search: '',
-                                open: false,
-                                items: ['solo leveling', 'deepak turn', 'rug'],
-                        
-                                get filteredItems() {
-                                    return this.items.filter(
-                                        i => i.toLowerCase().startsWith(this.search.toLowerCase())
-                                    )
-                                }
-                            }"
-                            class="bg-gray-50 py-6 flex flex-col items-center justify-center relative overflow-hidden sm:py-12">
-                        <input x-on:click="open = !open" type="search" x-model="search" placeholder="Search Here..." class="py-3 px-4 w-1/2 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100">
+                        <!-- component -->
+                            <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-                        
-                        <ul x-show="open" x-on:click.outside="open = !open"  x-transition:enter="transition ease-out duration-300"
-                                x-transition:enter-start="opacity-0 translate"
-                                x-transition:enter-end="opacity-100 translate"
-                                x-transition:leave="transition ease-in duration-300"
-                                x-transition:leave-start="opacity-100 translate"
-                                x-transition:leave-end="opacity-0 translate"  class="w-1/2">
-                                <template x-for="item in filteredItems" :key="item">
-                                    <li class="w-full text-gray-700 p-4 mt-2 bg-white" x-text="item"></li>
-                                </template>
-                                <datalist id="browsers" class="bg-gray-50 py-6 flex flex-col items-center justify-center relative overflow-hidden sm:py-12">
-                                    <option value="Edge">
-                                    <option value="Firefox">
-                                    <option value="Chrome">
-                                    <option value="Opera">
-                                    <option value="Safari">
-                                  </datalist>
-                            </ul>
-                        
-                        </div>
+                            <div class="relative max-w-sm mx-auto text-xs"
+                                x-data="{
+                                        search: '',
+                                        showSelector: false,
+                                        selected: {1:'Chris'},
+                                        options: [],
+                                        clearOpts() {
+                                            this.search = '';
+                                            this.showSelector = false;
+                                            this.options = []
+                                        },
+                                        select(id, name) {
+                                            this.selected[id] = name;
+                                            this.clearOpts();
+                                            $dispatch('selected', Object.keys(this.selected));
+                                        },
+                                        remove(id) {
+                                            delete this.selected[id]
+                                            $dispatch('selected', Object.keys(this.selected));
+                                        },
+                                        goSearch() {
+                                            if (this.search) {
+                                                this.options = {5: 'Carl', 6: 'Alex', 7: 'Bryan'};
+                                                this.showSelector = true;
+                                            } else {
+                                                this.showSelector = false;
+                                            }
+                                        },
+                                    }">
+                                <div class="bg-white rounded-md p-2 flex gap-1 flex-wrap" @click="$refs.search_input.focus()"
+                                    @click.outside="showSelector=false">
+                                    <template x-for="(name, id) in selected">
+                                        <div class="bg-blue-200 rounded-md flex items-center ">
+                                            <div class="p-2" x-text="name"></div>
+                                            <div @click="remove(id)"
+                                                class="p-2 select-none rounded-r-md cursor-pointer hover:bg-magma-orange-clear">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12.5745 1L1 12.5745" stroke="#FEAD69" stroke-width="2" stroke-linecap="round"/>
+                                                    <path d="M1.00024 1L12.5747 12.5745" stroke="#FEAD69" stroke-width="2" stroke-linecap="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <div class="flex-1">
+                                        <input type="text" x-model="search" x-ref="search_input"
+                                            @input.debounce.400ms="goSearch();" placeholder="Search"
+                                            class="w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-1 px-0">
+                                        <div x-show="showSelector" class="absolute left-0 bg-white z-30 w-full rounded-b-md font-medium">
+                                            <div class="p-2 space-y-1">
+                                                <template x-for="(name, id) in options">
+                                                    <div>
+                                                        <template x-if="!selected[id]">
 
+                                                            <div class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
+                                                                <img class="aspect-square object-cover w-1/5" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2Fd27b1d2da82c605322e547f23f1e2811%2Fbcb729a46fc4c465-15%2Fs1280x1920%2Fa7345eaceff60a7e5aec57ed16a924e89a4fc359.jpg&f=1&nofb=1" alt="">
+                                                                <div class="flex flex-col">
+                                                                    <p class="text-md pl-7 font-poppins font-bold">I'm lost!</p>
+                                                                    <p class="text-md pl-7 font-poppins">7 eps</p>
+                                                                </div>
 
+                                                            </div>
 
-                        <script src="//unpkg.com/alpinejs" defer></script>
+                                                            <!-- <div @click="select(id, name)"
+                                                                class="bg-gray-200 py-5 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1"
+                                                                x-text="name">
 
-                        <form action="/action_page.php" method="get">
-                            <label for="browser">Choose your browser from the list:</label>
-                            <input list="browsers" name="browser" id="browser" class="bg-gray-50 py-6 flex flex-col items-center justify-center relative overflow-hidden sm:py-12">
-                            <datalist id="browsers" class="bg-gray-50 py-6 flex flex-col items-center justify-center relative overflow-hidden sm:py-12">
-                              <option value="Edge">
-                              <option value="Firefox">
-                              <option value="Chrome">
-                              <option value="Opera">
-                              <option value="Safari">
-                            </datalist>
-                            <input type="submit">
-                          </form>
-                          
-                          
-
-
+                                                            </div> -->
+                                                                
+                                                        </template>
+                                                    </div>
+                                                </template>
+                                                <template x-if="options.length === 0">
+                                                    <div class="text-gray-500">
+                                                        No result
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 					</div>
 					<div x-show.transition.in="step === 2">
 
