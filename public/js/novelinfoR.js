@@ -177,10 +177,8 @@ window.followSeries = async function followSeries() {
         if (data.error) {
           erroralert(data.error);
         } else {
-          let text = follows ? 'Unfollowed Successfully' : 'Followed Successfully';
-          successalert(text, function() {
-            window.location.reload();
-          });
+          follows = !follows;
+          $('#followButton').text(follows ? 'Unfollow Series' : 'Follow Series');
         }
     }});
   }
