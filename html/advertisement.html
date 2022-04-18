@@ -493,7 +493,7 @@
 						<h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Advertisement Success</h2>
 
 						<div class="text-gray-600 mb-8">
-							Thank you. We have sent you the receipt to sussy@test. Your ad will display on 6:00 to 15:00.
+							Thank you! We have sent you the receipt to sussy@test. Your ad will display on 6:00 to 15:00.
 						</div>
 
 						<button
@@ -665,11 +665,7 @@
                               </div> 
 					</div>
 					<div x-show.transition.in="step === 2">
-
-
-					</div>
-					<div x-show.transition.in="step === 3">
-
+                        <label for="about" class="block text-md font-medium text-gray-700 mb-5"> Dates for your Ad to run </label>
                         <div date-rangepicker class="flex items-center">
                             <div class="relative">
                                   <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -684,7 +680,37 @@
                               </div>
                               <input name="end" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
                           </div>
+                       </div>
+                       <p class="mt-2 text-sm text-gray-500 mb-5">Rs.10 per day for the basic plan.</p>
+                       <div>
+                        <label for="about" class="block text-md font-medium text-gray-700"> Submit an Image </label>
+                        <form action="" class="mt-4 font-sans">
+                            <input type="file" id="myfile" class="text-sm" name="myfile">
+                          </form>
+                        <p class="mt-2 text-sm text-gray-500">This is the hero image that will be seen in the home page. Should be 16 : 9 ratio.</p>
+                      </div>
+                       <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                        <!-- Replace with your content -->
+                        <div class="px-4 py-6 sm:px-0">
+                          <div class="border-4 border-dashed border-gray-500 rounded-lg h-96 flex items-center justify-center">
+                            <button type="button" class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
+                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Load Preview
+                                (Processing...)
+                              </button>
                           </div>
+                        </div>
+                        <!-- /End replace -->
+                      </div>
+
+
+
+					</div>
+					<div x-show.transition.in="step === 3">
+
 
 					</div>
 				</div>
