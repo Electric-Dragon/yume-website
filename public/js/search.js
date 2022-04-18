@@ -129,7 +129,7 @@ function showElement(series) {
           </div>                       
           <div id="body" class="flex flex-col ml-5">
           <h4 id="name" class="text-xl font-semibold mb-2">${title}</h4>
-          <p id="description" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p id="description" class="text-gray-800 mt-2">${summary}</p>
           <div class="flex mt-5">
             <p>Author:</p>
             <a href="/user/${creator.username}" class="ml-3 hover:underline text-blue-600">${creator.username}</a>

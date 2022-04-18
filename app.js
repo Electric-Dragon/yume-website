@@ -99,7 +99,6 @@ app.get("/dashboard/series/:seriesid/:chapterid/write", function(req, res) {
 });
 
 app.get("/read/novel/:seriesid/:chapterid", async function(req, res) {
-    await supabase.rpc('incrementchapterreads', { row_id: req.params.chapterid })
     res.sendFile(__dirname + "/html/readNovel.html");
 });
 app.get("/about", function(req, res) {
@@ -127,7 +126,6 @@ app.get("/Csearch", function(req, res) {
 });
 
 app.get("/read/comic/:seriesid/:chapterid", async function(req, res) {
-    await supabase.rpc('incrementchapterreads', { row_id: req.params.chapterid })
     res.sendFile(__dirname + "/html/readComic.html");
 });
 
@@ -137,6 +135,11 @@ app.post("/followSeries", async function(req, res) {
 
 app.post("/createAdaptation", async function(req, res) {
     res.json(await yumeAPI.createAdaptation(req.body));
+});
+
+app.post("/addRead", async function(req, res) {
+    await yumeAPI.addFingerprint(req.body);
+    res.json({status: 200})
 });
 
 app.get("/ads.txt", function(req, res) {

@@ -222,3 +222,27 @@ module.exports.createAdaptation = async function createAdaptation({id, access_to
     }
 
 }
+
+module.exports.addFingerprint = async function addFingerprint({id, fingerprint}) {
+
+    const { data:exists, error:existsError } = await supabase
+    .from('chapter_reads')
+    .select('id')
+    .match({ chapterid: id, fingerprint: fingerprint });
+
+    if (!existsError) {
+        if (exists.length === 0) {
+            const { data, error } = await supabase
+            .from('chapter_reads')
+            .insert([
+                { chapterid: id, fingerprint: fingerprint }
+            ]);
+            if (error) {
+                console.log(error.message);
+            }
+        }
+    } else {
+        console.log(existsError.message);
+    }
+
+};

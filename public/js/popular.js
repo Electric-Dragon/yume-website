@@ -22,7 +22,6 @@ $.ajax({
         const { data, error } = await supabase
             .from('series_popularity')
             .select('series!inner(id,title,cover,summary,genre1,genre2,creator(username))')
-            // .eq('series.novel',false)
             .order('popularity_score', { ascending: false })
             .limit(10)
 
@@ -103,6 +102,16 @@ $.ajax({
 async function receivedData(data) {
   
   let {id, title, cover, summary, genre1, genre2, creator} = data[0].series;
+
+  var words = summary.split(" ");
+
+  if (words.length > 50) {
+    summary = "";
+    for (let i = 0; i < 50; i++) {
+      summary += words[i] + " ";
+    }
+    summary += "...";
+  }
 
   $('#mostPopularTitle').text(title);
   $('#mostPopularTitle').attr('href', `/series/${id}`);

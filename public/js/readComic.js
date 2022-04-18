@@ -1,5 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
+const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3').then(FingerprintJS => FingerprintJS.load())
+
 let supabase, likeid, user;
 let liked = false;
 let likes = 0;
@@ -126,6 +128,18 @@ $.ajax({
                     access_token: supabase.auth.session().access_token},        
                 });
             }
+
+            fpPromise
+            .then(fp => fp.get())
+            .then(result => {
+                const visitorId = result.visitorId
+                $.ajax({
+                    type:"POST",
+                    url:'/addRead',
+                    data:{id: chapterid,
+                    fingerprint: visitorId},        
+                });
+            })
         }
 }});
 
