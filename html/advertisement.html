@@ -615,16 +615,85 @@
                                                         No result
                                                     </div>
                                                 </template>
+                                                
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0  w-full">
+                                <div class="grid grid-flow-row w-72">
+                                  <div class=""><img class="h-52 object-cover aspect-square" id="cover" src="" alt=""></div>
+                                </div>
+                                  
+                                  <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
+                  
+                                      <div class="grid grid-flow-col">
+                                          <div class="px-4 py-5 sm:px-6">
+                                              <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white">HENYAI</h3>                                          </div>
+                                      </div>
+                                      <div class="border-t border-gray-200">
+                                        <dl>
+                                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt class="text-sm font-medium text-black dark:text-gray-200">Genres:</dt>
+                                            <dd class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                                              <a id="genre1" class="hover:underline cursor-pointer text-blue-600"></a> <span class="ml-1 mr-1">,</span>
+                                              <a id="genre2" class="hover:underline cursor-pointer text-blue-600"></a>
+                                            </dd>
+                                          </div>
+                                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt class="text-sm font-medium text-black dark:text-gray-200">Adaptation:</dt>
+                                            <dd id="adaptation" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1"></dd>
+                                          </div>
+                                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                              <dt class="text-sm font-medium text-black dark:text-gray-200">Type:</dt>
+                                              <dd id="type" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1"></dd>
+                                          </div>
+                                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                              <dt class="text-sm font-medium text-black dark:text-gray-200">Status:</dt>
+                                              <dd id="status" class="mt-1 dark:text-gray-200 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                                              </dd>
+                                          </div>
+                                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                            <dt class="text-sm font-medium text-black dark:text-gray-200">Synopsis:</dt>
+                                            <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-200"></dd>
+                                          </div>
+                                        </dl>
+                                      </div>
+                                    </div>
+                              </div> 
 					</div>
 					<div x-show.transition.in="step === 2">
 
+
 					</div>
 					<div x-show.transition.in="step === 3">
+
+                        <script>
+                            import DateRangePicker from '@themesberg/tailwind-datepicker/DateRangePicker';
+
+                        const datepickerEl = document.getElementById('datepickerId');
+                            new Datepicker(datepickerEl, {
+                                // options
+                            }); </script>
+
+                        <div date-rangepicker class="flex items-center">
+                            <div class="relative">
+                                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                                  </div>
+                                  <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+                              </div>
+                            <span class="mx-4 text-gray-500">to</span>
+                            <div class="relative">
+                              <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                              </div>
+                              <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+                          </div>
+                          </div>
+
 					</div>
 				</div>
 				<!-- / Step Content -->
