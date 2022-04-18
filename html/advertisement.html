@@ -561,6 +561,13 @@
                                 <template x-for="item in filteredItems" :key="item">
                                     <li class="w-full text-gray-700 p-4 mt-2 bg-white" x-text="item"></li>
                                 </template>
+                                <datalist id="browsers" class="bg-gray-50 py-6 flex flex-col items-center justify-center relative overflow-hidden sm:py-12">
+                                    <option value="Edge">
+                                    <option value="Firefox">
+                                    <option value="Chrome">
+                                    <option value="Opera">
+                                    <option value="Safari">
+                                  </datalist>
                             </ul>
                         
                         </div>
@@ -568,6 +575,21 @@
 
 
                         <script src="//unpkg.com/alpinejs" defer></script>
+
+                        <form action="/action_page.php" method="get">
+                            <label for="browser">Choose your browser from the list:</label>
+                            <input list="browsers" name="browser" id="browser" class="bg-gray-50 py-6 flex flex-col items-center justify-center relative overflow-hidden sm:py-12">
+                            <datalist id="browsers" class="bg-gray-50 py-6 flex flex-col items-center justify-center relative overflow-hidden sm:py-12">
+                              <option value="Edge">
+                              <option value="Firefox">
+                              <option value="Chrome">
+                              <option value="Opera">
+                              <option value="Safari">
+                            </datalist>
+                            <input type="submit">
+                          </form>
+                          
+                          
 
 
 					</div>
