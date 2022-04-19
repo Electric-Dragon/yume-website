@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All of your series</title>
+    <title>Advertise one of your series</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
@@ -270,7 +270,7 @@
                         </svg>
                     </button>
                     <!-- Search input -->
-                    <div class="flex justify-center flex-1 lg:mr-32">
+                    <!-- <div class="flex justify-center flex-1 lg:mr-32">
                         <div class="relative w-full max-w-xl mr-6 focus-within:text-cyan-500">
                             <div class="absolute inset-y-0 flex items-center pl-2">
                                 <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -283,7 +283,7 @@
                                 class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-cyan-300 focus:outline-none focus:shadow-outline-cyan form-input"
                                 type="search" placeholder="Search for series" aria-label="Search" />
                         </div>
-                    </div>
+                    </div> -->
                     <ul class="flex items-center flex-shrink-0 space-x-6">
                         <!-- Theme toggler -->
                         <li class="flex">
@@ -539,35 +539,7 @@
                         <!-- component -->
                             <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-                            <div class="relative max-w-sm mx-auto text-xs"
-                                x-data="{
-                                        search: '',
-                                        showSelector: false,
-                                        selected: {1:'Chris'},
-                                        options: [],
-                                        clearOpts() {
-                                            this.search = '';
-                                            this.showSelector = false;
-                                            this.options = []
-                                        },
-                                        select(id, name) {
-                                            this.selected[id] = name;
-                                            this.clearOpts();
-                                            $dispatch('selected', Object.keys(this.selected));
-                                        },
-                                        remove(id) {
-                                            delete this.selected[id]
-                                            $dispatch('selected', Object.keys(this.selected));
-                                        },
-                                        goSearch() {
-                                            if (this.search) {
-                                                this.options = {5: 'Carl', 6: 'Alex', 7: 'Bryan'};
-                                                this.showSelector = true;
-                                            } else {
-                                                this.showSelector = false;
-                                            }
-                                        },
-                                    }">
+                            <div class="relative max-w-sm mx-auto text-xs">
                                 <div class="bg-white rounded-md p-2 flex gap-1 flex-wrap" @click="$refs.search_input.focus()"
                                     @click.outside="showSelector=false">
                                     <template x-for="(name, id) in selected">
@@ -583,23 +555,22 @@
                                         </div>
                                     </template>
                                     <div class="flex-1">
-                                        <input id="searchBar" type="text" x-model="search" x-ref="search_input"
-                                            @input.debounce.400ms="goSearch();" placeholder="Search"
-                                            class="w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-1 px-0">
+                                        <input id="searchBar" type="search" placeholder="Search"
+                                            class="w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-2 px-0">
+                                        <div id="seriesHolder" class="space-y-1">
+                                            <!-- <div class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
+                                                <img class="aspect-square object-cover w-1/5" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2Fd27b1d2da82c605322e547f23f1e2811%2Fbcb729a46fc4c465-15%2Fs1280x1920%2Fa7345eaceff60a7e5aec57ed16a924e89a4fc359.jpg&f=1&nofb=1" alt="">
+                                                <div class="flex flex-col">
+                                                    <p class="text-md pl-7 font-poppins font-bold">I'm lost!</p>
+                                                    <p class="text-md pl-7 font-poppins">7 eps</p>
+                                                </div>
+                                            </div> -->
+                                        </div>
                                         <div x-show="showSelector" class="absolute left-0 bg-white z-30 w-full rounded-b-md font-medium">
                                             <div class="p-2 space-y-1">
                                                 <template x-for="(name, id) in options">
                                                     <div>
-                                                        <template x-if="!selected[id]">
-
-                                                            <div class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
-                                                                <img class="aspect-square object-cover w-1/5" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2Fd27b1d2da82c605322e547f23f1e2811%2Fbcb729a46fc4c465-15%2Fs1280x1920%2Fa7345eaceff60a7e5aec57ed16a924e89a4fc359.jpg&f=1&nofb=1" alt="">
-                                                                <div class="flex flex-col">
-                                                                    <p class="text-md pl-7 font-poppins font-bold">I'm lost!</p>
-                                                                    <p class="text-md pl-7 font-poppins">7 eps</p>
-                                                                </div>
-
-                                                            </div>
+                                                        <!-- <template x-if="!selected[id]"> -->
 
                                                             <!-- <div @click="select(id, name)"
                                                                 class="bg-gray-200 py-5 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1"
@@ -607,7 +578,7 @@
 
                                                             </div> -->
                                                                 
-                                                        </template>
+                                                        <!-- </template> -->
                                                     </div>
                                                 </template>
                                                 <template x-if="options.length === 0">
@@ -622,7 +593,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0  w-full">
+                            <div id="selectedSeriesHolder" class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0 w-full m-10">
                                 <div class="grid grid-flow-row w-72">
                                   <div class=""><img class="h-52 object-cover aspect-square" id="cover" src="" alt=""></div>
                                 </div>
@@ -631,7 +602,7 @@
                   
                                       <div class="grid grid-flow-col">
                                           <div class="px-4 py-5 sm:px-6">
-                                              <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white">HENYAI</h3>                                          </div>
+                                              <h3 id="title" class="text-lg leading-6 font-medium text-gray-900 dark:text-white"></h3>                                          </div>
                                       </div>
                                       <div class="border-t border-gray-200">
                                         <dl>
