@@ -281,7 +281,7 @@
                             </div>
                             <input id="searchBar"
                                 class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-cyan-300 focus:outline-none focus:shadow-outline-cyan form-input"
-                                type="search" placeholder="Search for series" aria-label="Search" />
+                                type="text" placeholder="Search for series" aria-label="Search" />
                         </div>
                     </div>
                     <ul class="flex items-center flex-shrink-0 space-x-6">
@@ -583,7 +583,7 @@
                                         </div>
                                     </template>
                                     <div class="flex-1">
-                                        <input id="searchBar" type="text" x-model="search" x-ref="search_input"
+                                        <input id="searchBar" type="search" x-model="search" x-ref="search_input"
                                             @input.debounce.400ms="goSearch();" placeholder="Search"
                                             class="w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-1 px-0">
                                         <div x-show="showSelector" class="absolute left-0 bg-white z-30 w-full rounded-b-md font-medium">
