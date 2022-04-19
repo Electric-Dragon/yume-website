@@ -1,15 +1,17 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase,user;
+let supabase, user, selectedSeries;
 
-document.getElementById('searchBar').addEventListener('input', function(e) {
-    console.log(e.target.value);
-});
+let statusText = {
+  'd': 'Draft',
+  'o': 'Ongoing',
+  'p': 'Paused'
+}
+
+$('#selectedSeriesHolder').hide();
 
 $('#searchBar').on('input', async function() {
-
-    console.log('searching');
 
   let search = $('#searchBar').val();
   let query = '';
@@ -31,26 +33,23 @@ $('#searchBar').on('input', async function() {
 
     const { data, error } = await supabase
     .from('series')
-    .select('id,title,chapcount,cover')
+    .select('id,title,novel,cover')
     .eq('creator', user.id)
     .textSearch('fts', query)
 
     if (error) {
       erroralert(error.message);
     } else {
-      console.log(data);
 
       if (data.length === 0) {
         $('#seriesHolder').empty();
-        $('#seriesHolder').append(`<p class="text-center text-gray-500 text-xl">No results found</p>`);
+        $('#seriesHolder').append(`<p class="text-center text-gray-500 text-lg">No results found</p>`);
         return;
       }
 
       $('#seriesHolder').empty();
 
-      data.forEach(series => {
-        appendElement(series);
-      })
+      data.forEach(appendElement)
 
     }
 
@@ -74,27 +73,56 @@ $.ajax({
   
 }});
 
-function appendElement(val) {
-    let {id, title, chapcount, cover} = val;
+function appendElement(val,index) {
+    let {id, title, novel, cover} = val;
+    
+    let type = novel ? 'Novel' : 'Comic';
   
-              let element = `<a href="/dashboard/series/${id}" class="block ">
-                    
-                                  <img
-                                  alt="Series Cover Illustration"
-                                  src="${cover}"
-                                  class="object-cover aspect-square w-full  md:h-96 -mt-3 transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl hover:shadow-green-500"
-                                  />
-                          
-                                  <p class="mt-1 text-lg text-black font-bold dark:text-white">
-                                      ${title}
-                                  </p>
-                          
-                                  <div class="flex items-center justify-between font-bold text-gray-700 dark:text-gray-400">
-                                  <p class="text-sm">
-                                      ${chapcount} eps
-                                  </p>
-                                  </div>
-                              </a>`
+              let element = `<div onclick="selectSeries('${id}')" class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
+                                <img class="aspect-square object-cover w-1/5" src="${cover}" alt="">
+                                <div class="flex flex-col">
+                                    <p class="text-md pl-7 font-poppins font-bold">${title}</p>
+                                    <p class="text-md pl-7 font-poppins">Web ${type}</p>
+                                </div>
+                            </div>`
   
     $('#seriesHolder').append(element);
+}
+
+window.selectSeries = async function(id) {
+  selectedSeries = id;
+  $('#seriesHolder').empty();
+  $('#selectedSeriesHolder').show();
+  $('#searchBar').val('');
+
+  const { data:series, error:seriesError } = await supabase
+    .from('series')
+    .select('title,novel,cover,adaptation,genre1,genre2,status,summary')
+    .eq('id', id)
+    .single();
+
+  if (seriesError) {
+    erroralert(seriesError.message);
+  } else {
+    console.log(series);
+
+    let {title, novel, cover, adaptation, genre1, genre2, status, summary} = series;
+
+    $('#cover').attr('src', cover);
+
+    $('#title').text(title);
+    $('#type').text('Web' + novel ? 'Novel' : 'Comic');
+    $('#status').text(statusText[status]);
+    $('#summary').text(summary);
+    
+    $('#genre1').text(genre1);
+    $('#genre1').attr('href', `/genre/${genre1}`);
+    $('#genre2').text(genre2);
+    $('#genre2').attr('href', `/genre/${genre2}`);
+
+    let adaptationText = adaptation ? 'Yes' : 'No';
+    $('#adaptation').text(adaptationText);
+
   }
+
+}
