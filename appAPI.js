@@ -7,6 +7,8 @@ const supabase = _supabase.createClient(process.env.API_URL, process.env.SERVICE
 var SibApiV3Sdk = require('sib-api-v3-sdk');
 SibApiV3Sdk.ApiClient.instance.authentications['api-key'].apiKey = process.env.SENDINBLUE_API_KEY;
 
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+
 module.exports.signUp = async function signUp({email, password, username}) {
 
     return await supabase.auth.api.createUser({
@@ -36,6 +38,27 @@ module.exports.signUp = async function signUp({email, password, username}) {
                             return {error: error.message}
                         } else {
                             await nAPI.createUserNode(user.id, username);
+
+                            try {
+                                const customer = await stripe.customers.create({
+                                    email: email,
+                                    metadata: {
+                                        id: user.id
+                                    }
+                                });
+                                const {data:stripeInfo, error:stripeInfoError} = await supabase.from('customers').insert([
+                                    {
+                                        id: user.id,
+                                        stripe_customer_id: customer.id,
+                                    }
+                                ])
+                                if (stripeInfoError) {
+                                    console.log(stripeInfoError.message);
+                                    return {error: stripeInfoError.message}
+                                }
+                            } catch (error) {
+                                return {error: error}
+                            }
 
                             return new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail(
                                   {
