@@ -1,13 +1,11 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, user, selectedFile, numberOfDays;
+let supabase, user, selectedFile, numberOfDays, selectedSeries;
 let dates = {
   start: null,
   end: null
 }
-
-let selectedSeries = {};
 
 let statusText = {
   'd': 'Draft',
@@ -96,7 +94,7 @@ function appendElement(val) {
 }
 
 window.selectSeries = async function(id) {
-  selectedSeries.id = id;
+  selectedSeries = id;
   $('#seriesHolder').empty();
   $('#selectedSeriesHolder').show();
   $('#searchBar').val('');
@@ -112,9 +110,6 @@ window.selectSeries = async function(id) {
   } else {
 
     let {title, novel, cover, adaptation, genre1, genre2, status, summary} = series;
-
-    selectedSeries.title = title;
-    selectedSeries.cover = cover;
 
     $('#cover').attr('src', cover);
 
@@ -180,6 +175,18 @@ window.setDate = function setDate (e) {
   if (dates.start && dates.end) {
     numberOfDays = datediff(new Date(dates.start), new Date(dates.end));
     $('#totalPrice').text(`Rs. ${numberOfDays * 10}`);
+  }
+
+}
+
+window.generateLink = async function generateLink(e) {
+  e.preventDefault();
+
+  if (!selectedSeries || !dates.start || !dates.end || !selectedFile) {
+    erroralert("Please fill all the fields");
+    return;
+  } else {
+    alert('yes')
   }
 
 }
