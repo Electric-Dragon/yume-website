@@ -644,36 +644,37 @@
                                   <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                       <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                   </div>
-                                  <input name="start" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+                                  <input id="startDate" onchange="setDate(event)" name="start" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
                               </div>
                             <span class="mx-4 text-gray-500">to</span>
                             <div class="relative">
                               <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                   <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                               </div>
-                              <input name="end" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+                              <input id="endDate" onchange="setDate(event)" name="end" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
                           </div>
                        </div>
                        <p class="mt-2 text-sm text-gray-500 mb-5">Rs.10 per day for the basic plan.</p>
                        <div>
                         <label for="about" class="block text-md font-medium text-gray-700"> Submit an Image </label>
-                        <form action="" class="mt-4 font-sans">
-                            <input type="file" id="myfile" class="text-sm" name="myfile">
+                        <form class="mt-4 font-sans">
+                            <input onchange="setFile(event)" type="file" id="myfile" class="text-sm" name="myfile" accept=".jpg">
                           </form>
-                        <p class="mt-2 text-sm text-gray-500">This is the hero image that will be seen in the home page. Should be 16 : 9 ratio.</p>
+                        <p class="mt-2 text-sm text-gray-500">This is the banner that will be seen on the home page. <br> Should be 16 : 9 ratio, have a size of maxiumum 1 MB and be in .JPG format.</p>
                       </div>
                        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                         <!-- Replace with your content -->
                         <div class="px-4 py-6 sm:px-0">
                           <div class="border-4 border-dashed border-gray-500 rounded-lg h-96 flex items-center justify-center">
-                            <button type="button" class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
-                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <button onclick="loadpreview(event)" type="button" class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150">
+                                <!-- <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
+                                </svg> -->
                                 Load Preview
-                                (Processing...)
-                              </button>
+                                <!-- (Processing...) -->
+                            </button>
+                            <img class="rounded-lg h-96" id="banner">
                           </div>
                         </div>
                         <!-- /End replace -->
@@ -734,6 +735,17 @@
             </main>
         </div>
     </div>
+
+    <script>
+        function loadpreview(e) {
+            e.preventDefault();
+            let fileElement = document.getElementById('myfile');
+            let src = window.URL.createObjectURL(fileElement.files[0]);
+            var preview = document.getElementById("banner");
+            preview.src = src;
+        }
+    </script>
+
     <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>

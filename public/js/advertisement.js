@@ -1,7 +1,11 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, user, selectedSeries;
+let supabase, user, selectedSeries, selectedFile;
+let dates = {
+  start: null,
+  end: null
+}
 
 let statusText = {
   'd': 'Draft',
@@ -124,5 +128,40 @@ window.selectSeries = async function(id) {
     $('#adaptation').text(adaptationText);
 
   }
+
+}
+
+window.setFile = function setFile (e) {
+
+  e.preventDefault();
+
+  let bannerImg = $('#myfile').prop('files')[0];
+  if (bannerImg.size > 1000000) {
+    erroralert("Advertisement banner must be under 1 MB");
+    return;
+  }
+
+  selectedFile = e.target.files[0];
+
+}
+
+window.setDate = function setDate (e) {
+
+  e.preventDefault();
+
+  let {name, value} = e.target;
+
+  let date = e.target.value;
+  let now = new Date();
+
+  if ((name === 'start' && value === dates.end) || name === 'end' && value === dates.start) {
+    erroralert("There should be at least one day between start and end date");
+    return;
+  } else if ((name === 'start' && value === now.toISOString().slice(0,10)) || (name === 'start' && value <= now.toISOString().slice(0,10)) || name === 'end' && value === now.toISOString().slice(0,10) || (name === 'end' && value <= now.toISOString().slice(0,10))) {
+    erroralert("Start date should be at least one day after today");
+    return;
+  }
+
+  dates[e.target.name] = e.target.value;
 
 }

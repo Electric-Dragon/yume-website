@@ -8,6 +8,7 @@ var SibApiV3Sdk = require('sib-api-v3-sdk');
 SibApiV3Sdk.ApiClient.instance.authentications['api-key'].apiKey = process.env.SENDINBLUE_API_KEY;
 
 const stripe = require("stripe")(process.env.STRIPE_KEY);
+const advertisingPriceID = process.env.ADVERTISING_PRICE_ID;
 
 module.exports.signUp = async function signUp({email, password, username}) {
 
