@@ -186,7 +186,45 @@ window.generateLink = async function generateLink(e) {
     erroralert("Please fill all the fields");
     return;
   } else {
-    alert('yes')
+
+    let rand = Math.random();
+    let path = `${user.id}/temporary/${rand}/bannerIMG.jpg`;
+
+    const { data, error } = await supabase
+      .storage
+      .from('advertisements')
+      .upload(path, selectedFile, {
+        cacheControl: '3600',
+        upsert: true
+    });
+
+    if (error) {
+      erroralert(error.message);
+      return;
+    }
+
+    const { publicURL, error:error_ } = supabase
+      .storage
+      .from('advertisements')
+      .getPublicUrl(path);
+
+    if (error_) {
+      erroralert(error_.message);
+      return;
+    }
+
+    $.ajax({
+      type:"POST",
+      url:'/createAdvertisement',
+      data:{id: selectedSeries,
+      access_token: supabase.auth.session().access_token,
+      startDate: new Date(dates.start),
+      endDate: new Date(dates.end),
+      file: publicURL,
+      numberOfDays: numberOfDays,
+      path: path
+    },
+    });
   }
 
 }

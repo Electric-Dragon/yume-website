@@ -137,6 +137,10 @@ app.post("/createAdaptation", async function(req, res) {
     res.json(await yumeAPI.createAdaptation(req.body));
 });
 
+app.post("/createAdvertisement", async function(req, res) {
+    res.json(await yumeAPI.createAdvertisement(req.body));
+});
+
 app.post("/addRead", async function(req, res) {
     await yumeAPI.addFingerprint(req.body);
     res.json({status: 200})

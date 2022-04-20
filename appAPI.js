@@ -183,6 +183,65 @@ module.exports.getRecommendations = async function getRecommendations({access_to
 
 }
 
+module.exports.createAdvertisement = async function createAdvertisement({id, access_token, startDate, endDate, file, numberOfDays, path}) {
+
+    const {user, data, error} = await supabase.auth.api.getUser(access_token);
+    if (error) {
+        return {error: error.message}
+    } else {
+
+        startDate = new Date(startDate);
+        endDate = new Date(endDate);
+
+        const { data:createAd, error:createAdError } = await supabase
+            .from('advertisements')
+            .insert([
+                { target_series: id, startDate: `${startDate.getFullYear()},${startDate.getMonth()},${startDate.getDay()}`, endDate: `${endDate.getFullYear()},${endDate.getMonth()},${endDate.getDay()}` }
+            ])
+
+        if (createAdError) {
+            console.log(createAdError.message);
+            return {error: createAdError.message}
+        }
+
+        let adID = createAd[0].id;
+
+        let newPath = `${user.id}/${adID}/bannerIMG.jpg`;
+
+        const { data:moveIMG, error:moveIMGError } = await supabase
+            .storage
+            .from('advertisements')
+            .move(path, newPath)
+
+        if (moveIMGError) {
+            console.log(moveIMGError.message);
+            return {error: moveIMGError.message}
+        }
+        
+        const { publicURL, error:error_ } = supabase
+            .storage
+            .from('advertisements')
+            .getPublicUrl(newPath);
+
+        if (error_) {
+            console.log(error_.message);
+            return {error: error_.message}
+        }
+
+        const { data:updateAdInfo, error:updateAdInfoError } = await supabase
+            .from('advertisements')
+            .update({ bannerURL: publicURL })
+            .match({ id: adID })
+
+        if (updateAdInfoError) {
+            console.log(updateAdInfoError.message);
+            return {error: updateAdInfoError.message}
+        }
+        
+    }
+
+}
+
 module.exports.createAdaptation = async function createAdaptation({id, access_token}) {
 
     const {user, data, error} = await supabase.auth.api.getUser(access_token);
