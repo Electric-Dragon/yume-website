@@ -1,11 +1,13 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, user, selectedSeries, selectedFile;
+let supabase, user, selectedFile, numberOfDays;
 let dates = {
   start: null,
   end: null
 }
+
+let selectedSeries = {};
 
 let statusText = {
   'd': 'Draft',
@@ -14,6 +16,22 @@ let statusText = {
 }
 
 $('#selectedSeriesHolder').hide();
+
+$.ajax({
+  url: "/keys",
+  success: async function( result ) {
+
+      result = JSON.parse(result);
+
+      supabase = createClient(result.link, result.anon_key);
+
+      user = supabase.auth.user();
+
+      if (!user) {
+        window.location = "/signin";
+      }
+
+}});
 
 $('#searchBar').on('input', async function() {
 
@@ -61,23 +79,7 @@ $('#searchBar').on('input', async function() {
 
 })
 
-$.ajax({
-    url: "/keys",
-    success: async function( result ) {
-  
-        result = JSON.parse(result);
-  
-        supabase = createClient(result.link, result.anon_key);
-  
-        user = supabase.auth.user();
-  
-        if (!user) {
-          window.location = "/signin";
-        }
-  
-}});
-
-function appendElement(val,index) {
+function appendElement(val) {
     let {id, title, novel, cover} = val;
     
     let type = novel ? 'Novel' : 'Comic';
@@ -94,7 +96,7 @@ function appendElement(val,index) {
 }
 
 window.selectSeries = async function(id) {
-  selectedSeries = id;
+  selectedSeries.id = id;
   $('#seriesHolder').empty();
   $('#selectedSeriesHolder').show();
   $('#searchBar').val('');
@@ -108,9 +110,11 @@ window.selectSeries = async function(id) {
   if (seriesError) {
     erroralert(seriesError.message);
   } else {
-    console.log(series);
 
     let {title, novel, cover, adaptation, genre1, genre2, status, summary} = series;
+
+    selectedSeries.title = title;
+    selectedSeries.cover = cover;
 
     $('#cover').attr('src', cover);
 
@@ -126,6 +130,10 @@ window.selectSeries = async function(id) {
 
     let adaptationText = adaptation ? 'Yes' : 'No';
     $('#adaptation').text(adaptationText);
+
+    $('#seriesCover').attr('src', cover);
+    $('#seriesTitle').text(title);
+    $('#pfpAnchor').attr('href', `/series/${id}`);
 
   }
 
@@ -151,7 +159,7 @@ window.setDate = function setDate (e) {
 
   let {name, value} = e.target;
 
-  let date = e.target.value;
+  let valueDate = new Date(value);
   let now = new Date();
 
   if ((name === 'start' && value === dates.end) || name === 'end' && value === dates.start) {
@@ -160,8 +168,22 @@ window.setDate = function setDate (e) {
   } else if ((name === 'start' && value === now.toISOString().slice(0,10)) || (name === 'start' && value <= now.toISOString().slice(0,10)) || name === 'end' && value === now.toISOString().slice(0,10) || (name === 'end' && value <= now.toISOString().slice(0,10))) {
     erroralert("Start date should be at least one day after today");
     return;
+  } else if ((name === 'start' && value > dates.end) || (name === 'end' && value < dates.start)) {
+    erroralert("Start date should be before end date");
+    return;
   }
 
-  dates[e.target.name] = e.target.value;
+  dates[name] = value;
 
+  $(`#${name}Date`).text(`${valueDate.getDate()}/${valueDate.getMonth()+1}/${valueDate.getFullYear()}`);
+
+  if (dates.start && dates.end) {
+    numberOfDays = datediff(new Date(dates.start), new Date(dates.end));
+    $('#totalPrice').text(`Rs. ${numberOfDays * 10}`);
+  }
+
+}
+
+function datediff(first, second) {
+  return Math.round((second-first)/(1000*60*60*24));
 }
