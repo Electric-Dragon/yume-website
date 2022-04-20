@@ -122,10 +122,10 @@ function showElement(series) {
   let typeText = novel ? 'Web Novel' : 'Web Comic';
 
   let element = `<a href="/series/${id}">
-  <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+  <div class="max-w-lg bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
     <div id="header" class="grid grid-flow-col"> 
-        <div class=" aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-            <img class="aspect-square object-cover w-full object-center" src="${cover}" >
+        <div class=" aspect-square object-cover bg-gray-200 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+            <img class="object-cover" src="${cover}" >
           </div>                       
           <div id="body" class="flex flex-col ml-5">
           <h4 id="name" class="text-xl font-semibold mb-2">${title}</h4>

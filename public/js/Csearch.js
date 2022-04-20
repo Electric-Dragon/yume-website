@@ -74,6 +74,7 @@ async function showElement(user) {
                                             <div class="flex items-center justify-between sm:mt-2">
                                                 <div class="flex items-center">
                                                     <div class="flex flex-col">
+                                                    <span class="mr-3  font-bold text-blue-500 ">Artist</span>
                                                         <div class="w-full flex-none text-lg text-gray-800 font-bold leading-none">${username}</div>
                                                         <div class="flex-auto text-gray-500 my-1">
                                                             <span class="mr-3 ">${description}</span>
