@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, user, selectedFile, numberOfDays, selectedSeries;
+let supabase, user, selectedFile, numberOfDays, selectedSeries, paymentLink;
 let dates = {
   start: null,
   end: null
@@ -185,6 +185,16 @@ window.generateLink = async function generateLink(e) {
   if (!selectedSeries || !dates.start || !dates.end || !selectedFile) {
     erroralert("Please fill all the fields");
     return;
+  } else if (paymentLink) {
+
+    let paymentPopup = window.open(paymentLink);
+
+    try {
+      paymentPopup.focus();
+    } catch (error) {
+      alert('Please allow popups for this website');
+    }
+    
   } else {
 
     let rand = Math.random();
@@ -220,10 +230,27 @@ window.generateLink = async function generateLink(e) {
       access_token: supabase.auth.session().access_token,
       startDate: new Date(dates.start),
       endDate: new Date(dates.end),
-      file: publicURL,
       numberOfDays: numberOfDays,
       path: path
     },
+    success: function(data) {
+      if (data.error) {
+        erroralert(data.error);
+      } else {
+        let {link} = data;
+
+        paymentLink = link;
+
+        let paymentPopup = window.open(link);
+
+        try {
+          paymentPopup.focus();
+        } catch (error) {
+          alert('Please allow popups for this website');
+        }
+
+      }
+    }
     });
   }
 

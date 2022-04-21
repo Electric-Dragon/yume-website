@@ -183,7 +183,7 @@ module.exports.getRecommendations = async function getRecommendations({access_to
 
 }
 
-module.exports.createAdvertisement = async function createAdvertisement({id, access_token, startDate, endDate, file, numberOfDays, path}) {
+module.exports.createAdvertisement = async function createAdvertisement({id, access_token, startDate, endDate, numberOfDays, path}) {
 
     const {user, data, error} = await supabase.auth.api.getUser(access_token);
     if (error) {
@@ -237,6 +237,21 @@ module.exports.createAdvertisement = async function createAdvertisement({id, acc
             console.log(updateAdInfoError.message);
             return {error: updateAdInfoError.message}
         }
+
+        const paymentLink = await stripe.paymentLinks.create({
+            line_items: [
+              {
+                price: advertisingPriceID,
+                quantity: numberOfDays,
+              },
+            ],
+            metadata: {
+                adID: adID,
+                userID: user.id,
+            }
+        });
+
+        return {success: true, link: paymentLink.url}
         
     }
 
