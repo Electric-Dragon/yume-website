@@ -126,8 +126,8 @@ function showElement(series) {
   <a href="/series/${id}">
   <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
   <div id="header" class="grid grid-flow-col grid-cols-3"> 
-      <div class="aspect-square rounded-md overflow-hidden col-span-1 ">
-          <img class="aspect-square object-cover" src="${cover}" >
+      <div class="object-cover aspect-square aspect-w-1 aspect-h-1 rounded-md overflow-hidden col-span-1 ">
+          <img class="aspect-square object-cover" src="${cover}" class=" object-center object-cover">
         </div>                       
         <div id="body" class="flex flex-col ml-5 col-span-2">
         <h4 id="name" class="text-xl font-semibold mb-2">${title}</h4>

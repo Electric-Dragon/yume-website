@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,6 @@
     <title>Your search results</title>
 </head>
 <body class="dark:bg-black" >
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
 <nav class="bg-transparent shadow-lg pt-3 dark:bg-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -111,37 +108,18 @@
       <a href="/popular" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
     </div>
   </div>
-  <script>document.getElementById('togglemebutton').onclick = function() {
-    document.getElementById("resultnav").classList.toggle("hidden");
-  }
-  
-  //document.getElementById('togglemebutton').onclick = function () {
-  //  document.getElementById("toggleme").classList.toggle("hidden");
-  //}
-  
-  
-  const toggleprofile = document.getElementById("toggleprofile");
-  const resultprofile = document.getElementById("resultprofile");
-  [...document.querySelectorAll('body')].forEach(el => {
-    el.addEventListener('click', event => {
-      if (event.target.parentElement.id !== "toggleprofile") {
-        console.log(event.target.parentElement.id)
-        resultprofile.classList.add("hidden")
-      }else{
-      resultprofile.classList.toggle("hidden")}
-    })
-  })</script>
 </nav>
-<header class="flex dark:bg-background mt-2 border-t-0 border-x-0 dark:border-none w-screen items-center text-center justify-center gap-7 border h-16 z-40">
-  <p id="filterAll" class="filterActive text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">ALL</p>
-  <p id="filterNovels" class="text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Novels</p>
-  <p id="filterComics" class="text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Comics</p>
+<header class="flex  dark:bg-background mt-2 border-t-0 border-x-0 dark:border-none w-screen items-center text-center justify-center gap-3 border h-16 z-40">
+  <p id="filterAll" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">ALL</p>
+  <p id="filterNovels" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Novels</p>
+  <p id="filterComics" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Comics</p>
+  <a href="/Csearch" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Creators</a>
 </header>
 
 <!-- component -->
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-<div x-data="{ cartOpen: false , isOpen: false }" class="bg-white dark:bg-background mt-5">
+<div x-data="{ cartOpen: false , isOpen: false }" class="bg-white dark:bg-background ">
     <header>
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
@@ -149,7 +127,7 @@
                     Search...
                 </div>
             </div>
-            <!-- <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
+            <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
                 <div class="flex flex-col sm:flex-row">
                     <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">Horror</a>
                     <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">Comedy</a>
@@ -157,7 +135,7 @@
                     <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">uwu</a>
                     <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">hentai</a>
                 </div>
-            </nav> -->
+            </nav>
             <div class="relative mt-6 max-w-lg mx-auto">
             <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
                 <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
@@ -176,8 +154,8 @@
 <div class="h-fit"></div>
     <main class="my-8">
         <div class="container mx-auto px-6">
-            <div id="searchResults" class="grid gap-2 grid-flow-row grid-cols-2">
-                <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+            <div id="searchResults" class="grid gap-2 grid-flow-col">
+                <!-- <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
                     <div id="header" class="grid grid-flow-col"> 
                         <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
                             <img class="aspect-square object-cover" src="https://cover.nep.li/cover/Kanojo-Okarishimasu.jpg" class=" object-center object-cover">
@@ -224,16 +202,15 @@
                          </div>
                        </div>
                     </div>
-                 </div>
+                 </div> -->
 
-            </div>
-            <main class="my-8 ">
+                 <main class="my-8">
                   <div class="container mx-auto px-6">
                       <div class="h-64 rounded-md overflow-hidden bg-cover bg-center" style="background-image: url('')">
                           <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
                               <div class="px-10 max-w-xl">
                                   <h2 class="text-2xl text-white font-semibold">Popular</h2>
-                                  <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
+                                  <p class="mt-2 text-gray-400">Check out the most popular works</p>
                                   <a href="/popular">
                                   <button class="flex items-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                                       <span>Check them out</span>
@@ -243,86 +220,19 @@
                               </div>
                           </div>
                       </div>
-                      <div class="md:flex mt-8 md:-mx-4">
-                          <div class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2" style="background-image: url('')">
-                              <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
-                                  <div class="px-10 max-w-xl">
-                                      <h2 class="text-2xl text-white font-semibold">Genre 1</h2>
-                                      <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
-                                      <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                                          <span>Check them out</span>
-                                          <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="w-full h-64 mt-8 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:mt-0 md:w-1/2" style="background-image: url('')">
-                              <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
-                                  <div class="px-10 max-w-xl">
-                                      <h2 class="text-2xl text-white font-semibold">Genre 2</h2>
-                                      <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
-                                      <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                                          <span>Check them out</span>
-                                          <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="mt-16">
-                          <h3 class="text-gray-600 text-2xl font-medium dark:text-gray-100">For You:</h3>
-                          <div id="" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
-                            <div class="group relative">
-                              <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                                <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                              </div>
-                              <div class="mt-4 flex justify-between">
-                                <div>
-                                  <h3 class="text-sm text-gray-700">
-                                    <a>
-                                      <span aria-hidden="true" class="absolute inset-0"></span>
-                                      Solo leveling
-                                    </a>
-                                  </h3>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="group relative">
-                            <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                              <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                            </div>
-                            <div class="mt-4 flex justify-between">
-                              <div>
-                                <h3 class="text-sm text-gray-700">
-                                  <a>
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    Solo leveling
-                                  </a>
-                                </h3>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="group relative">
-                          <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                            <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                          </div>
-                          <div class="mt-4 flex justify-between">
-                            <div>
-                              <h3 class="text-sm text-gray-700">
-                                <a>
-                                  <span aria-hidden="true" class="absolute inset-0"></span>
-                                  Solo leveling
-                                </a>
-                              </h3>
-                          </div>
-                        </div>
-                      </div>
-                        </div>
-                      </div>
-                      <div class="mt-16">
+
+                      <br>
+                      <br>
+
+                      <div id="recommendationDiv">
+                        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recommended For you:</h2>
+                    
+                        <div id="recommendations" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8"></div>
                       </div>
                   </div>
               </main>
+
+            </div>
 
         </div>
     </main>
@@ -334,6 +244,37 @@
         </div>
     </footer>
 </div>
+
+      <script>
+
+		    var filterAll = document.getElementById("filterAll");
+        var filterNovels = document.getElementById("filterNovels");
+        var filterComics = document.getElementById("filterComics");
+
+        
+        let activeClasses = ['bg-black', 'dark:bg-white', 'text-white', 'dark:text-black'];
+        
+        filterAll.classList.add(...activeClasses);
+
+        filterAll.addEventListener('click', function() {
+          filterAll.classList.add(...activeClasses);
+          filterNovels.classList.remove(...activeClasses);
+          filterComics.classList.remove(...activeClasses);
+        });
+
+        filterNovels.addEventListener('click', function() {
+          filterAll.classList.remove(...activeClasses);
+          filterNovels.classList.add(...activeClasses);
+          filterComics.classList.remove(...activeClasses);
+        });
+
+        filterComics.addEventListener('click', function() {
+          filterAll.classList.remove(...activeClasses);
+          filterNovels.classList.remove(...activeClasses);
+          filterComics.classList.add(...activeClasses);
+        });
+
+      </script>
 
 
       <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
