@@ -152,11 +152,9 @@
             </div>
             <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
                 <div class="flex flex-col sm:flex-row">
-                    <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">Artist</a>
-                    <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">Writer</a>
-                    <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">Popular</a>
-                    <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0" href="#">Most Works</a>
-                    <a class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mthentai-0" href="#"></a>
+                  <p class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0">All</a>
+                  <p class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0">Artist</a>
+                  <p class="mt-3 text-gray-600 dark:text-gray-100 hover:underline sm:mx-3 sm:mt-0">Writer</p>
                 </div>
             </nav>
             <div class="relative mt-6 max-w-lg mx-auto">
@@ -234,57 +232,11 @@
             <div class="grid gap-2 grid-flow-row">
                  <main class="my-8">
                       <div class="mt-16">
-                          <h3 class="text-gray-600 text-2xl font-medium dark:text-gray-100">For You:</h3>
-                          <div id="" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
-                            <div class="group relative">
-                              <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                                <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                              </div>
-                              <div class="mt-4 flex justify-between">
-                                <div>
-                                  <h3 class="text-sm text-gray-700">
-                                    <a>
-                                      <span aria-hidden="true" class="absolute inset-0"></span>
-                                      Solo leveling
-                                    </a>
-                                  </h3>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="group relative">
-                            <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                              <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                            </div>
-                            <div class="mt-4 flex justify-between">
-                              <div>
-                                <h3 class="text-sm text-gray-700">
-                                  <a>
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    Solo leveling
-                                  </a>
-                                </h3>
-                            </div>
-                          </div>
+                        <div id="recommendationDiv">
+                          <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recommended For you:</h2>
+                      
+                          <div id="recommendations" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8"></div>
                         </div>
-                        <div class="group relative">
-                          <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                            <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                          </div>
-                          <div class="mt-4 flex justify-between">
-                            <div>
-                              <h3 class="text-sm text-gray-700">
-                                <a>
-                                  <span aria-hidden="true" class="absolute inset-0"></span>
-                                  Solo leveling
-                                </a>
-                              </h3>
-                          </div>
-                        </div>
-                      </div>
-                        </div>
-                      </div>
-                      <div class="mt-16">
-                      </div>
                   </div>
               </main>
 
