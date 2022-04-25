@@ -70,6 +70,10 @@ app.get("/dashboard/home", function(req, res) {
     res.sendFile(__dirname + "/html/dashboard.html");
 });
 
+app.get("/dashboard/creator", function(req, res) {
+    res.sendFile(__dirname + "/html/only.html");
+});
+
 app.get("/dashboard/create/novel", function(req, res) {
     res.sendFile(__dirname + "/html/novelform.html");
 });
