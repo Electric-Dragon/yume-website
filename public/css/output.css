@@ -1034,12 +1034,12 @@ select {
   margin-right: 0.25rem;
 }
 
-.mt-9 {
-  margin-top: 2.25rem;
-}
-
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+
+.mt-9 {
+  margin-top: 2.25rem;
 }
 
 .-mr-1 {
@@ -1530,10 +1530,6 @@ select {
   cursor: pointer;
 }
 
-.cursor-not-allowed {
-  cursor: not-allowed;
-}
-
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -1577,6 +1573,10 @@ select {
 
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-cols-none {
+  grid-template-columns: none;
 }
 
 .grid-rows-4 {
@@ -2433,6 +2433,11 @@ select {
   padding-right: 0px;
 }
 
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -2441,11 +2446,6 @@ select {
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 
 .pt-3 {
@@ -2506,6 +2506,10 @@ select {
 
 .pl-7 {
   padding-left: 1.75rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pt-6 {
@@ -2662,6 +2666,10 @@ select {
   text-transform: capitalize;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .leading-5 {
   line-height: 1.25rem;
 }
@@ -2799,6 +2807,11 @@ select {
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
+.text-green-700 {
+  --tw-text-opacity: 1;
+  color: rgb(21 128 61 / var(--tw-text-opacity));
+}
+
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
@@ -2827,11 +2840,6 @@ select {
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity));
-}
-
-.text-green-700 {
-  --tw-text-opacity: 1;
-  color: rgb(21 128 61 / var(--tw-text-opacity));
 }
 
 .text-orange-700 {
@@ -3824,6 +3832,11 @@ svg #main-circ {
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
+.hover\:text-red-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
+}
+
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -4638,6 +4651,10 @@ svg #main-circ {
     display: flex;
   }
 
+  .md\:table-cell {
+    display: table-cell;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -4778,6 +4795,10 @@ svg #main-circ {
     margin-right: 8rem;
   }
 
+  .lg\:mt-2 {
+    margin-top: 0.5rem;
+  }
+
   .lg\:mt-0 {
     margin-top: 0px;
   }
@@ -4843,8 +4864,33 @@ svg #main-circ {
     padding-right: 2rem;
   }
 
+  .lg\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .lg\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .lg\:py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
   .lg\:text-xl {
     font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .lg\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
     line-height: 1.75rem;
   }
 }
