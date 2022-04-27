@@ -516,37 +516,9 @@
                     </div>
                     <div class="mx-auto">
                       <div class="w-full m-3 mx-auto xl:mx-0">
-                          <div class="rounded relative mt-8 h-48">
-                            <!-- cover image -->
-                              <img id="banner" src="" alt="" class="w-full h-full object-cover rounded absolute shadow" />   
-                              <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded"></div>
-                              <div class="flex items-center px-3 py-2 rounded absolute right-0 mr-4 mt-4 cursor-pointer">
-                                <label for="bannerImage" class="relative cursor-pointer flex">
-                                  <p class="text-xs text-gray-100">Change Cover Photo</p> 
-                                  <div class="ml-2 text-gray-100">
-                                    <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
-                                  </div>
-                                  <input onchange="previewBanner(event)" id="bannerImage" name="files[]" type="file" accept=".jpg" class="sr-only">
-                                </label>
-                              </div>
-
-                              <div class="w-20 h-20 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-12 shadow flex items-center justify-center">
-                                  <img id="pfp" alt="" class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
-                                  <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded-full z-0"></div>
-                                  <div class="cursor-pointer flex flex-col justify-center items-center z-10 text-gray-100">
-                                    <label for="pfpImage" class="relative cursor-pointer">
-                                      <p type="file" class="text-xs text-gray-100">Edit Picture</p>
-                                      <div class="ml-2 text-gray-100">
-                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
-                                      </div>
-                                      <input onchange="previewPfp(event)" id="pfpImage" name="files[]" type="file" accept=".jpg" class="sr-only">
-                                    </label>
-                                  </div>
-                              </div>
-                          </div>
 
                             <div class="m-5">
-                              <h1 tabindex="0" role="heading" aria-label="profile information" class="focus:outline-none text-3xl font-bold text-gray-800 mt-12">Creator's Details</h1>
+                              <h1 tabindex="0" role="heading" aria-label="profile information" class="focus:outline-none text-3xl font-bold text-gray-800 mt-12 dark:text-white">Creator's Details</h1>
                               <p    tabindex="0" class=" focus:outline-none text-sm font-light leading-tight text-gray-600 mt-4">Fill in the data in order to recieve payments. <br />More features will be added as your popularity increases.</p>
                               <h2  tabindex="0" class="focus:outline-none text-xl font-semibold leading-7 text-gray-800 mt-10">Who are you?</h2>
                               <p tabindex="0" class="focus:outline-none text-sm font-light leading-none text-gray-600 mt-0.5">Customise to outline your Creator Profile</p>
@@ -555,15 +527,15 @@
                                   <div class="flex gap-4">
                                     <div class="form-check form-check-inline">
                                       <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                      <label class="form-check-label inline-block text-gray-800" for="inlineRadio10">Writer</label>
+                                      <label class="form-check-label inline-block text-gray-800 dark:text-white" for="inlineRadio10">Writer</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                       <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                      <label class="form-check-label inline-block text-gray-800" for="inlineRadio20">Artist</label>
+                                      <label class="form-check-label inline-block text-gray-800 dark:text-white" for="inlineRadio20">Artist</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                       <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-                                      <label class="form-check-label inline-block text-gray-800 opacity-50" for="inlineRadio30">Animator</label>
+                                      <label class="form-check-label inline-block text-gray-800 opacity-50 dark:text-white" for="inlineRadio30">Animator (coming soon)</label>
                                     </div>
                                   </div>
                               <div>
@@ -575,12 +547,12 @@
                               </div>
                               
                               <div class="max-w-2xl mt-8">
-                                <label class="block text-xl font-medium text-gray-700 "> Upload Samples </label>
+                                <label class="block text-xl font-medium text-gray-700 dark:text-white"> Upload Samples </label>
                                 <div class="grid my-3 grid-flow-row grid-cols-2">
                                     <div class="flex gap-3 text-sm">
                                       <label for="panels" class="relative cursor-pointer bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
                                         <span>Upload files </span>
-                                        <input required onchange="previewPanels(event)" id="panels" name="files[]" type="file" multiple accept=".jpg" class="sr-only">
+                                        <input onchange="previewPanels(event)" id="panels" name="files[]" type="file" multiple accept=".jpg" class="sr-only">
                                       </label>
     
                                           <button onclick="deleteAll()" type="button" class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
@@ -781,67 +753,8 @@
   <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script defer src="/js/init.js" type="module"></script>
-  <script defer src="/js/account.js" type="module"></script>
+  <script defer src="/js/only.js" type="module"></script>
 
-  <script>let form = document.getElementById("login");
-    form.addEventListener(
-        "submit",
-        function (event) {
-            event.preventDefault();
-            let elements = form.elements;
-            let payload = {};
-            for (let i = 0; i < elements.length; i++) {
-                let item = elements.item(i);
-                switch (item.type) {
-                    case "checkbox":
-                        payload[item.name] = item.checked;
-                        break;
-                    case "submit":
-                        break;
-                    default:
-                        payload[item.name] = item.value;
-                        break;
-                }
-            }
-            console.log("payload", payload);
-        },
-        true
-    );
-    </script>
-  <script>
-    function previewPfp (e) {
-      if(e.target.files.length > 0){
-        var src = URL.createObjectURL(e.target.files[0]);
-        var preview = document.getElementById("pfp");
-        preview.src = src;
-        preview.style.display = "block";
-      }
-    }
-
-    function previewBanner (e) {
-      if(e.target.files.length > 0){
-        var src = URL.createObjectURL(e.target.files[0]);
-        var preview = document.getElementById("banner");
-        preview.src = src;
-        preview.style.display = "block";
-      }
-    }
-
-    function toggleDark(e) {
-
-      localStorage.setItem("dark", e.target.checked);
-
-      if(e.target.checked) {
-        document.body.classList.add("dark");
-      } else {
-        document.body.classList.remove("dark");
-      }
-
-      window.location.reload();
-
-    }
-    
-  </script>
 </body>
 
 </html>

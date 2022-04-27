@@ -77,7 +77,16 @@ $.ajax({
             .rpc('get_series_follows', { seriesid: id });
 
           const { data:seriesLikes, error:seriesLikesError } = await supabase
-          .rpc('get_series_total_likes', { series_id: id });
+            .from('series_stats')
+            .select('like_count')
+            .match({ seriesid: id })
+            .maybeSingle();
+
+          let totalLikeCount = 0;
+
+          if (seriesLikes) {
+            totalLikeCount = seriesLikes.like_count;
+          }
 
           if (seriesFollowsError) {
             erroralert(seriesFollowsError.message);
@@ -112,7 +121,7 @@ $.ajax({
                           <td class="px-4 py-3">
                           <div class="flex items-center text-sm">
                             <div>
-                              <p class="font-semibold">${seriesLikes}</p>
+                              <p class="font-semibold">${totalLikeCount}</p>
                               <p class="text-xs text-gray-600 dark:text-gray-400">
                                ${seriesFollows} followers
                               </p>

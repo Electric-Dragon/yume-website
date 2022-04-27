@@ -35,24 +35,17 @@ $.ajax({
         window.location = "/signin";
       }
 
-      $('#email').val(user.email);
-
-      const { data:private_user, error } = await supabase
-        .from('private_user')
-        .select()
-        .eq('id',user.id)
-
-      const { data:public_user, error_ } = await supabase
+      const { data:public_user, error } = await supabase
         .from('public_profile')
-        .select()
+        .select('description, instagram, reddit, youtube, is_creator, creator_type, sample_arts')
         .eq('id',user.id)
         .single();
 
-     if (error || error_) {
-         erroralert("Something went wrong");
+     if (error) {
+         erroralert(error.message);
      } else {
 
-       let { pfp, username, description, instagram, reddit, youtube, banner, is_creator } = public_user;
+       let { description, instagram, reddit, youtube, is_creator, creator_type, sample_arts } = public_user;
        publicData = public_user;
 
        instagramAcc = instagram;
@@ -77,50 +70,23 @@ $.ajax({
          $('#sideBarSeries').show();
           $('#sideBarOnlyCreators').show();
           $('#sideBarAdvertisement').show();
+       } else {
+           window.location = "/account"
        }
 
-       if (private_user) {
-
-            let { fName, lName, dob, pNumber } = private_user[0];
-
-            $('#fName').val(fName);
-            $('#lName').val(lName);
-            $('#dob').val(dob);
-            $('#pNumber').val(pNumber);
-
-       }
-
-        $('#username').val(username);
         $('#description').val(description);
-        $('#pfp').attr('src',pfp);
-        $('#banner').attr('src',banner);
+
      }
 
 }});
 
 window.saveDetails = async function saveDetails () {
 
-  let fNameNew = $('#fName').val();
-  let lNameNew = $('#lName').val();
-  let dobNew = $('#dob').val();
-  let pNumberNew = $('#pNumber').val();
   let descriptionNew = $('#description').val();
-  let pfpNew = $('#pfpImage').prop('files')[0];
-  let bannerNew = $('#bannerImage').prop('files')[0];
 
-  if (!(fNameNew && lNameNew && dobNew && pNumberNew && descriptionNew)) {
-    erroralert("Please fill in all fields");
+  if (!(descriptionNew)) {
+    erroralert("Please fill in the description");
   } else {
-
-    let userData = {id:user.id,fName:fNameNew, lName:lNameNew, dob:dobNew, pNumber:pNumberNew};
-
-    const { data, error } = await supabase
-    .from('private_user')
-    .upsert(userData)
-
-    if (error) {
-      erroralert(error.message);
-    } else {
 
       if (publicData.description != descriptionNew) {
 
@@ -132,94 +98,10 @@ window.saveDetails = async function saveDetails () {
         if (error) {
           erroralert(error.message);
         } else {
-          successalert("Details updated!");
+          successalert("Description updated!");
         }
 
       }
-
-        if (pfpNew) {
-
-            if (pfpNew.size > 500000) {
-              erroralert("Profile picture must be under 500kb");
-              return;
-            }
-
-            const { data_, error } = await supabase.storage
-            .from('users')
-            .upload(`${user.id}/profile/pfp.jpg`, pfpNew, {cacheControl: 10,upsert: true})
-
-            if (error) {
-              erroralert(error.message);
-            } else {
-
-              const {publicURL, error} = await supabase
-                    .storage
-                    .from('users')
-                    .getPublicUrl(`${user.id}/profile/pfp.jpg`)
-
-                if (error) {
-                    erroralert(error.message);
-                } else {
-                  const { data, error } = await supabase
-                  .from('public_profile')
-                  .update({ pfp: publicURL })
-                  .match({ id: user.id })
-  
-                  if (error) {
-                    erroralert(error.message);
-                  } else {
-                    successalert("Profile picture updated!");
-                  }
-
-                }
-              
-            }
-
-          }
-
-          if (bannerNew) {
-
-            if (bannerNew.size > 500000) {
-              erroralert("Banner must be under 500kb");
-              return;
-            }
-
-            const { data_, error } = await supabase.storage
-            .from('users')
-            .upload(`${user.id}/profile/banner.jpg`, bannerNew, {cacheControl: 10,upsert: true})
-
-            if (error) {
-              erroralert(error.message);
-            } else {
-
-              const {publicURL, error} = await supabase
-                    .storage
-                    .from('users')
-                    .getPublicUrl(`${user.id}/profile/banner.jpg`)
-
-                if (error) {
-                    erroralert(error.message);
-                } else {
-
-                  const { data, error } = await supabase
-                  .from('public_profile')
-                  .update({ banner: publicURL })
-                  .match({ id: user.id })
-  
-                  if (error) {
-                    erroralert(error.message);
-                  } else {
-                    successalert("Banner updated!");
-                  }
-
-                }
-              
-            }
-
-          }
-        
-        successalert("Profile updated");
-    }
 
   }
 

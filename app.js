@@ -41,7 +41,6 @@ app.get("/user/:username", function(req, res) {
     res.sendFile(__dirname + "/html/creator.html");
 });
 
-
 app.post("/signup", async function(req, res) {
     res.json(await yumeAPI.signUp(req.body));
 });

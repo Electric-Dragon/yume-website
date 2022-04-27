@@ -27,8 +27,8 @@ $.ajax({
 
         if (user) {
           const { data, error } = await supabase
-            .from('private_user')
-            .select('creator')
+            .from('public_profile')
+            .select('is_creator')
             .eq('id', user.id)
             .single()
           
