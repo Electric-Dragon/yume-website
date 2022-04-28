@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Account</title>
+  <title>Update Creator Details</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
@@ -506,7 +506,7 @@
       </header>
       <main class="h-full overflow-y-auto">
       
-        <form id="login">
+        <form>
             <div class="bg-white dark:bg-gray-800">
                 <div class="container mx-auto bg-white dark:bg-gray-800 rounded">
                     <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 bg-white dark:bg-gray-800">
@@ -548,6 +548,7 @@
                               
                               <div id="artistSamplesSection" class="max-w-2xl mt-8">
                                 <label class="block text-xl font-medium text-gray-700 dark:text-white"> Upload Samples </label>
+                                <p class="text-xs mt-2 ml-1 text-gray-500">Name the samples as 1.jpg, 2.jpg, etc. You can only have a maximum of 5 samples</p>
                                 <div class="grid my-3 grid-flow-row grid-cols-2">
                                     <div class="flex gap-3 text-sm">
                                       <label for="panels" class="relative cursor-pointer bg-gray-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
@@ -559,7 +560,7 @@
                                             Delete All
                                           </button>
                                     </div>
-                                    <p id="totalSize" class="text-sm text-gray-500 flex mr-2 justify-end grid-rows-1">0 MB / 20 MB</p>
+                                    <p id="totalSize" class="text-sm text-gray-500 flex mr-2 justify-end grid-rows-1">0 MB / 10 MB</p>
                                 </div>
                                 <div class="flex flex-col w-full overflow-y-auto text-center">
                                   <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md w-full max-h-96">
@@ -567,9 +568,13 @@
     
                                     </div>
                                 </div>
-                                <p class="text-xs mt-4 text-gray-500">The image must be less than <strong>800 px</strong> wide and <strong>1280 px</strong> long
-                                    You can upload up to <strong>20 MB</strong> in total. Only <strong>.JPG</strong> format is allowed.</p>
+                                <p class="text-xs mt-4 text-gray-500">The images must be less than <strong>800 px</strong> wide and <strong>1280 px</strong> long
+                                    You can upload up to <strong>10 MB</strong> in total. Only <strong>.JPG</strong> format is allowed.</p>
             
+                                    <button onclick="saveDetails(event)" role="button" id="btnSaveDetails" class="flex items-center mb-5 justify-center py-4 px-7 focus:outline-none bg-white border rounded border-gray-400 md:mt-2 hover:bg-gray-100  focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+                                      <span class="text-sm font-medium text-center text-gray-800 capitalize">Save</span>
+                                     <img class="mt-1 ml-3" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/form_layout-svg2.svg" alt="arrow">
+                                    </button>
                               
                                 </div>
                               </div>
@@ -625,10 +630,6 @@
                                       <p id="agree" tabindex="0" class="focus:outline-none text-sm leading-none ml-2">I agree with the <span class="text-indigo-700">terms of service</span></p>
                                   </div>
                               </div> -->
-                              <button onclick="saveDetails()" role="button" class="flex items-center mb-5 justify-center py-4 px-7 focus:outline-none bg-white border rounded border-gray-400 md:mt-2 hover:bg-gray-100  focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
-                                  <span class="text-sm font-medium text-center text-gray-800 capitalize">Save</span>
-                                 <img class="mt-1 ml-3" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/form_layout-svg2.svg" alt="arrow">
-                              </button>
                           </div>
                             </div>
 
