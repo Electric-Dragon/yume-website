@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, publicData, isCreator, user, instagramAcc, redditAcc, youtubeAcc;
+let supabase, publicData, user, instagramAcc, redditAcc, youtubeAcc;
 
 $('#instaConnected').hide();
 $('#redditConnected').hide();
@@ -10,6 +10,7 @@ $('#sideBarDashboard').hide();
 $('#sideBarSeries').hide();
 $('#sideBarOnlyCreators').hide();
 $('#sideBarAdvertisement').hide();
+$('#artistSamplesSection').hide();
 
 $('#toggleDarkMode').prop('checked',localStorage.getItem('dark') === 'true');
 
@@ -19,7 +20,12 @@ const swalWithBootstrapButtons = Swal.mixin({
     cancelButton: 'btn btn-danger'
   },
   buttonsStyling: false
-})
+});
+
+let creatorType = {
+  "a": "isArtist",
+  "w": "isWriter",
+}
 
 $.ajax({
   url: "/keys",
@@ -63,7 +69,12 @@ $.ajax({
        }
 
        $('#toggle').prop('checked',is_creator);
-       isCreator = is_creator;
+
+       if (creator_type && creator_type === ["a"]) {
+          $('#artistSamplesSection').show();
+       }
+
+       $(`#${creatorType[creator_type]}`).prop('checked',true);
 
        if (is_creator) {
          $('#sideBarDashboard').show();
@@ -107,45 +118,24 @@ window.saveDetails = async function saveDetails () {
 
 }
 
-window.enableCreator = async function enableCreator() {
+window.updateCreatorType = async function updateCreatorType(e) {
+  console.log(e.target.value);
 
-  if (isCreator) {
-    erroralert('You are already a creator!');
-    $('#toggle').prop('checked',true);
+  const { data, error } = await supabase
+    .from('public_profile')
+    .update({ creator_type: [`${e.target.value}`] })
+    .match({ id: user.id });
+
+  if (error) {
+    erroralert(error.message);
   } else {
+    successalert("Creator type updated!");
 
-    Swal.fire({
-      title: 'Are you sure?',
-      icon: 'info',
-      html:
-        'You cannot <b>undo</b> this action. <br> Make sure to read our ' +
-        '<a href="/tos" target="_blank" rel="noopener" style="color:blue">Terms of Service</a> ' +
-        'as this is a legal agreement between us.',
-      showCancelButton: true,
-      confirmButtonText: 'Yes',
-      cancelButtonText:'Cancel',
-    }).then( async (result) => {
-
-      if (!result.isConfirmed) {
-        $('#toggle').prop('checked',false);
-      } else {
-          
-          const { data, error } = await supabase
-          .from('public_profile')
-          .update({ is_creator: true })
-          .match({ id: user.id })
-  
-          if (error) {
-            erroralert(error.message);
-          } else {
-            successalert("You are now a creator!",function(){
-              window.location.reload()
-            });
-          }
-  
-      }
-
-    })
+    if (e.target.value === "a") {
+      $('#artistSamplesSection').show();
+    } else {
+      $('#artistSamplesSection').hide();
+    }
 
   }
 

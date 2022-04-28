@@ -519,23 +519,23 @@
 
                             <div class="m-5">
                               <h1 tabindex="0" role="heading" aria-label="profile information" class="focus:outline-none text-3xl font-bold text-gray-800 mt-12 dark:text-white">Creator's Details</h1>
-                              <p    tabindex="0" class=" focus:outline-none text-sm font-light leading-tight text-gray-600 mt-4">Fill in the data in order to recieve payments. <br />More features will be added as your popularity increases.</p>
-                              <h2  tabindex="0" class="focus:outline-none text-xl font-semibold leading-7 text-gray-800 mt-10">Who are you?</h2>
-                              <p tabindex="0" class="focus:outline-none text-sm font-light leading-none text-gray-600 mt-0.5">Customise to outline your Creator Profile</p>
+                              <p    tabindex="0" class=" focus:outline-none text-sm font-light leading-tight text-gray-600 mt-4 dark:text-white">Fill in the data in order to recieve payments. <br />More features will be added as your popularity increases.</p>
+                              <h2  tabindex="0" class="focus:outline-none text-xl font-semibold leading-7 text-gray-800 mt-10 dark:text-white">Who are you?</h2>
+                              <p tabindex="0" class="focus:outline-none text-sm font-light leading-none text-gray-600 mt-0.5 dark:text-white">Customise to outline your Creator Profile</p>
                                 </div>      
                                 <div class="mt-4 ml-6">
                                   <div class="flex gap-4">
                                     <div class="form-check form-check-inline">
-                                      <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                      <label class="form-check-label inline-block text-gray-800 dark:text-white" for="inlineRadio10">Writer</label>
+                                      <input onchange="updateCreatorType(event)" class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="inlineRadioOptions" id="isWriter" value="w">
+                                      <label class="form-check-label inline-block text-gray-800 dark:text-white" for="isWriter">Writer</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                      <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                      <label class="form-check-label inline-block text-gray-800 dark:text-white" for="inlineRadio20">Artist</label>
+                                      <input onchange="updateCreatorType(event)" class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="inlineRadioOptions" id="isArtist" value="a">
+                                      <label class="form-check-label inline-block text-gray-800 dark:text-white" for="isArtist">Artist</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                      <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-                                      <label class="form-check-label inline-block text-gray-800 opacity-50 dark:text-white" for="inlineRadio30">Animator (coming soon)</label>
+                                      <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2" type="radio" name="inlineRadioOptions" id="isAnimator" value="option3" disabled>
+                                      <label class="form-check-label inline-block text-gray-800 opacity-50 dark:text-white" for="isAnimator">Animator (coming soon)</label>
                                     </div>
                                   </div>
                               <div>
@@ -546,7 +546,7 @@
                                 <p class="mt-2 text-sm text-gray-500">Brief description for your profile.</p>
                               </div>
                               
-                              <div class="max-w-2xl mt-8">
+                              <div id="artistSamplesSection" class="max-w-2xl mt-8">
                                 <label class="block text-xl font-medium text-gray-700 dark:text-white"> Upload Samples </label>
                                 <div class="grid my-3 grid-flow-row grid-cols-2">
                                     <div class="flex gap-3 text-sm">
