@@ -7,9 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
     <link href="/css/output.css" rel="stylesheet">
-    <title>Welcome to Yume</title>
+    <title>Your search results</title>
 </head>
 <body class="dark:bg-black" >
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
 <nav class="bg-transparent shadow-lg pt-3 dark:bg-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -36,8 +39,8 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">
-            <a href="/" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-black dark:bg-white bg-black focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
-            <a href="/list" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Genres</a>
+            <a href="/" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+            <a href="/list" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-black dark:bg-white bg-black focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Genres</a>
             <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your library</a>
             <a href="/popular" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
           </div>
@@ -129,78 +132,77 @@
     })
   })</script>
 </nav>
-<!-- <header class="flex dark:bg-background mt-2 border-t-0 border-x-0 dark:border-none w-screen items-center text-center justify-center gap-7 border h-16 z-40">
-  <p class="rounded-md px-3 font-bold  bg-black dark:bg-white text-white uppercase hover:underline cursor-pointer dark:text-black">ALL</p>
-  <p class="text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Novels</p>
-  <p class="text-base font-bold uppercase hover:underline dark:text-gray-100 cursor-pointer">Web Novels</p>
-</header> -->
-    <div class="bg-transparent w-screen dark:bg-background" >
-      
-        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 dark:text-white">
 
-          <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recently published:</h2>
-      
-          <div id="recentlyPub" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
-            <!-- <div class="group relative">
-              <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a>
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Solo leveling
-                    </a>
-                  </h3>
-              </div>
+<!-- component -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<div x-data="{ cartOpen: false , isOpen: false }" class="bg-white dark:bg-background mt-5">
+    <header>
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="w-full text-gray-700 font-bold dark:text-gray-50 md:text-center text-2xl">
+                    GENRES 
+                </div>
             </div>
-          </div> -->        
-        </div>
+            <div class="relative mt-6 max-w-lg mx-auto">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
 
-        <br>
-        <br>
-        <div id="recommendationDiv">
-          <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recommended For you:</h2>
-      
-          <div id="recommendations" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8"></div>
+                <input id="searchBar" class="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" placeholder="Search for a Genre...">
+            </div>
         </div>
+    </header>
+ 
+<div class="h-fit"></div>
+    <main class="my-8">
+        <div class="container mx-auto px-6">
 
-        <br>
-        <br>
-        <div>
-          <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">Top Creators</h2>
-      
-          <div id="popularCreatorsDiv" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
-            <!-- <div class="group relative dark:text-white">
-              <div class="object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
-                  <img class="aspect-square object-cover h-full" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg00.deviantart.net%2F1614%2Fi%2F2011%2F273%2F8%2F5%2Felectric_dragon_by_insanable-d4bczwp.jpg&f=1&nofb=1" class=" object-center object-cover">
-              </div>
-              <div class="mt-4 flex justify-between">
-                  <div>
-                      <h3 class="text-sm">
-                      <a href="/series/${id}" class="text-gray-700 font-bold dark:text-gray-100">
-                          <span aria-hidden="true" class="absolute inset-0"></span>
-                          electricdragon
-                      </a>
-                      <br>
-                      <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
-                      <p class="text-xs text-gray-500 dark:text-gray-500">Artist</p>
-                      </h3>
+            <main class="my-8">
+                  <div class="container mx-auto px-6">
+                      <div class="grid grid-cols-8 gap-3">
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+                      <a href="/genre/action" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">action</a>
+
+                          
+                      </div>
                   </div>
+              </main>
+              <div class="my-3" id="recommendationDiv">
+                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recommended For you:</h2>
+            
+                <div id="recommendations" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8"></div>
               </div>
-         </div>           -->
-        </div>
-        </div>
 
-      </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-200">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Brand</a>
+            <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
+        </div>
+    </footer>
+</div>
 
       <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
       <script src="/js/init.js" type="module"></script>
-      <script defer src="/js/home.js" type="module"></script>
+      <script defer src="/js/search.js" type="module"></script>
 </body>
 </html>
-
-
