@@ -61,6 +61,10 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/html/home.html");
 });
 
+app.get("/list", function(req, res) {
+    res.sendFile(__dirname + "/html/glist.html");
+});
+
 app.get("/genre/:genre", function(req, res) {
     res.sendFile(__dirname + "/html/genre.html");
 });
