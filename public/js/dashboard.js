@@ -77,15 +77,15 @@ $.ajax({
             .rpc('get_series_follows', { seriesid: id });
 
           const { data:seriesLikes, error:seriesLikesError } = await supabase
-            .from('series_stats')
-            .select('like_count')
+            .from('series_total_likes')
+            .select('count')
             .match({ seriesid: id })
             .maybeSingle();
 
           let totalLikeCount = 0;
 
           if (seriesLikes) {
-            totalLikeCount = seriesLikes.like_count;
+            totalLikeCount = seriesLikes.count;
           }
 
           if (seriesFollowsError) {
