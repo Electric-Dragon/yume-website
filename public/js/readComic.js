@@ -50,10 +50,10 @@ $.ajax({
             let date = new Date(createdat);
             $('#chapDate').text(`${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`);
 
-            $('#genre1').attr('href',`/genres/${seriesid.genre1}`);
+            $('#genre1').attr('href',`/genre/${seriesid.genre1}`);
             $('#genre1').text(seriesid.genre1);
 
-            $('#genre2').attr('href',`/genres/${seriesid.genre2}`);
+            $('#genre2').attr('href',`/genre/${seriesid.genre2}`);
             $('#genre2').text(seriesid.genre2);
 
             images.forEach(panelLink => {
