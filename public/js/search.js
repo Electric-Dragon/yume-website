@@ -5,6 +5,12 @@ let supabase,user;
 
 let filter = '';
 
+let statusText = {
+  'd': 'Draft',
+  'o': 'Ongoing',
+  'p': 'Paused'
+}
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -14,6 +20,22 @@ $.ajax({
         supabase = createClient(result.link, result.anon_key);
   
         user = supabase.auth.user();
+
+        const { data, error } = await supabase
+          .from('series_popularity')
+          .select('seriesid(creator(banner))')
+          .order('popularity_score', 'desc')
+          .limit(1)
+          .single();
+
+        if (error) {
+          erroralert(error.message);
+        } else {
+          console.log(data);
+
+          $("#popularDiv").css({"background-image": `url('${data.seriesid.creator.banner}')`});
+
+        }
   
 }});
 
@@ -63,20 +85,20 @@ $('#searchBar').on('input', async function() {
       if (filter === '') {
         ({ data, error } = await supabase
         .from('series')
-        .select('id,title,summary,cover,creator(username),novel,genre1,genre2')
+        .select('id,title,summary,cover,creator(username),genre1,genre2,status')
         .neq('status', 'd')
         .textSearch('fts', query));
       } else if (filter === 'novel') {
         ({ data, error } = await supabase
         .from('series')
-        .select('id,title,summary,cover,creator(username),novel,genre1,genre2')
+        .select('id,title,summary,cover,creator(username),genre1,genre2,status')
         .neq('status', 'd')
         .eq('novel', true)
         .textSearch('fts', query));
       } else {
         ({ data, error } = await supabase
         .from('series')
-        .select('id,title,summary,cover,creator(username),novel,genre1,genre2')
+        .select('id,title,summary,cover,creator(username),genre1,genre2,status')
         .neq('status', 'd')
         .eq('novel', false)
         .textSearch('fts', query));
@@ -100,14 +122,14 @@ $('#searchBar').on('input', async function() {
       }
   
     } else {
-    //   getAllSeries();
+      $('#searchResults').empty();
     }
   
 });
 
 function showElement(series) {
 
-  let { id, title, summary, cover, creator, novel, genre1, genre2 } = series;
+  let { id, title, summary, cover, creator, genre1, genre2, status } = series;
 
   var words = summary.split(" ");
 
@@ -118,10 +140,7 @@ function showElement(series) {
     }
     summary += "...";
   }
-
-  let typeText = novel ? 'Web Novel' : 'Web Comic';
   
-
   let element = `
   <a href="/series/${id}">
   <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
@@ -134,16 +153,16 @@ function showElement(series) {
         <p id="description" class="text-gray-800 mt-2">${summary}</p>
         <div class="flex mt-5">
            <p>Author:</p>
-           <p class="ml-3 hover:underline text-blue-600">Rugved Joshi</p>
+           <p class="ml-3 hover:underline text-blue-600">${creator.username}</p>
         </div>
         <div class="flex mt-1">
           <p>Status:</p>
-          <p class="ml-3 text-green-800">Ongoing</p>
+          <p class="ml-3 text-green-800">${statusText[status]}</p>
        </div>
         <div class="flex mt-1">
           <p>Genre:</p>
-          <p class="ml-3 hover:underline text-blue-600">Hentai</p> <span class="ml-1">,</span>
-          <p class="ml-2 hover:underline text-blue-600">Comedy</p>
+          <p class="ml-3 hover:underline text-blue-600">${genre1}</p> <span class="ml-1">,</span>
+          <p class="ml-2 hover:underline text-blue-600">${genre2}</p>
        </div>
      </div>
   </div>

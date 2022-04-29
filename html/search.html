@@ -179,7 +179,7 @@
     <main class="my-8">
         <div class="container mx-auto px-6">
             <div id="searchResults" class="grid gap-2 grid-flow-row grid-cols-2">
-                <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+                <!-- <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
                     <div id="header" class="grid grid-flow-col"> 
                         <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
                             <img class="aspect-square object-cover" src="https://cover.nep.li/cover/Kanojo-Okarishimasu.jpg" class=" object-center object-cover">
@@ -226,16 +226,16 @@
                          </div>
                        </div>
                     </div>
-                 </div>
+                 </div> -->
 
             </div>
             <main class="my-8">
                   <div class="container mx-auto px-6">
-                      <div class="h-64 rounded-md overflow-hidden bg-cover bg-center" style="background-image: url('')">
+                      <div id="popularDiv" class="h-64 rounded-md overflow-hidden bg-cover bg-center" style="background-image: url('')">
                           <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
                               <div class="px-10 max-w-xl">
                                   <h2 class="text-2xl text-white font-semibold">Popular</h2>
-                                  <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
+                                  <p class="mt-2 text-gray-400">Check out the most popular works on Yume.</p>
                                   <a href="/popular">
                                   <button class="flex items-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                                       <span>Check them out</span>
@@ -245,7 +245,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="md:flex mt-8 md:-mx-4">
+                      <!-- <div class="md:flex mt-8 md:-mx-4">
                           <div class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2" style="background-image: url('')">
                               <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
                                   <div class="px-10 max-w-xl">
@@ -270,61 +270,14 @@
                                   </div>
                               </div>
                           </div>
-                      </div>
-                      <div class="mt-16">
-                          <h3 class="text-gray-600 text-2xl font-medium dark:text-gray-100">For You:</h3>
-                          <div id="" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
-                            <div class="group relative">
-                              <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                                <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                              </div>
-                              <div class="mt-4 flex justify-between">
-                                <div>
-                                  <h3 class="text-sm text-gray-700">
-                                    <a>
-                                      <span aria-hidden="true" class="absolute inset-0"></span>
-                                      Solo leveling
-                                    </a>
-                                  </h3>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="group relative">
-                            <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                              <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                            </div>
-                            <div class="mt-4 flex justify-between">
-                              <div>
-                                <h3 class="text-sm text-gray-700">
-                                  <a>
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    Solo leveling
-                                  </a>
-                                </h3>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="group relative">
-                          <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                            <img class="aspect-square object-cover" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" class=" object-center object-cover">
-                          </div>
-                          <div class="mt-4 flex justify-between">
-                            <div>
-                              <h3 class="text-sm text-gray-700">
-                                <a>
-                                  <span aria-hidden="true" class="absolute inset-0"></span>
-                                  Solo leveling
-                                </a>
-                              </h3>
-                          </div>
-                        </div>
-                      </div>
-                        </div>
-                      </div>
-                      <div class="mt-16">
-                      </div>
+                      </div> -->
                   </div>
               </main>
+              <div class="my-3" id="recommendationDiv">
+                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recommended For you:</h2>
+            
+                <div id="recommendations" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8"></div>
+              </div>
 
         </div>
     </main>
