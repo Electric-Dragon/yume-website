@@ -3,6 +3,11 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let supabase,user;
 
+let creatorTypeElement = {
+    'a': '<span class="mr-3  font-bold text-blue-500 ">Artist</span>',
+    'w': '<span class="mr-3  font-bold text-red-500 ">Writer</span>'
+}
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -23,8 +28,9 @@ $('#searchBar').on('input', async function() {
 
       const { data, error } = await supabase
         .from('public_profile')
-        .select('id,pfp,username,description')
+        .select('id,pfp,username,description,creator_type')
         .ilike('username', `${search}%`)
+        .eq("is_creator",true)
         .limit(7);
   
       if (error) {
@@ -53,7 +59,7 @@ $('#searchBar').on('input', async function() {
 
 async function showElement(user) {
 
-    let {id, pfp, username, description} = user;
+    let {id, pfp, username, description, creator_type} = user;
 
     const { data:seriesCount, error } = await supabase
         .rpc('get_series_count_for_user', { userid: id })
@@ -62,7 +68,7 @@ async function showElement(user) {
         erroralert(error.message);
     }
 
-    let element = `<a href="http://localhost:7001/user/${username}">
+    let element = `<a href="/user/${username}">
                         <div class="max-w-3xl w-full mx-auto z-10">
                             <div class="flex flex-col">
                                 <div class="bg-white border border-white shadow-lg  rounded-3xl p-4 m-4">
@@ -74,8 +80,7 @@ async function showElement(user) {
                                             <div class="flex items-center justify-between sm:mt-2">
                                                 <div class="flex items-center">
                                                     <div class="flex flex-col">
-                                                    <span class="mr-3  font-bold text-blue-500 ">Artist</span>
-                                                    <span class="mr-3  font-bold text-red-500 ">Writer</span>
+                                                    ${creatorTypeElement[creator_type]}
                                                         <div class="w-full flex-none text-lg text-gray-800 font-bold leading-none">${username}</div>
                                                         <div class="flex-auto text-gray-500 my-1">
                                                             <span class="mr-3 ">${description}</span>

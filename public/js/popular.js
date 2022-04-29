@@ -119,7 +119,8 @@ async function receivedData(data) {
   $('#mostPopularSummary').text(summary);
   $('#mostPopularGenre1').text(genre1);
   $('#mostPopularGenre2').text(genre2);
-  $('#mostPopularCreator').text(creator.username);
+  $('#mostPopularCreatorUsername').text(`By ${creator.username}`);
+  $('#mostPopularCreatorUsername').attr('href', `/user/${creator.username}`);
 
   let first = data.shift();
 
