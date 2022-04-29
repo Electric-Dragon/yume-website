@@ -32,8 +32,9 @@ $.ajax({
             .eq('id', user.id)
             .single()
           
-          if (data && data.creator) {
+          if (data && data.is_creator) {
             $('#btnMakeAdaptation').show();
+            console.log('creator');
           }
         }
   
