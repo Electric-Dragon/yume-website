@@ -3,13 +3,21 @@ import {erroralert, successalert} from '/js/salert.js';
 
 let creatorUsername = window.location.pathname.split( '/' ).pop()
 $('#title').text(`${creatorUsername}'s Profile`)
+$('#pageHeading').text(`${creatorUsername}'s Profile`)
 $('#username').text(creatorUsername)
 
-let supabase,user;
+$('#sampleArtsContainer').hide();
+
+let supabase,user,creatorId;
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let usernames = [];
+
+let creatorType = {
+    'a': 'Artist',
+    'w': 'Writer'
+}
 
 $('#instagram').hide();
 $('#discord').hide();
@@ -37,7 +45,9 @@ $.ajax({
             window.location = "/404";
         } else {
 
-            let {id, pfp, username, description, instagram, reddit, youtube, banner} = data[0];
+            let {id, pfp, username, description, instagram, reddit, youtube, banner, sample_arts} = data[0];
+
+            creatorId = id;
 
             $('#userPfp').attr('src', pfp)
             $('#banner').attr('src', banner)
@@ -76,6 +86,18 @@ $.ajax({
                 $('#youtube').attr('href', `https://www.youtube.com/c/${youtube}`);
             }
 
+            if (sample_arts) {
+
+                $('#sampleArtsContainer').show();
+
+                $('#templateStep').attr("x-for",`i in ${sample_arts.length}`);
+
+                sample_arts.forEach((art,i) => {
+                    $(`#artSample${i+1}`).attr('src', art);
+                });
+
+            }
+
             const { data:series, error:error_ } = await supabase
                 .from('series')
                 .select('cover,title,id, genre1, genre2, novel, updatedat')
@@ -87,63 +109,7 @@ $.ajax({
             if (error_) {
                 erroralert(error_.message);
             } else {
-
-                series.forEach(async val=> {
-
-                    let {id, title, cover, genre1, genre2, novel, updatedat} = val;
-
-                    let date = new Date(updatedat);
-
-                    let type = novel ? 'Web Novel' : 'Web Comic';
-
-                    const { data:seriesFollows, error:seriesFollowsError } = await supabase
-                        .rpc('get_series_follows', { seriesid: id });
-
-                    if (seriesFollowsError) {
-                        erroralert(seriesFollowsError.message);
-                    }
-
-                    let element =  `
-                                    <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                            <div class="flex items-center text-sm">
-                                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                    <img
-                                                        class="object-cover w-full h-full rounded-sm"
-                                                        src="${cover}"
-                                                        alt="${title}'s cover image"
-                                                        loading="lazy" />
-                                                <div
-                                                    class="absolute inset-0 rounded-full shadow-inner"
-                                                    aria-hidden="true">
-                                                </div>
-                                                </div>
-                                                <div>
-                                                    <a href="/series/${id}">
-                                                        <p class="font-semibold">${title}</p>
-                                                    </a>
-                                                    <p class="text-xs text-gray-600 dark:text-gray-400">
-                                                        ${genre1}, ${genre2}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                            ${type}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                            ${seriesFollows}
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
-                                            </td>
-                                    </tr>`
-
-
-                    $('#seriesContainer').append(element);
-
-                })
-
+                series.forEach(showElement)
             }
 
             const {data:mostPopularSeries, error:mostPopularSeriesError} = await supabase
@@ -157,7 +123,6 @@ $.ajax({
             if (mostPopularSeriesError) {
                 erroralert(mostPopularSeriesError.message);
             } else {
-                console.log(mostPopularSeries);
 
                 let {id, title, cover, genre1, genre2, updatedat} = mostPopularSeries[0].series;
 
@@ -191,7 +156,7 @@ $.ajax({
 
             const {data:workedWith, error:error_2} = await supabase
                 .from('series')
-                .select('adaptation(creator(username,pfp))')
+                .select('adaptation(creator(username,pfp,creator_type))')
                 .eq('creator', id)
                 .neq('status', 'd')
 
@@ -207,28 +172,42 @@ $.ajax({
 
                         $('#workedWith').show();
 
-                        let {username, pfp} = adaptation.creator;
+                        let {username, pfp, creator_type} = adaptation.creator;
 
                         if (!usernames.includes(username) && username !== creatorUsername) {
                             usernames.push(username);
 
-                            let element = `
-                                <div class="group relative">
-                                    <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                                        <img class="aspect-square object-cover" src="${pfp}" class=" object-center object-cover">
-                                    </div>
-                                    <div class="mt-4 flex justify-between">
-                                        <div>
-                                            <h3 class="text-sm text-gray-700">
-                                            <a href="/user/${username}">
-                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                ${username}
-                                            </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                `
+                            let types = '';
+
+                            if (creator_type) {
+                                creator_type.forEach((type,index)=> {
+                                types+=creatorType[type];
+                                if (index === 0 && creator_type.length > 1) {
+                                    types+=' & ';
+                                }
+                                })
+                            }
+
+                            let element =  `<div class="group relative dark:text-white">
+                                                    <div class="shadow-lg object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
+                                                        <img class=" aspect-square object-cover h-full" src="${pfp}" class=" object-center object-cover">
+                                                    </div>
+                                                    <div class="mt-4 flex justify-between">
+                                                        <div>
+                                                            <h3 class="text-sm">
+                                                            <a href="/user/${username}" class="text-gray-700 font-bold dark:text-gray-100">
+                                                                <span aria-hidden="true" class="absolute inset-0"></span>
+                                                                ${username}
+                                                            </a>
+                                                            <br>
+                                                            <a href="/user/${username}">
+                                                            <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
+                                                            </a>
+                                                            <p class="text-xs text-gray-500 dark:text-gray-500">${types}</p>
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                            </div>`
 
                                 $('#workedWithContainer').append(element);
                         }
@@ -240,3 +219,80 @@ $.ajax({
         }
        
 }});
+
+async function showElement (val) {
+
+        let {id, title, cover, genre1, genre2, novel, updatedat} = val;
+
+        let date = new Date(updatedat);
+
+        let type = novel ? 'Web Novel' : 'Web Comic';
+
+        const { data:seriesFollows, error:seriesFollowsError } = await supabase
+            .rpc('get_series_follows', { seriesid: id });
+
+        if (seriesFollowsError) {
+            erroralert(seriesFollowsError.message);
+        }
+
+        let element =  `
+                        <tr class="text-gray-700 dark:text-gray-400">
+                            <td class="px-4 py-3">
+                                <div class="flex items-center text-sm">
+                                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                        <img
+                                            class="object-cover w-full h-full rounded-sm"
+                                            src="${cover}"
+                                            alt="${title}'s cover image"
+                                            loading="lazy" />
+                                    <div
+                                        class="absolute inset-0 rounded-full shadow-inner"
+                                        aria-hidden="true">
+                                    </div>
+                                    </div>
+                                    <div>
+                                        <a href="/series/${id}">
+                                            <p class="font-semibold">${title}</p>
+                                        </a>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                            ${genre1}, ${genre2}
+                                        </p>
+                                    </div>
+                                </div>
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                ${type}
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                ${seriesFollows}
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                    ${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}
+                                </td>
+                        </tr>`
+
+
+        $('#seriesContainer').append(element);
+
+}
+
+window.viewAll = async function viewAll() {
+
+    const { data:series, error:error_ } = await supabase
+                .from('series')
+                .select('cover,title,id, genre1, genre2, novel, updatedat')
+                .order('updatedat', { ascending: false })
+                .eq('creator', creatorId)
+                .neq('status', 'd')
+
+    if (error_) {
+        erroralert(error_.message);
+    } else {
+
+        $('#seriesContainer').empty();
+        $('#btnViewAll').hide();
+
+        series.forEach(showElement)
+    }
+
+}

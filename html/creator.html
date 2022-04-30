@@ -113,26 +113,6 @@
         <a href="/popular" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
       </div>
     </div>
-    <script>document.getElementById('togglemebutton').onclick = function() {
-      document.getElementById("resultnav").classList.toggle("hidden");
-    }
-    
-    //document.getElementById('togglemebutton').onclick = function () {
-    //  document.getElementById("toggleme").classList.toggle("hidden");
-    //}
-    
-    
-    const toggleprofile = document.getElementById("toggleprofile");
-    const resultprofile = document.getElementById("resultprofile");
-    [...document.querySelectorAll('body')].forEach(el => {
-      el.addEventListener('click', event => {
-        if (event.target.parentElement.id !== "toggleprofile") {
-          console.log(event.target.parentElement.id)
-          resultprofile.classList.add("hidden")
-        }else{
-        resultprofile.classList.toggle("hidden")}
-      })
-    })</script>
   </nav>
 
   <section>
@@ -143,7 +123,7 @@
           <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 dark:bg-background">
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center ">
               <h1 tabindex="0" role="heading" aria-label="profile information"
-                class="focus:outline-none text-3xl font-bold text-gray-800 dark:text-gray-200" id="">Creator's Profile</h1>
+                class="focus:outline-none text-3xl font-bold text-gray-800 dark:text-gray-200" id="pageHeading">Creator's Profile</h1>
             </div>
           </div>
           <div class="mx-auto">
@@ -456,10 +436,10 @@
                           </tr> -->
                       </tbody>
                       </table>
-                      <button class="bg-white mx-auto flex mt-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                      <button onclick="viewAll()" class="bg-white mx-auto flex mt-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" id="btnViewAll">
                         View All
                       </button>
-                      <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300">
+                      <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300 mt-5">
                         Most Popular:
                       </h4>
                       <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
@@ -549,6 +529,7 @@
                                 </tr> -->
                             </tbody>
                             </table>
+                            <div id="sampleArtsContainer">
                             <h4 class="mb-4 mt-5 text-lg font-semibold text-black dark:text-gray-300">
                               Samples:
                             </h4>
@@ -556,26 +537,31 @@
                               <div class=" -mx-4">
                                 <div class="px-4">
                                   <div x-data="{ image: 1 }" x-cloak>
-                                    <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
+                                    <div class="h-64 md:h-80 rounded-lg mb-4">
                                       <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <span class="text-5xl">1</span>
+                                        <!-- <span class="text-5xl">1</span> -->
+                                        <img id="artSample1" src="" class="h-64 md:h-80 rounded-lg">
                                       </div>
                           
                                       <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <span class="text-5xl">2</span>
+                                        <img id="artSample2" src="" class="h-64 md:h-80 rounded-lg">
                                       </div>
                           
                                       <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <span class="text-5xl">3</span>
+                                        <img id="artSample3" src="" class="h-64 md:h-80 rounded-lg">
                                       </div>
                           
                                       <div x-show="image === 4" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <span class="text-5xl">4</span>
+                                        <img id="artSample4" src="" class="h-64 md:h-80 rounded-lg">
+                                      </div>
+
+                                      <div x-show="image === 5" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                                        <img id="artSample5" src="" class="h-64 md:h-80 rounded-lg">
                                       </div>
                                     </div>
                           
                                     <div class="flex -mx-2 mb-4">
-                                      <template x-for="i in 4">
+                                      <template id="templateStep" x-for="i in 5">
                                         <div class="flex-1 px-2">
                                           <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
                                             <span x-text="i" class="text-2xl"></span>
