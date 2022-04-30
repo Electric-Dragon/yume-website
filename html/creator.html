@@ -20,8 +20,9 @@
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <button id="togglemebutton" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu"
-            aria-expanded="false">
+          <button id="togglemebutton"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out"
+            aria-label="Main menu" aria-expanded="false">
             <!-- Icon when menu is closed. -->
             <!-- Menu open: "hidden", Menu closed: "block" -->
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,45 +37,55 @@
         </div>
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex-shrink-0">
-            <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl dark:text-cyan-400">YUME.</p></a>
-        
+            <a href="/">
+              <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl dark:text-cyan-400">YUME.</p>
+            </a>
+
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex">
-              <a href="/" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-black dark:bg-white bg-black focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
-              <a href="/list" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Genres</a>
-              <a href="/library" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your library</a>
-              <a href="/popular" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
+              <a href="/"
+                class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-black dark:bg-white bg-black focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+              <a href="/list"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Genres</a>
+              <a href="/library"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your
+                library</a>
+              <a href="/popular"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
             </div>
           </div>
         </div>
         <div class="relative mx-auto text-gray-600 md:block hidden ">
-             
-          <input
-            class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none" id="seriesSearchBar"
-            type="search" name="search" placeholder="Search">
+
+          <input class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none"
+            id="seriesSearchBar" type="search" name="search" placeholder="Search">
           <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
-            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-               version="1.1" id="Capa_1" x="0px" y="0px"
-               viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-               xml:space="preserve"
-               width="512px" height="512px">
-          <path
-            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
-          </svg>
+            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1"
+              x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+              xml:space="preserve" width="512px" height="512px">
+              <path
+                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+            </svg>
           </button>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-  
-  
+
+
           <!-- Profile dropdown -->
           <div class="ml-3 relative">
             <div>
               <div id="authButtons" class="hidden md:flex items-center space-x-3 ">
-                <a href="/signin" class="py-2 px-2 font-medium text-gray-300 rounded hover:bg-cyan-500 hover:text-white transition duration-300">Log In</a>
-                <a href="/signup" class="py-2 px-2 font-medium text-white bg-cyan-500 rounded hover:bg-cyan-400 transition duration-300">Sign Up</a>
+                <a href="/signin"
+                  class="py-2 px-2 font-medium text-gray-300 rounded hover:bg-cyan-500 hover:text-white transition duration-300">Log
+                  In</a>
+                <a href="/signup"
+                  class="py-2 px-2 font-medium text-white bg-cyan-500 rounded hover:bg-cyan-400 transition duration-300">Sign
+                  Up</a>
               </div>
-              <button id="toggleprofile" class="flex text-sm border-2 object-cover border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+              <button id="toggleprofile"
+                class="flex text-sm border-2 object-cover border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
+                id="user-menu" aria-label="User menu" aria-haspopup="true">
                 <img class="h-8 w-8 rounded-full" id="pfp" src="" alt="">
               </button>
             </div>
@@ -88,18 +99,26 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-            <div id="resultprofile" class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-              <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                <a href="/account" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
-                <a href="/dashboard/home" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Dashboard</a>
-                <a id="signOut" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
+            <div id="resultprofile"
+              class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+              <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical"
+                aria-labelledby="user-menu">
+                <a href="/account"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Your Profile</a>
+                <a href="/dashboard/home"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Dashboard</a>
+                <a id="signOut"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Sign out</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
+
     <!--
       Mobile menu, toggle classes based on menu state.
   
@@ -107,10 +126,15 @@
     -->
     <div id="resultnav" class="hidden sm:hidden">
       <div class="px-2 pt-2 pb-3">
-        <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
-        <a href="/search" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Search</a>
-        <a href="/library" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your library</a>
-        <a href="/popular" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
+        <a href="/"
+          class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+        <a href="/search"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Search</a>
+        <a href="/library"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your
+          library</a>
+        <a href="/popular"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
       </div>
     </div>
   </nav>
@@ -123,7 +147,8 @@
           <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 dark:bg-background">
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center ">
               <h1 tabindex="0" role="heading" aria-label="profile information"
-                class="focus:outline-none text-3xl font-bold text-gray-800 dark:text-gray-200" id="pageHeading">Creator's Profile</h1>
+                class="focus:outline-none text-3xl font-bold text-gray-800 dark:text-gray-200" id="pageHeading">
+                Creator's Profile</h1>
             </div>
           </div>
           <div class="mx-auto">
@@ -140,7 +165,8 @@
                       <div class="absolute"></div>
                     </div>
                     <div class="flex flex-col space-y-5 justify-center items-center -mt-12 w-full">
-                      <span class="text-md whitespace-nowrap text-black dark:text-gray-100 font-semibold" id="username"></span>
+                      <span class="text-md whitespace-nowrap text-black dark:text-gray-100 font-semibold"
+                        id="username"></span>
                       <!-- <span class="text-md whitespace-nowrap text-cyan-500">Elite(this is a rank system will explain  later)</span> -->
                       <p class="text-sm text-gray-700 dark:text-gray-100" id="description">
                       </p>
@@ -153,142 +179,159 @@
                         <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
 
                         <div x-data="{ modelOpen: false }">
-                            <button @click="modelOpen =!modelOpen" class="flex items-center justify-center  tracking-wide capitalize transition-colors duration-200 transform bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded">
+                          <button @click="modelOpen =!modelOpen"
+                            class="flex items-center justify-center  tracking-wide capitalize transition-colors duration-200 transform bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded">
 
-                                <span>Request</span>
-                            </button>
+                            <span>Request</span>
+                          </button>
 
-                            <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
-                                    <div x-cloak @click="modelOpen = false" x-show="modelOpen" 
-                                        x-transition:enter="transition ease-out duration-300 transform"
-                                        x-transition:enter-start="opacity-0" 
-                                        x-transition:enter-end="opacity-100"
-                                        x-transition:leave="transition ease-in duration-200 transform"
-                                        x-transition:leave-start="opacity-100" 
-                                        x-transition:leave-end="opacity-0"
-                                        class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true"
-                                    ></div>
+                          <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto"
+                            aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                            <div
+                              class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
+                              <div x-cloak @click="modelOpen = false" x-show="modelOpen"
+                                x-transition:enter="transition ease-out duration-300 transform"
+                                x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                                x-transition:leave="transition ease-in duration-200 transform"
+                                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                                class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40" aria-hidden="true">
+                              </div>
 
-                                    <div x-cloak x-show="modelOpen" 
-                                        x-transition:enter="transition ease-out duration-300 transform"
-                                        x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                                        x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                        x-transition:leave="transition ease-in duration-200 transform"
-                                        x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
-                                        x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                        class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-gray-50 rounded-lg shadow-xl 2xl:max-w-2xl"
-                                    >
-                                        <div class="flex items-center justify-between space-x-4">
-                                            <h1 class="text-xl font-medium text-gray-800 ">Request for Adaptation</h1>
+                              <div x-cloak x-show="modelOpen"
+                                x-transition:enter="transition ease-out duration-300 transform"
+                                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                x-transition:leave="transition ease-in duration-200 transform"
+                                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-gray-50 rounded-lg shadow-xl 2xl:max-w-2xl">
+                                <div class="flex items-center justify-between space-x-4">
+                                  <h1 class="text-xl font-medium text-gray-800 ">Request for Adaptation</h1>
 
-                                            <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                            </button>
+                                  <button @click="modelOpen = false"
+                                    class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                      viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                  </button>
+                                </div>
+
+
+
+                                <p class="mt-2 text-sm text-gray-500 ">
+                                  Request for an adaption to make a <span
+                                    class="font-bold text-blue-600">webcomic</span> and reach more audience
+                                </p>
+
+                                <div class="flex flex-col mt-4">
+                                  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+                                  <div class="relative max-w-sm mx-auto text-xs">
+                                    <div class="bg-white rounded-md p-2 flex gap-1 flex-wrap"
+                                      @click="$refs.search_input.focus()" @click.outside="showSelector=false">
+                                      <template x-for="(name, id) in selected">
+                                        <div class="bg-blue-200 rounded-md flex items-center ">
+                                          <div class="p-2" x-text="name"></div>
+                                          <div @click="remove(id)"
+                                            class="p-2 select-none rounded-r-md cursor-pointer hover:bg-magma-orange-clear">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                              xmlns="http://www.w3.org/2000/svg">
+                                              <path d="M12.5745 1L1 12.5745" stroke="#FEAD69" stroke-width="2"
+                                                stroke-linecap="round" />
+                                              <path d="M1.00024 1L12.5747 12.5745" stroke="#FEAD69" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            </svg>
+                                          </div>
                                         </div>
+                                      </template>
+                                      <div class="flex-1 text-black ">
+                                        <input id="sus" type="search" placeholder="search..."
+                                          class="w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-2 px-0">
+                                        <div id="" class="space-y-1">
+                                          <div
+                                            class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
+                                            <img class="aspect-square object-cover w-1/5"
+                                              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2Fd27b1d2da82c605322e547f23f1e2811%2Fbcb729a46fc4c465-15%2Fs1280x1920%2Fa7345eaceff60a7e5aec57ed16a924e89a4fc359.jpg&f=1&nofb=1"
+                                              alt="">
+                                            <div class="flex flex-col">
+                                              <p class="text-md pl-7 font-poppins font-bold">I'm lost!</p>
+                                              <p class="text-md pl-7 font-poppins">7 eps</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div x-show="showSelector"
+                                          class="absolute left-0 bg-white z-30 w-full rounded-b-md font-medium">
+                                          <div class="p-2 space-y-1">
+                                            <template x-for="(name, id) in options">
+                                              <div>
+                                                <!-- <template x-if="!selected[id]"> -->
 
-                                        
-
-                                        <p class="mt-2 text-sm text-gray-500 ">
-                                            Request for an adaption to make a <span class="font-bold text-blue-600">webcomic</span> and reach more audience 
-                                        </p>
-
-                                        <div class="flex flex-col mt-4">
-                                          <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-                                          <div class="relative max-w-sm mx-auto text-xs">
-                                              <div class="bg-white rounded-md p-2 flex gap-1 flex-wrap" @click="$refs.search_input.focus()"
-                                                  @click.outside="showSelector=false">
-                                                  <template x-for="(name, id) in selected">
-                                                      <div class="bg-blue-200 rounded-md flex items-center ">
-                                                          <div class="p-2" x-text="name"></div>
-                                                          <div @click="remove(id)"
-                                                              class="p-2 select-none rounded-r-md cursor-pointer hover:bg-magma-orange-clear">
-                                                              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                  <path d="M12.5745 1L1 12.5745" stroke="#FEAD69" stroke-width="2" stroke-linecap="round"/>
-                                                                  <path d="M1.00024 1L12.5747 12.5745" stroke="#FEAD69" stroke-width="2" stroke-linecap="round"/>
-                                                              </svg>
-                                                          </div>
-                                                      </div>
-                                                  </template>
-                                                  <div class="flex-1 text-black ">
-                                                      <input id="sus" type="search" placeholder="search..."
-                                                          class="w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-2 px-0">
-                                                      <div id="" class="space-y-1">
-                                                          <div class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
-                                                              <img class="aspect-square object-cover w-1/5" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2Fd27b1d2da82c605322e547f23f1e2811%2Fbcb729a46fc4c465-15%2Fs1280x1920%2Fa7345eaceff60a7e5aec57ed16a924e89a4fc359.jpg&f=1&nofb=1" alt="">
-                                                              <div class="flex flex-col">
-                                                                  <p class="text-md pl-7 font-poppins font-bold">I'm lost!</p>
-                                                                  <p class="text-md pl-7 font-poppins">7 eps</p>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                      <div x-show="showSelector" class="absolute left-0 bg-white z-30 w-full rounded-b-md font-medium">
-                                                          <div class="p-2 space-y-1">
-                                                              <template x-for="(name, id) in options">
-                                                                  <div>
-                                                                      <!-- <template x-if="!selected[id]"> -->
-              
-                                                                          <!-- <div @click="select(id, name)"
+                                                <!-- <div @click="select(id, name)"
                                                                               class="bg-gray-200 py-5 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1"
                                                                               x-text="name">
               
                                                                           </div> -->
-                                                                              
-                                                                      <!-- </template> -->
-                                                                  </div>
-                                                              </template>
-                                                              <template x-if="options.length === 0">
-                                                                  <div class="text-gray-500">
-                                                                      No result
-                                                                  </div>
-                                                              </template>
-                                                              
-                                                          </div>
-              
-                                                      </div>
-                                                  </div>
+
+                                                <!-- </template> -->
                                               </div>
+                                            </template>
+                                            <template x-if="options.length === 0">
+                                              <div class="text-gray-500">
+                                                No result
+                                              </div>
+                                            </template>
+
                                           </div>
-                                         <form class="mt-5">
-                                            <div>
-                                                <label for="user name" class="block text-sm text-gray-700 capitalize ">Short Message</label>
-                                                <input placeholder="Hey! I am example and would love you to..." type="text" class="block w-full px-3 py-2 mt-2 text-gray-600  bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
-                                            </div>
-                                            
-                                            <div class="mt-4">
-                                                <h1 class="text-xs font-medium text-gray-400 uppercase">Permissions</h1>
 
-                                                <div class="mt-4 space-y-5">
-                                                    <div class="flex items-center space-x-3 cursor-pointer" x-data="{ show: true }" @click="show =!show">
-                                                        <div class="relative w-10 h-5 transition duration-200 ease-linear rounded-full"
-                                                            :class="[show ? 'bg-indigo-500' : 'bg-gray-300']">
-                                                            <label for="show"
-                                                                @click="show =!show"
-                                                                class="absolute left-0 w-5 h-5 mb-2 transition duration-100 ease-linear transform bg-white border-2 rounded-full cursor-pointer"
-                                                                :class="[show ? 'translate-x-full border-indigo-500' : 'translate-x-0 border-gray-300']"></label>
-                                                            <input type="checkbox" name="show" class="hidden w-full h-full rounded-full appearance-none active:outline-none focus:outline-none"/>
-                                                        </div>
-
-                                                        <p class="text-gray-500">*Give the rights of this series to this creator. (irreversible)</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="flex justify-end mt-6">
-                                                <button type="button" class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                                                    Send
-                                                </button>
-                                            </div>
-                                        </form>
                                         </div>
-
-
+                                      </div>
                                     </div>
+                                  </div>
+                                  <form class="mt-5">
+                                    <div>
+                                      <label for="user name" class="block text-sm text-gray-700 capitalize ">Short
+                                        Message</label>
+                                      <input placeholder="Hey! I am example and would love you to..." type="text"
+                                        class="block w-full px-3 py-2 mt-2 text-gray-600  bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
+                                    </div>
+
+                                    <div class="mt-4">
+                                      <h1 class="text-xs font-medium text-gray-400 uppercase">Permissions</h1>
+
+                                      <div class="mt-4 space-y-5">
+                                        <div class="flex items-center space-x-3 cursor-pointer" x-data="{ show: true }"
+                                          @click="show =!show">
+                                          <div
+                                            class="relative w-10 h-5 transition duration-200 ease-linear rounded-full"
+                                            :class="[show ? 'bg-indigo-500' : 'bg-gray-300']">
+                                            <label for="show" @click="show =!show"
+                                              class="absolute left-0 w-5 h-5 mb-2 transition duration-100 ease-linear transform bg-white border-2 rounded-full cursor-pointer"
+                                              :class="[show ? 'translate-x-full border-indigo-500' : 'translate-x-0 border-gray-300']"></label>
+                                            <input type="checkbox" name="show"
+                                              class="hidden w-full h-full rounded-full appearance-none active:outline-none focus:outline-none" />
+                                          </div>
+
+                                          <p class="text-gray-500">*Give the rights of this series to this creator.
+                                            (irreversible)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="flex justify-end mt-6">
+                                      <button type="button"
+                                        class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                                        Send
+                                      </button>
+                                    </div>
+                                  </form>
                                 </div>
+
+
+                              </div>
                             </div>
+                          </div>
                         </div>
                         <button id=""
                           class="bg-transparent w-full hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-600 hover:border-transparent rounded">
@@ -318,7 +361,8 @@
                         <a target="_blank" rel="noopener" id="youtube"
                           class="bg-red-500 px-2 text-sm py-1 font-semibold text-white inline-flex items-center space-x-2 rounded">
                           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current " viewBox="0 0 16 16">
-                            <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                            <path
+                              d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
                           </svg>
                           <span>Youtube</span>
                         </a>
@@ -341,273 +385,247 @@
                 </div>
                 <!---->
               </div>
-            </div>
-            <div>
+              <h4 class="text-lg font-semibold text-black dark:text-gray-300 mt-8">
+                Most Popular:
+              </h4>
               <div class="max-w-2xl mx-auto py-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8 dark:text-white">
-                <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300">
-                  Recently Made:
-                </h4>
-                <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-                  <div class="w-full overflow-x-auto">
-                    <table class="w-full whitespace-no-wrap">
-                      <thead>
-                        <tr
-                          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                          <th class="px-4 py-3">Series</th>
-                          <th class="px-4 py-3">Type</th>
-                          <th class="px-4 py-3">Follows</th>
-                          <th class="px-4 py-3">Last updated</th>
-                        </tr>
-                      </thead>
-                      <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
-                        <!-- <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                                <div
-                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                >
-                                  <img
-                                    class="object-cover w-full h-full rounded-sm"
-                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                    alt=""
-                                    loading="lazy"
-                                  />
-                                  <div
-                                    class="absolute inset-0 rounded-full shadow-inner"
-                                    aria-hidden="true"
-                                  ></div>
-                                </div>
-                                <div>
-                                  <p class="font-semibold">Solo leveling</p>
-                                  <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    Comedy, Fantasy
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              30
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              3000
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
-                                Follow Series
-                              </button>
-                            </td>
-                          </tr> -->
-                        <!-- <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                                <div
-                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                >
-                                  <img
-                                    class="object-cover w-full h-full rounded-sm"
-                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                    alt=""
-                                    loading="lazy"
-                                  />
-                                  <div
-                                    class="absolute inset-0 rounded-full shadow-inner"
-                                    aria-hidden="true"
-                                  ></div>
-                                </div>
-                                <div>
-                                  <p class="font-semibold">Solo leveling</p>
-                                  <p class="text-xs text-gray-600 dark:text-gray-400">
-                                    Comedy, Fantasy
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              30
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              3000
-                            </td>
-                            <td class="px-4 py-3 text-sm">
-                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
-                                Follow Series
-                              </button>
-                            </td>
-                          </tr> -->
-                      </tbody>
-                      </table>
-                      <button onclick="viewAll()" class="bg-white mx-auto flex mt-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" id="btnViewAll">
-                        View All
-                      </button>
-                      <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300 mt-5">
-                        Most Popular:
-                      </h4>
-                      <div class=" mx-auto">
-                        <div class="mx-auto">
-                          <div class="grid grid-cols-4 max-w-2xl mx-auto mb-5">
-                              <div class="relative mt-4 col-start-1 col-span-2 mx-auto justify-center">
-                                  <div class="relative"><img class="h-72 object-cover aspect-square" id="mostPopularCover" src="https://zduoakccvlarenfacitl.supabase.co/storage/v1/object/public/users/c3112183-4f22-4e3d-9426-7f3baadc1765/profile/samples/6EF0BAEE-B9A0-4275-80D9-DEA3F146CC9C.JPG" alt="Most popular work"></div>
-                                  <p class="absolute top-0 left-0 text-5xl m-4 text-white bg-black rounded-md p-1 px-2 ">1</p>
-                                  <div class="text-gray-400 text-sm "><a id="mostPopularGenre1">LMOA</a><span class="mx-1">,</span><a id="mostPopularGenre2">SUS</a></div>
-                              </div>
-                            <div class="flex flex-col col-span-2 ">
-                                <a class="font-bold text-2xl mt-2 dark:text-white" id="mostPopularTitle">UR MOM</a>
-                                <a class="font-bold text-gray-500 text-base dark:text-gray-300" id="mostPopularCreatorUsername">GG</a>
-                                <div class="text-gray-600 text-left mt-6" id="mostPopularSummary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae error deserunt ea dolorum explicabo, officia dolor repellendus quidem nostrum illum laboriosam quas molestiae cupiditate magnam doloremque delectus vel accusamus.</div>
-        
-                          </div>
-                            
-                            <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
-            
-                                <div class="grid grid-flow-row">
-                                    <table class="w-full whitespace-no-wrap">
-        
-                                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
-                                        </tbody>
-                                     </table>
-        
-                              </div>
-                        </div> 
+
+                <div class="grid md:grid-cols-3 md:divide-dashed md:divide-x-4 sm:grid ">
+
+                  <div class="grid md:grid-cols-4 md:max-w-2xl  md:mb-5 md:grid-flow-col col-span-2">
+                    <div class="relative mt-4 col-start-1 col-span-2 justify-center sm:grid-flow-row">
+                      <div class="relative"><img class="h-72 object-cover aspect-square" id="mostPopularCover"
+                          src="https://zduoakccvlarenfacitl.supabase.co/storage/v1/object/public/users/c3112183-4f22-4e3d-9426-7f3baadc1765/profile/samples/6EF0BAEE-B9A0-4275-80D9-DEA3F146CC9C.JPG"
+                          alt="Most popular work"></div>
+                      <p class="absolute top-0 left-0 text-5xl m-4 text-white bg-black rounded-md p-1 px-2 ">1</p>
+                      <div class="text-gray-400 text-sm "><a id="mostPopularGenre1">LMOA</a><span
+                          class="mx-1">,</span><a id="mostPopularGenre2">SUS</a></div>
                     </div>
-                      <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-                        <div class="w-full overflow-x-auto">
-                          <table class="w-full whitespace-no-wrap">
-                            <thead>
-                              <tr
-                                class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                <th class="px-4 py-3">Series</th>
-                                <th class="px-4 py-3">Likes</th>
-                                <th class="px-4 py-3">Follows</th>
-                                <th class="px-4 py-3">Last Updated</th>
-                              </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                              <tr class="text-gray-700 dark:text-gray-400">
-                                  <td class="px-4 py-3">
-                                    <div class="flex items-center text-sm">
-                                      <div
-                                        class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                      >
-                                        <img id="mostPopularSeriesCover"
-                                          class="object-cover w-full h-full rounded-sm"
-                                          src=""
-                                          alt="Most Popular Series"
-                                          loading="lazy"
-                                        />
-                                        <div
-                                          class="absolute inset-0 rounded-full shadow-inner"
-                                          aria-hidden="true"
-                                        ></div>
-                                      </div>
-                                      <div>
-                                        <a id="mostPopularSeriesTitle" class="font-semibold", href=""></a>
-                                        <p id="mostPopularSeriesGenres" class="text-xs text-gray-600 dark:text-gray-400">
-                                          
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td id="mostPopularSeriesLikes" class="px-4 py-3 text-sm">
-                                    
-                                  </td>
-                                  <td id="mostPopularSeriesFollows" class="px-4 py-3 text-sm">
+                    <div class="flex flex-col col-span-2  ">
+                      <a class="font-bold text-2xl mt-2 dark:text-white" id="mostPopularTitle">lol</a>
+                      <a class="font-bold text-gray-500 text-base dark:text-gray-300"
+                        id="mostPopularCreatorUsername">GG</a>
+                      <div class="text-gray-600 text-left mt-6" id="mostPopularSummary">Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Id beatae error deserunt ea dolorum explicabo, officia dolor
+                        repellendus quidem nostrum illum laboriosam quas molestiae cupiditate magnam doloremque
+                        delectus vel accusamus.</div>
 
-                                  </td>
-                                  <td id="mostPopularSeriesLastUpdated" class="px-4 py-3 text-sm">
-                                    
-                                  </td>
-                                </tr>
-                              <!-- <tr class="text-gray-700 dark:text-gray-400">
-                                  <td class="px-4 py-3">
-                                    <div class="flex items-center text-sm">
-                                      <div
-                                        class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                      >
-                                        <img
-                                          class="object-cover w-full h-full rounded-sm"
-                                          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                          alt=""
-                                          loading="lazy"
-                                        />
-                                        <div
-                                          class="absolute inset-0 rounded-full shadow-inner"
-                                          aria-hidden="true"
-                                        ></div>
-                                      </div>
-                                      <div>
-                                        <p class="font-semibold">Solo leveling</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">
-                                          Comedy, Fantasy
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td class="px-4 py-3 text-sm">
-                                    30
-                                  </td>
-                                  <td class="px-4 py-3 text-sm">
-                                    3000
-                                  </td>
-                                  <td class="px-4 py-3 text-sm">
-                                    <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
-                                      Follow Series
-                                    </button>
-                                  </td>
-                                </tr> -->
-                            </tbody>
-                            </table>
-                            <div id="sampleArtsContainer">
-                            <h4 class="mb-4 mt-5 text-lg font-semibold text-black dark:text-gray-300">
-                              Samples:
-                            </h4>
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-                              <div class=" -mx-4">
-                                <div class="px-4">
-                                  <div x-data="{ image: 1 }" x-cloak>
-                                    <div class="h-64 md:h-80 rounded-lg mb-4">
-                                      <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <!-- <span class="text-5xl">1</span> -->
-                                        <img id="artSample1" src="" class="h-64 md:h-80 rounded-lg">
-                                      </div>
-                          
-                                      <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <img id="artSample2" src="" class="h-64 md:h-80 rounded-lg">
-                                      </div>
-                          
-                                      <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <img id="artSample3" src="" class="h-64 md:h-80 rounded-lg">
-                                      </div>
-                          
-                                      <div x-show="image === 4" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <img id="artSample4" src="" class="h-64 md:h-80 rounded-lg">
-                                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col md:pl-6 divide-y">
+                    <p class="text-lg font-semibold text-black dark:text-gray-300">Feed</p>
+                    <div class="border-b border-2"></div>
 
-                                      <div x-show="image === 5" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                        <img id="artSample5" src="" class="h-64 md:h-80 rounded-lg">
-                                      </div>
-                                    </div>
-                          
-                                    <div class="flex -mx-2 mb-4">
-                                      <template id="templateStep" x-for="i in 5">
-                                        <div class="flex-1 px-2">
-                                          <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                                            <span x-text="i" class="text-2xl"></span>
-                                          </button>
-                                        </div>
-                                      </template>
-                                    </div>
+                    <div class="flex justify-center">
+                      <div class="min-w-full">
+                        <div class="block rounded-lg shadow-lg bg-white mt-6">
+                          <div class="md:flex md:flex-row">
+                            <div class="md:ml-6 md:mr-6">
+                              <p class="text-gray-500 font-light mb-2 text-sm">
+                                no chapter of One Piece this week. :(
+                              </p>
+                              <p class="text-gray-500 text-xs mb-2">2/04/2022</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="min-w-full">
+                      <div class="block rounded-lg shadow-lg bg-white mt-6">
+                        <div class="md:flex md:flex-row">
+                          <div class="md:ml-6 md:mr-6">
+                            <p class="text-gray-500 font-light mb-2 text-sm">
+                              your mom thicc
+                            </p>
+                            <p class="text-gray-500 text-xs mb-2">2/04/2022</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+              <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300">
+                Recently Made:
+              </h4>
+              <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+                <div class="w-full overflow-x-auto">
+                  <table class="w-full whitespace-no-wrap">
+                    <thead>
+                      <tr
+                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        <th class="px-4 py-3">Series</th>
+                        <th class="px-4 py-3">Type</th>
+                        <th class="px-4 py-3">Follows</th>
+                        <th class="px-4 py-3">Last updated</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
+                      <!-- <tr class="text-gray-700 dark:text-gray-400">
+                            <td class="px-4 py-3">
+                              <div class="flex items-center text-sm">
+                                <div
+                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                                >
+                                  <img
+                                    class="object-cover w-full h-full rounded-sm"
+                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
+                                    alt=""
+                                    loading="lazy"
+                                  />
+                                  <div
+                                    class="absolute inset-0 rounded-full shadow-inner"
+                                    aria-hidden="true"
+                                  ></div>
+                                </div>
+                                <div>
+                                  <p class="font-semibold">Solo leveling</p>
+                                  <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    Comedy, Fantasy
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              30
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              3000
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
+                                Follow Series
+                              </button>
+                            </td>
+                          </tr> -->
+                      <!-- <tr class="text-gray-700 dark:text-gray-400">
+                            <td class="px-4 py-3">
+                              <div class="flex items-center text-sm">
+                                <div
+                                  class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                                >
+                                  <img
+                                    class="object-cover w-full h-full rounded-sm"
+                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
+                                    alt=""
+                                    loading="lazy"
+                                  />
+                                  <div
+                                    class="absolute inset-0 rounded-full shadow-inner"
+                                    aria-hidden="true"
+                                  ></div>
+                                </div>
+                                <div>
+                                  <p class="font-semibold">Solo leveling</p>
+                                  <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    Comedy, Fantasy
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              30
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              3000
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                              <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
+                                Follow Series
+                              </button>
+                            </td>
+                          </tr> -->
+                    </tbody>
+                  </table>
+                  <button onclick="viewAll()"
+                    class="bg-white mx-auto flex mt-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                    id="btnViewAll">
+                    View All
+                  </button>
+
+
+                </div>
+                <div class=" mx-auto">
+                  <div class="mx-auto">
+                    <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
+
+                      <div class="grid grid-flow-row">
+                        <table class="w-full whitespace-no-wrap">
+
+                          <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+                    <div class="w-full overflow-x-auto">
+
+                      <div id="sampleArtsContainer">
+                        <h4 class="mb-4 mt-5 text-lg font-semibold text-black dark:text-gray-300">
+                          Samples:
+                        </h4>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+                          <div class=" -mx-4">
+                            <div class="px-4">
+                              <div x-data="{ image: 1 }" x-cloak>
+                                <div class="h-64 md:h-80 rounded-lg mb-4">
+                                  <div x-show="image === 1"
+                                    class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                                    <!-- <span class="text-5xl">1</span> -->
+                                    <img id="artSample1" src="" class="h-64 md:h-80 rounded-lg">
+                                  </div>
+
+                                  <div x-show="image === 2"
+                                    class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                                    <img id="artSample2" src="" class="h-64 md:h-80 rounded-lg">
+                                  </div>
+
+                                  <div x-show="image === 3"
+                                    class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                                    <img id="artSample3" src="" class="h-64 md:h-80 rounded-lg">
+                                  </div>
+
+                                  <div x-show="image === 4"
+                                    class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                                    <img id="artSample4" src="" class="h-64 md:h-80 rounded-lg">
+                                  </div>
+
+                                  <div x-show="image === 5"
+                                    class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                                    <img id="artSample5" src="" class="h-64 md:h-80 rounded-lg">
                                   </div>
                                 </div>
+
+                                <div class="flex -mx-2 mb-4">
+                                  <template id="templateStep" x-for="i in 5">
+                                    <div class="flex-1 px-2">
+                                      <button x-on:click="image = i"
+                                        :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }"
+                                        class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
+                                        <span x-text="i" class="text-2xl"></span>
+                                      </button>
+                                    </div>
+                                  </template>
                                 </div>
-                             </div>
+                              </div>
                             </div>
-                            <h4 id="workedWith" class="mt-7 text-lg font-semibold text-black dark:text-gray-300">
-                             Worked With:
-                            </h4>
-                            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-                              <div class="w-full overflow-x-auto">
-                                <div id="workedWithContainer" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
-                                  <!-- <div class="group relative">
+                          </div>
+                        </div>
+                      </div>
+                      <h4 id="workedWith" class="mt-7 text-lg font-semibold text-black dark:text-gray-300">
+                        Worked With:
+                      </h4>
+                      <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+                        <div class="w-full overflow-x-auto">
+                          <div id="workedWithContainer"
+                            class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
+                            <!-- <div class="group relative">
                                     <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
                                       <img class="aspect-square object-cover" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg00.deviantart.net%2F1614%2Fi%2F2011%2F273%2F8%2F5%2Felectric_dragon_by_insanable-d4bczwp.jpg&f=1&nofb=1" class=" object-center object-cover">
                                     </div>
@@ -622,32 +640,33 @@
                                     </div>
                                   </div>
                                 </div> -->
-                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-                      </div>
-                    </div>
-      </div>
-      </div>
 
-  </main>
-</section>
-     <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script> -->
-      <script defer src="/js/vibrant.min.js"></script>
-      <script src="/js/init.js" type="module"></script>
-      <script defer src="/js/creator.js" type="module"></script>
-      <script defer>
+    </main>
+  </section>
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script> -->
+  <script defer src="/js/vibrant.min.js"></script>
+  <script src="/js/init.js" type="module"></script>
+  <script defer src="/js/creator.js" type="module"></script>
+  <script defer>
 
-        function getProminentColour(link) {
-          return Vibrant.from(link).getPalette().then(function(palette) {
-              return palette.Vibrant.getHex()
-          });
-        }
-        
-      </script>
+    function getProminentColour(link) {
+      return Vibrant.from(link).getPalette().then(function (palette) {
+        return palette.Vibrant.getHex()
+      });
+    }
+
+  </script>
 </body>
 
 </html>
