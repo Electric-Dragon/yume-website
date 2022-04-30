@@ -116,7 +116,7 @@
 <!-- component -->
 
 <div  class="bg-white dark:bg-background"> 
-    <header class="flex mt-5 border-t-0 w-screen items-center text-center justify-center gap-7 border h-fit p-4">
+    <header class="flex mt-5 border-t-0 w-screen items-center text-center justify-center gap-7 border h-fit p-4 dark:border-transparent">
         <p id="filterAll" class="rounded-md transition-transform px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">ALL</p>
         <p id="filterComics" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Comics</p>
         <p id="filterNovels" class="rounded-md px-3 text-base font-bold uppercase hover:underline dark:text-white cursor-pointer">Web Novels</p>
@@ -144,7 +144,7 @@
                     <div class="grid grid-flow-row">
                         <div class="text-gray-400 text-sm "><a id="mostPopularGenre1"></a><span class="mx-1">,</span><a id="mostPopularGenre2"></a></div>
                         <a class="font-bold text-2xl mt-2 dark:text-white" id="mostPopularTitle"></a>
-                        <a class="font-bold text-gray-500 text-base dark:text-white" id="mostPopularCreatorUsername"></a>
+                        <a class="font-bold text-gray-500 text-base dark:text-gray-300" id="mostPopularCreatorUsername"></a>
                         <div class="text-gray-600 text-left mt-1" id="mostPopularSummary"></div>
 
                   </div>
@@ -159,267 +159,6 @@
                             <table class="w-full whitespace-no-wrap">
 
                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
-                                  <!-- <tr class="text-gray-700 dark:text-gray-400">
-                                      <td class="px-4 py-3">
-                                        <div class="flex items-center text-sm">
-                                          <div
-                                            class="relative  w-8 h-8 mr-3 rounded-full md:block"
-                                          >
-                                            <img
-                                              class="object-cover w-full h-full rounded-sm"
-                                              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                              alt=""
-                                              loading="lazy"
-                                            />
-                                            <div
-                                              class="absolute inset-0 rounded-full shadow-inner"
-                                              aria-hidden="true"
-                                            ></div>
-                                          </div>
-                                          <div>
-                                            <p class="font-semibold"><span class="mr-3 ml-2">2.</span>Solo leveling</p> 
-                                            <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                              Comedy, Fantasy
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </td>
-                                      <td class="px-4 py-3 text-sm">
-                                        MaxTGM
-                                      </td>
-                                    </tr>
-                                    <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr>
-                                      <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr>
-                                      <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr>
-                                      <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr>
-                                      <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr>
-                                      <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr>
-                                      <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr>
-                                      <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                          <div class="flex items-center text-sm">
-                                            <div
-                                              class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                            >
-                                              <img
-                                                class="object-cover w-full h-full rounded-sm"
-                                                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                                alt=""
-                                                loading="lazy"
-                                              />
-                                              <div
-                                                class="absolute inset-0 rounded-full shadow-inner"
-                                                aria-hidden="true"
-                                              ></div>
-                                            </div>
-                                            <div>
-                                              <p class="font-semibold"><span class="mr-3 ml-2">3.</span>Solo leveling</p> 
-                                              <p class="text-xs text-gray-600 dark:text-gray-400 ml-8">
-                                                Comedy, Fantasy
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                          MaxTGM
-                                        </td>
-                                      </tr> -->
                                 </tbody>
                              </table>
 
@@ -431,12 +170,12 @@
 
 
 
-    <!-- <footer class="bg-gray-200 bottom-0">
+    <footer class="bg-gray-200 bottom-0">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Brand</a>
             <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
         </div>
-    </footer> -->
+    </footer>
 </div>
 
   <script>

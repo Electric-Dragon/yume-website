@@ -1962,6 +1962,10 @@ select {
   border-style: dashed;
 }
 
+.border-none {
+  border-style: none;
+}
+
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -2064,6 +2068,11 @@ select {
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-x-transparent {
+  border-left-color: transparent;
+  border-right-color: transparent;
 }
 
 .bg-transparent {
@@ -4191,6 +4200,10 @@ svg #main-circ {
 .dark .dark\:border-gray-600 {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-transparent {
+  border-color: transparent;
 }
 
 .dark .dark\:bg-black {
