@@ -2928,6 +2928,11 @@ select {
   color: rgb(153 27 27 / var(--tw-text-opacity));
 }
 
+.text-indigo-400 {
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
+}
+
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -4699,6 +4704,10 @@ svg #main-circ {
 
   .md\:ml-4 {
     margin-left: 1rem;
+  }
+
+  .md\:mt-5 {
+    margin-top: 1.25rem;
   }
 
   .md\:block {
