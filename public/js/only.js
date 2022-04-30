@@ -94,7 +94,7 @@ $.ajax({
                       <div class="w-full p-4 lg:w-50 lg:h-full">
                           <div class=" bg-white border rounded shadow-sm ">
                               <div class="relative">
-                                  <img class="h-60 object-cover " src="${image}">
+                                  <img class="h-60 object-scale-down w-98 object-center " src="${image}">
                               </div>                          
                           </div>
                       </div>`
