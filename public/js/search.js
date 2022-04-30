@@ -145,9 +145,13 @@ function showElement(series) {
   <a href="/series/${id}">
   <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
   <div id="header" class="grid grid-flow-col grid-cols-3"> 
-      <div class="object-cover aspect-square aspect-w-1 aspect-h-1 rounded-md overflow-hidden col-span-1 ">
-          <img class="aspect-square object-cover" src="${cover}" class=" object-center object-cover">
-        </div>                       
+          <div class="group relative">
+              <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                <img class="aspect-square object-cover h-full" src="${cover}" class=" object-center object-cover">
+              </div>
+              <div class="mt-4 flex justify-between">
+            </div>
+          </div>                         
         <div id="body" class="flex flex-col ml-5 col-span-2">
         <h4 id="name" class="text-xl font-semibold mb-2">${title}</h4>
         <p id="description" class="text-gray-800 mt-2">${summary}</p>
