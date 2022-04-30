@@ -4170,6 +4170,10 @@ svg #main-circ {
   display: flex;
 }
 
+.dark .dark\:mt-0 {
+  margin-top: 0px;
+}
+
 .dark .dark\:block {
   display: block;
 }
