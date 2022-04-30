@@ -120,8 +120,8 @@ $.ajax({
               
               let element = `
                 <div class="group relative dark:text-white">
-                      <div class="object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
-                          <img class="aspect-square object-cover h-full" src="${pfp}" class=" object-center object-cover">
+                      <div class="shadow-lg object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
+                          <img class=" aspect-square object-cover h-full" src="${pfp}" class=" object-center object-cover">
                       </div>
                       <div class="mt-4 flex justify-between">
                           <div>
