@@ -1,13 +1,15 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let username = window.location.pathname.split( '/' ).pop()
-$('#title').text(`${username}'s Profile`)
-$('#username').text(username)
+let creatorUsername = window.location.pathname.split( '/' ).pop()
+$('#title').text(`${creatorUsername}'s Profile`)
+$('#username').text(creatorUsername)
 
 let supabase,user;
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+let usernames = [];
 
 $('#instagram').hide();
 $('#discord').hide();
@@ -27,7 +29,7 @@ $.ajax({
         const { data, error } = await supabase
             .from('public_profile')
             .select()
-            .eq('username', username)
+            .eq('username', creatorUsername)
 
         if (error) {
             erroralert(error.message);
@@ -61,7 +63,11 @@ $.ajax({
             if (reddit) {
                 $('#discord').show();
                 $('#discord').click(() => {
-                    successalert(reddit);
+                    navigator.clipboard.writeText(reddit).then(() => {
+                        successalert('Copied to clipboard!');
+                    }).catch(err => {
+                        erroralert(err);
+                    });
                 })
             }
 
@@ -105,7 +111,7 @@ $.ajax({
                                                     <img
                                                         class="object-cover w-full h-full rounded-sm"
                                                         src="${cover}"
-                                                        alt=""
+                                                        alt="${title}'s cover image"
                                                         loading="lazy" />
                                                 <div
                                                     class="absolute inset-0 rounded-full shadow-inner"
@@ -140,6 +146,49 @@ $.ajax({
 
             }
 
+            const {data:mostPopularSeries, error:mostPopularSeriesError} = await supabase
+                .from('series_popularity')
+                .select('series!inner(cover,title,id,genre1,genre2,updatedat)')
+                .order('popularity_score', { ascending: false })
+                .eq('series.creator', id)
+                .neq('series.status', 'd')
+                .limit(1)
+
+            if (mostPopularSeriesError) {
+                erroralert(mostPopularSeriesError.message);
+            } else {
+                console.log(mostPopularSeries);
+
+                let {id, title, cover, genre1, genre2, updatedat} = mostPopularSeries[0].series;
+
+                $('#mostPopularSeriesCover').attr('src', cover);
+                $('#mostPopularSeriesTitle').text(title);
+                $('#mostPopularSeriesTItle').attr('href', `/series/${id}`);
+                $('#mostPopularSeriesGenres').text(`${genre1}, ${genre2}`);
+                $('#mostPopularSeriesLastUpdated').text(`${days[new Date(updatedat).getDay()]}, ${new Date(updatedat).getDate()}/${new Date(updatedat).getMonth()+1}/${new Date(updatedat).getFullYear()}`);
+
+                let {data:seriesTotalLikes, error:seriesTotalLikesError} = await supabase
+                    .from('series_total_likes')
+                    .select('count')
+                    .eq('seriesid', id);
+
+                if (seriesTotalLikesError) {
+                    erroralert(seriesTotalLikesError.message);
+                } else {
+                    $('#mostPopularSeriesLikes').text(seriesTotalLikes[0].count);
+                }
+
+                const { data:seriesFollows, error:seriesFollowsError } = await supabase
+                    .rpc('get_series_follows', { seriesid: id });
+
+                if (seriesFollowsError) {
+                    erroralert(seriesFollowsError.message);
+                } else {
+                    $('#mostPopularSeriesFollows').text(seriesFollows);
+                }
+
+            }
+
             const {data:workedWith, error:error_2} = await supabase
                 .from('series')
                 .select('adaptation(creator(username,pfp))')
@@ -160,25 +209,29 @@ $.ajax({
 
                         let {username, pfp} = adaptation.creator;
 
-                        let element = `
-                        <div class="group relative">
-                            <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                                <img class="aspect-square object-cover" src="${pfp}" class=" object-center object-cover">
-                            </div>
-                            <div class="mt-4 flex justify-between">
-                                <div>
-                                    <h3 class="text-sm text-gray-700">
-                                    <a href="/user/${username}">
-                                        <span aria-hidden="true" class="absolute inset-0"></span>
-                                        ${username}
-                                    </a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        `
+                        if (!usernames.includes(username) && username !== creatorUsername) {
+                            usernames.push(username);
 
-                        $('#workedWithContainer').append(element);
+                            let element = `
+                                <div class="group relative">
+                                    <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
+                                        <img class="aspect-square object-cover" src="${pfp}" class=" object-center object-cover">
+                                    </div>
+                                    <div class="mt-4 flex justify-between">
+                                        <div>
+                                            <h3 class="text-sm text-gray-700">
+                                            <a href="/user/${username}">
+                                                <span aria-hidden="true" class="absolute inset-0"></span>
+                                                ${username}
+                                            </a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                `
+
+                                $('#workedWithContainer').append(element);
+                        }
 
                     }
                 })

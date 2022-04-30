@@ -138,8 +138,6 @@
       [...document.querySelectorAll('body')].forEach(el => {
         el.addEventListener('click', event => {
           if (event.target.parentElement.id !== "toggleprofile") {
-            console.clear();
-            console.log(event.target.parentElement.id)
             resultprofile.classList.add("hidden")
           } else {
             resultprofile.classList.toggle("hidden")
@@ -183,7 +181,7 @@
                           Request
                         </button> -->
                         <!-- Modal -->
-                        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+                        <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
 
                         <div x-data="{ modelOpen: false }">
                             <button @click="modelOpen =!modelOpen" class="flex items-center justify-center  tracking-wide capitalize transition-colors duration-200 transform bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded">
@@ -467,7 +465,7 @@
                         View All
                       </button>
                       <h4 class="mb-4 text-lg font-semibold text-black dark:text-gray-300">
-                        Popular:
+                        Most Popular:
                       </h4>
                       <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
@@ -478,20 +476,20 @@
                                 <th class="px-4 py-3">Series</th>
                                 <th class="px-4 py-3">Likes</th>
                                 <th class="px-4 py-3">Follows</th>
-                                <th class="px-4 py-3">Actions</th>
+                                <th class="px-4 py-3">Last Updated</th>
                               </tr>
                             </thead>
-                            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" id="seriesContainer">
+                            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                               <tr class="text-gray-700 dark:text-gray-400">
                                   <td class="px-4 py-3">
                                     <div class="flex items-center text-sm">
                                       <div
                                         class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
                                       >
-                                        <img
+                                        <img id="mostPopularSeriesCover"
                                           class="object-cover w-full h-full rounded-sm"
-                                          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdroidjournal.com%2Fwp-content%2Fuploads%2F2020%2F08%2FSolo-leveling-webtoon.jpg&f=1&nofb=1"
-                                          alt=""
+                                          src=""
+                                          alt="Most Popular Series"
                                           loading="lazy"
                                         />
                                         <div
@@ -500,23 +498,21 @@
                                         ></div>
                                       </div>
                                       <div>
-                                        <p class="font-semibold">Solo leveling</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">
-                                          Comedy, Fantasy
+                                        <a id="mostPopularSeriesTitle" class="font-semibold", href=""></a>
+                                        <p id="mostPopularSeriesGenres" class="text-xs text-gray-600 dark:text-gray-400">
+                                          
                                         </p>
                                       </div>
                                     </div>
                                   </td>
-                                  <td class="px-4 py-3 text-sm">
-                                    30
+                                  <td id="mostPopularSeriesLikes" class="px-4 py-3 text-sm">
+                                    
                                   </td>
-                                  <td class="px-4 py-3 text-sm">
-                                    3000
+                                  <td id="mostPopularSeriesFollows" class="px-4 py-3 text-sm">
+
                                   </td>
-                                  <td class="px-4 py-3 text-sm">
-                                    <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded-full">
-                                      Follow Series
-                                    </button>
+                                  <td id="mostPopularSeriesLastUpdated" class="px-4 py-3 text-sm">
+                                    
                                   </td>
                                 </tr>
                               <!-- <tr class="text-gray-700 dark:text-gray-400">
@@ -631,7 +627,7 @@
 </section>
      <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script> -->
       <script defer src="/js/vibrant.min.js"></script>
       <script src="/js/init.js" type="module"></script>
       <script defer src="/js/creator.js" type="module"></script>
