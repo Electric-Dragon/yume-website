@@ -13,6 +13,7 @@ let supabase,user,creatorId;
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let usernames = [];
+let sampleartLinks = [];
 
 let creatorType = {
     'a': 'Artist',
@@ -92,8 +93,13 @@ $.ajax({
 
                 $('#templateStep').attr("x-for",`i in ${sample_arts.length}`);
 
+                // let sampleArtButtons = $(`[x-text=i]`);
+
                 sample_arts.forEach((art,i) => {
                     $(`#artSample${i+1}`).attr('src', art);
+                    // let img = sampleArtButtons.get(i);
+                    // img.src = art;
+                    // console.log($(`[x-text=i]`).get(0))
                 });
 
             }
@@ -114,7 +120,7 @@ $.ajax({
 
             const {data:mostPopularSeries, error:mostPopularSeriesError} = await supabase
                 .from('series_popularity')
-                .select('series!inner(cover,title,id,genre1,genre2,updatedat)')
+                .select('series!inner(cover,title,id,genre1,genre2,summary)')
                 .order('popularity_score', { ascending: false })
                 .eq('series.creator', id)
                 .neq('series.status', 'd')
@@ -124,13 +130,24 @@ $.ajax({
                 erroralert(mostPopularSeriesError.message);
             } else {
 
-                let {id, title, cover, genre1, genre2, updatedat} = mostPopularSeries[0].series;
+                let {id, title, cover, genre1, genre2, summary} = mostPopularSeries[0].series;
 
-                $('#mostPopularSeriesCover').attr('src', cover);
-                $('#mostPopularSeriesTitle').text(title);
-                $('#mostPopularSeriesTItle').attr('href', `/series/${id}`);
-                $('#mostPopularSeriesGenres').text(`${genre1}, ${genre2}`);
-                $('#mostPopularSeriesLastUpdated').text(`${days[new Date(updatedat).getDay()]}, ${new Date(updatedat).getDate()}/${new Date(updatedat).getMonth()+1}/${new Date(updatedat).getFullYear()}`);
+                var words = summary.split(" ");
+
+                if (words.length > 50) {
+                  summary = "";
+                  for (let i = 0; i < 50; i++) {
+                    summary += words[i] + " ";
+                  }
+                  summary += "...";
+                }
+
+                $('#mostPopularCover').attr('src', cover);
+                $('#mostPopularTitle').text(title);
+                $('#mostPopularTitle').attr('href', `/series/${id}`);
+                $('#mostPopularSummary').text(summary);
+                $('#mostPopularGenre1').text(genre1);
+                $('#mostPopularGenre2').text(genre2);
 
                 let {data:seriesTotalLikes, error:seriesTotalLikesError} = await supabase
                     .from('series_total_likes')
