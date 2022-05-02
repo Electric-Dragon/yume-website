@@ -221,8 +221,8 @@
 
 
                                 <p class="mt-2 text-sm text-gray-500 ">
-                                  Request for an adaption to make a <span
-                                    class="font-bold text-blue-600">webcomic</span> and reach more audience
+                                  Request for an adaption to make a <span id="adaptee"
+                                    class="font-bold text-blue-600"></span> and reach more audience
                                 </p>
 
                                 <div class="flex flex-col mt-4">
@@ -247,19 +247,18 @@
                                         </div>
                                       </template>
                                       <div class="flex-1 text-black ">
-                                        <input id="sus" type="search" placeholder="search..."
+                                        <input id="searchBar" type="search" placeholder="Search for your series..."
                                           class="w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-2 px-0">
-                                        <div id="" class="space-y-1">
-                                          <div
+                                        <div id="seriesHolder" class="space-y-1">
+                                          <!-- <div
                                             class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
                                             <img class="aspect-square object-cover w-1/5"
-                                              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2Fd27b1d2da82c605322e547f23f1e2811%2Fbcb729a46fc4c465-15%2Fs1280x1920%2Fa7345eaceff60a7e5aec57ed16a924e89a4fc359.jpg&f=1&nofb=1"
-                                              alt="">
+                                              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2Fd27b1d2da82c605322e547f23f1e2811%2Fbcb729a46fc4c465-15%2Fs1280x1920%2Fa7345eaceff60a7e5aec57ed16a924e89a4fc359.jpg&f=1&nofb=1">
                                             <div class="flex flex-col">
                                               <p class="text-md pl-7 font-poppins font-bold">I'm lost!</p>
                                               <p class="text-md pl-7 font-poppins">7 eps</p>
                                             </div>
-                                          </div>
+                                          </div> -->
                                         </div>
                                         <div x-show="showSelector"
                                           class="absolute left-0 bg-white z-30 w-full rounded-b-md font-medium">
@@ -291,19 +290,19 @@
                                   </div>
                                   <form class="mt-5">
                                     <div>
-                                      <label for="user name" class="block text-sm text-gray-700 capitalize ">Short
-                                        Message</label>
-                                      <input placeholder="Hey! I am example and would love you to..." type="text"
+                                      <label for="user name" id="shortMessageHeading" class="block text-sm text-gray-700 capitalize ">Short
+                                        Message (70 characters left)</label>
+                                      <input oninput="updateCharCount(event)" id="shortMessage" placeholder="Hey! I am example and would love you to..." type="text"
                                         class="block w-full px-3 py-2 mt-2 text-gray-600  bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40">
                                     </div>
 
                                     <div class="mt-4">
-                                      <h1 class="text-xs font-medium text-gray-400 uppercase">Permissions</h1>
+                                      <h1 class="text-xs font-medium text-gray-400 uppercase">Important!</h1>
 
                                       <div class="mt-4 space-y-5">
-                                        <div class="flex items-center space-x-3 cursor-pointer" x-data="{ show: true }"
-                                          @click="show =!show">
-                                          <div
+                                        <!-- <div class="flex items-center space-x-3 cursor-pointer" x-data="{ show: true }"
+                                          @click="show =!show"> -->
+                                          <!-- <div
                                             class="relative w-10 h-5 transition duration-200 ease-linear rounded-full"
                                             :class="[show ? 'bg-indigo-500' : 'bg-gray-300']">
                                             <label for="show" @click="show =!show"
@@ -311,16 +310,15 @@
                                               :class="[show ? 'translate-x-full border-indigo-500' : 'translate-x-0 border-gray-300']"></label>
                                             <input type="checkbox" name="show"
                                               class="hidden w-full h-full rounded-full appearance-none active:outline-none focus:outline-none" />
-                                          </div>
+                                          </div> -->
 
-                                          <p class="text-gray-500">*Give the rights of this series to this creator.
-                                            (irreversible)</p>
-                                        </div>
+                                          <p class="text-gray-500">Sending this request will share any intellectual property rights you have for the adaptation of the selected series with this creator</p>
+                                        <!-- </div> -->
                                       </div>
                                     </div>
 
                                     <div class="flex justify-end mt-6">
-                                      <button type="button"
+                                      <button id="btnSendRequest" onclick="sendRequest(event)" type="button"
                                         class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
                                         Send
                                       </button>
