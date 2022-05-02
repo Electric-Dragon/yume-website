@@ -281,6 +281,8 @@ $('#searchBar').on('input', async function() {
         }
   
         $('#seriesHolder').empty();
+
+        seriesElements = [];
   
         data.forEach(appendElement)
   
@@ -385,7 +387,6 @@ window.viewAll = async function viewAll() {
 }
 
 window.selectSeries = function selectSeries(id, index) {
-    console.log(id, index);
 
     $('#seriesHolder').empty();
     $('#seriesHolder').append(seriesElements[index]);
