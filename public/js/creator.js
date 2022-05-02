@@ -8,16 +8,22 @@ $('#username').text(creatorUsername)
 
 $('#sampleArtsContainer').hide();
 
-let supabase,user,creatorId;
+let supabase,user,creatorId,selectSeriesId;
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let usernames = [];
 let sampleartLinks = [];
+let seriesElements = [];
 
 let creatorType = {
     'a': 'Artist',
     'w': 'Writer'
+}
+
+let adapteeType = {
+    'a': 'Web Comic',
+    'w': 'Web Novel'
 }
 
 $('#instagram').hide();
@@ -46,13 +52,14 @@ $.ajax({
             window.location = "/404";
         } else {
 
-            let {id, pfp, username, description, instagram, reddit, youtube, banner, sample_arts} = data[0];
+            let {id, pfp, username, description, instagram, reddit, youtube, banner, sample_arts, creator_type} = data[0];
 
             creatorId = id;
 
             $('#userPfp').attr('src', pfp)
             $('#banner').attr('src', banner)
             $('#description').text(description)
+            $('#adaptee').text(adapteeType[creator_type])
 
             $('#userPfp').on('load', async function() {
                 let hexcode = await getProminentColour(pfp);
@@ -237,6 +244,69 @@ $.ajax({
        
 }});
 
+$('#searchBar').on('input', async function() {
+
+    let search = $('#searchBar').val();
+    let query = '';
+  
+    if (search.length > 0) {
+      let splitSearch = search.split(' ');
+  
+      splitSearch.forEach(word => {
+  
+        if (word!=='') {
+          if(query === '') {
+            query = `'${word}'`;
+          } else {
+            query = `${query} | '${word}'`;
+          }
+        }
+  
+      });
+  
+      const { data, error } = await supabase
+      .from('series')
+      .select('id,title,novel,cover')
+      .eq('creator', user.id)
+      .textSearch('fts', query)
+  
+      if (error) {
+        erroralert(error.message);
+      } else {
+  
+        if (data.length === 0) {
+          $('#seriesHolder').empty();
+          $('#seriesHolder').append(`<p class="text-center text-gray-500 text-lg">No results found</p>`);
+          return;
+        }
+  
+        $('#seriesHolder').empty();
+  
+        data.forEach(appendElement)
+  
+      }
+  
+    }
+  
+  })
+  
+  function appendElement(val,index) {
+      let {id, title, novel, cover} = val;
+      
+      let type = novel ? 'Novel' : 'Comic';
+    
+      let element = `<div onclick="selectSeries('${id}',${index})" class="flex items-center bg-gray-200 border-2  cursor-pointer rounded-md p-2 hover:border-light-blue-1">
+                        <img class="aspect-square object-cover w-1/5" src="${cover}" alt="">
+                        <div class="flex flex-col">
+                            <p class="text-md pl-7 font-poppins font-bold">${title}</p>
+                            <p class="text-md pl-7 font-poppins">Web ${type}</p>
+                        </div>
+                    </div>`
+    
+      $('#seriesHolder').append(element);
+      seriesElements.push(element);
+  }
+
 async function showElement (val) {
 
         let {id, title, cover, genre1, genre2, novel, updatedat} = val;
@@ -310,6 +380,65 @@ window.viewAll = async function viewAll() {
         $('#btnViewAll').hide();
 
         series.forEach(showElement)
+    }
+
+}
+
+window.selectSeries = function selectSeries(id, index) {
+    console.log(id, index);
+
+    $('#seriesHolder').empty();
+    $('#seriesHolder').append(seriesElements[index]);
+    $('#searchBar').val('');
+    
+    selectSeriesId = id;
+
+}
+
+window.updateCharCount = function updateCharCount(e)  {
+
+    let {value} = e.target;
+
+    $('#shortMessageHeading').text(`Short Message (${70-value.length} characters left)`);
+
+}
+
+window.sendRequest = async function sendRequest(e) {
+
+    e.preventDefault();
+
+    $('#btnSendRequest').text('Sending...');
+    $('#btnSendRequest').attr('disabled', true);
+
+    let msg = $('#shortMessage').val();
+
+    if (!selectSeriesId) {
+        erroralert('Please select a series');
+        $('#btnSendRequest').text('Send');
+        $('#btnSendRequest').attr('disabled', false);
+        return;
+    }else if (!msg) {
+        erroralert('Please enter a short message');
+        $('#btnSendRequest').text('Send');
+        $('#btnSendRequest').attr('disabled', false);
+        return;
+    } else {
+
+        const { data, error } = await supabase
+        .from('adaptation_notifications')
+        .insert([
+          { from: user.id, to: creatorId, target_series: selectSeriesId, status: 'p', message: msg }
+        ])
+
+        if (error) {
+            erroralert(error.message);
+        } else {
+            $('#btnSendRequest').text('Sent');
+            successalert('Request Sent', function() {
+            window.location.reload();
+            });
+        }
+
     }
 
 }

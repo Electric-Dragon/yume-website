@@ -149,7 +149,7 @@ $.ajax({
 
       const {data: notifications, error: error_} = await supabase
         .from('adaptation_notifications')
-        .select('id,from(id,username),to(id,username),series(id,title,novel),status,when')
+        .select('id,from(id,username),to(id,username),series(id,title,novel),status,when,message')
         .or(`from.eq.${user.id},to.eq.${user.id}`)
         .order('when', { ascending: false })
 
@@ -160,7 +160,7 @@ $.ajax({
       } else {
 
         notifications.forEach(val => {
-          let {id, from, to, series, status, when} = val;
+          let {id, from, to, series, status, when, message} = val;
 
           let type = series.novel ? 'Web Comic' : 'Web Novel';
 
@@ -181,6 +181,9 @@ $.ajax({
                         <div class="flex items-center justify-between w-full h-sm">
                         <p tabindex="0" class="focus:outline-none text-sm "><a href="/creator/${from.username}"><span class="text-indigo-700">${from.username}</span></a> requested to create a ${type} adaptation of <br> <a href="/series/${series.id}"><span class="text-cyan-500 font-bold hover:underline">${series.title}</span></a></p>
                         </div>
+                        <br>
+                        <p tabindex="0" class="focus:outline-none text-sm ">"${message}"</p>
+                        <br>
                         <div class="flex mr-6 pr-4 items-center justify-center mb-3 gap-2 flex-row ">
                           <div>
                             <button type="button" onclick="acceptRequest(${id})" class=" px-3 py-1 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded-md  hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">accept</button>
