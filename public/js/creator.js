@@ -290,7 +290,16 @@ $('#searchBar').on('input', async function() {
   
     }
   
-  })
+})
+
+$('#btnClearSelection').on('click', function () {
+
+    $('#searchBar').val('');
+    $('#seriesHolder').empty();
+    seriesElements = [];
+    selectSeriesId = null;
+
+});
   
   function appendElement(val,index) {
       let {id, title, novel, cover} = val;
