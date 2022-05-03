@@ -104,11 +104,10 @@ window.saveDetails = async function saveDetails () {
   let lNameNew = $('#lName').val();
   let dobNew = $('#dob').val();
   let pNumberNew = $('#pNumber').val();
-  let descriptionNew = $('#description').val();
   let pfpNew = $('#pfpImage').prop('files')[0];
   let bannerNew = $('#bannerImage').prop('files')[0];
 
-  if (!(fNameNew && lNameNew && dobNew && pNumberNew && descriptionNew)) {
+  if (!(fNameNew && lNameNew && dobNew && pNumberNew)) {
     erroralert("Please fill in all fields");
   } else {
 
@@ -121,21 +120,6 @@ window.saveDetails = async function saveDetails () {
     if (error) {
       erroralert(error.message);
     } else {
-
-      if (publicData.description != descriptionNew) {
-
-        const { data, error } = await supabase
-          .from('public_profile')
-          .update({ description: descriptionNew })
-          .match({ id: user.id })
-
-        if (error) {
-          erroralert(error.message);
-        } else {
-          successalert("Details updated!");
-        }
-
-      }
 
         if (pfpNew) {
 

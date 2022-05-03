@@ -437,7 +437,7 @@ window.sendRequest = async function sendRequest(e) {
         const { data, error } = await supabase
         .from('adaptation_notifications')
         .insert([
-          { from: user.id, to: creatorId, target_series: selectSeriesId, status: 'p', message: msg }
+          { from: user.id, to: creatorId, target_series: selectSeriesId, status: 'p', message: msg, is_own: true }
         ])
 
         if (error) {
