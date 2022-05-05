@@ -346,3 +346,19 @@ module.exports.addFingerprint = async function addFingerprint({id, fingerprint})
     }
 
 };
+
+module.exports.handleWebhook = async function handleWebhook({type, metadata}) {
+
+    let response = {};
+
+    switch (type) {
+        case 'checkout.session.completed':
+          console.log(metadata);
+          break;
+        default:
+          console.log(`Unhandled event type ${type}`);
+    }
+
+    response.success = true;
+
+}

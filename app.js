@@ -6,6 +6,9 @@ const yumeAPI = require("./appAPI");
 const _supabase = require("@supabase/supabase-js");
 const supabase = _supabase.createClient(process.env.API_URL, process.env.SERVICE_ROLE)
 
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+const endpointSecret = process.env.ENDPOINT_SECRET;
+
 const app = express();
 const port = 7001;
 
@@ -155,6 +158,35 @@ app.post("/addRead", async function(req, res) {
 
 app.get("/ads.txt", function(req, res) {
     res.sendFile(__dirname + "/public/text/ads.txt");
+});
+
+app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async function(request, response) {
+
+    const sig = request.headers['stripe-signature'];
+
+    let event;
+
+    try {
+        event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    }
+    catch (err) {
+        console.log(err.message);
+        response.status(400).send(`Webhook Error: ${err.message}`);
+        return;
+    }
+
+    response.json({received: true});
+
+
+    let res = await yumeAPI.handleWebhook({type: event.type, metadata: event.data.object.metadata});
+
+    // if (res.error) {
+    //     console.log(res.error);
+    //     response.status(400).send(res.error);
+    // } else {
+    //     response.json({received: true});
+    // }
+
 });
 
 app.listen(process.env.PORT || port, function() {

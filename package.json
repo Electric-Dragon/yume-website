@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nodemon app.js",
     "start": "node app.js",
-    "buildCSS": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
+    "buildCSS": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "stripeDev": "stripe listen --forward-to localhost:7001/stripe_webhooks"
   },
   "keywords": [],
   "author": "",
