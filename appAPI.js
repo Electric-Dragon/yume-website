@@ -10,6 +10,8 @@ SibApiV3Sdk.ApiClient.instance.authentications['api-key'].apiKey = process.env.S
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const advertisingPriceID = process.env.ADVERTISING_PRICE_ID;
 
+const endpointSecret = process.env.ENDPOINT_SECRET;
+
 module.exports.signUp = async function signUp({email, password, username}) {
 
     return await supabase.auth.api.createUser({
