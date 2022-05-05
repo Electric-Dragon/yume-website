@@ -139,7 +139,7 @@
       <div class="w-full mx-auto pt-4 p-4 pb-0">
         <div id="indicators-carousel" class="relative" data-carousel="Slide">
           <!-- Carousel wrapper -->
-          <div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+          <div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-96 2xl:h-96">
                <!-- Item 1 -->
               <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
                   <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapers.net%2Fweb%2Fwallpapers%2Fanime-sunset-hd-wallpaper%2F5120x2160.jpg&f=1&nofb=1" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
@@ -186,38 +186,38 @@
       <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
       <script>
         const options = {
-    activeItemPosition: 1,
-    interval: 3000,
-    
-    indicators: {
-        activeClasses: 'bg-white dark:bg-gray-800',
-        inactiveClasses: 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800',
-        items: [
-            {
-                position: 0,
-                el: document.getElementById('carousel-indicator-1')
-            },
-            {
-                position: 1,
-                el: document.getElementById('carousel-indicator-2')
-            },
-            {
-                position: 2,
-                el: document.getElementById('carousel-indicator-3')
-            },
-            {
-                position: 3,
-                el: document.getElementById('carousel-indicator-4')
-            },
-        ]
-    }
-      </script>
-  
+            activeItemPosition: 1,
+            interval: 3000,
+            
+            indicators: {
+                activeClasses: 'bg-white dark:bg-gray-800',
+                inactiveClasses: 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800',
+                items: [
+                    {
+                        position: 0,
+                        el: document.getElementById('carousel-indicator-1')
+                    },
+                    {
+                        position: 1,
+                        el: document.getElementById('carousel-indicator-2')
+                    },
+                    {
+                        position: 2,
+                        el: document.getElementById('carousel-indicator-3')
+                    },
+                    {
+                        position: 3,
+                        el: document.getElementById('carousel-indicator-4')
+                    },
+                ]
+            }}
+    </script>
 
+      
       </div>
 
       
-        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 dark:text-white">
+        <div class="max-w-2xl mx-auto md:py-10 px-4 py-24 sm:px-6 lg:max-w-7xl lg:px-8 dark:text-white">
 
           <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Recently published:</h2>
       
@@ -251,8 +251,10 @@
         <br>
         <div>
           <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">Top Creators</h2>
-      
+          
           <div id="popularCreatorsDiv" class="mt-6 grid grid-cols-2 dark:text-white gap-y-10 gap-x-6 md:grid-cols-3 lg:grid-cols-6 xl:gap-x-8">
+
+        
             <!-- <div class="group relative dark:text-white">
               <div class="object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
                   <img class="aspect-square object-cover h-full" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg00.deviantart.net%2F1614%2Fi%2F2011%2F273%2F8%2F5%2Felectric_dragon_by_insanable-d4bczwp.jpg&f=1&nofb=1" class=" object-center object-cover">
@@ -270,7 +272,7 @@
                       </h3>
                   </div>
               </div>
-         </div>           -->
+         </div>  -->
         </div>
         </div>
 
@@ -283,5 +285,3 @@
       <script defer src="/js/home.js" type="module"></script>
 </body>
 </html>
-
-

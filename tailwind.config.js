@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       height: {
         'comic': '1280px',
+        'lol':'603px'
       },
       width: {
         'comic': '800px',
