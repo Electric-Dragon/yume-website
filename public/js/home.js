@@ -45,7 +45,25 @@ $.ajax({
         supabase = createClient(result.link, result.anon_key);
   
         user = supabase.auth.user();
-  
+
+        let now = new Date();
+
+        alert(now.getMonth())
+        
+        const { data:ads, error:adsError } = await supabase
+          .from('advertisements')
+          .select('target_series,bannerURL')
+          .gt('startDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDay()}`)
+          .eq('payment_fulfilled', true)
+
+        if (adsError) {
+          console.log(adsError);
+          erroralert(adsError.message)
+        } else {
+          console.log(ads);
+        }
+
+        
         const { data, error } = await supabase
           .from('series')
           .select('id,title,cover,creator(username)')
@@ -90,7 +108,7 @@ $.ajax({
 
         const { data:creators, error:creatorsError } = await supabase
             .from('series_popularity')
-            .select('series!inner(creator(id,username,pfp,creator_type))')
+            .select('series!inner(creator(username,pfp,creator_type))')
             .order('popularity_score', { ascending: false })
             .limit(5)
 
@@ -102,7 +120,7 @@ $.ajax({
 
           creators.forEach((creator)=> {
 
-            let {series:{creator:{id,username,pfp,creator_type}}} = creator;
+            let {series:{creator:{username,pfp,creator_type}}} = creator;
 
             if (!uniqueCreators.includes(username)) {
               uniqueCreators.push(username);

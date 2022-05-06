@@ -1,5 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-import {io} from "https://cdn.socket.io/4.5.0/socket.io.min.js";
+import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js"
 import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, user, selectedFile, numberOfDays, selectedSeries, paymentLink;
