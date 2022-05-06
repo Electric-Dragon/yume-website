@@ -36,6 +36,8 @@ let creatorType = {
   'w': 'Writer'
 }
 
+let adSeries = [];
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -47,13 +49,12 @@ $.ajax({
         user = supabase.auth.user();
 
         let now = new Date();
-
-        alert(now.getMonth())
         
         const { data:ads, error:adsError } = await supabase
           .from('advertisements')
           .select('target_series,bannerURL')
-          .gt('startDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDay()}`)
+          .gte('startDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`)
+          .lte('endDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`)
           .eq('payment_fulfilled', true)
 
         if (adsError) {
@@ -61,6 +62,23 @@ $.ajax({
           erroralert(adsError.message)
         } else {
           console.log(ads);
+
+          ads.forEach((ad,index) => {
+
+            let {target_series,bannerURL} = ad;
+
+            adSeries.push(target_series);
+
+            let attribute = (index === 0) ? 'data-carousel-item="active"' : 'data-carousel-item';
+
+            let element = `<div class="hidden duration-700 ease-in-out" ${attribute}>
+                              <img onclick="adRedirect(${index})" src="${bannerURL}" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2">
+                          </div>`
+
+            $('#adsContainer').append(element);
+
+          })
+
         }
 
         
@@ -167,3 +185,7 @@ $.ajax({
         }
   
   }});
+
+window.adRedirect = function adRedirect(index) {
+  window.location = `/series/${adSeries[index]}`;
+}

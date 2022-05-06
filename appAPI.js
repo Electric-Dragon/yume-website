@@ -198,7 +198,7 @@ module.exports.createAdvertisement = async function createAdvertisement({id, acc
         const { data:createAd, error:createAdError } = await supabase
             .from('advertisements')
             .insert([
-                { target_series: id, startDate: `${startDate.getFullYear()},${startDate.getMonth()+1},${startDate.getDay()}`, endDate: `${endDate.getFullYear()},${endDate.getMonth()},${endDate.getDay()}` }
+                { target_series: id, startDate: `${startDate.getFullYear()},${startDate.getMonth()+1},${startDate.getDate()}`, endDate: `${endDate.getFullYear()},${endDate.getMonth()},${endDate.getDate()}` }
             ])
 
         if (createAdError) {
