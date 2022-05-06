@@ -347,14 +347,33 @@ module.exports.addFingerprint = async function addFingerprint({id, fingerprint})
 
 };
 
-module.exports.handleWebhook = async function handleWebhook({type, metadata}) {
+module.exports.handleWebhook = async function handleWebhook({type, event}) {
 
     let response = {};
 
     switch (type) {
+        // case 'payment_intent.succeeded':
+            // console.log(event);
+            // await stripe.paymentLinks.update(event.data.object.id,{active: false});
         case 'checkout.session.completed':
-          console.log(metadata);
-          break;
+
+          console.log(event.data.object.metadata);
+          let metadata = event.data.object.metadata;
+
+          const { data, error } = await supabase
+            .from('advertisements')
+            .update({ payment_fulfilled: true })
+            .match({ id: metadata.adID })
+
+          if (error) {
+            console.log(error.message);
+            response.error = error.message;
+            return response;
+          } else {
+            response.success = true;
+            return response;
+          }
+
         default:
           console.log(`Unhandled event type ${type}`);
     }

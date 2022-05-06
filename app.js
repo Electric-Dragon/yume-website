@@ -178,7 +178,7 @@ app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async funct
     response.json({received: true});
 
 
-    let res = await yumeAPI.handleWebhook({type: event.type, metadata: event.data.object.metadata});
+    let res = await yumeAPI.handleWebhook({type: event.type, event: event});
 
     // if (res.error) {
     //     console.log(res.error);
