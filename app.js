@@ -18,10 +18,10 @@ const io = require("socket.io")(server);
 
 let socket;
 
-// io.on('connection', function (socket_) {
-//     socket = socket_;
-//     console.log("Connected succesfully to the socket ...");
-// });
+io.on('connection', function (socket_) {
+    socket = socket_;
+    console.log("Connected succesfully to the socket ...");
+});
 
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.urlencoded({extended:true}));
@@ -186,11 +186,7 @@ app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async funct
     }
     catch (err) {
         console.log(err.message);
-        response.status(400).send(`Webhook Error: ${err.message}`);
-        io.on('connection', function (socket) {
-            socket.emit('advertisement', {error: err.message});
-        });
-        // sendAdvertisementInfo(err.message);
+        io.sockets.emit('advertisement', {error: err.message});
         return;
     }
 
@@ -199,31 +195,17 @@ app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async funct
 
     let res = await yumeAPI.handleWebhook({type: event.type, event: event});
 
-    if (res.error) {
+    if (res && res.error) {
         console.log(res.error);
-        // sendAdvertisementInfo(res);
-        io.on('connection', function (socket) {
-            socket.emit('advertisement', res);
-        });
+        io.sockets.emit('advertisement', {error: res.error});
         response.status(400).send(res.error);
     } else {
-        // sendAdvertisementInfo(res)
-        io.on('connection', function (socket) {
-            socket.emit('advertisement', res);
-        });
+
+        io.sockets.emit('advertisement', res);
         response.json({received: true});
     }
 
 });
-
-async function sendAdvertisementInfo(info) {
-
-    // io.on('connections', function (socket) {
-
-    socket.emit('advertisement', info);
-
-    // });
-}
 
 server.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);

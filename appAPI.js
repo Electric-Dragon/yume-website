@@ -217,7 +217,7 @@ module.exports.createAdvertisement = async function createAdvertisement({id, acc
 
         if (moveIMGError) {
             console.log(moveIMGError.message);
-            return {error: moveIMGError.message}
+            return {error: moveIMGError.message, adID: adID}
         }
         
         const { publicURL, error:error_ } = supabase
@@ -227,7 +227,7 @@ module.exports.createAdvertisement = async function createAdvertisement({id, acc
 
         if (error_) {
             console.log(error_.message);
-            return {error: error_.message}
+            return {error: error_.message, adID: adID}
         }
 
         const { data:updateAdInfo, error:updateAdInfoError } = await supabase
@@ -237,7 +237,7 @@ module.exports.createAdvertisement = async function createAdvertisement({id, acc
 
         if (updateAdInfoError) {
             console.log(updateAdInfoError.message);
-            return {error: updateAdInfoError.message}
+            return {error: updateAdInfoError.message,adID: adID}
         }
 
         const paymentLink = await stripe.paymentLinks.create({
