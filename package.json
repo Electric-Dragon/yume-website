@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nodemon app.js",
     "start": "node app.js",
-    "buildCSS": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
+    "buildCSS": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "stripeDev": "stripe listen --forward-to localhost:7001/stripe_webhooks"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "neo4j-driver": "^4.4.5",
     "node-vibrant": "^3.2.1-alpha.1",
     "sib-api-v3-sdk": "^8.3.0",
+    "socket.io": "^4.5.0",
     "stripe": "^8.218.0"
   }
 }

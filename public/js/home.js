@@ -36,6 +36,8 @@ let creatorType = {
   'w': 'Writer'
 }
 
+let adSeries = [];
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -45,7 +47,41 @@ $.ajax({
         supabase = createClient(result.link, result.anon_key);
   
         user = supabase.auth.user();
-  
+
+        let now = new Date();
+        
+        const { data:ads, error:adsError } = await supabase
+          .from('advertisements')
+          .select('target_series,bannerURL')
+          .gte('startDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`)
+          .lte('endDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`)
+          .eq('payment_fulfilled', true)
+
+        if (adsError) {
+          console.log(adsError);
+          erroralert(adsError.message)
+        } else {
+          console.log(ads);
+
+          ads.forEach((ad,index) => {
+
+            let {target_series,bannerURL} = ad;
+
+            adSeries.push(target_series);
+
+            let attribute = (index === 0) ? 'data-carousel-item="active"' : 'data-carousel-item';
+
+            let element = `<div class="hidden duration-700 ease-in-out" ${attribute}>
+                              <img onclick="adRedirect(${index})" src="${bannerURL}" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2">
+                          </div>`
+
+            $('#adsContainer').append(element);
+
+          })
+
+        }
+
+        
         const { data, error } = await supabase
           .from('series')
           .select('id,title,cover,creator(username)')
@@ -90,7 +126,7 @@ $.ajax({
 
         const { data:creators, error:creatorsError } = await supabase
             .from('series_popularity')
-            .select('series!inner(creator(id,username,pfp,creator_type))')
+            .select('series!inner(creator(username,pfp,creator_type))')
             .order('popularity_score', { ascending: false })
             .limit(5)
 
@@ -102,7 +138,7 @@ $.ajax({
 
           creators.forEach((creator)=> {
 
-            let {series:{creator:{id,username,pfp,creator_type}}} = creator;
+            let {series:{creator:{username,pfp,creator_type}}} = creator;
 
             if (!uniqueCreators.includes(username)) {
               uniqueCreators.push(username);
@@ -149,3 +185,7 @@ $.ajax({
         }
   
   }});
+
+window.adRedirect = function adRedirect(index) {
+  window.location = `/series/${adSeries[index]}`;
+}
