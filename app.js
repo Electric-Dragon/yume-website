@@ -79,6 +79,10 @@ app.get("/list", function(req, res) {
     res.sendFile(__dirname + "/html/glist.html");
 });
 
+app.get("/createad", function(req, res) {
+    res.sendFile(__dirname + "/html/createad.html");
+});
+
 app.get("/genre/:genre", function(req, res) {
     res.sendFile(__dirname + "/html/genre.html");
 });

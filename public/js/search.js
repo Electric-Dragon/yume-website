@@ -143,7 +143,7 @@ function showElement(series) {
   
   let element = `
   <a href="/series/${id}">
-  <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+  <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide hover:shadow-cyan-400  hover:shadow-md">
   <div id="header" class="grid grid-flow-col grid-cols-3"> 
           <div class="group relative">
               <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
