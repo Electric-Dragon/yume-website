@@ -198,7 +198,7 @@ module.exports.createAdvertisement = async function createAdvertisement({id, acc
         const { data:createAd, error:createAdError } = await supabase
             .from('advertisements')
             .insert([
-                { target_series: id, startDate: `${startDate.getFullYear()},${startDate.getMonth()+1},${startDate.getDate()}`, endDate: `${endDate.getFullYear()},${endDate.getMonth()},${endDate.getDate()}` }
+                { target_series: id, startDate: `${startDate.getFullYear()},${startDate.getMonth()+1},${startDate.getDate()}`, endDate: `${endDate.getFullYear()},${endDate.getMonth()+1},${endDate.getDate()}` }
             ])
 
         if (createAdError) {
@@ -253,7 +253,7 @@ module.exports.createAdvertisement = async function createAdvertisement({id, acc
             }
         });
 
-        return {success: true, link: paymentLink.url}
+        return {success: true, link: paymentLink.url, adID: adID}
         
     }
 
@@ -371,6 +371,7 @@ module.exports.handleWebhook = async function handleWebhook({type, event}) {
             return response;
           } else {
             response.success = true;
+            response.adID = metadata.adID;
             return response;
           }
 

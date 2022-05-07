@@ -2,7 +2,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js"
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase, user, selectedFile, numberOfDays, selectedSeries, paymentLink;
+let supabase, user, selectedFile, numberOfDays, selectedSeries, paymentLink, ad_ID;
 let dates = {
   start: null,
   end: null
@@ -14,9 +14,13 @@ let statusText = {
   'p': 'Paused'
 }
 
-let socket = io();
-
 $('#selectedSeriesHolder').hide();
+
+let socket = io(window.location.origin);
+
+socket.on('advertisement', function (data) {
+  console.log(data);
+});
 
 $.ajax({
   url: "/keys",
@@ -240,8 +244,10 @@ window.generateLink = async function generateLink(e) {
       if (data.error) {
         erroralert(data.error);
       } else {
-        let {link} = data;
 
+        let {link, adID} = data;
+
+        ad_ID = adID;
         paymentLink = link;
 
         let paymentPopup = window.open(link);

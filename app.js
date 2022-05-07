@@ -12,6 +12,17 @@ const endpointSecret = process.env.ENDPOINT_SECRET;
 const app = express();
 const port = 7001;
 
+const http = require('http');
+var server = http.createServer(app);
+const io = require("socket.io")(server);
+
+let socket;
+
+// io.on('connection', function (socket_) {
+//     socket = socket_;
+//     console.log("Connected succesfully to the socket ...");
+// });
+
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.urlencoded({extended:true}));
 
@@ -172,23 +183,48 @@ app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async funct
     catch (err) {
         console.log(err.message);
         response.status(400).send(`Webhook Error: ${err.message}`);
+        io.on('connection', function (socket) {
+            socket.emit('advertisement', {error: err.message});
+        });
+        // sendAdvertisementInfo(err.message);
         return;
     }
 
-    response.json({received: true});
+    // response.json({received: true});
 
 
     let res = await yumeAPI.handleWebhook({type: event.type, event: event});
 
-    // if (res.error) {
-    //     console.log(res.error);
-    //     response.status(400).send(res.error);
-    // } else {
-    //     response.json({received: true});
-    // }
+    if (res.error) {
+        console.log(res.error);
+        // sendAdvertisementInfo(res);
+        io.on('connection', function (socket) {
+            socket.emit('advertisement', res);
+        });
+        response.status(400).send(res.error);
+    } else {
+        // sendAdvertisementInfo(res)
+        io.on('connection', function (socket) {
+            socket.emit('advertisement', res);
+        });
+        response.json({received: true});
+    }
 
 });
 
-app.listen(process.env.PORT || port, function() {
+async function sendAdvertisementInfo(info) {
+
+    // io.on('connections', function (socket) {
+
+    socket.emit('advertisement', info);
+
+    // });
+}
+
+server.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
-});
+})
+
+// app.listen(process.env.PORT || port, function() {
+//     console.log(`Server started on http://localhost:${port}`);
+// });
