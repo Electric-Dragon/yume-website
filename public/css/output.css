@@ -3094,6 +3094,16 @@ select {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.shadow-green-900 {
+  --tw-shadow-color: #14532d;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.shadow-green-700 {
+  --tw-shadow-color: #15803d;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -3980,8 +3990,29 @@ svg #main-circ {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.hover\:shadow-md:hover {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .hover\:shadow-green-500:hover {
   --tw-shadow-color: #22c55e;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.hover\:shadow-green-700:hover {
+  --tw-shadow-color: #15803d;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.hover\:shadow-cyan-700:hover {
+  --tw-shadow-color: #0e7490;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.hover\:shadow-cyan-400:hover {
+  --tw-shadow-color: #22d3ee;
   --tw-shadow: var(--tw-shadow-colored);
 }
 
@@ -4963,19 +4994,14 @@ svg #main-circ {
     padding: 0px;
   }
 
-  .md\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+  .md\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-
-  .md\:py-10 {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
   }
 
   .md\:pl-6 {
@@ -5133,10 +5159,6 @@ svg #main-circ {
   .xl\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
-  }
-
-  .xl\:h-80 {
-    height: 20rem;
   }
 
   .xl\:h-96 {
