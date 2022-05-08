@@ -47,7 +47,7 @@ app.get("/signup", function(req, res) {
     res.sendFile(__dirname + "/html/signup.html");
 });
 
-app.get("/ad", function(req, res) {
+app.get("/dashboard/engagement", function(req, res) {
     res.sendFile(__dirname + "/html/advertisement.html");
 });
 
@@ -79,7 +79,7 @@ app.get("/list", function(req, res) {
     res.sendFile(__dirname + "/html/glist.html");
 });
 
-app.get("/createad", function(req, res) {
+app.get("/advertisement/create", function(req, res) {
     res.sendFile(__dirname + "/html/createad.html");
 });
 
