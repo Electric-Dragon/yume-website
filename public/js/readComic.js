@@ -84,14 +84,14 @@ $.ajax({
                 .maybeSingle()
 
             if (prevChap) {
-                $('#prevChap').attr('href',`/read/novel/${seriesid.id}/${prevChap.id}`);
-                $('#prev').attr('href',`/read/novel/${seriesid.id}/${prevChap.id}`);
+                $('#prevChap').attr('href',`/read/comic/${seriesid.id}/${prevChap.id}`);
+                $('#prev').attr('href',`/read/comic/${seriesid.id}/${prevChap.id}`);
                 $('#prevChap').text(`< ${prevChap.title}`);
             }
 
             if (nextChap) {
-                $('#nextChap').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
-                $('#next').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
+                $('#nextChap').attr('href',`/read/comic/${seriesid.id}/${nextChap.id}`);
+                $('#next').attr('href',`/read/comic/${seriesid.id}/${nextChap.id}`);
                 $('#nextChap').text(`${nextChap.title} >`);
             }
 
