@@ -16,7 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
 </head>
 
-<body class="">
+<body class="overflow-y-hidden h-screen  bg-gray-50 dark:bg-gray-900">
   <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
     <!-- Desktop sidebar -->
     <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
@@ -361,14 +361,24 @@
             </li> -->
             <!-- Profile menu -->
             <li class="relative">
-              <button id="toggleprofile" class="flex text-sm border-2 object-cover border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+              <button id="toggleprofile"
+                class="flex text-sm border-2 object-cover border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
+                id="user-menu" aria-label="User menu" aria-haspopup="true">
                 <img class="h-8 w-8 rounded-full" id="pfp" src="" alt="">
               </button>
-              <div id="resultprofile" class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                  <a href="/account" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
-                  <a href="/dashboard/home" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Dashboard</a>
-                  <a id="signOut" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
+              <div id="resultprofile"
+                class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical"
+                  aria-labelledby="user-menu">
+                  <a href="/account"
+                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    role="menuitem">Your Profile</a>
+                  <a href="/dashboard/home"
+                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    role="menuitem">Dashboard</a>
+                  <a id="signOut"
+                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    role="menuitem">Sign out</a>
                 </div>
               </div>
             </li>
@@ -404,11 +414,11 @@
                        capitalize
                        ">
                         Update Feed
-                         <!-- <span class="lowercase">(s)</span> -->
+                        <!-- <span class="lowercase">(s)</span> -->
                       </a>
                     </h3>
                     <p class="text-base text-body-color leading-relaxed mb-7">
-                     Want to update your readers on the latest news? Post messages to your public profile.
+                      Want to update your readers on the latest news? Post messages to your public profile.
                     </p>
                     <div x-data="{ modelOpen: false }">
                       <button @click="modelOpen =!modelOpen" class="inline-block
@@ -549,7 +559,7 @@
                        capitalize
                        ">
                         Create Advertisement
-                         <!-- <span class="lowercase">(s)</span> -->
+                        <!-- <span class="lowercase">(s)</span> -->
                       </a>
                     </h3>
                     <p class="text-base text-body-color leading-relaxed mb-7">
@@ -611,7 +621,7 @@
                 </div>
               </div>
               <div class="w-full md:w-1/2 xl:w-full px-4">
-                <div class="bg-orange-300 rounded-xl overflow-hidden mb-10 flex flex-col ">
+                <div class="bg-orange-300 rounded-xl overflow-hidden  flex flex-col ">
                   <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
                     <h3>
                       <a href="javascript:void(0)" class="
@@ -642,7 +652,8 @@
                     text-base text-body-color
                     font-medium
                     hover:border-primary hover:bg-primary hover:text-white
-                    transition capitalize
+                    transition 
+                    disabled
                     ">
                       Coming soon
                     </a>
