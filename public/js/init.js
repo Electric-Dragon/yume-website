@@ -96,6 +96,7 @@ $.ajax({
         } else {
           $('#pfp').hide();
           $('#signedInElements').hide();
+          $('#recommendationDiv').hide();
         }
   
         document.getElementById('signOut').addEventListener('click', async function(){

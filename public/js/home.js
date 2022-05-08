@@ -1,5 +1,6 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
+import "https://unpkg.com/flowbite@1.4.5/dist/flowbite.js";
 
 let saveInfo = JSON.parse(localStorage.getItem('saveInfo'));
 
@@ -37,6 +38,8 @@ let creatorType = {
 }
 
 let adSeries = [];
+let carouselSlides = [];
+let carouselButtons = [];
 
 $.ajax({
     url: "/keys",
@@ -49,12 +52,16 @@ $.ajax({
         user = supabase.auth.user();
 
         let now = new Date();
+
+        let dateQuery = `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`;
+
+        console.log(dateQuery);
         
         const { data:ads, error:adsError } = await supabase
           .from('advertisements')
           .select('target_series,bannerURL')
-          .gte('startDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`)
-          .lte('endDate', `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`)
+          .filter('startDate','lte', 'now')
+          .filter('endDate','gte', 'now')
           .eq('payment_fulfilled', true)
 
         if (adsError) {
@@ -71,13 +78,44 @@ $.ajax({
 
             let attribute = (index === 0) ? 'data-carousel-item="active"' : 'data-carousel-item';
 
-            let element = `<div class="hidden duration-700 ease-in-out" ${attribute}>
+            let slide = `<div class="hidden duration-700 ease-in-out" ${attribute}>
                               <img onclick="adRedirect(${index})" src="${bannerURL}" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2">
                           </div>`
 
-            $('#adsContainer').append(element);
+            let button = `
+                          <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide ${index+1}" data-carousel-slide-to="${index}"></button>
+                        `
 
-          })
+            // $('#adsContainer').append(element);
+            carouselSlides.push(slide);
+            carouselButtons.push(button);
+
+          });
+
+          let carousel = `
+            <div id="indicators-carousel" class="relative" data-carousel="Slide">
+                  <div id="adsContainer" class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-96 2xl:h-96">
+                      ${carouselSlides.join('')}
+                  </div>
+                  <div class="flex absolute bottom-5 left-1/2 z-50 space-x-3 -translate-x-1/2">
+                      ${carouselButtons.join('')}
+                  </div>
+                  <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
+                      <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                          <svg class="w-5 h-5 text-black dark:text-white sm:w-6 sm:h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                          <span class="hidden">Previous</span>
+                      </span>
+                  </button>
+                  <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
+                      <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                          <svg class="w-5 h-5 text-black dark:text-white sm:w-6 sm:h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                          <span class="hidden">Next</span>
+                      </span>
+                  </button>
+              </div>
+          `
+
+          $('#carouselContainer').append(carousel);
 
         }
 
