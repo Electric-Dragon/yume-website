@@ -31,6 +31,8 @@ $('#discord').hide();
 $('#youtube').hide();
 $('#workedWith').hide();
 
+dayjs.extend(window.dayjs_plugin_relativeTime)
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -178,6 +180,44 @@ $.ajax({
 
             }
 
+            const { data:feed, error:feedError } = await supabase
+            .from('feed')
+            .select('created_at,message')
+            .order('created_at', { ascending: false })
+            .eq('creator', id)
+            .limit(3)
+
+            if (feedError) {
+                erroralert(feedError.message);
+            } else {
+
+                feed.forEach((comment) => {
+
+                    let {created_at, message} = comment;
+
+                    let date = new Date(created_at);
+
+                    let element = `<div class="flex justify-center">
+                                        <div class="min-w-full">
+                                            <div class="block rounded-lg shadow-lg bg-white mt-6">
+                                                <div class="md:flex md:flex-row">
+                                                    <div class="md:ml-6 md:mr-6">
+                                                        <p class="text-gray-500 font-light mb-2 text-sm">
+                                                       ${message}
+                                                        </p>
+                                                        <p class="text-gray-500 text-xs mb-2">${dayjs(date).fromNow()}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+                    $('#feedContainer').append(element);
+
+                })
+
+            }
+
             const {data:workedWith, error:error_2} = await supabase
                 .from('series')
                 .select('adaptation(creator(username,pfp,creator_type))')
@@ -301,7 +341,7 @@ $('#btnClearSelection').on('click', function () {
 
 });
   
-  function appendElement(val,index) {
+function appendElement(val,index) {
       let {id, title, novel, cover} = val;
       
       let type = novel ? 'Novel' : 'Comic';

@@ -48,7 +48,7 @@ app.get("/signup", function(req, res) {
 });
 
 app.get("/dashboard/engagement", function(req, res) {
-    res.sendFile(__dirname + "/html/advertisement.html");
+    res.sendFile(__dirname + "/html/engagement.html");
 });
 
 app.get("/user/:username", function(req, res) {
