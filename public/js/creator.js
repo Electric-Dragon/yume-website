@@ -102,13 +102,13 @@ $.ajax({
 
                 $('#templateStep').attr("x-for",`i in ${sample_arts.length}`);
 
-                // let sampleArtButtons = $(`[x-text=i]`);
+                let sampleArtPreviews = document.getElementsByClassName('sampleArtImgPrev');
+
+                console.log(sampleArtPreviews);
 
                 sample_arts.forEach((art,i) => {
                     $(`#artSample${i+1}`).attr('src', art);
-                    // let img = sampleArtButtons.get(i);
-                    // img.src = art;
-                    // console.log($(`[x-text=i]`).get(0))
+                    sampleArtPreviews[i].src = art;
                 });
 
             }
@@ -190,6 +190,11 @@ $.ajax({
             if (feedError) {
                 erroralert(feedError.message);
             } else {
+
+                if (feed.length === 0) {
+                    $('#feedContainer').append(`<p class="text-gray-500 text-lg mb-2 mt-10">No posts by creator</p>`)
+                }
+
 
                 feed.forEach((comment) => {
 
