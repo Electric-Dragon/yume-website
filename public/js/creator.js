@@ -204,10 +204,10 @@ $.ajax({
 
                     let element = `<div class="flex justify-center">
                                         <div class="min-w-full">
-                                            <div class="block rounded-lg shadow-lg bg-white mt-6">
+                                            <div class="block rounded-lg  bg-white mt-6 shadow-md shadow-cyan-300">
                                                 <div class="md:flex md:flex-row">
                                                     <div class="md:ml-6 md:mr-6">
-                                                        <p class="text-gray-500 font-light mb-2 text-sm">
+                                                        <p class="text-gray-500 font-light mb-2 text-md mt-2">
                                                        ${message}
                                                         </p>
                                                         <p class="text-gray-500 text-xs mb-2">${dayjs(date).fromNow()}</p>
