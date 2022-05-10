@@ -144,6 +144,8 @@ window.saveDetails = async function saveDetails (e) {
 
   $('#btnSaveDetails').prop('disabled', true);
 
+  panels = panels.slice(0,5)
+
   for (const file of panels) {
 
       let route = `${user.id}/profile/samples/${file.name}`;

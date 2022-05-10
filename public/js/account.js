@@ -92,7 +92,7 @@ $.ajax({
 
         $('#username').val(username);
         $('#description').val(description);
-        $('#pfp').attr('src',pfp);
+        $('#pfpImg').attr('src',pfp);
         $('#banner').attr('src',banner);
      }
 
