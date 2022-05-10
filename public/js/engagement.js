@@ -18,6 +18,20 @@ $.ajax({
             return;
         }
 
+        const {data, error} = await supabase
+        .from('public_profile')
+        .select('username')
+        .eq('id',user.id)
+        .single();
+
+        if (error) {
+            erroralert(error.message);
+        } else {
+            $('#goToProfile').on('click', function() {
+                window.location = '/user/' + data.username;
+            })
+        }
+
 }});
 
 window.postComment = async function postComment (e) {
