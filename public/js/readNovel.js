@@ -99,12 +99,20 @@ $.ajax({
                 $('#prevChap').attr('href',`/read/novel/${seriesid.id}/${prevChap.id}`);
                 $('#prev').attr('href',`/read/novel/${seriesid.id}/${prevChap.id}`);
                 $('#prevChap').text(`< ${prevChap.title}`);
+            } else {
+                $('#prevChap').hide();
+                $('#prev').hide();
+                $('#prevChapHeading').hide();
             }
 
             if (nextChap) {
                 $('#nextChap').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
                 $('#next').attr('href',`/read/novel/${seriesid.id}/${nextChap.id}`);
                 $('#nextChap').text(`${nextChap.title} >`);
+            } else {
+                $('#nextChap').hide();
+                $('#next').hide();
+                $('#nextChapHeading').hide();
             }
 
             const {data:creatorDetails, error__} = await supabase

@@ -415,34 +415,24 @@
                   </div>
                   <div class="flex flex-col md:pl-6 divide-y">
                     <p class="text-lg font-semibold text-black dark:text-gray-300">Feed</p>
-                    <div class="border-b border-2"></div>
 
-                    <div class="flex justify-center">
-                      <div class="min-w-full">
-                        <div class="block rounded-lg shadow-lg bg-white mt-6">
-                          <div class="md:flex md:flex-row">
-                            <div class="md:ml-6 md:mr-6">
-                              <p class="text-gray-500 font-light mb-2 text-sm">
-                                no chapter of One Piece this week. :(
-                              </p>
-                              <p class="text-gray-500 text-xs mb-2">2/04/2022</p>
+                    <div id="feedContainer">
+                      <!-- <div class="flex justify-center">
+                        <div class="min-w-full">
+                          <div class="block rounded-lg shadow-lg bg-white mt-6">
+                            <div class="md:flex md:flex-row">
+                              <div class="md:ml-6 md:mr-6">
+                                <p class="text-gray-500 font-light mb-2 text-sm">
+                                  no chapter of One Piece this week. :(
+                                </p>
+                                <p class="text-gray-500 text-xs mb-2">2/04/2022</p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
-                    <div class="min-w-full">
-                      <div class="block rounded-lg shadow-lg bg-white mt-6">
-                        <div class="md:flex md:flex-row">
-                          <div class="md:ml-6 md:mr-6">
-                            <p class="text-gray-500 font-light mb-2 text-sm">
-                              your mom thicc
-                            </p>
-                            <p class="text-gray-500 text-xs mb-2">2/04/2022</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
 
 
@@ -606,12 +596,12 @@
                                 <div class="flex -mx-2 mb-4">
                                   <template id="templateStep" x-for="i in 5">
                                     <div class="flex-1 px-2">
-                                      <button x-text="i" x-on:click="image = i"
+                                      <img x-text="i" x-on:click="image = i"
                                         :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }"
-                                        class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center"
+                                        class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center sampleArtImgPrev"
                                         src="" />
                                       <span class="text-2xl"></span>
-                                      </button>
+                                      <!-- </button> -->
                                     </div>
                                   </template>
                                 </div>
@@ -657,6 +647,8 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script> -->
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.0/dayjs.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.0/plugin/relativeTime.js"></script>
   <script defer src="/js/vibrant.min.js"></script>
   <script src="/js/init.js" type="module"></script>
   <script defer src="/js/creator.js" type="module"></script>

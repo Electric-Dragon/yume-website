@@ -31,7 +31,6 @@ $.ajax({
         if (error) {
           erroralert(error.message);
         } else {
-          console.log(data);
 
           $("#popularDiv").css({"background-image": `url('${data.seriesid.creator.banner}')`});
 

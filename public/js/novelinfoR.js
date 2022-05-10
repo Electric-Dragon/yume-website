@@ -34,13 +34,12 @@ $.ajax({
           
           if (data && data.is_creator) {
             $('#btnMakeAdaptation').show();
-            console.log('creator');
           }
         }
   
         const { data, error } = await supabase
           .from('series')
-          .select('title,cover,adaptation,novel,status,summary,creator(id,username),genre1,genre2')
+          .select('title,cover,adaptation,novel,status,summary,creator(id,username),genre1,genre2,mature')
           .eq('id', seriesid)
           .single()
   
@@ -48,7 +47,7 @@ $.ajax({
           erroralert(error.message);
         } else {
   
-          let { title, cover, adaptation, novel, status, summary, creator, genre1, genre2} = data;
+          let { title, cover, adaptation, novel, status, summary, creator, genre1, genre2,mature} = data;
 
           $('#seriesTitle').text(title);
           $('#title').text(title);
@@ -64,8 +63,12 @@ $.ajax({
           $('#creatorname').text(creator.username)
           $('#creatorname').attr('href',`/user/${creator.username}`)
 
-          let adaptationText = adaptation ? 'Yes' : 'No';
+          let adaptationText = adaptation ? 'Yes (Read Here)' : 'No';
           $('#adaptation').text(adaptationText);
+
+          if (adaptation) {
+            $('#adaptation').attr('href', `/series/${adaptation}`);
+          }
 
           let typeText = novel ? 'Web Novel' : 'Web Comic';
           $('#type').text(typeText);
@@ -157,6 +160,14 @@ $.ajax({
             follows = (series_follows.length > 0) ? true : false;
             let text = follows ? 'Unfollow Series' : 'Follow Series';
             $('#followButton').text(text);
+          }
+
+          if (mature) {
+            Swal.fire(
+              'Mature content!',
+              'This series is intended for mature audiences only. Read with caution. We will not be responsible for any damages caused by viewing/reading this series.',
+              'info'
+            )
           }
   
         }
