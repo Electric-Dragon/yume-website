@@ -1,76 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
-    <link href="/css/output.css" rel="stylesheet">
-    <title id="title">Your novel</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link href="/css/output.css" rel="stylesheet">
+  <title id="title">Your novel</title>
 </head>
+
 <body class="h-screen w-full dark:bg-black bg-gray-600 dark:text-white">
-    <nav class="bg-transparent dark:bg-black shadow-lg mb-5">
-      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div class="relative flex items-center justify-between h-16">
-          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <!-- Mobile menu button-->
-            <button id="togglemebutton" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu"
-              aria-expanded="false">
-              <!-- Icon when menu is closed. -->
-              <!-- Menu open: "hidden", Menu closed: "block" -->
-              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <!-- Icon when menu is open. -->
-              <!-- Menu open: "block", Menu closed: "hidden" -->
-              <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div class="flex-shrink-0">
-              <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl text-cyan-500">YUME.</p></a>
-          
-            </div>
-            <div class="hidden sm:block sm:ml-6">
-              <div class="flex">
-                <a href="#" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
-              </div>
-            </div>
-          </div>
-          <div class="relative mx-auto text-gray-600 md:block hidden ">
-               
-            <input
-              class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none"
-              type="search" name="search" placeholder="Search">
-            <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
-              <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                 version="1.1" id="Capa_1" x="0px" y="0px"
-                 viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                 xml:space="preserve"
-                 width="512px" height="512px">
-            <path
-              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
+  <nav class="bg-transparent dark:bg-black shadow-lg mb-5">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button id="togglemebutton"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out"
+            aria-label="Main menu" aria-expanded="false">
+            <!-- Icon when menu is closed. -->
+            <!-- Menu open: "hidden", Menu closed: "block" -->
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            </button>
+            <!-- Icon when menu is open. -->
+            <!-- Menu open: "block", Menu closed: "hidden" -->
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex-shrink-0">
+            <a href="/">
+              <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl text-cyan-500">YUME.</p>
+            </a>
+
           </div>
-          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-    
-    
-            <!-- Profile dropdown -->
-            <div class="ml-3 relative">
-              <div>
-                <button id="toggleprofile" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
-                  <img class="h-8 w-8 rounded-full" id="pfp" src="" alt="">
-                </button>
-              </div>
-              <!--
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex">
+              <a href="#"
+                class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+              <a href="#"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
+              <a href="#"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
+              <a href="#"
+                class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-100 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+            </div>
+          </div>
+        </div>
+        <div class="relative mx-auto text-gray-600 md:block hidden ">
+
+          <input class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none" type="search"
+            name="search" placeholder="Search">
+          <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
+            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1"
+              x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+              xml:space="preserve" width="512px" height="512px">
+              <path
+                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+            </svg>
+          </button>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+
+          <!-- Profile dropdown -->
+          <div class="ml-3 relative">
+            <div>
+              <button id="toggleprofile"
+                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
+                id="user-menu" aria-label="User menu" aria-haspopup="true">
+                <img class="h-8 w-8 rounded-full" id="pfp" src="" alt="">
+              </button>
+            </div>
+            <!--
                 Profile dropdown panel, show/hide based on dropdown state.
     
                 Entering: "transition ease-out duration-100"
@@ -80,40 +90,52 @@
                   From: "transform opacity-100 scale-100"
                   To: "transform opacity-0 scale-95"
               -->
-              <div id="resultprofile" class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                  <a href="/account" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
-                  <a href="/dashboard/home" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" id="goToDashboard" role="menuitem">Dashboard</a>
-                  <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
-                </div>
+            <div id="resultprofile"
+              class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+              <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical"
+                aria-labelledby="user-menu">
+                <a href="/account"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Your Profile</a>
+                <a href="/dashboard/home"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  id="goToDashboard" role="menuitem">Dashboard</a>
+                <a href="#"
+                  class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  role="menuitem">Sign out</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
-      <!--
+    </div>
+
+    <!--
         Mobile menu, toggle classes based on menu state.
     
         Menu open: "block", Menu closed: "hidden"
       -->
-      <div id="resultnav" class="hidden sm:hidden">
-        <div class="px-2 pt-2 pb-3">
-          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
-        </div>
+    <div id="resultnav" class="hidden sm:hidden">
+      <div class="px-2 pt-2 pb-3">
+        <a href="#"
+          class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+        <a href="#"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
+        <a href="#"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
+        <a href="#"
+          class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
       </div>
-      <script>document.getElementById('togglemebutton').onclick = function() {
+    </div>
+    <script>document.getElementById('togglemebutton').onclick = function () {
         document.getElementById("resultnav").classList.toggle("hidden");
       }
-      
+
       //document.getElementById('togglemebutton').onclick = function () {
       //  document.getElementById("toggleme").classList.toggle("hidden");
       //}
-      
-      
+
+
       const toggleprofile = document.getElementById("toggleprofile");
       const resultprofile = document.getElementById("resultprofile");
       [...document.querySelectorAll('body')].forEach(el => {
@@ -122,121 +144,147 @@
             console.clear();
             console.log(event.target.parentElement.id)
             resultprofile.classList.add("hidden")
-          }else{
-          resultprofile.classList.toggle("hidden")}
+          } else {
+            resultprofile.classList.toggle("hidden")
+          }
         })
       })</script>
-    </nav>
+  </nav>
 
-        <div class="bg-gray-50 dark:bg-background max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
-          <div class="grid grid-flow-row mb-4">
-              <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0 md:gap-4">
-                <div class="grid grid-flow-row w-72">
-                  <div class=""><img class="h-72 object-cover aspect-square" id="cover" src="" alt=""></div>
-                  <div class="grid grid-flow-col">
-                    <div class="px-4 py-5 sm:px-6">
-                      <div class="flex items-center justify-start gap-3">
-                        <div class="text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg></div> 50 likes
-                      </div>
-                      <div class="flex items-center justify-start gap-3">
-                        <div class="text-green-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
-                          <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
-                        </svg></div> 80 comments
-                      </div>
-                      <div class="flex items-center justify-center mt-8">
-                        <button id="btnMakeAdaptation" class="bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                          Make Adaptation
-                        </button>
-                      </div>
-                    </div>
-                </div>
+  <div class="bg-gray-50 dark:bg-background max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
+    <div class="grid grid-flow-row mb-4">
+      <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0 md:gap-4">
+        <div class="grid grid-flow-row w-72">
+          <div class=""><img class="h-72 object-cover aspect-square" id="cover" src="" alt=""></div>
+          <div class="grid grid-flow-col">
+            <div class="px-4 py-5 sm:px-6">
+              <div class="flex items-center justify-start gap-3">
+                <div class="text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                  </svg></div> 50 likes
+              </div>
+              <div class="flex items-center justify-start gap-3">
+                <div class="text-green-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
+                  </svg></div> 80 comments
+              </div>
+              <div class="flex items-center justify-center mt-8">
+                <button id="btnMakeAdaptation"
+                  class="bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                  Make Adaptation
+                </button>
+              </div>
+              <div class="flex items-center justify-center mt-8">
+                <button id="btnMakeAdaptation"
+                  class="bg-transparent w-full hover:bg-cyan-500 text-cyan-400 font-semibold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded">
+                  Read Original
+                </button>
+              </div>
+            </div>
+          </div>
 
 
-                </div>
-                  
-                  <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
-  
-                      <div class="grid grid-flow-col">
-                          <div class="px-4 py-5 sm:px-6">
-                              <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white"></h3>
-                              <a id="creatorname" class="mt-1 max-w-2xl text-sm text-gray-500"></a>
-                          </div>
-                          <div class="flex justify-center items-center">
-                            <button id="followButton" onclick="followSeries()" class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded-full">
-                              Follow Series
-                            </button>
-                          </div>
-                      </div>
-                      <div class="border-t border-gray-200">
-                        <dl>
-                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-black dark:text-gray-200">Genres:</dt>
-                            <dd class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
-                              <a id="genre1" class="hover:underline cursor-pointer text-blue-600"></a> <span class="ml-1 mr-1">,</span>
-                              <a id="genre2" class="hover:underline cursor-pointer text-blue-600"></a>
-                            </dd>
-                          </div>
-                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-black dark:text-gray-200">Adaptation:</dt>
-                            <a id="adaptation" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1"></a>
-                          </div>
-                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                              <dt class="text-sm font-medium text-black dark:text-gray-200">Type:</dt>
-                              <dd id="type" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1"></dd>
-                          </div>
-                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                              <dt class="text-sm font-medium text-black dark:text-gray-200">Status:</dt>
-                              <dd id="status" class="mt-1 dark:text-gray-200 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
-                              </dd>
-                          </div>
-                          <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-black dark:text-gray-200">Synopsis:</dt>
-                            <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-200"></dd>
-                          </div>
-                        </dl>
-                      </div>
-                    </div>
-              </div> 
+        </div>
 
-              <div class="w-full overflow-x-auto bottom-4">
-                  <div class="px-6 mb-4 md:w-1/5 left-0 w-full">
-                      <!-- <button
+        <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
+
+          <div class="grid grid-flow-col">
+            <div class="px-4 py-5 sm:px-6">
+              <div class="flex gap-3">
+                <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white flex-initial">
+                </h3>
+                <button id="btnMakeAdaptation"
+                  class="flex-none text-xs w-fit px-2 bg-cyan-500 text-black font-semibold  border border-cyan-500 hover:border-transparent rounded-full">
+                  Adaptation
+                </button>
+              </div>
+              <a id="creatorname" class="mt-1 max-w-2xl text-sm text-gray-500"></a>
+            </div>
+            <div class="flex justify-center items-center">
+              <button id="followButton" onclick="followSeries()"
+                class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded-full">
+                Follow Series
+              </button>
+            </div>
+          </div>
+          <div class="border-t border-gray-200">
+            <dl>
+              <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-black dark:text-gray-200">Genres:</dt>
+                <dd class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                  <a id="genre1" class="hover:underline cursor-pointer text-blue-600"></a> <span
+                    class="ml-1 mr-1">,</span>
+                  <a id="genre2" class="hover:underline cursor-pointer text-blue-600"></a>
+                </dd>
+              </div>
+              <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-black dark:text-gray-200">Adaptation:</dt>
+                <a id="adaptation"
+                  class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1"></a>
+              </div>
+              <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-black dark:text-gray-200">Type:</dt>
+                <dd id="type" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                </dd>
+              </div>
+              <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-black dark:text-gray-200">Status:</dt>
+                <dd id="status"
+                  class="mt-1 dark:text-gray-200 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                </dd>
+              </div>
+              <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-black dark:text-gray-200">Synopsis:</dt>
+                <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-200"></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full overflow-x-auto bottom-4">
+        <div class="px-6 mb-4 md:w-1/5 left-0 w-full">
+          <!-- <button
                         id=""
                         class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-cyan-600 border border-transparent rounded-lg active:bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:shadow-outline-cyan">
                         Follow Series
                         <span class="ml-2" aria-hidden="true"></span>
                       </button> -->
-                    </div>
-                  <table class="w-full whitespace-no-wrap pb-4">
-                    <thead>
-                      <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">Chapter Number</th>
-                        <th class="px-4 py-3">Chapter Name</th>
-                        <th class="px-4 py-3">Date</th>
-    
-                      </tr>
-                    </thead>
-                    <tbody id="chapterHolder" class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    </tbody>
+        </div>
+        <table class="w-full whitespace-no-wrap pb-4">
+          <thead>
+            <tr
+              class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+              <th class="px-4 py-3">Chapter Number</th>
+              <th class="px-4 py-3">Chapter Name</th>
+              <th class="px-4 py-3">Date</th>
 
-                    <td class="px-4 py-3 text-sm hover:text-blue-600 hidden">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
-                        class="bi bi-eye-fill" class="text-blue-600 w-6 h-6" viewBox="0 0 20 20" >
-                          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                      </svg>
-                     </td>
-                  </table>
-                </div>
-          </div>
+            </tr>
+          </thead>
+          <tbody id="chapterHolder" class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+          </tbody>
+
+          <td class="px-4 py-3 text-sm hover:text-blue-600 hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
+              class="text-blue-600 w-6 h-6" viewBox="0 0 20 20">
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+            </svg>
+          </td>
+        </table>
       </div>
+    </div>
+  </div>
 
-        <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script defer src="/js/init.js" type="module"></script>
-        <script defer src="/js/novelinfoR.js" type="module"></script>
+  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script defer src="/js/init.js" type="module"></script>
+  <script defer src="/js/novelinfoR.js" type="module"></script>
 </body>
+
 </html>
