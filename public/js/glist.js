@@ -38,7 +38,7 @@ $.ajax({
                 let search = $(this).val();
 
                 if (search !== "") {
-                    let match = genres.filter(g => g.includes(search));
+                    let match = genres.filter(g => g.includes(capitalizeFirstLetter(search)));
                     $("#genresContainer").empty();
                     match.forEach(createGenresElement);
                 } else {
@@ -54,4 +54,8 @@ $.ajax({
 
 function createGenresElement(g) {
     $('#genresContainer').append(`<a href="/genre/${g}" class="rounded-md text-center px-3 text-base font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">${g}</a>`)
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
