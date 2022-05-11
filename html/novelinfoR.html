@@ -127,39 +127,17 @@
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
       </div>
     </div>
-    <script>document.getElementById('togglemebutton').onclick = function () {
-        document.getElementById("resultnav").classList.toggle("hidden");
-      }
-
-      //document.getElementById('togglemebutton').onclick = function () {
-      //  document.getElementById("toggleme").classList.toggle("hidden");
-      //}
-
-
-      const toggleprofile = document.getElementById("toggleprofile");
-      const resultprofile = document.getElementById("resultprofile");
-      [...document.querySelectorAll('body')].forEach(el => {
-        el.addEventListener('click', event => {
-          if (event.target.parentElement.id !== "toggleprofile") {
-            console.clear();
-            console.log(event.target.parentElement.id)
-            resultprofile.classList.add("hidden")
-          } else {
-            resultprofile.classList.toggle("hidden")
-          }
-        })
-      })</script>
   </nav>
 
   <div class="bg-gray-50 dark:bg-background max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
     <div class="grid grid-flow-row mb-4">
       <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0 md:gap-4">
         <div class="grid grid-flow-row w-72">
-          <div class=""><img class="h-72 object-cover aspect-square" id="cover" src="" alt=""></div>
+          <div class=""><img class="h-72 object-cover aspect-square" id="cover" src="" alt="Cover image of the series"></div>
           <div class="grid grid-flow-col">
             <div class="px-4 py-5 sm:px-6">
               <div class="flex items-center justify-start gap-3">
-                <div class="text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                <!-- <div class="text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                       d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
@@ -172,17 +150,17 @@
                       d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
                   </svg></div> 80 comments
               </div>
-              <div class="flex items-center justify-center mt-8">
+              <div class="flex items-center justify-center mt-8"> -->
                 <button id="btnMakeAdaptation"
                   class="bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                   Make Adaptation
                 </button>
               </div>
               <div class="flex items-center justify-center mt-3">
-                <button id="btnMakeAdaptation"
-                  class="bg-transparent w-full hover:bg-cyan-500 text-cyan-400 font-semibold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded">
+                <a id="btnReadOriginal"
+                  class="bg-transparent text-center w-full hover:bg-cyan-500 text-cyan-400 font-semibold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded">
                   Read Original
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -197,7 +175,7 @@
               <div class="flex gap-3">
                 <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white flex-initial">
                 </h3>
-                <button id="btnMakeAdaptation"
+                <button id="adaptationBadge"
                   class="flex-none text-xs w-fit px-2 bg-cyan-500 text-black font-semibold  border border-cyan-500 hover:border-transparent rounded-full">
                   Adaptation
                 </button>
@@ -221,11 +199,11 @@
                   <a id="genre2" class="hover:underline cursor-pointer text-blue-600"></a>
                 </dd>
               </div>
-              <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <!-- <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-black dark:text-gray-200">Adaptation:</dt>
                 <a id="adaptation"
                   class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1"></a>
-              </div>
+              </div> -->
               <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-black dark:text-gray-200">Type:</dt>
                 <dd id="type" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">

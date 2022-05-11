@@ -14,6 +14,8 @@ let statusText = {
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 $('#btnMakeAdaptation').hide();
+$('#btnReadOriginal').hide();
+$('#adaptationBadge').hide();
 
 $.ajax({
     url: "/keys",
@@ -68,6 +70,12 @@ $.ajax({
 
           if (adaptation) {
             $('#adaptation').attr('href', `/series/${adaptation}`);
+            $('#btnMakeAdaptation').hide();
+            $('#btnReadOriginal').show();
+            $("#adaptationBadge").show();
+            $('#btnReadOriginal').attr('href', `/series/${adaptation}`);
+          } else {
+            
           }
 
           let typeText = novel ? 'Web Novel' : 'Web Comic';
