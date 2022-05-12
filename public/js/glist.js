@@ -53,7 +53,7 @@ $.ajax({
 }});
 
 function createGenresElement(g) {
-    $('#genresContainer').append(`<a href="/genre/${g}" class="rounded-md text-center px-3 text-base font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">${g}</a>`)
+    $('#genresContainer').append(`<a href="/genre/${g}" class="rounded-md text-center px-3 text-xl font-bold uppercase hover:underline cursor-pointer bg-black dark:bg-white text-white dark:text-black">${g}</a>`)
 }
 
 function capitalizeFirstLetter(string) {
