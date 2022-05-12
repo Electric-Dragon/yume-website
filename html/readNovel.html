@@ -18,16 +18,16 @@
   </head>
 
   
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<body class="bg-gray-100 dark:bg-background font-sans leading-normal tracking-normal">
 
-	<nav id="header" class="fixed w-full z-10 top-0">
+	<nav id="header" class="fixed w-full z-10 top-0 ">
 
 		<div id="progress" class="h-1 z-20 top-0" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
 
 		<div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
 
 			<div class="pl-4">
-				<a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold" href="/">
+				<a class="text-gray-900 dark:text-gray-100 text-base no-underline hover:no-underline font-extrabold" href="/">
 					YUME
 				</a>
 			</div>
@@ -41,10 +41,10 @@
 				</button>
 			</div>
 
-			<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20" id="nav-content">
+			<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20 " id="nav-content">
 				<ul class="list-reset lg:flex justify-end flex-1 items-center">
 					<li class="mr-3">
-						<a id="prev" class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4 " href="#">
+						<a id="prev" class="inline-block dark:text-gray-100 text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4 " href="#">
 							<div class="flex items-center justify-center">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
 									<path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
@@ -53,10 +53,10 @@
 						</a>
 					</li>
 					<li class="mr-3">
-						<a class="inline-block py-2 px-4 text-gray-900 font-bold no-underline" id="chapNum"></a>
+						<a class="inline-block py-2 px-4 text-gray-900 font-bold no-underline dark:text-gray-100" id="chapNum"></a>
 					</li>
 					<li class="mr-3">
-						<a id="next" class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">
+						<a id="next" class="inline-block dark:text-gray-100 text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">
 							<div class="flex items-center justify-center">
 								Next<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
 									<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
@@ -77,8 +77,8 @@
 
 			<!--Title-->
 			<div class="font-sans">
-				<p class="text-base md:text-sm text-cyan-700 font-bold">&lt; <a href="/" class="text-base md:text-sm text-cyan-700 font-bold no-underline hover:underline">BACK TO HOME</a></p>
-						<h1 id="chapTitle" class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl"></h1>
+				<p class="text-base md:text-sm text-cyan-700 font-bold">&lt; <a href="/" class="text-base md:text-xl text-cyan-700 dark:text-cyan-400 font-bold no-underline hover:underline">Solo leveling</a></p>
+						<h1 id="chapTitle" class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl dark:text-gray-100"></h1>
 						<p id="chapDate" class="text-sm md:text-base font-normal text-gray-600"></p>
 						<p id="chapReads" class="text-sm md:text-base font-normal text-gray-600"></p>
 			</div>
@@ -130,11 +130,11 @@
 					  </svg>
 					</label>
 				  </div>
-				  <h1 id="likeCount"></h1>
+				  <h1 id="likeCount" class="dark:text-gray-600"></h1>
 
 			</div>
 
-			<div id="editorjs" class="pt-6 text-lg m-0 p-0 font-sans overflow-hidden"></div>
+			<div id="editorjs" class="pt-6 text-lg m-0 p-0 font-sans overflow-hidden dark:text-gray-300"></div>
 			
 		</div>
 
@@ -164,7 +164,7 @@
 		<div class="flex w-full items-center font-sans px-4 py-2">
 			<img id="creatorPfp" class="w-10 h-10 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of Author">
 			<div class="flex-1 px-2">
-				<p id="creatorUsername" class="text-base text-black font-bold md:text-xl leading-none mb-2"></p>
+				<p id="creatorUsername" class="text-base text-black font-bold md:text-xl leading-none mb-2 dark:text-gray-200"></p>
 				<p id="creatorDescription" class="text-gray-600 text-xs md:text-base">description of author <a class="text-green-500 no-underline hover:underline" href="">his profile</a></p>
 			</div>
 			<div class="justify-end">
@@ -279,7 +279,7 @@
 	</div>
 	<!--/container-->
 
-	<footer class="bg-white border-t border-gray-400 shadow">
+	<!-- <footer class="bg-white border-t border-gray-400 shadow">
 		<div class="container max-w-4xl mx-auto flex py-8">
 
 			<div class="w-full mx-auto flex flex-wrap">
@@ -312,9 +312,9 @@
 
 
 		</div>
-	</footer>
+	</footer> -->
 
-	<script>
+	<!-- <script>
 		/* Progress bar */
 		var h = document.documentElement,
 			b = document.body,
@@ -355,7 +355,57 @@
 		document.getElementById('nav-toggle').onclick = function() {
 			document.getElementById("nav-content").classList.toggle("hidden");
 		}
-	</script>
+	</script> -->
+
+<script>
+	var h = document.documentElement,
+		b = document.body,
+		st = 'scrollTop',
+		sh = 'scrollHeight',
+		progress = document.querySelector('#progress'),
+		scroll;
+	var scrollpos = window.scrollY;
+	var header = document.getElementById("header");
+	var navcontent = document.getElementById("nav-content");
+
+	document.addEventListener('scroll', function () {
+
+		/*Refresh scroll % width*/
+		scroll = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+		progress.style.setProperty('--scroll', scroll + '%');
+
+		/*Apply classes for slide in bar*/
+		scrollpos = window.scrollY;
+
+		if (scrollpos > 10) {
+			header.classList.add("dark:bg-black");
+			header.classList.add("shadow");
+			navcontent.classList.remove("bg-gray-100");
+			navcontent.classList.add("dark:bg-black");
+			header.classList.add("bg-white");
+			header.classList.add("shadow");
+			navcontent.classList.add("bg-white");
+		} else {
+			header.classList.remove("dark:bg-black");
+			header.classList.remove("shadow");
+			navcontent.classList.remove("dark:bg-black");
+			navcontent.classList.add("bg-gray-100");
+			
+			header.classList.remove("bg-white");
+			header.classList.remove("shadow");
+			navcontent.classList.remove("bg-white");
+			navcontent.classList.add("bg-gray-100");
+
+
+		}
+
+	});
+
+
+	document.getElementById('nav-toggle').onclick = function () {
+		document.getElementById("nav-content").classList.toggle("hidden");
+	}
+</script>
 
 	<script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
