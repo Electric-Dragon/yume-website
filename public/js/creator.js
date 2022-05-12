@@ -31,7 +31,11 @@ $('#discord').hide();
 $('#youtube').hide();
 $('#workedWith').hide();
 
-dayjs.extend(window.dayjs_plugin_relativeTime)
+for (let i = 0; i < 7; i++) {
+    $(`#artSample${i}`).hide();
+}
+
+dayjs.extend(window.dayjs_plugin_relativeTime);
 
 $.ajax({
     url: "/keys",
@@ -100,15 +104,9 @@ $.ajax({
 
                 $('#sampleArtsContainer').show();
 
-                $('#templateStep').attr("x-for",`i in ${sample_arts.length}`);
-
-                let sampleArtPreviews = document.getElementsByClassName('sampleArtImgPrev');
-
-                console.log(sampleArtPreviews);
-
                 sample_arts.forEach((art,i) => {
-                    $(`#artSample${i+1}`).attr('src', art);
-                    sampleArtPreviews[i].src = art;
+                    $(`#artSample${i}`).show();
+                    $(`#artSample${i}`).attr('src', art);
                 });
 
             }

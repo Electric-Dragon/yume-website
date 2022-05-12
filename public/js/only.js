@@ -137,14 +137,14 @@ window.saveDetails = async function saveDetails (e) {
     erroralert('Total size of uploaded files is greater than 10 MB');
     return;
   }
-  if (panels.length === 0) {
-      erroralert('Please upload at least one sample');
+  if (panels.length < 6) {
+      erroralert('Upload 6 samples');
       return;
   }
 
   $('#btnSaveDetails').prop('disabled', true);
 
-  panels = panels.slice(0,5)
+  panels = panels.slice(0,6)
 
   for (const file of panels) {
 
