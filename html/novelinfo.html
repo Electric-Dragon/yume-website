@@ -14,13 +14,14 @@
     <!-- Navbar goes here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
-    <nav class="bg-white shadow-lg  mb-3">
+    <nav class="bg-transparent shadow-lg pt-3 dark:bg-black">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <!-- Mobile menu button-->
-            <button id="togglemebutton" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu"
-              aria-expanded="false">
+            <button id="togglemebutton"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out"
+              aria-label="Main menu" aria-expanded="false">
               <!-- Icon when menu is closed. -->
               <!-- Menu open: "hidden", Menu closed: "block" -->
               <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,156 +36,240 @@
           </div>
           <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div class="flex-shrink-0">
-              <a href="/"> <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl">YUME.</p></a>
-          
+              <a href="/">
+                <p class="block lg:block h-8 w-auto font-poppins font-bold mr-10 text-4xl dark:text-cyan-400">YUME.</p>
+              </a>
+  
             </div>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex">
-                <a href="/dashboard/home" class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-                <a href="#" class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+                <a href="/"
+                  class="px-3 py-2 rounded-md text-2xl font-medium leading-5 text-white dark:text-black dark:bg-white bg-black focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+                <a href="/list"
+                  class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 dark:text-white text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Genres</a>
+                <a href="/library"
+                  class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your
+                  library</a>
+                <a href="/popular"
+                  class="ml-4 px-3 py-2 rounded-md text-2xl font-medium leading-5 text-gray-700 dark:text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
               </div>
             </div>
           </div>
           <div class="relative mx-auto text-gray-600 md:block hidden ">
-               
-            <input
-              class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none"
-              type="search" name="search" placeholder="Search">
+  
+            <input class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none"
+              id="seriesSearchBar" type="search" name="search" placeholder="Search">
             <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
-              <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                 version="1.1" id="Capa_1" x="0px" y="0px"
-                 viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                 xml:space="preserve"
-                 width="512px" height="512px">
-            <path
-              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
-            </svg>
+              <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1"
+                x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                xml:space="preserve" width="512px" height="512px">
+                <path
+                  d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+              </svg>
             </button>
           </div>
           <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-    
-    
+  
+  
             <!-- Profile dropdown -->
             <div class="ml-3 relative">
               <div>
-                <button id="toggleprofile" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                <div id="authButtons" class="hidden md:flex items-center space-x-3 ">
+                  <a href="/signin"
+                    class="py-2 px-2 font-medium text-gray-300 rounded hover:bg-cyan-500 hover:text-white transition duration-300">Log
+                    In</a>
+                  <a href="/signup"
+                    class="py-2 px-2 font-medium text-white bg-cyan-500 rounded hover:bg-cyan-400 transition duration-300">Sign
+                    Up</a>
+                </div>
+                <button id="toggleprofile"
+                  class="flex text-sm border-2 object-cover border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
+                  id="user-menu" aria-label="User menu" aria-haspopup="true">
                   <img class="h-8 w-8 rounded-full" id="pfp" src="" alt="">
                 </button>
               </div>
               <!--
-                Profile dropdown panel, show/hide based on dropdown state.
-    
-                Entering: "transition ease-out duration-100"
-                  From: "transform opacity-0 scale-95"
-                  To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                  From: "transform opacity-100 scale-100"
-                  To: "transform opacity-0 scale-95"
-              -->
-              <div id="resultprofile" class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                  <a href="/account" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
-                  <a href="/dashboard/home" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Dashboard</a>
-                  <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
+              Profile dropdown panel, show/hide based on dropdown state.
+  
+              Entering: "transition ease-out duration-100"
+                From: "transform opacity-0 scale-95"
+                To: "transform opacity-100 scale-100"
+              Leaving: "transition ease-in duration-75"
+                From: "transform opacity-100 scale-100"
+                To: "transform opacity-0 scale-95"
+            -->
+              <div id="resultprofile"
+                class="hidden z-40 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical"
+                  aria-labelledby="user-menu">
+                  <a href="/account"
+                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    role="menuitem">Your Profile</a>
+                  <a href="/dashboard/home"
+                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    role="menuitem">Dashboard</a>
+                  <a id="signOut"
+                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    role="menuitem">Sign out</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
+  
       <!--
-        Mobile menu, toggle classes based on menu state.
-    
-        Menu open: "block", Menu closed: "hidden"
-      -->
+      Mobile menu, toggle classes based on menu state.
+  
+      Menu open: "block", Menu closed: "hidden"
+    -->
       <div id="resultnav" class="hidden sm:hidden">
         <div class="px-2 pt-2 pb-3">
-          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
-          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
-          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
-          <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+          <a href="/"
+            class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Read</a>
+          <a href="/search"
+            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Search</a>
+          <a href="/library"
+            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Your
+            library</a>
+          <a href="/popular"
+            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
         </div>
       </div>
-      <script>document.getElementById('togglemebutton').onclick = function() {
-        document.getElementById("resultnav").classList.toggle("hidden");
-      }
-      
-      //document.getElementById('togglemebutton').onclick = function () {
-      //  document.getElementById("toggleme").classList.toggle("hidden");
-      //}
-      
-      
-      const toggleprofile = document.getElementById("toggleprofile");
-      const resultprofile = document.getElementById("resultprofile");
-      [...document.querySelectorAll('body')].forEach(el => {
-        el.addEventListener('click', event => {
-          if (event.target.parentElement.id !== "toggleprofile") {
-            console.clear();
-            console.log(event.target.parentElement.id)
-            resultprofile.classList.add("hidden")
-          }else{
-          resultprofile.classList.toggle("hidden")}
-        })
-      })</script>
+      <script>document.getElementById('togglemebutton').onclick = function () {
+          document.getElementById("resultnav").classList.toggle("hidden");
+        }
+  
+        //document.getElementById('togglemebutton').onclick = function () {
+        //  document.getElementById("toggleme").classList.toggle("hidden");
+        //}
+  
+  
+        const toggleprofile = document.getElementById("toggleprofile");
+        const resultprofile = document.getElementById("resultprofile");
+        [...document.querySelectorAll('body')].forEach(el => {
+          el.addEventListener('click', event => {
+            if (event.target.parentElement.id !== "toggleprofile") {
+              console.log(event.target.parentElement.id)
+              resultprofile.classList.add("hidden")
+            } else {
+              resultprofile.classList.toggle("hidden")
+            }
+          })
+        })</script>
     </nav>
+      <p class="text-base md:text-sm max-w-5xl mx-auto rounded-sm mt-7  text-cyan-700 font-bold">&lt; <a href="/dashboard/series" class="text-base  text-cyan-700 dark:text-cyan-400 font-bold no-underline hover:underline">Check all Series</a></p>
 
-        <div class="bg-white max-w-5xl mx-auto rounded-sm mt-7 shadow-md">
+        <div class="bg-white dark:bg-background  max-w-5xl mx-auto rounded-sm mt-2 shadow-md">
             <div class="grid grid-flow-row mb-4">
-                <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-4">
-                    <div class="col-span-2 col-start-1"><img class="h-72 object-cover aspect-square" id="cover" src="" alt=""></div>
-                    <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
-    
-                        <div class="grid grid-flow-col">
-                            <div class="px-4 py-5 sm:px-6">
-                                <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900"></h3>
-                                <p id="creatorname" class="mt-1 max-w-2xl text-sm text-gray-500"></p>
-                            </div>
-                        </div>
-                        <div class="border-t border-gray-200">
-                          <dl>
-                            <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                              <dt class="text-sm font-medium text-black">Adaptation:</dt>
-                              <dd id="adaptation" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Yes</dd>
-                            </div>
-                            <!-- <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-black">Original:</dt>
-                                <dd id="original" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Solo leveling</dd>
-                            </div> -->
-                            <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-black">Type:</dt>
-                                <dd id="type" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">Web Novel</dd>
-                            </div>
-                            <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-black">Status:</dt>
-                                <dd id="status" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
-                                    <select id="statusSelect"
-                                      class="block w-full dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-cyan-400  focus:shadow-outline-cyan dark:focus:shadow-outline-gray rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-cyan-500">
-                                    <!-- <option label="Draft"></option>
-                                    <option label="Ongoing"></option>
-                                    <option label="Paused"></option> -->
-                                    </select>
-                                </dd>
-                            </div>
-                            <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                              <dt class="text-sm font-medium text-black">Synopsis:</dt>
-                              <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
-                            </div>
-                          </dl>
-                        </div>
+              <div class="grid grid-flow-row grid-rows-2 md:grid-rows-1 md:grid-flow-col md:grid-cols-7 p-4 gap-0 md:gap-4">
+                <div class="grid grid-flow-row w-72">
+                  <div class=""><img class="h-72 object-cover aspect-square" id="cover" src="" alt="Cover image of the series"></div>
+                  <div class="grid grid-flow-col">
+                    <div class="px-4 py-5 sm:px-6">
+                      <div class="flex items-center justify-start gap-3">
+                        <!-- <div class="text-red-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                          </svg></div> 50 likes
                       </div>
-                </div> 
+                      <div class="flex items-center justify-start gap-3">
+                        <div class="text-green-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+                            <path
+                              d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
+                          </svg></div> 80 comments
+                      </div>
+                      <div class="flex items-center justify-center mt-8"> -->
+                        <button
+                        id="btnCreateNewChapter"
+                        class="bg-transparent w-full hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        New Chapter
+                        <span class="ml-2" aria-hidden="true">+</span>
+                      </button>
+                      </div>
+                      <div class="flex items-center justify-center mt-3">
+                        <a id="btnReadOriginal"
+                          class="bg-transparent text-center w-full hover:bg-cyan-500 text-cyan-400 font-semibold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded">
+                          View Original
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+        
+        
+                </div>
+        
+                <div class="overflow-hidden sm:rounded-lg md:col-span-5 md:col-start-3">
+        
+                  <div class="grid grid-flow-col">
+                    <div class="px-4 py-5 sm:px-6">
+                      <div class="flex gap-3">
+                        <h3 id="seriesTitle" class="text-lg leading-6 font-medium text-gray-900 dark:text-white flex-initial">
+                        </h3>
+                        <button id="adaptationBadge"
+                          class="flex-none text-xs w-fit px-2 bg-cyan-500 text-black font-semibold  border border-cyan-500 hover:border-transparent rounded-full">
+                          Adaptation
+                        </button>
+                      </div>
+                      <a id="creatorname" class="mt-1 max-w-2xl text-sm text-gray-500"></a>
+                    </div>
+                    <div class="flex justify-center items-center">
+                      <button id="followButton" onclick="followSeries()"
+                        class="bg-transparent text-sm hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded-full">
+                        300 Followers
+                      </button>
+                    </div>
+                  </div>
+                  <div class="border-t border-gray-200">
+                    <dl>
+                      <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-black dark:text-gray-200">Genres:</dt>
+                        <dd class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                          <a id="genre1" class="hover:underline cursor-pointer text-blue-600"></a> <span
+                            class="ml-1 mr-1">,</span>
+                          <a id="genre2" class="hover:underline cursor-pointer text-blue-600"></a>
+                        </dd>
+                      </div>
+                      <!-- <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-black dark:text-gray-200">Adaptation:</dt>
+                        <a id="adaptation"
+                          class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1"></a>
+                      </div> -->
+                      <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-black dark:text-gray-200">Type:</dt>
+                        <dd id="type" class="mt-1 text-sm dark:text-gray-200 text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                        </dd>
+                      </div>
+                      <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-black dark:text-gray-200">Status:</dt>
+                        <dd id="status" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 md:col-span-1">
+                            <select id="statusSelect"
+                              class="block w-full dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-cyan-400  focus:shadow-outline-cyan dark:focus:shadow-outline-gray rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-cyan-500">
+                            <!-- <option label="Draft"></option>
+                            <option label="Ongoing"></option>
+                            <option label="Paused"></option> -->
+                            </select>
+                        </dd>
+                    </div>
+                      <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-black dark:text-gray-200">Synopsis:</dt>
+                        <dd id="summary" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-200"></dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+              </div>
 
                 <div class="w-full overflow-x-auto bottom-4">
                     <div class="px-6 mb-4 md:w-1/5 left-0 w-full">
-                        <button
+                        <!-- <button
                           id="btnCreateNewChapter"
                           class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-cyan-600 border border-transparent rounded-lg active:bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:shadow-outline-cyan">
                           New Chapter
                           <span class="ml-2" aria-hidden="true">+</span>
-                        </button>
+                        </button> -->
                       </div>
                     <table class="w-full whitespace-no-wrap pb-4">
                       <thead>
