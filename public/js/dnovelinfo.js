@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
-let supabase,user, isNovel;
+let supabase, user, isNovel;
 var seriesid = window.location.pathname.split( '/' ).pop();
 let chapids = [];
 
@@ -12,6 +12,9 @@ let statusText = {
 }
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+$('#btnReadOriginal').hide();
+$('#adaptationBadge').hide();
 
 $.ajax({
     url: "/keys",
@@ -29,7 +32,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series')
-          .select('title,chapcount,cover,adaptation,novel,status,summary')
+          .select('title,chapcount,cover,adaptation,novel,status,summary,genre1,genre2')
           .eq('id', seriesid)
           .single()
   
@@ -37,14 +40,14 @@ $.ajax({
           erroralert(error.message);
         } else {
   
-          let { title, chapcount, cover, adaptation, novel, status, summary} = data;
+          let { title, chapcount, cover, adaptation, novel, status, summary, genre1, genre2} = data;
 
           $('#seriesTitle').text(title);
           $('#title').text(title);
           $('#summary').text(summary);
           // $('#status').text(statusText[status]);
 
-            $.each(statusText, function(val, text) {
+          $.each(statusText, function(val, text) {
 
               let defaultSelected = false;
               let nowSeleted = (status === val) ? true : false;
@@ -57,15 +60,32 @@ $.ajax({
 
           });
 
+          if (adaptation) {
+            $('#adaptation').attr('href', `/series/${adaptation}`);
+            $('#btnReadOriginal').show();
+            $("#adaptationBadge").show();
+            $('#btnReadOriginal').attr('href', `/series/${adaptation}`);
+          }
 
           $('#cover').attr('src', cover);
 
-          let adaptationText = adaptation ? 'Yes' : 'No';
-          $('#adaptation').text(adaptationText);
+          $('#genre1').text(genre1);
+          $('#genre2').text(genre2);
+          $('#genre1').attr('href', '/genre/' + genre1);
+          $('#genre2').attr('href', '/genre/' + genre2);
 
           let typeText = novel ? 'Web Novel' : 'Web Comic';
           $('#type').text(typeText);
           isNovel = novel;
+
+          const { data:seriesFollowCount, error:seriesFollowCountError } = await supabase
+            .rpc('get_series_follows', { seriesid: seriesid });
+
+          if (seriesFollowCountError) {
+            erroralert(seriesFollowCountError.message);
+          } else {
+            $('#followCount').text(`${seriesFollowCount} Followers`);
+          }
 
           let readRoute = novel ? 'novel' : 'comic';
           let writeRoute = novel ? 'write' : 'upload';
@@ -149,7 +169,7 @@ $.ajax({
                               </a>
                              </td>
                             <td class="px-4 py-3 text-sm">
-                              <button onclick="deleteChap(${x})">
+                              <button onclick="deleteChap('${id}')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                   class="text-red-600 w-6 h-6" viewBox="0 0 16 16">
                                   <path
@@ -206,11 +226,7 @@ async function newChap(chapcount) {
 
 }
 
-window.deleteChap = async function deleteChap(x) {
-
-  console.debug(typeof supabase == 'undefined')
-
-  let chapid = chapids[x];
+window.deleteChap = async function deleteChap(id) {
 
  const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
@@ -228,45 +244,28 @@ swalWithBootstrapButtons.fire({
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, cancel!',
   reverseButtons: true
-}).then((result) => {
+}).then(async (result) => {
   if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
+
+    const { data, error } = await supabase.from('chapters').delete().match({id: id});
+    
+    if (error) {
+      erroralert(error.message);
+    } else {
+      successalert(`Chapter deleted successfully.`,function(){
+        window.location = `/dashboard/series/${seriesid}`;
+      });
+    }
+
   } else if (
     result.dismiss === Swal.DismissReason.cancel
   ) {
     swalWithBootstrapButtons.fire(
       'Cancelled',
-      'Your imaginary file is safe :)',
+      'Your chapter is safe :)',
       'error'
     )
   }
-}).then(async (result) => {
-    if (result.isConfirmed) {
-
-      const { data, error } = await supabase.from('chapters').eq('id', chapid).delete();
-      
-      if (error) {
-        erroralert(error.message);
-      } else {
-        successalert(`Chapter deleted successfully.`);
-        window.location = `/dashboard/series/${seriesid}`;
-      }
-
-      // supabase.from('chapters').eq('id', chapid).delete().then(({data, error}) => {
-
-      //   if (error) {
-      //     erroralert(error.message);
-      //   } else {
-      //     successalert(`Chapter ${chapternum} - ${title} deleted successfully.`);
-      //     window.location = `/dashboard/series/${seriesid}`;
-      //   }
-
-      // })
-    }
-  })
+})
 
 }

@@ -65,17 +65,12 @@ $.ajax({
           $('#creatorname').text(creator.username)
           $('#creatorname').attr('href',`/user/${creator.username}`)
 
-          let adaptationText = adaptation ? 'Yes (Read Here)' : 'No';
-          $('#adaptation').text(adaptationText);
-
           if (adaptation) {
             $('#adaptation').attr('href', `/series/${adaptation}`);
             $('#btnMakeAdaptation').hide();
             $('#btnReadOriginal').show();
             $("#adaptationBadge").show();
             $('#btnReadOriginal').attr('href', `/series/${adaptation}`);
-          } else {
-            
           }
 
           let typeText = novel ? 'Web Novel' : 'Web Comic';
