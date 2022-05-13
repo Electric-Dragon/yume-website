@@ -56,6 +56,9 @@ $.ajax({
             $('#genre2').attr('href',`/genre/${seriesid.genre2}`);
             $('#genre2').text(seriesid.genre2);
 
+            $('#seriesTitle').text(seriesid.title);
+            $('#seriesTitle').attr('href',`/series/${seriesid.id}`);
+
             images.forEach(panelLink => {
                 let element = `<img src="${panelLink}" class="w-comic mx-auto">`
                 $('#panelContainer').append(element);

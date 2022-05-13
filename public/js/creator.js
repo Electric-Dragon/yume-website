@@ -7,13 +7,13 @@ $('#pageHeading').text(`${creatorUsername}'s Profile`)
 $('#username').text(creatorUsername)
 
 $('#sampleArtsContainer').hide();
+$('#btnDonate').hide();
 
 let supabase,user,creatorId,selectSeriesId;
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let usernames = [];
-let sampleartLinks = [];
 let seriesElements = [];
 
 let creatorType = {
@@ -58,7 +58,7 @@ $.ajax({
             window.location = "/404";
         } else {
 
-            let {id, pfp, username, description, instagram, reddit, youtube, banner, sample_arts, creator_type} = data[0];
+            let {id, pfp, username, description, instagram, reddit, youtube, banner, sample_arts, creator_type, verified} = data[0];
 
             creatorId = id;
 
@@ -100,6 +100,11 @@ $.ajax({
                 $('#youtube').attr('href', `https://www.youtube.com/c/${youtube}`);
             }
 
+            if (verified) {
+                $('#verified').show();
+                $("#btnDonate").show();
+            }
+            
             if (sample_arts) {
 
                 $('#sampleArtsContainer').show();
