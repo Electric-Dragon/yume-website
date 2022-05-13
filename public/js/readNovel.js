@@ -56,6 +56,9 @@ $.ajax({
             $('#genre2').attr('href',`/genre/${seriesid.genre2}`);
             $('#genre2').text(seriesid.genre2);
 
+            $('#seriesTitle').attr('href',`/series/${seriesid.id}`);
+            $('#seriesTitle').text(seriesid.title);
+
             editor = new EditorJS({
                 holder:'editorjs',
                 placeholder: 'Write your next masterpiece!',
