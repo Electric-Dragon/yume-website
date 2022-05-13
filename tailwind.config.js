@@ -1,7 +1,9 @@
 const { width } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  content: ["./html/**/*.{html,js}"],
+  content: ["./html/**/*.{html,js}",
+  "./node_modules/flowbite/**/*.js"
+],
   darkMode: 'class',
   theme: {
     fontFamily:{
@@ -26,5 +28,8 @@ module.exports = {
     },
 
   },
-  plugins: [require('@tailwindcss/forms'),],
+  plugins: [
+    require('flowbite/plugin'),
+    require('@tailwindcss/forms'),
+  ],
 }
