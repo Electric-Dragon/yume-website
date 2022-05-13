@@ -38,8 +38,6 @@ let creatorType = {
 }
 
 let adSeries = [];
-let carouselSlides = [];
-let carouselButtons = [];
 
 $('#indicators-carousel').hide();
 

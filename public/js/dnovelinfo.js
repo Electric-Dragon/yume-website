@@ -106,13 +106,8 @@ $.ajax({
 
             let x = 0;
 
-            chapters.forEach(async val=> {
+            chapters.forEach(val=> {
               let {id, chapternum, title, createdat, is_published} = val;
-
-              const { data:chapterLikes, error___ } = await supabase
-              .rpc('getChapterLikes', { chapterid: id });
-
-              let likes = chapterLikes;
 
               let chapStatusText = is_published ? 'Published' : 'Draft';
               let date = new Date(createdat);
@@ -140,7 +135,7 @@ $.ajax({
                             <td class="px-4 py-3">
                               <div class="flex items-center text-sm">
                                 <div>
-                                  <p class="font-semibold text-center">${likes}</p>
+                                  <p class="font-semibold text-center" id="${id}Likes"></p>
                                 </div>
                               </div>
                             </td>
@@ -183,6 +178,20 @@ $.ajax({
 
               x++;
 
+            });
+
+            chapids.forEach( async (id) => {
+
+              const { data:chapterLikes, error } = await supabase
+              .rpc('getChapterLikes', { chapterid: id });
+
+              if (error) {
+                erroralert(error.message);
+              } else {
+                $(`#${id}Likes`).text(chapterLikes);
+              }
+
+              
             });
 
           }
@@ -247,14 +256,48 @@ swalWithBootstrapButtons.fire({
 }).then(async (result) => {
   if (result.isConfirmed) {
 
+    const {data:data_, error:error_} = await supabase
+        .rpc('delete_chapter_info', {chap_id: id})
+
+    if (error_) {
+      erroralert(error_.message);
+      return;
+    }
+
     const { data, error } = await supabase.from('chapters').delete().match({id: id});
     
     if (error) {
       erroralert(error.message);
     } else {
-      successalert(`Chapter deleted successfully.`,function(){
-        window.location = `/dashboard/series/${seriesid}`;
-      });
+
+      const { data:chapCount, error:chapCountError } = await supabase
+        .rpc('get_chap_count', { series_id: seriesid});
+
+      if (chapCountError) {
+        erroralert(chapCountError.message);
+      }
+
+      const { data:publicChapCount, error:publicChapCountError } = await supabase
+        .rpc('get_public_chap_count', { series_id: seriesid });
+
+      if (publicChapCountError) {
+        erroralert(publicChapCountError.message);
+      }
+
+      const { data:dataUpdate, error:dataUpdateError } = await supabase
+        .from('series')
+        .update({ publicchapcount: publicChapCount, chapcount: chapCount })
+        .match({ id: seriesid });
+
+      if (dataUpdateError) {
+        erroralert(error.message);
+      } else {
+
+        successalert(`Chapter deleted successfully.`,function(){
+          window.location = `/dashboard/series/${seriesid}`;
+        });
+
+      }
     }
 
   } else if (

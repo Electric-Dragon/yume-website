@@ -38,18 +38,20 @@ $.ajax({
             $('#seriesTitle').text(seriesid.title);
             $('#title').val(title);
 
-            images.forEach(image => {
-                let element = `
-                            <div class="w-full p-4 lg:w-50 lg:h-full">
-                                <div class=" bg-white border rounded shadow-sm ">
-                                    <div class="relative">
-                                        <img class="h-60 object-cover " src="${image}">
-                                    </div>                          
-                                </div>
-                            </div>`
-
-                $('#panelPreviewContainer').append(element);
-            })
+            if (images) {
+                images.forEach(image => {
+                    let element = `
+                                <div class="w-full p-4 lg:w-50 lg:h-full">
+                                    <div class=" bg-white border rounded shadow-sm ">
+                                        <div class="relative">
+                                            <img class="h-60 object-cover " src="${image}">
+                                        </div>                          
+                                    </div>
+                                </div>`
+    
+                    $('#panelPreviewContainer').append(element);
+                });
+            }
   
         }
   
