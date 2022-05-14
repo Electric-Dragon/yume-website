@@ -21,7 +21,7 @@ $.ajax({
 
         const { data, error } = await supabase
             .from('series_popularity')
-            .select('series!inner(id,title,cover,summary,genre1,genre2,creator(username))')
+            .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
             .order('popularity_score', { ascending: false })
             .limit(10)
 
@@ -37,7 +37,7 @@ $.ajax({
           if (!popular.all) {
             const { data, error } = await supabase
             .from('series_popularity')
-            .select('series!inner(id,title,cover,summary,genre1,genre2,creator(username))')
+            .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
             .order('popularity_score', { ascending: false })
             .limit(10)
 
@@ -58,7 +58,7 @@ $.ajax({
           if (!popular.novels) {
             const { data, error } = await supabase
             .from('series_popularity')
-            .select('series!inner(id,title,cover,summary,genre1,genre2,creator(username))')
+            .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
             .eq('series.novel',true)
             .order('popularity_score', { ascending: false })
             .limit(10)
@@ -80,7 +80,7 @@ $.ajax({
             if (!popular.comics) {
               const { data, error } = await supabase
               .from('series_popularity')
-              .select('series!inner(id,title,cover,summary,genre1,genre2,creator(username))')
+              .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
               .eq('series.novel',false)
               .order('popularity_score', { ascending: false })
               .limit(10)

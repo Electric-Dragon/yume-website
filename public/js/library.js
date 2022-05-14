@@ -19,7 +19,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series_follows')
-          .select('series(id,title,cover,creator(username))')
+          .select('series(id,title,cover,creator:public_profile!series_creator_fkey(username))')
           .eq('user', user.id)
         //   .limit(8)
   

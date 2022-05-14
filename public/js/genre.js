@@ -17,7 +17,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series')
-          .select('id,title,cover,creator(username)')
+          .select('id,title,cover,creator:public_profile!series_creator_fkey(username)')
           .neq('status', 'd')
           .order('updatedat', { ascending: false })
           .or(`genre1.eq.${genre},genre2.eq.${genre}`)
@@ -60,7 +60,7 @@ $.ajax({
 
         const {data:popularSeries, error:popularSeriesError} = await supabase
                 .from('series_popularity')
-                .select('series!inner(cover,title,id,creator(username))')
+                .select('series!inner(cover,title,id,creator:public_profile!series_creator_fkey(username))')
                 .order('popularity_score', { ascending: false })
                 .or(`genre1.eq.${genre},genre2.eq.${genre}`, { foreignTable: "series" })
                 .neq('series.status', 'd')

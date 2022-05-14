@@ -88,7 +88,7 @@ $.ajax({
 
         const { data, error } = await supabase
           .from('series')
-          .select('id,title,cover,creator(username)')
+          .select('id,title,cover,creator:public_profile!series_creator_fkey(username)')
           .neq('status', 'd')
           .order('updatedat', { ascending: false })
           .limit(10)
@@ -130,7 +130,7 @@ $.ajax({
 
         const { data:creators, error:creatorsError } = await supabase
             .from('series_popularity')
-            .select('series!inner(creator(username,pfp,creator_type))')
+            .select('series!inner(creator:public_profile!series_creator_fkey(username,pfp,creator_type))')
             .order('popularity_score', { ascending: false })
             .limit(5)
 

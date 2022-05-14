@@ -21,13 +21,13 @@ export function erroralert(message) {
 
 }
 
-export function successalert(message, callback = null) {
+export function successalert(message, callback = null, time = 2000) {
 
     let Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 2000,
+        timer: time,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)

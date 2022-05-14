@@ -53,7 +53,7 @@ $.ajax({
 
                   const { data:recommendedSeries, error } = await supabase
                   .from('series')
-                  .select('id,title,cover,creator(username)')
+                  .select('id,title,cover,creator:public_profile!series_creator_fkey(username)')
                   .neq('status', 'd')
                   .in('id', seriesIds)
                   .order('updatedat', { ascending: false })

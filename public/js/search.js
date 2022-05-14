@@ -23,7 +23,7 @@ $.ajax({
 
         const { data, error } = await supabase
           .from('series_popularity')
-          .select('seriesid(creator(banner))')
+          .select('seriesid(creator:public_profile!series_creator_fkey(banner))')
           .order('popularity_score', 'desc')
           .limit(1)
           .single();
@@ -84,20 +84,20 @@ $('#searchBar').on('input', async function() {
       if (filter === '') {
         ({ data, error } = await supabase
         .from('series')
-        .select('id,title,summary,cover,creator(username),genre1,genre2,status')
+        .select('id,title,summary,cover,creator:public_profile!series_creator_fkey(username),genre1,genre2,status')
         .neq('status', 'd')
         .textSearch('fts', query));
       } else if (filter === 'novel') {
         ({ data, error } = await supabase
         .from('series')
-        .select('id,title,summary,cover,creator(username),genre1,genre2,status')
+        .select('id,title,summary,cover,creator:public_profile!series_creator_fkey(username),genre1,genre2,status')
         .neq('status', 'd')
         .eq('novel', true)
         .textSearch('fts', query));
       } else {
         ({ data, error } = await supabase
         .from('series')
-        .select('id,title,summary,cover,creator(username),genre1,genre2,status')
+        .select('id,title,summary,cover,creator:public_profile!series_creator_fkey(username),genre1,genre2,status')
         .neq('status', 'd')
         .eq('novel', false)
         .textSearch('fts', query));

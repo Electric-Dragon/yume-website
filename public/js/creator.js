@@ -62,6 +62,10 @@ $.ajax({
 
             creatorId = id;
 
+            if (!user || id === user.id) {
+                $('#btnRequest').hide();
+            }
+
             $('#userPfp').attr('src', pfp)
             $('#banner').attr('src', banner)
             $('#description').text(description)
@@ -105,7 +109,7 @@ $.ajax({
                 $("#btnDonate").show();
             }
             
-            if (sample_arts) {
+            if (sample_arts.length > 0) {
 
                 $('#sampleArtsContainer').show();
 
@@ -228,7 +232,7 @@ $.ajax({
 
             const {data:workedWith, error:error_2} = await supabase
                 .from('series')
-                .select('adaptation(creator(username,pfp,creator_type))')
+                .select('adaptation(creator:public_profile!series_creator_fkey(username,pfp,creator_type))')
                 .eq('creator', id)
                 .neq('status', 'd')
 
@@ -465,6 +469,11 @@ window.sendRequest = async function sendRequest(e) {
 
     e.preventDefault();
 
+    if (creatorId === user.id) {
+        erroralert('Use the series page to create an adaptation');
+        return;
+    }
+
     $('#btnSendRequest').text('Sending...');
     $('#btnSendRequest').attr('disabled', true);
 
@@ -485,7 +494,7 @@ window.sendRequest = async function sendRequest(e) {
         const { data, error } = await supabase
         .from('adaptation_notifications')
         .insert([
-          { from: user.id, to: creatorId, target_series: selectSeriesId, status: 'p', message: msg, is_own: true }
+          { from_id: user.id, to_id: creatorId, target_series: selectSeriesId, status: 'p', message: msg, is_own: true }
         ])
 
         if (error) {

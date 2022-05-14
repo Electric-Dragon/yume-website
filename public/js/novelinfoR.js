@@ -41,7 +41,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series')
-          .select('title,cover,adaptation,novel,status,summary,creator(id,username),genre1,genre2,mature')
+          .select('title,cover,adaptation,novel,status,summary,creator:public_profile!series_creator_fkey(id,username),genre1,genre2,mature')
           .eq('id', seriesid)
           .single()
   
@@ -219,7 +219,7 @@ async function createAdaptation() {
       const { data, error } = await supabase
         .from('adaptation_notifications')
         .insert([
-          { from: user.id, to: creatorInfo.id, target_series: seriesid, status: 'p'}
+          { from_id: user.id, to_id: creatorInfo.id, target_series: seriesid, status: 'p'}
         ])
 
       if (error) {
