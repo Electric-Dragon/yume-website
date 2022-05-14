@@ -187,6 +187,28 @@ $.ajax({
 
             }
 
+            const {data:creatorTotalLikeCount, error:creatorTotalLikeCountError} = await supabase
+                .from('creator_total_likes')
+                .select('total_likes')
+                .eq('creator_id', id)
+                .single();
+            
+            if (creatorTotalLikeCountError) {
+                erroralert(creatorTotalLikeCountError.message);
+            } else {
+                $('#creatorTotalLikeCount').text(creatorTotalLikeCount.total_likes);
+            }
+
+            const { data:seriesCountForCreator, error:seriesCountForCreatorError } = await supabase
+                .rpc('get_series_count_for_user', { userid: id })
+
+
+            if (seriesCountForCreatorError) {
+                erroralert(seriesCountForCreatorError.message);
+            } else {
+                $('#creatorTotalSeriesCount').text(seriesCountForCreator);
+            }
+
             const { data:feed, error:feedError } = await supabase
             .from('feed')
             .select('created_at,message')
