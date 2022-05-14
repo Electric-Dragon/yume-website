@@ -62,7 +62,7 @@ $.ajax({
 
             creatorId = id;
 
-            if (id === user.id) {
+            if (!user || id === user.id) {
                 $('#btnRequest').hide();
             }
 
@@ -109,7 +109,7 @@ $.ajax({
                 $("#btnDonate").show();
             }
             
-            if (sample_arts) {
+            if (sample_arts.length > 0) {
 
                 $('#sampleArtsContainer').show();
 
@@ -232,7 +232,7 @@ $.ajax({
 
             const {data:workedWith, error:error_2} = await supabase
                 .from('series')
-                .select('adaptation(creator(username,pfp,creator_type))')
+                .select('adaptation(creator:public_profile!series_creator_fkey(username,pfp,creator_type))')
                 .eq('creator', id)
                 .neq('status', 'd')
 

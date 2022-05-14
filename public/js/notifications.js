@@ -59,7 +59,7 @@ $.ajax({
 
       const {data: notifications, error: error_} = await supabase
         .from('adaptation_notifications')
-        .select('id,from_id(id,username),to_id(id,username),series(id,title,novel),status,when,message,is_own')
+        .select('id,from_id:public_profile!adaptation_notifications_from_id_fkey(id,username),to_id:public_profile!adaptation_notifications_to_id_fkey(id,username),series(id,title,novel),status,when,message,is_own')
         .or(`from_id.eq.${user.id},to_id.eq.${user.id}`)
         .order('when', { ascending: false })
 

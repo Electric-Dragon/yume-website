@@ -41,7 +41,7 @@ $.ajax({
   
         const { data, error } = await supabase
           .from('series')
-          .select('title,cover,adaptation,novel,status,summary,creator(id,username),genre1,genre2,mature')
+          .select('title,cover,adaptation,novel,status,summary,creator:public_profile!series_creator_fkey(id,username),genre1,genre2,mature')
           .eq('id', seriesid)
           .single()
   
