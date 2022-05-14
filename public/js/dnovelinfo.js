@@ -237,6 +237,11 @@ async function newChap(chapcount) {
 
 window.deleteChap = async function deleteChap(id) {
 
+ if (chapids[0] !== id) {
+   erroralert('You can only delete the lastest chapter');
+   return;
+ }
+
  const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
     confirmButton: 'btn btn-success',

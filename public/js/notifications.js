@@ -59,8 +59,8 @@ $.ajax({
 
       const {data: notifications, error: error_} = await supabase
         .from('adaptation_notifications')
-        .select('id,from(id,username),to(id,username),series(id,title,novel),status,when,message,is_own')
-        .or(`from.eq.${user.id},to.eq.${user.id}`)
+        .select('id,from_id(id,username),to_id(id,username),series(id,title,novel),status,when,message,is_own')
+        .or(`from_id.eq.${user.id},to_id.eq.${user.id}`)
         .order('when', { ascending: false })
 
       if (error_) {
@@ -71,12 +71,12 @@ $.ajax({
       else {
 
         notifications.forEach(val => {
-          let {id, from, to, series, status, when, message, is_own} = val;
+          let {id, from_id, to_id, series, status, when, message, is_own} = val;
 
           let type = series.novel ? 'Web Comic' : 'Web Novel';
 
           let date = new Date(when);
-          if (to.id === user.id && status === 'p') {
+          if (to_id.id === user.id && status === 'p') {
 
             let element = `
               <div class="w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0">
@@ -90,7 +90,7 @@ $.ajax({
                     </div>
                     <div class="pl-3 w-full">
                         <div class="flex items-center justify-between w-full h-sm">
-                        <p tabindex="0" class="focus:outline-none text-sm "><a href="/creator/${from.username}"><span class="text-indigo-700">${from.username}</span></a> requested to create a ${type} adaptation of <br> <a href="/series/${series.id}"><span class="text-cyan-500 font-bold hover:underline">${series.title}</span></a></p>
+                        <p tabindex="0" class="focus:outline-none text-sm "><a href="/creator/${from_id.username}"><span class="text-indigo-700">${from_id.username}</span></a> requested to create a ${type} adaptation of <br> <a href="/series/${series.id}"><span class="text-cyan-500 font-bold hover:underline">${series.title}</span></a></p>
                         </div>
                         <br>
                         <p tabindex="0" class="focus:outline-none text-sm ">"${message}"</p>
@@ -107,7 +107,7 @@ $.ajax({
 
               $('#notificationHolder').append(element);
             
-          } else if (to.id === user.id && is_own) {
+          } else if (to_id.id === user.id && is_own) {
 
             let clickHere = (status === 'a') ? `
                                                 <div class="flex items-center justify-center mt-5 mb-3 gap-2 flex-row ">
@@ -141,7 +141,7 @@ $.ajax({
 
               $('#notificationHolder').append(element);
             
-          } else if (from.id === user.id && !is_own) {
+          } else if (from_id.id === user.id && !is_own) {
 
             // let clickHere = (status === 'a') ? `<a onclick="createAdaptation('${series.id}')"` + series.id + '"><span class="text-indigo-700"> Click Here to create the adaptation</span></a>' : '';
             let clickHere = (status === 'a') ? `

@@ -62,6 +62,10 @@ $.ajax({
 
             creatorId = id;
 
+            if (id === user.id) {
+                $('#btnRequest').hide();
+            }
+
             $('#userPfp').attr('src', pfp)
             $('#banner').attr('src', banner)
             $('#description').text(description)
@@ -465,6 +469,11 @@ window.sendRequest = async function sendRequest(e) {
 
     e.preventDefault();
 
+    if (creatorId === user.id) {
+        erroralert('Use the series page to create an adaptation');
+        return;
+    }
+
     $('#btnSendRequest').text('Sending...');
     $('#btnSendRequest').attr('disabled', true);
 
@@ -485,7 +494,7 @@ window.sendRequest = async function sendRequest(e) {
         const { data, error } = await supabase
         .from('adaptation_notifications')
         .insert([
-          { from: user.id, to: creatorId, target_series: selectSeriesId, status: 'p', message: msg, is_own: true }
+          { from_id: user.id, to_id: creatorId, target_series: selectSeriesId, status: 'p', message: msg, is_own: true }
         ])
 
         if (error) {

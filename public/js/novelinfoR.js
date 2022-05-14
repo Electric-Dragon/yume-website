@@ -219,7 +219,7 @@ async function createAdaptation() {
       const { data, error } = await supabase
         .from('adaptation_notifications')
         .insert([
-          { from: user.id, to: creatorInfo.id, target_series: seriesid, status: 'p'}
+          { from_id: user.id, to_id: creatorInfo.id, target_series: seriesid, status: 'p'}
         ])
 
       if (error) {

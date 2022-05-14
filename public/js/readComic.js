@@ -108,7 +108,7 @@ $.ajax({
 
             const {data:creatorDetails, error__} = await supabase
                 .from('public_profile')
-                .select()
+                .select('pfp,username,description')
                 .eq('id', seriesid.creator)
                 .single()
 
