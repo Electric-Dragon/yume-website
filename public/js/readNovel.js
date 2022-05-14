@@ -59,6 +59,12 @@ $.ajax({
             $('#seriesTitle').attr('href',`/series/${seriesid.id}`);
             $('#seriesTitle').text(seriesid.title);
 
+            $('document').ready(function() {
+                $('#editorjs').bind('cut copy', function(e) {
+                    e.preventDefault();
+                  });
+            });
+
             editor = new EditorJS({
                 holder:'editorjs',
                 placeholder: 'Write your next masterpiece!',

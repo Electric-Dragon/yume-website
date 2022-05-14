@@ -150,6 +150,8 @@ window.saveDetails = async function saveDetails (e) {
 
       let route = `${user.id}/profile/samples/${file.name}`;
 
+      getBase64(file).then(async (base64String) => {
+
       const { data, error } = await supabase
       .storage
       .from('users')
@@ -174,7 +176,11 @@ window.saveDetails = async function saveDetails (e) {
               publicURLS.push(publicURL);
           }
           
-      }   
+      }
+
+      }).catch(error => {
+        erroralert(error);
+      })   
   }
 
   const {data:data_, error:error_} = await supabase.from('public_profile')
@@ -395,4 +401,19 @@ window.deleteOne = function(num) {
   let index = panels.findIndex(panel => panel.name === `${num}.jpg`);
   panels.splice(index,1);
   $('#panelPreviewContainer').children().eq(index).remove();
+}
+
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+      if ((encoded.length % 4) > 0) {
+        encoded += '='.repeat(4 - (encoded.length % 4));
+      }
+      resolve(encoded);
+    };
+    reader.onerror = error => reject(error);
+  });
 }
