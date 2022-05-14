@@ -4,6 +4,7 @@ import {erroralert, successalert} from '/js/salert.js';
 $('#btnCloseNotifications').trigger('click');
 
 let supabase,user;
+let seriesIds = [];
 
 let statusText = {
   'd': `<td class="px-4 py-3 text-xs">
@@ -73,28 +74,7 @@ $.ajax({
           let {id, title, chapcount, status, updatedat, comment_count} = val;
           let date = new Date(updatedat);
 
-          const { data:seriesFollows, error:seriesFollowsError } = await supabase
-            .rpc('get_series_follows', { seriesid: id });
-
-          const { data:seriesLikes, error:seriesLikesError } = await supabase
-            .from('series_total_likes')
-            .select('count')
-            .match({ seriesid: id })
-            .maybeSingle();
-
-          let totalLikeCount = 0;
-
-          if (seriesLikes) {
-            totalLikeCount = seriesLikes.count;
-          }
-
-          if (seriesFollowsError) {
-            erroralert(seriesFollowsError.message);
-          }
-
-          if (seriesLikesError) {
-            erroralert(seriesLikesError.message);
-          }
+          seriesIds.push(id);
 
           let element = `<tr class="text-gray-700 dark:text-gray-400">
                           <td class="px-4 py-3">
@@ -121,9 +101,8 @@ $.ajax({
                           <td class="px-4 py-3">
                           <div class="flex items-center text-sm">
                             <div>
-                              <p class="font-semibold">${totalLikeCount}</p>
-                              <p class="text-xs text-gray-600 dark:text-gray-400">
-                               ${seriesFollows} followers
+                              <p class="font-semibold" id="${id}LikeCount"></p>
+                              <p class="text-xs text-gray-600 dark:text-gray-400" id="${id}Follows">
                               </p>
                             </div>
                           </div>
@@ -142,6 +121,36 @@ $.ajax({
                         </tr>`
 
           $('#tbLatestUpdates').append(element);
+
+        });
+
+        seriesIds.forEach(async id=> {
+
+          const { data:seriesFollows, error:seriesFollowsError } = await supabase
+            .rpc('get_series_follows', { seriesid: id });
+
+          const { data:seriesLikes, error:seriesLikesError } = await supabase
+            .from('series_total_likes')
+            .select('count')
+            .match({ seriesid: id })
+            .maybeSingle();
+
+          let totalLikeCount = 0;
+
+          if (seriesLikes) {
+            totalLikeCount = seriesLikes.count;
+          }
+
+          if (seriesFollowsError) {
+            erroralert(seriesFollowsError.message);
+          }
+
+          if (seriesLikesError) {
+            erroralert(seriesLikesError.message);
+          }
+
+          $(`#${id}LikeCount`).text(totalLikeCount);
+          $(`#${id}Follows`).text(`${seriesFollows} Followers`);
 
         })
 
