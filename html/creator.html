@@ -137,7 +137,29 @@
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
       </div>
     </div>
+    <script>document.getElementById('togglemebutton').onclick = function () {
+        document.getElementById("resultnav").classList.toggle("hidden");
+      }
+
+      //document.getElementById('togglemebutton').onclick = function () {
+      //  document.getElementById("toggleme").classList.toggle("hidden");
+      //}
+
+
+      const toggleprofile = document.getElementById("toggleprofile");
+      const resultprofile = document.getElementById("resultprofile");
+      [...document.querySelectorAll('body')].forEach(el => {
+        el.addEventListener('click', event => {
+          if (event.target.parentElement.id !== "toggleprofile") {
+            console.log(event.target.parentElement.id)
+            resultprofile.classList.add("hidden")
+          } else {
+            resultprofile.classList.toggle("hidden")
+          }
+        })
+      })</script>
   </nav>
+
 
   <section>
     <main class="h-full w-full overflow-y-auto">
@@ -165,8 +187,15 @@
                       <div class="absolute"></div>
                     </div>
                     <div class="flex flex-col space-y-5 justify-center items-center -mt-12 w-full">
-                      <span class="text-md whitespace-nowrap text-black dark:text-gray-100 font-semibold"
-                        id="username"></span>
+                      <div class="flex justify-end items-center mx-auto pl-14">
+                       <span class="text-md text-center whitespace-nowrap text-black dark:text-gray-100 font-semibold"
+                        id="username">
+                      </span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="5" height="20" fill="currentColor" class="text-cyan-400" viewBox="0 0 16 16">
+                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                      </svg>
+                      </div>
+
                       <!-- <span class="text-md whitespace-nowrap text-cyan-500">Elite(this is a rank system will explain  later)</span> -->
                       <p class="text-sm text-gray-700 dark:text-gray-100" id="description">
                       </p>
@@ -371,19 +400,19 @@
                           <span>Youtube</span>
                         </a>
                       </div>
-                      <!-- <div class="flex justify-center items-center w-full divide-x divide-gray-400 divide-solid">
+                      <div class="flex justify-center items-center w-full divide-x divide-gray-400 divide-solid">
                         <span class="text-center px-2">
-                          <span class="font-bold text-gray-900 dark:text-gray-200">56</span>
-                          <span class="text-gray-800 dark:text-gray-300"> followers</span>
+                          <span class="font-bold text-gray-900 dark:text-gray-200">90</span>
+                          <span class="text-gray-800 dark:text-gray-300"> Likes</span>
                         </span>
                         <span class="text-center px-2">
                           <span class="font-bold text-gray-900 dark:text-gray-200">30</span>
-                          <span class="text-gray-800 dark:text-gray-300">Adaptations</span>
-                        </span><span class="text-center px-2">
+                          <span class="text-gray-800 dark:text-gray-300">Works</span>
+                        <!-- </span><span class="text-center px-2">
                           <span class="font-bold text-gray-900 dark:text-gray-200">2000</span>
                           <span class="text-gray-800 dark:text-gray-300"> Likes</span>
-                        </span>
-                      </div> -->
+                        </span> -->
+                      </div>
                     </div>
                   </div>
                 </div>
