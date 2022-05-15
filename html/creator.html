@@ -137,27 +137,6 @@
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Popular</a>
       </div>
     </div>
-    <script>document.getElementById('togglemebutton').onclick = function () {
-        document.getElementById("resultnav").classList.toggle("hidden");
-      }
-
-      //document.getElementById('togglemebutton').onclick = function () {
-      //  document.getElementById("toggleme").classList.toggle("hidden");
-      //}
-
-
-      const toggleprofile = document.getElementById("toggleprofile");
-      const resultprofile = document.getElementById("resultprofile");
-      [...document.querySelectorAll('body')].forEach(el => {
-        el.addEventListener('click', event => {
-          if (event.target.parentElement.id !== "toggleprofile") {
-            console.log(event.target.parentElement.id)
-            resultprofile.classList.add("hidden")
-          } else {
-            resultprofile.classList.toggle("hidden")
-          }
-        })
-      })</script>
   </nav>
 
 
@@ -370,7 +349,7 @@
                           class="bg-transparent w-full hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-600 hover:border-transparent rounded">
                           Donate
                         </button>
-                        <button id=""
+                        <button id="btnFollowCreator"
                         class="bg-transparent w-full hover:bg-green-500 dark:text-green-500 dark:border-green-400 hover:dark:text-white text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-600 hover:border-transparent rounded">
                         Follow
                       </button>

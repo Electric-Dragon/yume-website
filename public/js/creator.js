@@ -11,6 +11,8 @@ $('#btnDonate').hide();
 
 let supabase,user,creatorId,selectSeriesId;
 
+let following = false;
+
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let usernames = [];
@@ -207,6 +209,30 @@ $.ajax({
                 erroralert(seriesCountForCreatorError.message);
             } else {
                 $('#creatorTotalSeriesCount').text(seriesCountForCreator);
+            }
+
+            const {data: followingCreator, error:followingError} = await supabase
+                .from('creator_follows')
+                .select('id')
+                .eq('follower', user.id)
+                .eq('following', id)
+                .maybeSingle();
+            
+            if (followingError) {
+                erroralert(followingError.message);
+            } else {
+
+                $('#btnFollowCreator').on('click',function() {
+                    toggleFollow(id)
+                })
+
+                if (followingCreator) {
+                    following = true;
+                    $('#btnFollowCreator').text('Unfollow');
+                } else {
+                    following = false;
+                    $('#btnFollowCreator').text('Follow');
+                }
             }
 
             const { data:feed, error:feedError } = await supabase
@@ -530,4 +556,57 @@ window.sendRequest = async function sendRequest(e) {
 
     }
 
+}
+
+async function toggleFollow(id) {
+
+    if (user.id === id) {
+        erroralert('You cannot follow yourself');
+        return;
+    }
+
+    $('#btnFollow').attr('disabled', true);
+
+    if (following) {
+
+        $('#btnFollow').text('Unfollowing...');
+
+        const {data, error} = await supabase
+            .from('creator_follows')
+            .delete()
+            .match({follower: user.id, following: id})
+
+        if (error) {
+            erroralert(error.message);
+            $('#btnFollow').attr('disabled', false);
+            $('#btnFollow').text('Unfollow');
+            return;
+        }
+
+        $('#btnFollow').text('Follow');
+        $('#btnFollow').attr('disabled', false);
+        following = false;
+
+ 
+    } else {
+
+        $('#btnFollow').text('Following...');
+
+        const {data, error} = await supabase
+            .from('creator_follows')
+            .insert([{follower: user.id, following: id}])
+
+        if (error) {
+            erroralert(error.message);
+            $('#btnFollow').attr('disabled', false);
+            $('#btnFollow').text('Follow');
+            return;
+        }
+
+        $('#btnFollow').text('Unfollow');
+        $('#btnFollow').attr('disabled', false);
+        following = true;
+
+    }
+    
 }
