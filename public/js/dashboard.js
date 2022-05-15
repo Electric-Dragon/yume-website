@@ -58,6 +58,18 @@ $.ajax({
         window.location = "/signin";
       }
 
+      const {data:creatorRank, error:creatorRankError} = await supabase
+        .from('creator_ranks')
+        .select('creator_rank')
+        .eq('creator_id', user.id)
+        .single();
+
+      if (creatorRankError) {
+        console.log(creatorRankError);
+      } else {
+        $('#creatorRank').text(creatorRank.creator_rank);
+      }
+
       const {data:creatorTotalLikeCount, error:creatorTotalLikeCountError} = await supabase
           .from('creator_total_likes')
           .select('total_likes')

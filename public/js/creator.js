@@ -8,6 +8,7 @@ $('#username').text(creatorUsername)
 
 $('#sampleArtsContainer').hide();
 $('#btnDonate').hide();
+$('#verifiedSVGPath').hide();
 
 let supabase,user,creatorId,selectSeriesId;
 
@@ -109,6 +110,7 @@ $.ajax({
             if (verified) {
                 $('#verified').show();
                 $("#btnDonate").show();
+                $('#verifiedSVGPath').show();
             }
             
             if (sample_arts.length > 0) {
@@ -225,6 +227,8 @@ $.ajax({
                 $('#btnFollowCreator').on('click',function() {
                     toggleFollow(id)
                 })
+
+                console.log(followingCreator);
 
                 if (followingCreator) {
                     following = true;
@@ -569,7 +573,7 @@ async function toggleFollow(id) {
 
     if (following) {
 
-        $('#btnFollow').text('Unfollowing...');
+        $('#btnFollow').html('Unfollowing...');
 
         const {data, error} = await supabase
             .from('creator_follows')
@@ -579,13 +583,11 @@ async function toggleFollow(id) {
         if (error) {
             erroralert(error.message);
             $('#btnFollow').attr('disabled', false);
-            $('#btnFollow').text('Unfollow');
+            $('#btnFollow').html('Unfollow');
             return;
         }
 
-        $('#btnFollow').text('Follow');
-        $('#btnFollow').attr('disabled', false);
-        following = false;
+        window.location.reload();
 
  
     } else {
@@ -599,13 +601,11 @@ async function toggleFollow(id) {
         if (error) {
             erroralert(error.message);
             $('#btnFollow').attr('disabled', false);
-            $('#btnFollow').text('Follow');
+            $('#btnFollow').html('Follow');
             return;
         }
 
-        $('#btnFollow').text('Unfollow');
-        $('#btnFollow').attr('disabled', false);
-        following = true;
+        window.location.reload();
 
     }
     
