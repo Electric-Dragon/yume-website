@@ -4934,6 +4934,11 @@ svg #main-circ {
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
 }
 
+.dark .dark\:border-green-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(49 196 141 / var(--tw-border-opacity));
+}
+
 .dark .dark\:bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -5091,6 +5096,11 @@ svg #main-circ {
   color: rgb(253 232 232 / var(--tw-text-opacity));
 }
 
+.dark .dark\:text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(14 159 110 / var(--tw-text-opacity));
+}
+
 .dark .dark\:text-green-100 {
   --tw-text-opacity: 1;
   color: rgb(222 247 236 / var(--tw-text-opacity));
@@ -5215,6 +5225,11 @@ svg #main-circ {
 .dark .dark\:hover\:text-gray-300:hover {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.dark .hover\:dark\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .dark .dark\:focus\:border-blue-500:focus {
