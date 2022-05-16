@@ -119,6 +119,22 @@ $.ajax({
 
 }});
 
+document.getElementById('togglemebutton').onclick = function () {
+  document.getElementById("resultnav").classList.toggle("hidden");
+}
+
+const toggleprofile = document.getElementById("toggleprofile");
+const resultprofile = document.getElementById("resultprofile");
+[...document.querySelectorAll('body')].forEach(el => {
+  el.addEventListener('click', event => {
+    if (event.target.parentElement.id !== "toggleprofile") {
+      resultprofile.classList.add("hidden")
+    } else {
+      resultprofile.classList.toggle("hidden")
+    }
+  })
+})
+
 window.data = function data() {
     function getThemeFromLocalStorage() {
       // if user already changed the theme, use it
