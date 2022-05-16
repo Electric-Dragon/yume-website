@@ -1,9 +1,11 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {decode} from "https://cdn.jsdelivr.net/npm/base64-arraybuffer/+esm"
 import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, publicData, user, instagramAcc, redditAcc, youtubeAcc;
 let size = 0;
-let panels, publicURLS = [];
+let panels = [];
+let sampleArtRoutes = [];
 
 $('#instaConnected').hide();
 $('#redditConnected').hide();
@@ -89,18 +91,43 @@ $.ajax({
 
         $('#description').val(description);
 
-        sample_arts.forEach(image => {
+        sample_arts.forEach((image,index) => {
+
+          sampleArtRoutes.push(image);
+          
           let element = `
                       <div class="w-full p-4 lg:w-50 lg:h-full">
                           <div class=" bg-white border rounded shadow-sm ">
                               <div class="relative">
-                                  <img class="h-60 object-scale-down w-98 object-center " src="${image}">
+                                  <img class="h-60 object-scale-down w-98 object-center" id="sampleArt${index}" src="">
                               </div>                          
                           </div>
                       </div>`
 
           $('#panelPreviewContainer').append(element);
-      })
+      });
+
+      sampleArtRoutes.forEach(async (image,index) => {
+
+        const { data, error } = await supabase
+          .storage
+          .from('users')
+          .download(sampleArtRoutes[index]);
+
+        if (error) {
+          erroralert(error.message);
+        } else {
+
+          var reader = new FileReader();
+          reader.readAsDataURL(data); 
+          reader.onloadend = function() {
+            var base64data = reader.result;    
+            $(`#sampleArt${index}`).attr('src',base64data);
+          }
+          
+        }
+
+      });
 
      }
 
@@ -118,6 +145,8 @@ window.saveDetails = async function saveDetails (e) {
 
       if (publicData.description != descriptionNew) {
 
+        $('#btnSaveText').text('Saving...');
+
         const { data, error } = await supabase
           .from('public_profile')
           .update({ description: descriptionNew })
@@ -125,8 +154,10 @@ window.saveDetails = async function saveDetails (e) {
 
         if (error) {
           erroralert(error.message);
+          $('#btnSaveText').text('Save');
         } else {
           successalert("Description updated!");
+          $('#btnSaveText').text('Save');
         }
 
       }
@@ -142,58 +173,65 @@ window.saveDetails = async function saveDetails (e) {
       return;
   }
 
+  $('#btnSaveText').text('Saving...');
   $('#btnSaveDetails').prop('disabled', true);
 
-  panels = panels.slice(0,6)
+  panels = panels.slice(0,6);
+
+  const { data, error } = await supabase
+  .storage
+  .from('users')
+  .remove(sampleArtRoutes)
+
+  if (error) {
+    erroralert(error.message);
+    $('#btnSaveText').text('Save');
+    $('#btnSaveDetails').prop('disabled', false);
+    return;
+  }
+
+  sampleArtRoutes = [];
 
   for (const file of panels) {
 
       let route = `${user.id}/profile/samples/${file.name}`;
 
-      getBase64(file).then(async (base64String) => {
+      let base64String = await getBase64(file)
 
       const { data, error } = await supabase
       .storage
       .from('users')
-      .upload(route, file, {
+      .upload(route, decode(base64String), {
           cacheControl: '3600',
-          upsert: true
+          upsert: true,
+          contentType: 'image/jpg'
       });
 
       if (error) {
           erroralert(error.message);
           $('#btnSaveDetails').prop('disabled', false);
+          $('#btnSaveText').text('Save');
       } else {
-          const { publicURL, error:error_ } = supabase
-              .storage
-              .from('users')
-              .getPublicUrl(route);
-          
-          if (error_) {
-              erroralert(error_.message);
-              $('#btnSaveDetails').prop('disabled', false);
-          } else {
-              publicURLS.push(publicURL);
-          }
+
+        sampleArtRoutes.push(route);
           
       }
 
-      }).catch(error => {
-        erroralert(error);
-      })   
   }
 
   const {data:data_, error:error_} = await supabase.from('public_profile')
-          .update({ sample_arts: publicURLS })
-          .match({ id: user.id });
+  .update({ sample_arts: sampleArtRoutes })
+  .match({ id: user.id });
 
   if (error_) {
-      erroralert(error.message);
-      $('#btnSaveDetails').prop('disabled', false);
+    erroralert(error.message);
+    $('#btnSaveDetails').prop('disabled', false);
+    $('#btnSaveText').text('Save');
   } else {
-      successalert(`Changes made successfully`, function() {
-          window.location = "/dashboard/creator"
-      });
+    $('#btnSaveText').text('Save');
+    successalert(`Changes made successfully`, function() {
+      window.location = "/dashboard/creator"
+    });
   }
 
 }

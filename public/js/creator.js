@@ -117,9 +117,27 @@ $.ajax({
 
                 $('#sampleArtsContainer').show();
 
-                sample_arts.forEach((art,i) => {
-                    $(`#artSample${i}`).show();
-                    $(`#artSample${i}`).attr('src', art);
+                sample_arts.forEach(async (art,i) => {
+
+                    const { data, error } = await supabase
+                        .storage
+                        .from('users')
+                        .download(art);
+            
+                    if (error) {
+                        erroralert(error.message);
+                    } else {
+            
+                        var reader = new FileReader();
+                        reader.readAsDataURL(data); 
+                        reader.onloadend = function() {
+                            var base64data = reader.result;    
+                            $(`#artSample${i}`).show();
+                            $(`#artSample${i}`).attr('src', base64data);
+                        }
+                        
+                    }
+
                 });
 
             }
@@ -213,30 +231,32 @@ $.ajax({
                 $('#creatorTotalSeriesCount').text(seriesCountForCreator);
             }
 
-            const {data: followingCreator, error:followingError} = await supabase
+            if (user) {
+                const {data: followingCreator, error:followingError} = await supabase
                 .from('creator_follows')
                 .select('id')
                 .eq('follower', user.id)
                 .eq('following', id)
                 .maybeSingle();
             
-            if (followingError) {
-                erroralert(followingError.message);
-            } else {
-
-                $('#btnFollowCreator').on('click',function() {
-                    toggleFollow(id)
-                })
-
-                console.log(followingCreator);
-
-                if (followingCreator) {
-                    following = true;
-                    $('#btnFollowCreator').text('Unfollow');
+                if (followingError) {
+                    erroralert(followingError.message);
                 } else {
-                    following = false;
-                    $('#btnFollowCreator').text('Follow');
+
+                    $('#btnFollowCreator').on('click',function() {
+                        toggleFollow(id)
+                    })
+
+                    if (followingCreator) {
+                        following = true;
+                        $('#btnFollowCreator').text('Unfollow');
+                    } else {
+                        following = false;
+                        $('#btnFollowCreator').text('Follow');
+                    }
                 }
+            } else {
+                $('#btnFollowCreator').hide();
             }
 
             const { data:feed, error:feedError } = await supabase
@@ -563,6 +583,11 @@ window.sendRequest = async function sendRequest(e) {
 }
 
 async function toggleFollow(id) {
+
+    if (!user) {
+        erroralert('Please login to follow');
+        return;
+    }
 
     if (user.id === id) {
         erroralert('You cannot follow yourself');

@@ -535,7 +535,7 @@
 
                         <button onclick="saveDetails(event)" role="button" id="btnSaveDetails"
                           class="flex items-center mb-5 justify-center py-4 px-7 focus:outline-none bg-white border rounded border-gray-400 md:mt-2 hover:bg-gray-100  focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
-                          <span class="text-sm font-medium text-center text-gray-800 capitalize">Save</span>
+                          <span id="btnSaveText" class="text-sm font-medium text-center text-gray-800 capitalize">Save</span>
                           <img class="mt-1 ml-3"
                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/form_layout-svg2.svg" alt="arrow">
                         </button>
@@ -744,26 +744,27 @@
         </div>
     </div>
 </div>
-<script>let notification = document.getElementById("notification");
-let checdiv = document.getElementById("chec-div");
-let flag3 = false;
-const notificationHandler = () => {
-if (!flag3) {
-notification.classList.add("translate-x-full");
-notification.classList.remove("translate-x-0");
-setTimeout(function () {
-checdiv.classList.add("hidden");
-}, 50);
-flag3 = true;
-} else {
-setTimeout(function () {
-notification.classList.remove("translate-x-full");
-notification.classList.add("translate-x-0");
-}, 200);
-checdiv.classList.remove("hidden");
-flag3 = false;
-}
-};
+<script>
+  let notification = document.getElementById("notification");
+  let checdiv = document.getElementById("chec-div");
+  let flag3 = false;
+  const notificationHandler = () => {
+    if (!flag3) {
+    notification.classList.add("translate-x-full");
+    notification.classList.remove("translate-x-0");
+    setTimeout(function () {
+      checdiv.classList.add("hidden");
+    }, 50);
+    flag3 = true;
+    } else {
+    setTimeout(function () {
+      notification.classList.remove("translate-x-full");
+      notification.classList.add("translate-x-0");
+    }, 200);
+    checdiv.classList.remove("hidden");
+    flag3 = false;
+    }
+  };
 </script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
   <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"

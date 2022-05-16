@@ -566,6 +566,24 @@
 
     </div>
 
+    <script defer>
+        document.getElementById('togglemebutton').onclick = function () {
+          document.getElementById("resultnav").classList.toggle("hidden");
+        }
+        
+        const toggleprofile = document.getElementById("toggleprofile");
+        const resultprofile = document.getElementById("resultprofile");
+        [...document.querySelectorAll('body')].forEach(el => {
+          el.addEventListener('click', event => {
+            if (event.target.parentElement.id !== "toggleprofile") {
+              resultprofile.classList.add("hidden")
+            } else {
+              resultprofile.classList.toggle("hidden")
+            }
+          })
+        })
+    </script>
+
     <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
