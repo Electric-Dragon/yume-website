@@ -125,7 +125,7 @@ module.exports.followSeries = async function followSeries({id, access_token, fol
                 const { data, error } = await supabase
                     .from('series_follows')
                     .insert([
-                        { series: id, user: user.id }
+                        { target_series: id, user: user.id }
                     ])
                 if (error) {
                     return {error: error.message}

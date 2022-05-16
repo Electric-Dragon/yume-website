@@ -25,6 +25,7 @@ $.ajax({
   
         if (error) {
           erroralert(error.message);
+          console.log(error);
         } else {
   
           data.forEach(val=> {

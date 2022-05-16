@@ -151,16 +151,18 @@ window.saveChanges = async function saveChanges(publish) {
     $('#btnSaveDraft').prop('disabled', true);
     $('#btnPublish').prop('disabled', true);
 
-    const { data, error } = await supabase
-        .storage
-        .from('users')
-        .remove(panelRoutes);
+    if (panelRoutes.length > 0) {
+        const { data, error } = await supabase
+            .storage
+            .from('users')
+            .remove(panelRoutes);
 
-    if (error) {
-        erroralert(error.message);
-        $('#btnSaveDraft').prop('disabled', false);
-        $('#btnPublish').prop('disabled', false);
-        return;
+        if (error) {
+            erroralert(error.message);
+            $('#btnSaveDraft').prop('disabled', false);
+            $('#btnPublish').prop('disabled', false);
+            return;
+        }
     }
 
     for (const file of panels) {

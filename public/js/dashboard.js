@@ -27,9 +27,6 @@ let statusText = {
   </td>`
 }
 
-
-
-
 let adaptationText = {
   'a': 'has been <span class="text-green-700 uppercase font-bold">accepted</span>',
   'r': 'has been <span class="text-red-500 uppercase font-bold">rejected</span>',
@@ -62,11 +59,11 @@ $.ajax({
         .from('creator_ranks')
         .select('creator_rank')
         .eq('creator_id', user.id)
-        .single();
+        .maybeSingle();
 
       if (creatorRankError) {
         console.log(creatorRankError);
-      } else {
+      } else if (creatorRank) {
         $('#creatorRank').text(creatorRank.creator_rank);
       }
 
@@ -74,11 +71,11 @@ $.ajax({
           .from('creator_total_likes')
           .select('total_likes')
           .eq('creator_id', user.id)
-          .single();
+          .maybeSingle();
       
       if (creatorTotalLikeCountError) {
           erroralert(creatorTotalLikeCountError.message);
-      } else {
+      } else if (creatorTotalLikeCount) {
           $('#creatorTotalLikeCount').text(creatorTotalLikeCount.total_likes);
       }
 
