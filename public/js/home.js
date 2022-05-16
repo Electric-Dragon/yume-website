@@ -97,8 +97,9 @@ $.ajax({
           .from('series')
           .select('id,title,cover,creator:public_profile!series_creator_fkey(username)')
           .neq('status', 'd')
+          .neq('publicchapcount', 0)
           .order('updatedat', { ascending: false })
-          .limit(10)
+          .limit(12)
   
         if (error) {
           erroralert(error.message);
