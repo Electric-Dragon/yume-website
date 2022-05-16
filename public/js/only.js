@@ -1,5 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-import {decode} from "https://cdn.jsdelivr.net/npm/base64-arraybuffer/+esm"
+import {decode} from "https://cdn.jsdelivr.net/npm/base64-arraybuffer/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, publicData, user, instagramAcc, redditAcc, youtubeAcc;

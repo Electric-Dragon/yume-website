@@ -11,6 +11,8 @@ let chapterid = arr[arr.length - 1];
 let seriesid = arr[arr.length - 2];
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+let panelRoutes = [];
+
 $('#commentSection').hide()
 
 $.ajax({
@@ -59,9 +61,34 @@ $.ajax({
             $('#seriesTitle').text(seriesid.title);
             $('#seriesTitle').attr('href',`/series/${seriesid.id}`);
 
-            images.forEach(panelLink => {
-                let element = `<img src="${panelLink}" class="w-comic mx-auto">`
+            images.forEach((panelLink,index) => {
+
+                panelRoutes.push(panelLink);
+
+                let element = `<img src="" id="chapPanel${index}" class="w-comic mx-auto">`
                 $('#panelContainer').append(element);
+            });
+
+            panelRoutes.forEach(async(image,index) => {
+
+                const { data, error } = await supabase
+                .storage
+                .from('users')
+                .download(image);
+      
+                if (error) {
+                    erroralert(error.message);
+                } else {
+        
+                    var reader = new FileReader();
+                    reader.readAsDataURL(data); 
+                    reader.onloadend = function() {
+                        var base64data = reader.result;    
+                        $(`#chapPanel${index}`).attr('src',base64data);
+                    }
+                    
+                }
+
             });
 
             let saveInfo = {

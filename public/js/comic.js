@@ -1,9 +1,11 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import {decode} from "https://cdn.jsdelivr.net/npm/base64-arraybuffer/+esm";
 import {erroralert, successalert} from '/js/salert.js';
 
 let supabase, user;
 let size = 0;
-let panels, publicURLS = [];
+let panels = []
+let panelRoutes = [];
 
 let arr = window.location.pathname.split( '/' )
 let chapterid = arr[arr.length - 2];
@@ -39,18 +41,44 @@ $.ajax({
             $('#title').val(title);
 
             if (images) {
-                images.forEach(image => {
+                images.forEach((image, index) => {
+
+                    panelRoutes.push(image)
+
                     let element = `
                                 <div class="w-full p-4 lg:w-50 lg:h-full">
                                     <div class=" bg-white border rounded shadow-sm ">
                                         <div class="relative">
-                                            <img class="h-60 object-cover " src="${image}">
+                                            <img class="h-60 object-cover" src="" id="chapPanel${index}">
                                         </div>                          
                                     </div>
                                 </div>`
     
                     $('#panelPreviewContainer').append(element);
                 });
+
+                panelRoutes.forEach(async(image, index) => {
+
+                    const { data, error } = await supabase
+                    .storage
+                    .from('users')
+                    .download(image);
+          
+                    if (error) {
+                        erroralert(error.message);
+                    } else {
+            
+                        var reader = new FileReader();
+                        reader.readAsDataURL(data); 
+                        reader.onloadend = function() {
+                            var base64data = reader.result;    
+                            $(`#chapPanel${index}`).attr('src',base64data);
+                        }
+                        
+                    }
+
+                });
+
             }
   
         }
@@ -123,16 +151,31 @@ window.saveChanges = async function saveChanges(publish) {
     $('#btnSaveDraft').prop('disabled', true);
     $('#btnPublish').prop('disabled', true);
 
+    const { data, error } = await supabase
+        .storage
+        .from('users')
+        .remove(panelRoutes);
+
+    if (error) {
+        erroralert(error.message);
+        $('#btnSaveDraft').prop('disabled', false);
+        $('#btnPublish').prop('disabled', false);
+        return;
+    }
+
     for (const file of panels) {
 
         let route = `${user.id}/series/${seriesid}/chapters/${chapterid}/${file.name}`;
 
+        let base64String = await getBase64(file)
+
         const { data, error } = await supabase
         .storage
         .from('users')
-        .upload(route, file, {
+        .upload(route, decode(base64String), {
             cacheControl: '3600',
-            upsert: true
+            upsert: true,
+            contentType: 'image/jpg',
         });
 
         if (error) {
@@ -140,24 +183,27 @@ window.saveChanges = async function saveChanges(publish) {
             $('#btnSaveDraft').prop('disabled', false);
             $('#btnPublish').prop('disabled', false);
         } else {
-            const { publicURL, error:error_ } = supabase
-                .storage
-                .from('users')
-                .getPublicUrl(route);
+
+            panelRoutes.push(route);
+
+            // const { publicURL, error:error_ } = supabase
+            //     .storage
+            //     .from('users')
+            //     .getPublicUrl(route);
             
-            if (error_) {
-                erroralert(error_.message);
-                $('#btnSaveDraft').prop('disabled', false);
-                $('#btnPublish').prop('disabled', false);
-            } else {
-                publicURLS.push(publicURL);
-            }
+            // if (error_) {
+            //     erroralert(error_.message);
+            //     $('#btnSaveDraft').prop('disabled', false);
+            //     $('#btnPublish').prop('disabled', false);
+            // } else {
+            //     panelRoutes.push(publicURL);
+            // }
             
         }   
     }
 
     const {data:data_, error:error_} = await supabase.from('chapters')
-            .update({ title: title, images: publicURLS, is_published: publish })
+            .update({ title: title, images: panelRoutes, is_published: publish })
             .match({ id: chapterid });
 
     if (error_) {
@@ -186,3 +232,18 @@ window.deleteOne = function(num) {
     panels.splice(index,1);
     $('#panelPreviewContainer').children().eq(index).remove();
 }
+
+function getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+        if ((encoded.length % 4) > 0) {
+          encoded += '='.repeat(4 - (encoded.length % 4));
+        }
+        resolve(encoded);
+      };
+      reader.onerror = error => reject(error);
+    });
+  }
