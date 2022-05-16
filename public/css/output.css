@@ -4920,6 +4920,11 @@ svg #main-circ {
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
+.dark .dark\:border-green-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(49 196 141 / var(--tw-border-opacity));
+}
+
 .dark .dark\:border-gray-800 {
   --tw-border-opacity: 1;
   border-color: rgb(31 41 55 / var(--tw-border-opacity));
@@ -4932,11 +4937,6 @@ svg #main-circ {
 .dark .dark\:border-blue-500 {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
-}
-
-.dark .dark\:border-green-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(49 196 141 / var(--tw-border-opacity));
 }
 
 .dark .dark\:bg-black {
@@ -5212,6 +5212,11 @@ svg #main-circ {
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
+.dark .hover\:dark\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .dark .dark\:hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -5225,11 +5230,6 @@ svg #main-circ {
 .dark .dark\:hover\:text-gray-300:hover {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
-}
-
-.dark .hover\:dark\:text-white:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .dark .dark\:focus\:border-blue-500:focus {
