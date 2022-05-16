@@ -85,11 +85,19 @@ $.ajax({
       const { data:seriesCountForCreator, error:seriesCountForCreatorError } = await supabase
           .rpc('get_series_count_for_user', { userid: user.id })
 
-
       if (seriesCountForCreatorError) {
           erroralert(seriesCountForCreatorError.message);
       } else {
           $('#creatorTotalSeriesCount').text(seriesCountForCreator);
+      }
+
+      const { data:creatorTotalReadCount, error:creatorTotalReadCountError } = await supabase
+          .rpc('get_creator_total_reads', { creator_id: user.id })
+
+      if (creatorTotalReadCountError) {
+        erroralert(creatorTotalReadCountError.message);
+      } else {
+        $('#creatorTotalReadCount').text(creatorTotalReadCount);
       }
 
       const { data, error } = await supabase
