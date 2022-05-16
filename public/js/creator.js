@@ -117,6 +117,10 @@ $.ajax({
 
                 $('#sampleArtsContainer').show();
 
+                $('#sampleArtsContainer').on('contextmenu', function(e) {
+                    e.preventDefault();
+                });
+
                 sample_arts.forEach(async (art,i) => {
 
                     const { data, error } = await supabase
