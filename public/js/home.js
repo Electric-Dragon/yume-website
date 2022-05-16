@@ -1,6 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import {erroralert, successalert} from '/js/salert.js';
-import "https://unpkg.com/flowbite@1.4.5/dist/flowbite.js";
 
 let saveInfo = JSON.parse(localStorage.getItem('saveInfo'));
 
@@ -82,7 +81,15 @@ $.ajax({
             $(`#adBtn${index}`).show();
             $(`#ad${index}`).prop('src', bannerURL);
 
+            let dataAttr = (index === 0) ? 'data-carousel-item="active"' : 'data-carousel-item';
+
+            $(`#adContainer${index}`).attr(dataAttr);
+
           });
+
+          for (let i = ads.length; i < 5; i++ ) {
+            $(`#adContainer${i}`).removeAttr('data-carousel-item');
+          }
 
         }
 
