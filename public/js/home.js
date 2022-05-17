@@ -152,7 +152,7 @@ $.ajax({
 
           creators.forEach((creator)=> {
 
-            let {series:{creator:{username,pfp,creator_type}}} = creator;
+            let {public_profile:{username,pfp,creator_type}} = creator;
 
             if (!uniqueCreators.includes(username)) {
               uniqueCreators.push(username);
