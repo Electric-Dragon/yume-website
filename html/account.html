@@ -448,36 +448,36 @@
                     </div>
                     <div class="mt-8 md:flex items-center">
                       <div class="flex flex-col">
-                        <label class="mb-3 text-sm leading-none text-gray-800">First name</label>
+                        <label class="mb-3 text-sm leading-none text-gray-800 dark:text-gray-100">First name</label>
                         <input id="fName" type="name" tabindex="0" aria-label="Enter first name"
                           class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" />
                       </div>
                       <div class="flex flex-col md:ml-12 md:mt-0 mt-8">
-                        <label class="mb-3 text-sm leading-none text-gray-800">Last name</label>
+                        <label class="mb-3 text-sm leading-none text-gray-800 dark:text-gray-100">Last name</label>
                         <input id="lName" type="name" tabindex="0" aria-label="Enter last name"
                           class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" />
                       </div>
                     </div>
                     <div class="mt-12 md:flex items-center">
                       <div class="flex flex-col ">
-                        <label class="mb-3 text-sm leading-none text-gray-800">Email Address</label>
+                        <label class="mb-3 text-sm leading-none text-gray-800 dark:text-gray-100">Email Address</label>
                         <input readonly id="email" type="email" tabindex="0" aria-label="Enter email Address"
                           class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" />
                       </div>
                       <div class="flex flex-col md:ml-12 md:mt-0 mt-8">
-                        <label class="mb-3 text-sm leading-none text-gray-800">Username</label>
+                        <label class="mb-3 text-sm leading-none text-gray-800 dark:text-gray-100">Username</label>
                         <input readonly id="username" type="name" tabindex="0" aria-label="Enter last name"
                           class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" />
                       </div>
                     </div>
                     <div class="mt-12 md:flex items-center">
                       <div class="flex flex-col">
-                        <label class="mb-3 text-sm leading-none text-gray-800">Date of birth</label>
+                        <label class="mb-3 text-sm leading-none text-gray-800 dark:text-gray-100">Date of birth</label>
                         <input id="dob" type="date" tabindex="0" aria-label="Enter date of birth"
                           class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" />
                       </div>
                       <div class="flex flex-col md:ml-12 md:mt-0 mt-8">
-                        <label class="mb-3 text-sm leading-none text-gray-800">Phone number</label>
+                        <label class="mb-3 text-sm leading-none text-gray-800 dark:text-gray-100">Phone number</label>
                         <input id="pNumber" type="number" tabindex="0" aria-label="Enter phone number"
                           class="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200" />
                       </div>
@@ -612,6 +612,23 @@
       </main>
     </div>
   </div>
+  <script defer>
+    document.getElementById('togglemebutton').onclick = function () {
+      document.getElementById("resultnav").classList.toggle("hidden");
+    }
+    
+    const toggleprofile = document.getElementById("toggleprofile");
+    const resultprofile = document.getElementById("resultprofile");
+    [...document.querySelectorAll('body')].forEach(el => {
+      el.addEventListener('click', event => {
+        if (event.target.parentElement.id !== "toggleprofile") {
+          resultprofile.classList.add("hidden")
+        } else {
+          resultprofile.classList.toggle("hidden")
+        }
+      })
+    })
+</script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
   <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

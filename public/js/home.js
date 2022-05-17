@@ -136,66 +136,67 @@ $.ajax({
   
         }
 
-        // const { data:creators, error:creatorsError } = await supabase
-        //     .from('creator_ranks')
-        //     .select('public_profile!inner(username,pfp,creator_type)')
-        //     .order('creator_rank', { ascending: false })
-        //     .limit(5)
+        const { data:creators, error:creatorsError } = await supabase
+            .from('creator_ranks')
+            .select('public_profile!inner(username,pfp,creator_type)')
+            .order('creator_rank', { ascending: false })
+            .limit(5)
 
-        // if (creatorsError) {
-        //     erroralert(creatorsError.message);
-        //     console.log(creatorsError.details);
-        // } else {
+        if (creatorsError) {
+            erroralert(creatorsError.message);
+            console.log(creatorsError);
+            console.log(creatorsError.details);
+        } else {
 
-        //   let uniqueCreators = [];
+          let uniqueCreators = [];
 
-        //   creators.forEach((creator)=> {
+          creators.forEach((creator)=> {
 
-        //     let {series:{creator:{username,pfp,creator_type}}} = creator;
+            let {series:{creator:{username,pfp,creator_type}}} = creator;
 
-        //     if (!uniqueCreators.includes(username)) {
-        //       uniqueCreators.push(username);
+            if (!uniqueCreators.includes(username)) {
+              uniqueCreators.push(username);
 
-        //       let types = '';
+              let types = '';
 
-        //       if (creator_type) {
-        //         creator_type.forEach((type,index)=> {
-        //           types+=creatorType[type];
-        //           if (index === 0 && creator_type.length > 1) {
-        //             types+=' & ';
-        //           }
-        //         })
-        //       }
+              if (creator_type) {
+                creator_type.forEach((type,index)=> {
+                  types+=creatorType[type];
+                  if (index === 0 && creator_type.length > 1) {
+                    types+=' & ';
+                  }
+                })
+              }
               
-        //       let element = `
-        //         <div class="group relative dark:text-white">
-        //               <div class="shadow-lg object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
-        //                   <img class=" aspect-square object-cover h-full" src="${pfp}" class=" object-center object-cover">
-        //               </div>
-        //               <div class="mt-4 flex justify-between">
-        //                   <div>
-        //                       <h3 class="text-sm">
-        //                       <a href="/user/${username}" class="text-gray-700 font-bold dark:text-gray-100">
-        //                           <span aria-hidden="true" class="absolute inset-0"></span>
-        //                           ${username}
-        //                       </a>
-        //                       <br>
-        //                       <a href="/user/${username}">
-        //                         <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
-        //                       </a>
-        //                       <p class="text-xs text-gray-500 dark:text-gray-500">${types}</p>
-        //                       </h3>
-        //                   </div>
-        //               </div>
-        //         </div>`
+              let element = `
+                <div class="group relative dark:text-white">
+                      <div class="shadow-lg object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
+                          <img class=" aspect-square object-cover h-full" src="${pfp}" class=" object-center object-cover">
+                      </div>
+                      <div class="mt-4 flex justify-between">
+                          <div>
+                              <h3 class="text-sm">
+                              <a href="/user/${username}" class="text-gray-700 font-bold dark:text-gray-100">
+                                  <span aria-hidden="true" class="absolute inset-0"></span>
+                                  ${username}
+                              </a>
+                              <br>
+                              <a href="/user/${username}">
+                                <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
+                              </a>
+                              <p class="text-xs text-gray-500 dark:text-gray-500">${types}</p>
+                              </h3>
+                          </div>
+                      </div>
+                </div>`
 
-        //       $("#popularCreatorsDiv").append(element);
+              $("#popularCreatorsDiv").append(element);
 
-        //     }
+            }
 
-        //   });
+          });
 
-        // }
+        }
   
   }});
 

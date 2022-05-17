@@ -23,14 +23,15 @@ $.ajax({
 
         const { data, error } = await supabase
           .from('series_popularity')
-          .select('seriesid(creator:public_profile!series_creator_fkey(banner))')
+          .select('series!series_adaptation_fkey(creator:public_profile!series_creator_fkey(banner))')
           .order('popularity_score', 'desc')
           .limit(1)
-          .single();
+          .maybeSingle();
 
         if (error) {
           erroralert(error.message);
-        } else {
+          console.log(error);
+        } else if (data) {
 
           $("#popularDiv").css({"background-image": `url('${data.seriesid.creator.banner}')`});
 

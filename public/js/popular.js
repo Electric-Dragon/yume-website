@@ -21,14 +21,17 @@ $.ajax({
 
         const { data, error } = await supabase
             .from('series_popularity')
-            .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
+            .select('series_id(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
             .order('popularity_score', { ascending: false })
             .limit(10)
 
         if (error) {
             erroralert(error.message);
+            console.log(error);
+            console.log(error.hint);
         } else {
             popular.all = data;
+            console.log(data);
             receivedData(data);
         }
 
