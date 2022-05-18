@@ -38,7 +38,9 @@ let adaptationText = {
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 $('#searchBar').on('focus', function() {
-  window.location = '/dashboard/series';
+  if (window.location.href !== `${window.location.origin}/dashboard/series`) {
+    window.location = '/dashboard/series';
+  }
 })
 
 dayjs.extend(window.dayjs_plugin_relativeTime)
