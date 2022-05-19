@@ -178,16 +178,20 @@ window.saveDetails = async function saveDetails (e) {
 
   panels = panels.slice(0,6);
 
-  const { data, error } = await supabase
-  .storage
-  .from('users')
-  .remove(sampleArtRoutes)
+  if (sampleArtRoutes.length > 0) {
+    const { data, error } = await supabase
+    .storage
+    .from('users')
+    .remove(sampleArtRoutes)
 
-  if (error) {
-    erroralert(error.message);
-    $('#btnSaveText').text('Save');
-    $('#btnSaveDetails').prop('disabled', false);
-    return;
+    if (error) {
+      erroralert(error.message);
+      console.log(error);
+      $('#btnSaveText').text('Save');
+      $('#btnSaveDetails').prop('disabled', false);
+      return;
+    }
+
   }
 
   sampleArtRoutes = [];

@@ -32,7 +32,6 @@ $('#searchBar').on('input', async function() {
     if (error) {
       erroralert(error.message);
     } else {
-      console.log(data);
 
       if (data.length === 0) {
         $('#seriesHolder').empty();

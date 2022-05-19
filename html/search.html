@@ -125,7 +125,6 @@
   [...document.querySelectorAll('body')].forEach(el => {
     el.addEventListener('click', event => {
       if (event.target.parentElement.id !== "toggleprofile") {
-        console.log(event.target.parentElement.id)
         resultprofile.classList.add("hidden")
       }else{
       resultprofile.classList.toggle("hidden")}

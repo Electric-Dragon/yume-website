@@ -10,6 +10,8 @@ $('#sampleArtsContainer').hide();
 $('#btnDonate').hide();
 $('#verifiedSVGPath').hide();
 
+$('#mostPopularContainer').hide();
+
 let supabase,user,creatorId,selectSeriesId;
 
 let following = false;
@@ -170,7 +172,9 @@ $.ajax({
 
             if (mostPopularSeriesError) {
                 erroralert(mostPopularSeriesError.message);
-            } else {
+            } else if (mostPopularSeries.length > 0) {
+
+                $('#mostPopularContainer').show();
 
                 let {id, title, cover, genre1, genre2, summary} = mostPopularSeries[0].series;
 
@@ -217,11 +221,11 @@ $.ajax({
                 .from('creator_total_likes')
                 .select('total_likes')
                 .eq('creator_id', id)
-                .single();
+                .maybeSingle();
             
             if (creatorTotalLikeCountError) {
                 erroralert(creatorTotalLikeCountError.message);
-            } else {
+            } else if(creatorTotalLikeCount) {
                 $('#creatorTotalLikeCount').text(creatorTotalLikeCount.total_likes);
             }
 
