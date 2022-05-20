@@ -74,6 +74,8 @@ async function create(e) {
         erroralert('Cover image is too large');
     } else if (genre1 === genre2) {
         erroralert('Please select two different genres');
+    } else if (!isValid(title)) {
+        erroralert('Title contains invalid characters');
     } else {
 
         $('#btnCreate').prop('disabled', true);
@@ -173,4 +175,8 @@ async function create(e) {
     }
 
 
+}
+
+function isValid(str){
+  return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
 }
