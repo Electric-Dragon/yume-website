@@ -659,30 +659,18 @@
           <!-- <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             Statistics
           </h2>
-          <div class="grid gap-6 mb-8 md:grid-cols-2 blur-sm">
+          <div class="grid gap-6 mb-8 md:grid-cols-2">
             <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
               <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                Avergae Total Ratio
+                Series Follows over time
               </h4>
-              <canvas id="pie"></canvas>
-              <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
-                <div class="flex items-center">
-                  <span class="inline-block w-3 h-3 mr-1 bg-cyan-500 rounded-full"></span>
-                  <span>Followers</span>
-                </div>
-                <div class="flex items-center">
-                  <span class="inline-block w-3 h-3 mr-1 bg-red-600 rounded-full"></span>
-                  <span>Likes</span>
-                </div>
-                <div class="flex items-center">
-                  <span class="inline-block w-3 h-3 mr-1 bg-cyan-600 rounded-full"></span>
-                  <span>Comments</span>
-                </div>
-              </div>
+              <canvas id="pie">
+
+              </canvas>
             </div>
             <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
               <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                Traffic
+                Creator Follows over time
               </h4>
               <canvas id="line"></canvas>
               <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
@@ -881,6 +869,7 @@ flag3 = false;
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.0/dayjs.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.0/plugin/relativeTime.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
   <script src="/js/init.js" type="module"></script>
   <script defer src="/js/dashboard.js" type="module"></script>
   <script defer src="/js/notifications.js" type="module"></script>
