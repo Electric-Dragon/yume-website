@@ -59,6 +59,20 @@ $.ajax({
         window.location = "/signin";
       }
 
+      const {data:isCreator, error:isCreatorError} = await supabase
+        .from('public_profile')
+        .select('is_creator')
+        .eq('id', user.id)
+        .maybeSingle();
+
+      if (isCreatorError) {
+        erroralert(isCreatorError.message);
+      } else {
+        if (isCreator && !isCreator.is_creator) {
+          window.location = "/account#toggle";
+        }
+      }
+
       const {data: notifications, error: error_} = await supabase
         .from('adaptation_notifications')
         .select('id,from_id:public_profile!adaptation_notifications_from_id_fkey(id,username),to_id:public_profile!adaptation_notifications_to_id_fkey(id,username),series(id,title,novel),status,when,message,is_own')
