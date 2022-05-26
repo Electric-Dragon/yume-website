@@ -79,9 +79,9 @@ app.get("/list", function(req, res) {
     res.sendFile(__dirname + "/html/glist.html");
 });
 
-app.get("/advertisement/create", function(req, res) {
-    res.sendFile(__dirname + "/html/createad.html");
-});
+// app.get("/advertisement/create", function(req, res) {
+//     res.sendFile(__dirname + "/html/createad.html");
+// });
 
 app.get("/genre/:genre", function(req, res) {
     res.sendFile(__dirname + "/html/genre.html");
@@ -162,9 +162,9 @@ app.post("/createAdaptation", async function(req, res) {
     res.json(await yumeAPI.createAdaptation(req.body));
 });
 
-app.post("/createAdvertisement", async function(req, res) {
-    res.json(await yumeAPI.createAdvertisement(req.body));
-});
+// app.post("/createAdvertisement", async function(req, res) {
+//     res.json(await yumeAPI.createAdvertisement(req.body));
+// });
 
 app.post("/addRead", async function(req, res) {
     await yumeAPI.addFingerprint(req.body);
@@ -175,37 +175,37 @@ app.get("/ads.txt", function(req, res) {
     res.sendFile(__dirname + "/public/text/ads.txt");
 });
 
-app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async function(request, response) {
+// app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async function(request, response) {
 
-    const sig = request.headers['stripe-signature'];
+//     const sig = request.headers['stripe-signature'];
 
-    let event;
+//     let event;
 
-    try {
-        event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-    }
-    catch (err) {
-        console.log(err.message);
-        io.sockets.emit('advertisement', {error: err.message});
-        return;
-    }
+//     try {
+//         event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+//     }
+//     catch (err) {
+//         console.log(err.message);
+//         io.sockets.emit('advertisement', {error: err.message});
+//         return;
+//     }
 
-    // response.json({received: true});
+//     // response.json({received: true});
 
 
-    let res = await yumeAPI.handleWebhook({type: event.type, event: event});
+//     let res = await yumeAPI.handleWebhook({type: event.type, event: event});
 
-    if (res && res.error) {
-        console.log(res.error);
-        io.sockets.emit('advertisement', {error: res.error});
-        response.status(400).send(res.error);
-    } else {
+//     if (res && res.error) {
+//         console.log(res.error);
+//         io.sockets.emit('advertisement', {error: res.error});
+//         response.status(400).send(res.error);
+//     } else {
 
-        io.sockets.emit('advertisement', res);
-        response.json({received: true});
-    }
+//         io.sockets.emit('advertisement', res);
+//         response.json({received: true});
+//     }
 
-});
+// });
 
 server.listen(process.env.PORT || port, function() {
     console.log(`Server started on http://localhost:${port}`);
