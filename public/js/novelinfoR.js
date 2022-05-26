@@ -155,12 +155,12 @@ $.ajax({
           const { data:series_follows, error_ } = await supabase
             .from('series_follows')
             .select('id')
-            .match({series: seriesid, user: user.id})
+            .match({target_series: seriesid, user: user.id})
           
           if (error_) {
             erroralert(error_.message);
           } else {
-            follows = (series_follows.length > 0) ? true : false;
+            follows = (series_follows) ? true : false;
             let text = follows ? 'Unfollow Series' : 'Follow Series';
             $('#followButton').text(text);
           }

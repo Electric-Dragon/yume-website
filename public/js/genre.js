@@ -60,23 +60,43 @@ $.ajax({
 
         const {data:popularSeries, error:popularSeriesError} = await supabase
                 .from('series_popularity')
-                .select('series!inner(cover,title,id,creator:public_profile!series_creator_fkey(username))')
+                // .select('series!inner(cover,title,id,creator:public_profile!series_creator_fkey(username))')
+                .select('series_id')
                 .order('popularity_score', { ascending: false })
-                .or(`genre1.eq.${genre},genre2.eq.${genre}`, { foreignTable: "series" })
-                .neq('series.status', 'd')
+                .or(`genre1.eq.${genre},genre2.eq.${genre}`)
+                .neq('status', 'd')
                 .limit(6)
         if (popularSeriesError) {
           erroralert(popularSeriesError.message);
           console.log(popularSeriesError);
         } else {
 
-          popularSeries.forEach(val=> {
+          let seriesInfos = [];
 
-            let {series: {id, title, cover, creator:{username}}} = val;
+          for (const series of popularSeries) {
+
+            const {data:seriesInfo, error:seriesInfoError} = await supabase
+                .from('series')
+                .select('cover,title,id,creator:public_profile!series_creator_fkey(username)')
+                .eq('id', series.series_id)
+                .limit(1)
+                .maybeSingle();
+            
+            if (seriesInfoError) {
+              erroralert(seriesInfoError.message);
+            } else {
+              seriesInfos.push(seriesInfo);
+            }
+
+          }
+
+          seriesInfos.forEach(val=> {
+
+            let {id, title, cover, creator:{username}} = val;
 
             let element = `<div class="group relative dark:text-white">
                     <div class="object-cover aspect-square bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75">
-                        <img class="aspect-square object-cover h-full" src="${cover}" class=" object-center object-cover">
+                        <img class="aspect-square object-cover h-full" src="${cover}" class=" object-center object-cover>
                     </div>
                     <div class="mt-4 flex justify-between">
                         <div>
