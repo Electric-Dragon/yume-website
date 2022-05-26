@@ -21,7 +21,8 @@ $.ajax({
 
         const { data, error } = await supabase
             .from('series_popularity')
-            .select('series(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
+            // .select('series(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
+            .select('series_id')
             .order('popularity_score', { ascending: false })
             .limit(10)
 
@@ -31,7 +32,6 @@ $.ajax({
             console.log(error.hint);
         } else {
             popular.all = data;
-            console.log(data);
             receivedData(data);
         }
 
@@ -40,7 +40,7 @@ $.ajax({
           if (!popular.all) {
             const { data, error } = await supabase
             .from('series_popularity')
-            .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
+            .select('series_id')
             .order('popularity_score', { ascending: false })
             .limit(10)
 
@@ -61,8 +61,8 @@ $.ajax({
           if (!popular.novels) {
             const { data, error } = await supabase
             .from('series_popularity')
-            .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
-            .eq('series.novel',true)
+            .select('series_id')
+            .eq('novel',true)
             .order('popularity_score', { ascending: false })
             .limit(10)
 
@@ -83,8 +83,8 @@ $.ajax({
             if (!popular.comics) {
               const { data, error } = await supabase
               .from('series_popularity')
-              .select('series!inner(id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
-              .eq('series.novel',false)
+              .select('series_id')
+              .eq('novel',false)
               .order('popularity_score', { ascending: false })
               .limit(10)
   
@@ -103,8 +103,27 @@ $.ajax({
 }});
 
 async function receivedData(data) {
+
+  let series = [];
+
+  for (const seriesid of data) {
+
+    const { data:seriesInfo, error } = await supabase
+            .from('series')
+            .select('id,title,cover,summary,genre1,genre2,creator:public_profile!series_creator_fkey(username))')
+            .eq('id',seriesid.series_id)
+            .limit(1)
+            .maybeSingle();
+
+    if (error) {
+        erroralert(error.message);
+    } else {
+        series.push(seriesInfo);
+    }
+
+  }
   
-  let {id, title, cover, summary, genre1, genre2, creator} = data[0].series;
+  let {id, title, cover, summary, genre1, genre2, creator} = series[0];
 
   var words = summary.split(" ");
 
@@ -125,18 +144,18 @@ async function receivedData(data) {
   $('#mostPopularCreatorUsername').text(`By ${creator.username}`);
   $('#mostPopularCreatorUsername').attr('href', `/user/${creator.username}`);
 
-  let first = data.shift();
+  let first = series.shift();
 
   $('#seriesContainer').empty();
 
-  data.forEach(showSeries);
+  series.forEach(showSeries);
 
-  data.unshift(first);
+  series.unshift(first);
 }
 
 async function showSeries(val, index) {
 
-  let {id, title, cover, genre1, genre2, creator} = val.series;
+  let {id, title, cover, genre1, genre2, creator} = val;
 
   let element = `
                   <tr class="text-gray-700 dark:text-gray-400">

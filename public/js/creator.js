@@ -164,10 +164,11 @@ $.ajax({
 
             const {data:mostPopularSeries, error:mostPopularSeriesError} = await supabase
                 .from('series_popularity')
-                .select('series!inner(cover,title,id,genre1,genre2,summary)')
+                // .select('series!inner(cover,title,id,genre1,genre2,summary)')
+                .select('series_id')
                 .order('popularity_score', { ascending: false })
-                .eq('series.creator', id)
-                .neq('series.status', 'd')
+                .eq('creator', id)
+                .neq('status', 'd')
                 .limit(1)
 
             if (mostPopularSeriesError) {
@@ -176,43 +177,56 @@ $.ajax({
 
                 $('#mostPopularContainer').show();
 
-                let {id, title, cover, genre1, genre2, summary} = mostPopularSeries[0].series;
+                const {data:mostPopularSeriesInfo, error:mostPopularSeriesErrorInfo} = await supabase
+                    .from('series')
+                    .select('cover,title,id,genre1,genre2,summary')
+                    .eq('id', mostPopularSeries[0].series_id)
+                    .limit(1)
+                    .maybeSingle();
 
-                var words = summary.split(" ");
-
-                if (words.length > 50) {
-                  summary = "";
-                  for (let i = 0; i < 50; i++) {
-                    summary += words[i] + " ";
-                  }
-                  summary += "...";
-                }
-
-                $('#mostPopularCover').attr('src', cover);
-                $('#mostPopularTitle').text(title);
-                $('#mostPopularTitle').attr('href', `/series/${id}`);
-                $('#mostPopularSummary').text(summary);
-                $('#mostPopularGenre1').text(genre1);
-                $('#mostPopularGenre2').text(genre2);
-
-                let {data:seriesTotalLikes, error:seriesTotalLikesError} = await supabase
-                    .from('series_total_likes')
-                    .select('count')
-                    .eq('seriesid', id);
-
-                if (seriesTotalLikesError) {
-                    erroralert(seriesTotalLikesError.message);
+                if (mostPopularSeriesErrorInfo) {
+                    erroralert(mostPopularSeriesErrorInfo.message);
                 } else {
-                    $('#mostPopularSeriesLikes').text(seriesTotalLikes[0].count);
-                }
 
-                const { data:seriesFollows, error:seriesFollowsError } = await supabase
-                    .rpc('get_series_follows', { seriesid: id });
+                    let {id, title, cover, genre1, genre2, summary} = mostPopularSeriesInfo;
 
-                if (seriesFollowsError) {
-                    erroralert(seriesFollowsError.message);
-                } else {
-                    $('#mostPopularSeriesFollows').text(seriesFollows);
+                    var words = summary.split(" ");
+
+                    if (words.length > 50) {
+                    summary = "";
+                    for (let i = 0; i < 50; i++) {
+                        summary += words[i] + " ";
+                    }
+                    summary += "...";
+                    }
+
+                    $('#mostPopularCover').attr('src', cover);
+                    $('#mostPopularTitle').text(title);
+                    $('#mostPopularTitle').attr('href', `/series/${id}`);
+                    $('#mostPopularSummary').text(summary);
+                    $('#mostPopularGenre1').text(genre1);
+                    $('#mostPopularGenre2').text(genre2);
+
+                    let {data:seriesTotalLikes, error:seriesTotalLikesError} = await supabase
+                        .from('series_total_likes')
+                        .select('count')
+                        .eq('seriesid', id);
+
+                    if (seriesTotalLikesError) {
+                        erroralert(seriesTotalLikesError.message);
+                    } else {
+                        $('#mostPopularSeriesLikes').text(seriesTotalLikes[0].count);
+                    }
+
+                    const { data:seriesFollows, error:seriesFollowsError } = await supabase
+                        .rpc('get_series_follows', { seriesid: id });
+
+                    if (seriesFollowsError) {
+                        erroralert(seriesFollowsError.message);
+                    } else {
+                        $('#mostPopularSeriesFollows').text(seriesFollows);
+                    }
+
                 }
 
             }
