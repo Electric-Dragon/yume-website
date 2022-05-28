@@ -227,6 +227,7 @@ window.acceptRequest = async function acceptRequest(id) {
 
         if (error) {
             erroralert(error.message);
+            console.log(error);
         } else {
             successalert('Adaptation request accepted', function() {
             window.location.reload();

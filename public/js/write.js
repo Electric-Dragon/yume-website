@@ -55,7 +55,6 @@ async function save(is_published) {
         erroralert('Chapter title is required');
     } else {
         editor.save().then((outputData) => {
-            console.log('Article data: ', outputData);     
 
             if (outputData.blocks.length == 0) {
                 erroralert('Chapter is empty');

@@ -69,7 +69,7 @@ module.exports.signUp = async function signUp({email, password, username}) {
                                     'sender' : {'email':'site.yume@gmail.com', 'name':'Yume No reply'},
                                     'replyTo' : {'email':'site.yume@gmail.com', 'name':'Yume No reply'},
                                     'to' : [{'name': username, 'email': email}],
-                                    'htmlContent' : `<html><body><h1>To verify your account for Yume, click this <a href="{{params.link}}">link</a>. </h1> Link not working? <h3>Copy-paste this link in the browser: {{params.link}}<h3></body></html>`,
+                                    'htmlContent' : `<html><body><h1>To verify your account for Yume, click this <a href="{{params.link}}">link</a>. </h1> <h3>Link not working? Copy-paste this link in the browser: ${data.action_link}<h3></body></html>`,
                                     'params' : {'link':data.action_link}
                                   }
                                 ).then(function(data) {
@@ -270,7 +270,7 @@ module.exports.createAdaptation = async function createAdaptation({id, access_to
             .from('adaptation_notifications')
             .select('id,series(id,title,summary,cover,novel,mature,genre1,genre2)')
             .eq('target_series', id)
-            .eq('from', user.id)
+            .eq('from_id', user.id)
             .eq('status','a')
 
         if (error) {

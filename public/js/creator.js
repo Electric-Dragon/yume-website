@@ -324,15 +324,25 @@ $.ajax({
 
             }
 
+            // const {data:workedWith, error:error_2} = await supabase
+            //     .from('series')
+            //     .select('adaptation(creator:public_profile!series_creator_fkey(username,pfp,creator_type))')
+            //     .eq('creator', id)
+            //     .neq('status', 'd')
+
             const {data:workedWith, error:error_2} = await supabase
                 .from('series')
-                .select('adaptation(creator:public_profile!series_creator_fkey(username,pfp,creator_type))')
+                .select('adaptation(creator:series!series_adaptation_fkey(username))')
                 .eq('creator', id)
                 .neq('status', 'd')
 
             
+            console.log(workedWith);
+
+            
             if (error_2) {
                 erroralert(error_2.message);
+                console.log(error_2);
             } else {
                 workedWith.forEach(val=> {
 

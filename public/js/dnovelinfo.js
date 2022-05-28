@@ -201,7 +201,6 @@ $.ajax({
 }});
 
 $('#statusSelect').on('change',async function() {
-  console.log($(this).val());
 
   const { data, error } = await supabase
   .from('series')
