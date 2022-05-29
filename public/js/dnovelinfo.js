@@ -16,6 +16,8 @@ var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 $('#btnReadOriginal').hide();
 $('#adaptationBadge').hide();
 
+let statusArray = [];
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -56,6 +58,7 @@ $.ajax({
 
               if (!check) {
                 $('#statusSelect').append(new Option(text,val,defaultSelected,nowSeleted));
+                statusArray.push(val);
               }
 
           });
@@ -201,6 +204,11 @@ $.ajax({
 }});
 
 $('#statusSelect').on('change',async function() {
+
+  if (!statusArray.includes($(this).val())) {
+    erroralert('Please select a valid status');
+    return;
+  }
 
   const { data, error } = await supabase
   .from('series')

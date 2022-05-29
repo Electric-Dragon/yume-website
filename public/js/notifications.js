@@ -128,7 +128,7 @@ $.ajax({
             let clickHere = (status === 'a') ? `
                                                 <div class="flex items-center justify-center mt-5 mb-3 gap-2 flex-row ">
                                                   <div>
-                                                    <button type="button" onclick="createAdaptation('${series.id}')" class=" px-2 py-1 border-2 border-green-500 text-black font-medium text-xs leading-tight uppercase rounded-md  hover:text-white hover:bg-green-500  focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Start working</button>
+                                                    <button type="button" onclick="createAdaptation('${series.id}')" id="btnCreateAdaptation${series.id}" class=" px-2 py-1 border-2 border-green-500 text-black font-medium text-xs leading-tight uppercase rounded-md  hover:text-white hover:bg-green-500  focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Start working</button>
                                                   </div>
                                                 </div>` : '';
 
@@ -163,7 +163,7 @@ $.ajax({
             let clickHere = (status === 'a') ? `
                                                 <div class="flex items-center justify-center mt-5 mb-3 gap-2 flex-row ">
                                                   <div>
-                                                    <button type="button" onclick="createAdaptation('${series.id}')" class=" px-2 py-1 border-2 border-green-500 text-black font-medium text-xs leading-tight uppercase rounded-md  hover:text-white hover:bg-green-500  focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Start working</button>
+                                                    <button type="button" onclick="createAdaptation('${series.id}')" id="btnCreateAdaptation${series.id}" class=" px-2 py-1 border-2 border-green-500 text-black font-medium text-xs leading-tight uppercase rounded-md  hover:text-white hover:bg-green-500  focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Start working</button>
                                                   </div>
                                                 </div>` : '';
 
@@ -286,21 +286,26 @@ window.createAdaptation = async function createAdaptation(id) {
     }).then( async (result) => {
 
         if (result.isConfirmed) {
+
+          $(`#btnCreateAdaptation${id}`).html('Creating...');
+          $(`#btnCreateAdaptation${id}`).attr('disabled', true);
             
-        $.ajax({
-            type:"POST",
-            url:'/createAdaptation',
-            data:{id: id,
-            access_token: supabase.auth.session().access_token},        
-            success: function(data, status) {
-            if (data.error) {
-                erroralert(data.error);
-            } else {
-                successalert('Adaptation created successfully', function() {
-                window.location = `/dashboard/series/${data.success}`;
+          $.ajax({
+              type:"POST",
+              url:'/createAdaptation',
+              data:{id: id,
+              access_token: supabase.auth.session().access_token},        
+              success: function(data, status) {
+              if (data.error) {
+                  erroralert(data.error);
+                  $(`#btnCreateAdaptation${id}`).html('Start Working');
+                  $(`#btnCreateAdaptation${id}`).attr('disabled', false);
+              } else {
+                  successalert('Adaptation created successfully', function() {
+                  window.location = `/dashboard/series/${data.success}`;
                 });
-            }
-        }});
+              }
+          }});
 
         }
 
