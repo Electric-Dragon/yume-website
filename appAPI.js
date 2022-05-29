@@ -125,7 +125,7 @@ module.exports.followSeries = async function followSeries({id, access_token, fol
                 const { data, error } = await supabase
                     .from('series_follows')
                     .insert([
-                        { target_series: id, user: user.id }
+                        { target_series: id, userid: user.id }
                     ])
                 if (error) {
                     return {error: error.message}
@@ -141,7 +141,7 @@ module.exports.followSeries = async function followSeries({id, access_token, fol
                 const { data, error } = await supabase
                     .from('series_follows')
                     .delete()
-                    .match({ series: id, user: user.id })
+                    .match({ target_series: id, userid: user.id })
                 if (error) {
                     return {error: error.message}
                 } else {

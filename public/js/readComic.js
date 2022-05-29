@@ -209,7 +209,7 @@ window.toggleLike = async function toggleLike() {
             const { data, error } = await supabase
                 .from('chapter_likes')
                 .insert([
-                    { user: user.id, chapter: chapterid }
+                    { userid: user.id, chapter: chapterid }
                 ])
             if (error) {
                 erroralert(error.message);
