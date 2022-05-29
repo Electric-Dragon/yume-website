@@ -175,6 +175,14 @@ app.get("/ads.txt", function(req, res) {
     res.sendFile(__dirname + "/public/text/ads.txt");
 });
 
+app.get("/tos", function(req, res) {
+    res.sendFile(__dirname + "/public/text/tos.txt");
+});
+
+app.get("/pp", function(req, res) {
+    res.sendFile(__dirname + "/public/text/pp.txt");
+});
+
 // app.post('/stripe_webhooks',express.raw({type: 'application/json'}), async function(request, response) {
 
 //     const sig = request.headers['stripe-signature'];
