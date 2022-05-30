@@ -222,3 +222,5 @@ server.listen(process.env.PORT || port, function() {
 // app.listen(process.env.PORT || port, function() {
 //     console.log(`Server started on http://localhost:${port}`);
 // });
+
+module.export = server;
