@@ -13,15 +13,15 @@ const app = express();
 const port = 7001;
 
 const http = require('http');
-var server = http.createServer(app);
-const io = require("socket.io")(server);
+// var server = http.createServer(app);
+// const io = require("socket.io")(server);
 
 let socket;
 
-io.on('connection', function (socket_) {
-    socket = socket_;
-    console.log("Connected succesfully to the socket ...");
-});
+// io.on('connection', function (socket_) {
+//     socket = socket_;
+//     console.log("Connected succesfully to the socket ...");
+// });
 
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.urlencoded({extended:true}));
@@ -215,12 +215,12 @@ app.get("/pp", function(req, res) {
 
 // });
 
-server.listen(process.env.PORT || port, function() {
-    console.log(`Server started on http://localhost:${port}`);
-})
-
-// app.listen(process.env.PORT || port, function() {
+// server.listen(process.env.PORT || port, function() {
 //     console.log(`Server started on http://localhost:${port}`);
 // });
 
-module.export = server;
+app.listen(process.env.PORT || port, function() {
+    console.log(`Server started on http://localhost:${port}`);
+});
+
+module.exports = app;
