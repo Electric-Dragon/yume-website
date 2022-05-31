@@ -241,7 +241,7 @@ window.enableCreator = async function enableCreator() {
             erroralert(error.message);
           } else {
             successalert("You are now a creator!",function(){
-              window.location.reload()
+              window.location = "/dashboard/creator#creatorTypeHeading"
             });
           }
   
