@@ -42,26 +42,26 @@ module.exports.signUp = async function signUp({email, password, username}) {
                         } else {
                             await nAPI.createUserNode(user.id, username);
 
-                            try {
-                                const customer = await stripe.customers.create({
-                                    email: email,
-                                    metadata: {
-                                        id: user.id
-                                    }
-                                });
-                                const {data:stripeInfo, error:stripeInfoError} = await supabase.from('customers').insert([
-                                    {
-                                        id: user.id,
-                                        stripe_customer_id: customer.id,
-                                    }
-                                ])
-                                if (stripeInfoError) {
-                                    console.log(stripeInfoError.message);
-                                    return {error: stripeInfoError.message}
-                                }
-                            } catch (error) {
-                                return {error: error}
-                            }
+                            // try {
+                            //     const customer = await stripe.customers.create({
+                            //         email: email,
+                            //         metadata: {
+                            //             id: user.id
+                            //         }
+                            //     });
+                            //     const {data:stripeInfo, error:stripeInfoError} = await supabase.from('customers').insert([
+                            //         {
+                            //             id: user.id,
+                            //             stripe_customer_id: customer.id,
+                            //         }
+                            //     ])
+                            //     if (stripeInfoError) {
+                            //         console.log(stripeInfoError.message);
+                            //         return {error: stripeInfoError.message}
+                            //     }
+                            // } catch (error) {
+                            //     return {error: error}
+                            // }
 
                             return new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail(
                                   {

@@ -79,7 +79,7 @@ $.ajax({
           $('#sideBarAdvertisement').show();
        }
 
-       if (private_user) {
+       if (private_user[0].fName) {
 
             let { fName, lName, dob, pNumber } = private_user[0];
 
