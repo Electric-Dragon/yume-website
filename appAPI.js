@@ -12,7 +12,7 @@ const advertisingPriceID = process.env.ADVERTISING_PRICE_ID;
 
 const endpointSecret = process.env.ENDPOINT_SECRET;
 
-module.exports.signUp = async function signUp({email, password, username}) {
+module.exports.signUp = async function signUp({email, password, username, origin}) {
 
     return await supabase.auth.api.createUser({
         email: email,
@@ -29,7 +29,8 @@ module.exports.signUp = async function signUp({email, password, username}) {
         } else {
             return await supabase.auth.api.generateLink(
                 'invite',
-                email
+                email,
+                {redirectTo: origin}
             ).then(async ({data, error}) => {
                 if (error) {
                     return {error: error.message}

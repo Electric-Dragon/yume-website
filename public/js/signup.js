@@ -52,7 +52,8 @@ async function signUp(e) {
           url:'/signup',
           data:{email: email,
             password: password,
-            username: username},        
+            username: username,
+            origin: window.location.origin},        
           success: function(data, status) {
             if (data.error) {
               erroralert(data.error);
