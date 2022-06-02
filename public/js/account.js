@@ -41,8 +41,10 @@ $.ajax({
         .from('private_user')
         .select()
         .eq('id',user.id)
+        .limit(1)
+        .maybeSingle();
 
-      const { data:public_user, error_ } = await supabase
+      const { data:public_user, error:error_ } = await supabase
         .from('public_profile')
         .select()
         .eq('id',user.id)
@@ -79,9 +81,9 @@ $.ajax({
           $('#sideBarAdvertisement').show();
        }
 
-       if (private_user[0].fName) {
+       if (private_user) {
 
-            let { fName, lName, dob, pNumber } = private_user[0];
+            let { fName, lName, dob, pNumber } = private_user;
 
             $('#fName').val(fName);
             $('#lName').val(lName);
