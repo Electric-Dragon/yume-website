@@ -139,12 +139,13 @@ $.ajax({
             const {data:likedChap, error:error_} = await supabase
                 .from('chapter_likes')
                 .select('id')
-                .match({user:user.id,chapter:chapterid})
+                .match({userid:user.id,chapter:chapterid})
+                .maybeSingle();
             
-            if (likedChap.length === 0) {
+            if (!likedChap) {
                 liked = false
             } else {
-                likeid = likedChap[0].id;
+                likeid = likedChap.id;
                 liked = true;
             }
             toggleLikeButton(); 
