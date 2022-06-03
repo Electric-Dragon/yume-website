@@ -74,6 +74,13 @@ $.ajax({
        $('#toggle').prop('checked',is_creator);
        isCreator = is_creator;
 
+       $('#bannerImageLabel').click(function(e) {
+         if (!isCreator) {
+            erroralert("Only creators can change banner image");
+            e.preventDefault();
+         }
+       })
+
        if (is_creator) {
          $('#sideBarDashboard').show();
          $('#sideBarSeries').show();
@@ -132,7 +139,7 @@ window.saveDetails = async function saveDetails () {
 
             const { data_, error } = await supabase.storage
             .from('users')
-            .upload(`${user.id}/profile/pfp.jpg`, pfpNew, {cacheControl: 10,upsert: true})
+            .upload(`${user.id}/profile/pfp.jpg`, pfpNew, {upsert: true})
 
             if (error) {
               erroralert(error.message);
@@ -165,14 +172,14 @@ window.saveDetails = async function saveDetails () {
 
           if (bannerNew) {
 
-            if (bannerNew.size > 500000) {
-              erroralert("Banner must be under 500kb");
+            if (bannerNew.size > 1000000) {
+              erroralert("Banner must be under 1 MB");
               return;
             }
 
             const { data_, error } = await supabase.storage
             .from('users')
-            .upload(`${user.id}/profile/banner.jpg`, bannerNew, {cacheControl: 10,upsert: true})
+            .upload(`${user.id}/profile/banner.jpg`, bannerNew, {upsert: true})
 
             if (error) {
               erroralert(error.message);

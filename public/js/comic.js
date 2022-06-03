@@ -27,7 +27,7 @@ $.ajax({
   
         const { data, error } = await supabase
         .from('chapters')
-        .select('title,images,seriesid:series!chapters_seriesid_fkey(title)')
+        .select('title,images,seriesid:series!chapters_seriesid_fkey(title),is_published')
         .eq('id', chapterid)
         .single()
   
@@ -35,7 +35,11 @@ $.ajax({
           erroralert(error.message);
         } else {
             
-            let {title,images, seriesid} = data;
+            let {title,images, seriesid, is_published} = data;
+
+            if (is_published) {
+                $('#btnSaveDraft').hide();
+            }
 
             $('#seriesTitle').text(seriesid.title);
             $('#title').val(title);
