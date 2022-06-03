@@ -296,9 +296,16 @@ swalWithBootstrapButtons.fire({
         erroralert(publicChapCountError.message);
       }
 
+      const {data:timestamp, error:timestampError} = await supabase
+        .rpc('get_server_timestampz');
+      
+      if (timestampError) {
+        erroralert(timestampError.message);
+      }
+
       const { data:dataUpdate, error:dataUpdateError } = await supabase
         .from('series')
-        .update({ publicchapcount: publicChapCount, chapcount: chapCount })
+        .update({ publicchapcount: publicChapCount, chapcount: chapCount, updatedat: timestamp })
         .match({ id: seriesid });
 
       if (dataUpdateError) {
