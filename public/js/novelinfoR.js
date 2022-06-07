@@ -155,7 +155,7 @@ $.ajax({
           const { data:series_follows, error_ } = await supabase
             .from('series_follows')
             .select('id')
-            .match({target_series: seriesid, user: user.id})
+            .match({target_series: seriesid, userid: user.id})
           
           if (error_) {
             erroralert(error_.message);
