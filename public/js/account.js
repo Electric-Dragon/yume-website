@@ -41,8 +41,10 @@ $.ajax({
         .from('private_user')
         .select()
         .eq('id',user.id)
+        .limit(1)
+        .maybeSingle();
 
-      const { data:public_user, error_ } = await supabase
+      const { data:public_user, error:error_ } = await supabase
         .from('public_profile')
         .select()
         .eq('id',user.id)
@@ -72,6 +74,13 @@ $.ajax({
        $('#toggle').prop('checked',is_creator);
        isCreator = is_creator;
 
+       $('#bannerImageLabel').click(function(e) {
+         if (!isCreator) {
+            erroralert("Only creators can change banner image");
+            e.preventDefault();
+         }
+       })
+
        if (is_creator) {
          $('#sideBarDashboard').show();
          $('#sideBarSeries').show();
@@ -81,7 +90,7 @@ $.ajax({
 
        if (private_user) {
 
-            let { fName, lName, dob, pNumber } = private_user[0];
+            let { fName, lName, dob, pNumber } = private_user;
 
             $('#fName').val(fName);
             $('#lName').val(lName);
@@ -130,7 +139,7 @@ window.saveDetails = async function saveDetails () {
 
             const { data_, error } = await supabase.storage
             .from('users')
-            .upload(`${user.id}/profile/pfp.jpg`, pfpNew, {cacheControl: 10,upsert: true})
+            .upload(`${user.id}/profile/pfp.jpg`, pfpNew, {upsert: true})
 
             if (error) {
               erroralert(error.message);
@@ -163,14 +172,14 @@ window.saveDetails = async function saveDetails () {
 
           if (bannerNew) {
 
-            if (bannerNew.size > 500000) {
-              erroralert("Banner must be under 500kb");
+            if (bannerNew.size > 1000000) {
+              erroralert("Banner must be under 1 MB");
               return;
             }
 
             const { data_, error } = await supabase.storage
             .from('users')
-            .upload(`${user.id}/profile/banner.jpg`, bannerNew, {cacheControl: 10,upsert: true})
+            .upload(`${user.id}/profile/banner.jpg`, bannerNew, {upsert: true})
 
             if (error) {
               erroralert(error.message);
@@ -241,7 +250,7 @@ window.enableCreator = async function enableCreator() {
             erroralert(error.message);
           } else {
             successalert("You are now a creator!",function(){
-              window.location.reload()
+              window.location = "/dashboard/creator#creatorTypeHeading"
             });
           }
   

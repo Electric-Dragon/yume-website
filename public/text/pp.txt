@@ -1,0 +1,5 @@
+We fingerprint your browser. This is used for calculating statistics for series.
+
+We collect your email address while signing up. This is used for logging in and communications (if required).
+
+We collect your name, date of birth and phone number when you sign up as a creator. This is used for communications (if required).

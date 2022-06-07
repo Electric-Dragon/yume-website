@@ -7,6 +7,10 @@ let arr = window.location.pathname.split( '/' )
 let chapterid = arr[arr.length - 2];
 let seriesid = arr[arr.length - 3];
 
+$('#btnSaveDraft').hide();
+$('#btnPublish').hide();
+$('#btnSaveChanges').hide();
+
 window.addEventListener("beforeunload", beforeunload);
 
 $.ajax({
@@ -26,6 +30,7 @@ $.ajax({
             erroralert(error.message);
         } else {
             $('#chapTitle').val(data.title);
+
             editor = new EditorJS({
                 holder:'editorjs',
                 placeholder: 'Write your next masterpiece!',
@@ -42,8 +47,18 @@ $.ajax({
             });
         }
 
-        $('#btnSaveDraft').on('click', save.bind(this, false));
-        $('#btnPublish').on('click', save.bind(this, true));
+        if (data.is_published) {
+
+            $('#btnSaveChanges').show();
+            $('#btnSaveChanges').click(saveChanges);
+
+        } else {
+            $('#btnSaveDraft').show();
+            $('#btnPublish').show();
+
+            $('#btnSaveDraft').on('click', save.bind(this, false));
+            $('#btnPublish').on('click', save.bind(this, true));
+        }
 }});
     
     
@@ -55,7 +70,6 @@ async function save(is_published) {
         erroralert('Chapter title is required');
     } else {
         editor.save().then((outputData) => {
-            console.log('Article data: ', outputData);     
 
             if (outputData.blocks.length == 0) {
                 erroralert('Chapter is empty');
@@ -63,18 +77,38 @@ async function save(is_published) {
 
                 supabase.from('chapters')
                 .update({ title: chaptitle, body: outputData, is_published: is_published })
-                .match({ id: chapterid }).then(({data, error})=> {
+                .match({ id: chapterid }).then(async ({data, error})=> {
 
                     if (error) {
                       erroralert(error.message);
                     } else {
+
+                        if(is_published) {
+
+                            const {data:timestamp, error:timestampError} = await supabase
+                                .rpc('get_server_timestampz');
+                          
+                            if (timestampError) {
+                                erroralert(timestampError.message);
+                            } else {
+                                const {data:seriesUpdate, error:seriesUpdateError} = await supabase
+                                    .from('series')
+                                    .update({ updatedat: timestamp })
+                                    .match({ id: seriesid });
+
+                                if (seriesUpdateError) {
+                                    erroralert(seriesUpdateError.message);
+                                }
+                            }
+
+                        }
 
                         saved = true;
 
                         let text = is_published ? 'Chapter published successfully' : 'Chapter saved as draft';
 
                         successalert(text,function() {
-                        window.location = `/dashboard/series/${seriesid}`;
+                            window.location = `/dashboard/series/${seriesid}`;
                         });
                     }
 
@@ -84,6 +118,43 @@ async function save(is_published) {
 
         });   
     }
+}
+
+async function saveChanges() {
+
+    let chaptitle = $('#chapTitle').val();
+
+    if (!chaptitle) {
+        erroralert('Chapter title is required');
+    } else {
+        editor.save().then((outputData) => {
+
+            if (outputData.blocks.length == 0) {
+                erroralert('Chapter is empty');
+            } else {
+
+                supabase.from('chapters')
+                .update({ title: chaptitle, body: outputData })
+                .match({ id: chapterid }).then(({data, error})=> {
+
+                    if (error) {
+                      erroralert(error.message);
+                    } else {
+
+                        saved = true;
+
+                        successalert('Changes saved successfully',function() {
+                            window.location = `/dashboard/series/${seriesid}`;
+                        });
+                    }
+
+                });
+            
+            }
+
+        });   
+    }
+
 }
 
 function beforeunload (e) {

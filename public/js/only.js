@@ -31,6 +31,8 @@ let creatorType = {
   "w": "isWriter",
 }
 
+let isArtist = false;
+
 $.ajax({
   url: "/keys",
   success: async function( result ) {
@@ -76,6 +78,7 @@ $.ajax({
 
        if (creator_type && creator_type[0] === "a") {
           $('#artistSamplesSection').show();
+          isArtist = true;
        }
 
        $(`#${creatorType[creator_type]}`).prop('checked',true);
@@ -91,43 +94,48 @@ $.ajax({
 
         $('#description').val(description);
 
-        sample_arts.forEach((image,index) => {
+        if (sample_arts && sample_arts.length > 0) {
+          sample_arts.forEach((image,index) => {
 
-          sampleArtRoutes.push(image);
-          
-          let element = `
-                      <div class="w-full p-4 lg:w-50 lg:h-full">
-                          <div class=" bg-white border rounded shadow-sm ">
-                              <div class="relative">
-                                  <img class="h-60 object-scale-down w-98 object-center" id="sampleArt${index}" src="">
-                              </div>                          
-                          </div>
-                      </div>`
-
-          $('#panelPreviewContainer').append(element);
-      });
-
-      sampleArtRoutes.forEach(async (image,index) => {
-
-        const { data, error } = await supabase
-          .storage
-          .from('users')
-          .download(sampleArtRoutes[index]);
-
-        if (error) {
-          erroralert(error.message);
-        } else {
-
-          var reader = new FileReader();
-          reader.readAsDataURL(data); 
-          reader.onloadend = function() {
-            var base64data = reader.result;    
-            $(`#sampleArt${index}`).attr('src',base64data);
-          }
-          
+            sampleArtRoutes.push(image);
+            
+            let element = `
+                        <div class="w-full p-4 lg:w-50 lg:h-full">
+                            <div class=" bg-white border rounded shadow-sm ">
+                                <div class="relative">
+                                    <img class="h-60 object-scale-down w-98 object-center" id="sampleArt${index}" src="">
+                                </div>                          
+                            </div>
+                        </div>`
+  
+            $('#panelPreviewContainer').append(element);
+  
+          });
         }
 
-      });
+        if (sampleArtRoutes.length > 0) {
+          sampleArtRoutes.forEach(async (image,index) => {
+
+            const { data, error } = await supabase
+              .storage
+              .from('users')
+              .download(sampleArtRoutes[index]);
+  
+            if (error) {
+              erroralert(error.message);
+            } else {
+  
+              var reader = new FileReader();
+              reader.readAsDataURL(data); 
+              reader.onloadend = function() {
+                var base64data = reader.result;    
+                $(`#sampleArt${index}`).attr('src',base64data);
+              }
+              
+            }
+  
+          });
+        }
 
      }
 
@@ -137,10 +145,12 @@ window.saveDetails = async function saveDetails (e) {
 
   e.preventDefault();
 
-  let descriptionNew = $('#description').val();
+  let descriptionNew = $('#description').val().trim();
 
-  if (!(descriptionNew)) {
+  if (!(descriptionNew) || descriptionNew === "") {
     erroralert("Please fill in the description");
+  } else if (descriptionNew.length > 60) {
+    erroralert("Description too long. Keep it under 60 characters");
   } else {
 
       if (publicData.description != descriptionNew) {
@@ -158,10 +168,15 @@ window.saveDetails = async function saveDetails (e) {
         } else {
           successalert("Description updated!");
           $('#btnSaveText').text('Save');
+          publicData.description = descriptionNew;
         }
 
       }
 
+  }
+
+  if (!isArtist) {
+    return;
   }
 
   if (size > 10) {
@@ -254,8 +269,10 @@ window.updateCreatorType = async function updateCreatorType(e) {
 
     if (e.target.value === "a") {
       $('#artistSamplesSection').show();
+      isArtist = true;
     } else {
       $('#artistSamplesSection').hide();
+      isArtist = false;
     }
 
   }

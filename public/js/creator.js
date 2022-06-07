@@ -115,7 +115,7 @@ $.ajax({
                 $('#verifiedSVGPath').show();
             }
             
-            if (sample_arts.length > 0) {
+            if (sample_arts && sample_arts.length > 0) {
 
                 $('#sampleArtsContainer').show();
 
@@ -324,65 +324,81 @@ $.ajax({
 
             }
 
-            const {data:workedWith, error:error_2} = await supabase
+            const {data:adaptations, error:adaptationsError} = await supabase
                 .from('series')
-                .select('adaptation(creator:public_profile!series_creator_fkey(username,pfp,creator_type))')
+                .select('adaptation')
                 .eq('creator', id)
-                .neq('status', 'd')
+                .neq('status', 'd');
 
+            let workedWith = [];
+
+            for (const adaptationid of adaptations) {
+                
+                if (adaptationid.adaptation) {
+                    const {data:creatorInfo, error:creatorInfoError} = await supabase
+                        .from('series')
+                        .select('creator:public_profile!series_creator_fkey(username,pfp,creator_type)')
+                        .eq('id', adaptationid.adaptation)
+                        .maybeSingle();
+                    
+                    if (creatorInfoError) {
+                        erroralert(creatorInfoError.message);
+                    } else {
+                        workedWith.push(creatorInfo.creator);
+                    }
+                }
+
+            }
             
-            if (error_2) {
-                erroralert(error_2.message);
+            if (adaptationsError) {
+                erroralert(adaptationsError.message);
             } else {
                 workedWith.forEach(val=> {
 
-                    let {adaptation} = val
+                    let {username, pfp, creator_type} = val;
 
-                    if (adaptation) {
+                    if (!usernames.includes(username) && username !== creatorUsername) {
 
                         $('#workedWith').show();
 
-                        let {username, pfp, creator_type} = adaptation.creator;
+                        usernames.push(username);
 
-                        if (!usernames.includes(username) && username !== creatorUsername) {
-                            usernames.push(username);
+                        let types = '';
 
-                            let types = '';
-
-                            if (creator_type) {
-                                creator_type.forEach((type,index)=> {
-                                types+=creatorType[type];
-                                if (index === 0 && creator_type.length > 1) {
-                                    types+=' & ';
-                                }
-                                })
+                        if (creator_type) {
+                            creator_type.forEach((type,index)=> {
+                            types+=creatorType[type];
+                            if (index === 0 && creator_type.length > 1) {
+                                types+=' & ';
                             }
-
-                            let element =  `<div class="group relative dark:text-white">
-                                                    <div class="shadow-lg object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
-                                                        <img class=" aspect-square object-cover h-full" src="${pfp}" class=" object-center object-cover">
-                                                    </div>
-                                                    <div class="mt-4 flex justify-between">
-                                                        <div>
-                                                            <h3 class="text-sm">
-                                                            <a href="/user/${username}" class="text-gray-700 font-bold dark:text-gray-100">
-                                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                                ${username}
-                                                            </a>
-                                                            <br>
-                                                            <a href="/user/${username}">
-                                                            <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
-                                                            </a>
-                                                            <p class="text-xs text-gray-500 dark:text-gray-500">${types}</p>
-                                                            </h3>
-                                                        </div>
-                                                    </div>
-                                            </div>`
-
-                                $('#workedWithContainer').append(element);
+                            })
                         }
 
+                        let element =  `<div class="group relative dark:text-white">
+                                                <div class="shadow-lg object-cover aspect-square rounded-full bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75">
+                                                    <img class=" aspect-square object-cover h-full" src="${pfp}" class=" object-center object-cover">
+                                                </div>
+                                                <div class="mt-4 flex justify-between">
+                                                    <div>
+                                                        <h3 class="text-sm">
+                                                        <a href="/user/${username}" class="text-gray-700 font-bold dark:text-gray-100">
+                                                            <span aria-hidden="true" class="absolute inset-0"></span>
+                                                            ${username}
+                                                        </a>
+                                                        <br>
+                                                        <a href="/user/${username}">
+                                                        <span aria-hidden="true" class="text-xs absolute inset-0 text-gray-300"></span>
+                                                        </a>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-500">${types}</p>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                        </div>`
+
+                        $('#workedWithContainer').append(element);
                     }
+
+                    
                 })
             }
 

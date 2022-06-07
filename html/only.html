@@ -449,9 +449,8 @@
                       class=" focus:outline-none text-sm font-light leading-tight text-gray-600 mt-4 dark:text-white">
                       Fill in the data in order to recieve payments. <br />More features will be added as your
                       popularity increases.</p>
-                    <h2 tabindex="0"
-                      class="focus:outline-none text-xl font-semibold leading-7 text-gray-800 mt-10 dark:text-white">Who
-                      are you?</h2>
+                    <h2 id="creatorTypeHeading" tabindex="0"
+                      class="focus:outline-none text-xl font-semibold leading-7 text-gray-800 mt-10 dark:text-white">Who are you?</h2>
                     <p tabindex="0"
                       class="focus:outline-none text-sm font-light leading-none text-gray-600 mt-0.5 dark:text-white">
                       Customise to outline your Creator Profile</p>
@@ -521,15 +520,15 @@
                           You can upload up to <strong>10 MB</strong> in total. Only <strong>.JPG</strong> format is
                           allowed.</p>
 
-                        <button onclick="saveDetails(event)" role="button" id="btnSaveDetails"
-                          class="flex items-center mb-5 justify-center py-4 px-7 focus:outline-none bg-white border rounded border-gray-400 md:mt-2 hover:bg-gray-100  focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
-                          <span id="btnSaveText" class="text-sm font-medium text-center text-gray-800 capitalize">Save</span>
-                          <img class="mt-1 ml-3"
-                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/form_layout-svg2.svg" alt="arrow">
-                        </button>
-
                       </div>
                     </div>
+
+                    <button onclick="saveDetails(event)" role="button" id="btnSaveDetails"
+                    class="flex items-center mb-5 justify-center py-4 px-7 focus:outline-none bg-white border rounded border-gray-400 md:mt-2 hover:bg-gray-100  focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+                    <span id="btnSaveText" class="text-sm font-medium text-center text-gray-800 capitalize">Save</span>
+                    <img class="mt-1 ml-3"
+                      src="https://tuk-cdn.s3.amazonaws.com/can-uploader/form_layout-svg2.svg" alt="arrow">
+                  </button>
 
                     <div class="mt-5 max-w-full bg-white dark:bg-gray-900 dark:border-gray-700">
                       <h5 class="mb-3 text-base font-semibold text-gray-900 lg:text-xl dark:text-white">

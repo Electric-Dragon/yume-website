@@ -16,6 +16,8 @@ var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 $('#btnReadOriginal').hide();
 $('#adaptationBadge').hide();
 
+let statusArray = [];
+
 $.ajax({
     url: "/keys",
     success: async function( result ) {
@@ -56,6 +58,7 @@ $.ajax({
 
               if (!check) {
                 $('#statusSelect').append(new Option(text,val,defaultSelected,nowSeleted));
+                statusArray.push(val);
               }
 
           });
@@ -201,7 +204,11 @@ $.ajax({
 }});
 
 $('#statusSelect').on('change',async function() {
-  console.log($(this).val());
+
+  if (!statusArray.includes($(this).val())) {
+    erroralert('Please select a valid status');
+    return;
+  }
 
   const { data, error } = await supabase
   .from('series')
@@ -289,9 +296,16 @@ swalWithBootstrapButtons.fire({
         erroralert(publicChapCountError.message);
       }
 
+      const {data:timestamp, error:timestampError} = await supabase
+        .rpc('get_server_timestampz');
+      
+      if (timestampError) {
+        erroralert(timestampError.message);
+      }
+
       const { data:dataUpdate, error:dataUpdateError } = await supabase
         .from('series')
-        .update({ publicchapcount: publicChapCount, chapcount: chapCount })
+        .update({ publicchapcount: publicChapCount, chapcount: chapCount, updatedat: timestamp })
         .match({ id: seriesid });
 
       if (dataUpdateError) {

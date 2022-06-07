@@ -12,7 +12,7 @@ const advertisingPriceID = process.env.ADVERTISING_PRICE_ID;
 
 const endpointSecret = process.env.ENDPOINT_SECRET;
 
-module.exports.signUp = async function signUp({email, password, username}) {
+module.exports.signUp = async function signUp({email, password, username, origin}) {
 
     return await supabase.auth.api.createUser({
         email: email,
@@ -29,7 +29,8 @@ module.exports.signUp = async function signUp({email, password, username}) {
         } else {
             return await supabase.auth.api.generateLink(
                 'invite',
-                email
+                email,
+                {redirectTo: origin}
             ).then(async ({data, error}) => {
                 if (error) {
                     return {error: error.message}
@@ -42,26 +43,26 @@ module.exports.signUp = async function signUp({email, password, username}) {
                         } else {
                             await nAPI.createUserNode(user.id, username);
 
-                            try {
-                                const customer = await stripe.customers.create({
-                                    email: email,
-                                    metadata: {
-                                        id: user.id
-                                    }
-                                });
-                                const {data:stripeInfo, error:stripeInfoError} = await supabase.from('customers').insert([
-                                    {
-                                        id: user.id,
-                                        stripe_customer_id: customer.id,
-                                    }
-                                ])
-                                if (stripeInfoError) {
-                                    console.log(stripeInfoError.message);
-                                    return {error: stripeInfoError.message}
-                                }
-                            } catch (error) {
-                                return {error: error}
-                            }
+                            // try {
+                            //     const customer = await stripe.customers.create({
+                            //         email: email,
+                            //         metadata: {
+                            //             id: user.id
+                            //         }
+                            //     });
+                            //     const {data:stripeInfo, error:stripeInfoError} = await supabase.from('customers').insert([
+                            //         {
+                            //             id: user.id,
+                            //             stripe_customer_id: customer.id,
+                            //         }
+                            //     ])
+                            //     if (stripeInfoError) {
+                            //         console.log(stripeInfoError.message);
+                            //         return {error: stripeInfoError.message}
+                            //     }
+                            // } catch (error) {
+                            //     return {error: error}
+                            // }
 
                             return new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail(
                                   {
@@ -69,7 +70,7 @@ module.exports.signUp = async function signUp({email, password, username}) {
                                     'sender' : {'email':'site.yume@gmail.com', 'name':'Yume No reply'},
                                     'replyTo' : {'email':'site.yume@gmail.com', 'name':'Yume No reply'},
                                     'to' : [{'name': username, 'email': email}],
-                                    'htmlContent' : `<html><body><h1>To verify your account for Yume, click this <a href="{{params.link}}">link</a>. </h1> Link not working? <h3>Copy-paste this link in the browser: {{params.link}}<h3></body></html>`,
+                                    'htmlContent' : `<html><body><h1>To verify your account for Yume, click this <a href="{{params.link}}">link</a>. </h1> <h3>Link not working? Copy-paste this link in the browser: ${data.action_link}<h3></body></html>`,
                                     'params' : {'link':data.action_link}
                                   }
                                 ).then(function(data) {
@@ -125,7 +126,7 @@ module.exports.followSeries = async function followSeries({id, access_token, fol
                 const { data, error } = await supabase
                     .from('series_follows')
                     .insert([
-                        { target_series: id, user: user.id }
+                        { target_series: id, userid: user.id }
                     ])
                 if (error) {
                     return {error: error.message}
@@ -141,7 +142,7 @@ module.exports.followSeries = async function followSeries({id, access_token, fol
                 const { data, error } = await supabase
                     .from('series_follows')
                     .delete()
-                    .match({ series: id, user: user.id })
+                    .match({ target_series: id, userid: user.id })
                 if (error) {
                     return {error: error.message}
                 } else {
@@ -270,7 +271,7 @@ module.exports.createAdaptation = async function createAdaptation({id, access_to
             .from('adaptation_notifications')
             .select('id,series(id,title,summary,cover,novel,mature,genre1,genre2)')
             .eq('target_series', id)
-            .eq('from', user.id)
+            .eq('from_id', user.id)
             .eq('status','a')
 
         if (error) {

@@ -137,7 +137,7 @@ $.ajax({
                 .from('public_profile')
                 .select('pfp,username,description')
                 .eq('id', seriesid.creator)
-                .single()
+                .maybeSingle()
 
             let {pfp, username, description} = creatorDetails;
             $('#creatorPfp').attr('src',pfp);
@@ -148,12 +148,13 @@ $.ajax({
             const {data:likedChap, error:error_} = await supabase
                 .from('chapter_likes')
                 .select('id')
-                .match({user:user.id,chapter:chapterid})
+                .match({userid:user.id,chapter:chapterid})
+                .maybeSingle();
             
-            if (likedChap.length === 0) {
-                liked = false
+            if (!likedChap) {
+                liked = false;
             } else {
-                likeid = likedChap[0].id;
+                likeid = likedChap.id;
                 liked = true;
             }
             toggleLikeButton();
@@ -209,7 +210,7 @@ window.toggleLike = async function toggleLike() {
             const { data, error } = await supabase
                 .from('chapter_likes')
                 .insert([
-                    { user: user.id, chapter: chapterid }
+                    { userid: user.id, chapter: chapterid }
                 ])
             if (error) {
                 erroralert(error.message);

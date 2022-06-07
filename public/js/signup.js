@@ -29,6 +29,9 @@ async function signUp(e) {
 
     if (password===passwordConfirm) {
 
+      $('#btnSignUp').html('Signing up...');
+      $('#btnSignUp').prop('disabled', true);
+
       let { data, error } = await supabase
       .from('public_profile')
       .select('username')
@@ -36,29 +39,37 @@ async function signUp(e) {
 
       if (error) {
         erroralert(error.message);
+        $('#btnSignUp').html('Sign up');
+        $('#btnSignUp').prop('disabled', false);
       } else if (data.length>0) {
         erroralert('Username already taken');
+        $('#btnSignUp').html('Sign up');
+        $('#btnSignUp').prop('disabled', false);
       } else {
 
-
-      $.ajax({
-        type:"POST",
-        url:'/signup',
-        data:{email: email,
-          password: password,
-          username: username},        
-        success: function(data, status) {
-          if (data.error) {
-            erroralert(data.error);
-          } else {
-            successalert('Sign up successful, check your email to verify your account', function() {
-              window.location = '/signin';
-            });
-          }
-      }});
+        $.ajax({
+          type:"POST",
+          url:'/signup',
+          data:{email: email,
+            password: password,
+            username: username,
+            origin: window.location.origin},        
+          success: function(data, status) {
+            if (data.error) {
+              erroralert(data.error);
+              $('#btnSignUp').html('Sign up');
+              $('#btnSignUp').prop('disabled', false);
+            } else {
+              successalert('Sign up successful, check your email to verify your account. Check spam', function() {
+                window.location = '/signin';
+              });
+            }
+        }});
 
     }
 
+    } else {
+      erroralert('Passwords do not match');
     }
 
     }
