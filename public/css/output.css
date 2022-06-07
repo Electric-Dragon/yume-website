@@ -4374,10 +4374,6 @@ svg #main-circ {
   --tw-ring-offset-width: 2px;
 }
 
-.hover\:w-screen:hover {
-  width: 100vw;
-}
-
 .hover\:scale-150:hover {
   --tw-scale-x: 1.5;
   --tw-scale-y: 1.5;
